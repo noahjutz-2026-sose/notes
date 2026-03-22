@@ -8,7 +8,7 @@
   set text(lang: "de", font: "Fira Sans")
   set heading(numbering: (n0, ..x) => numbering("1.1",   n0 - 1, ..x))
   set page(numbering: "1")
-  
+
   show link: set text(blue)
   show math.equation: set text(font: "Fira Math")
   show math.equation.where(block: true): align.with(start)
@@ -17,4 +17,11 @@
   )
 
   body
+}
+
+#let template_exercises(body, prefix: "Ü") = {
+    counter(heading).update(0)
+    set heading(numbering: (..x) => numbering(prefix + "1.1", ..x))
+
+    body
 }
