@@ -1,4 +1,5 @@
 #import "@preview/gentle-clues:1.3.1": *
+#import "/template.typ": template
 
 #set heading(numbering: "1.1")
 #set page(numbering: "1")
@@ -6,18 +7,22 @@
 
 #show math.equation: set text(font: "Fira Math")
 
+#show: template
+
 #title[Operations Research]
 
 #outline()
 
 #align(end)[2026-03-19 VL01]
 
+= Organisatorisches
+
 = Begriffe
 
 - _Entscheidung_
   - Bsp: Optimale Lagerbestände
 - _Entscheidungskriterien_
-  - Bsp: Mindestbestände $<= x <=$ Lagerkapazität, 
+  - Bsp: Mindestbestände $<= x <=$ Lagerkapazität,
 - _Ziele_
   - Bsp: Bestände minimal halten
 - _Optimale Entscheidung_: $max F(x)$ oder $min F(x)$
@@ -38,7 +43,7 @@ $
   $
   P_2 &:= "Stiefel" \
   x_2 &= space ? \
-  g_2 &= 20 euro \ \
+  g_2 &= 20 euro \
   $
 )
 

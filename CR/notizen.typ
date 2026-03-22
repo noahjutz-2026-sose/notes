@@ -4,8 +4,8 @@
 #import "@preview/mannot:0.3.2": *
 #import "@preview/meander:0.4.1"
 
-#import "template.typ": template
-#import "components.typ": *
+#import "/template.typ": template
+#import "/components.typ": *
 
 
 #show: template
@@ -88,7 +88,7 @@ Durch einsetzen und algebraisches Umstellen erhalten wir
   delta_y / delta_x &= ((f(tilde(x))-f(x))/f(x)) / ((tilde(x)-x)/x) \
   &=(f(tilde(x))-f(x))/mark(f(x), tag: #<fx>) dot x/mark((tilde(x)-x), tag: #<x>) \
   &=markhl((f(tilde(x))-f(x))/(tilde(x)-x), tag: #<sekante>, color: #green)
-  
+
   dot x/f(x)
 
   #annot(<sekante>, dy: -90pt, dx: 200pt, leader-connect: "elbow")[
@@ -124,7 +124,7 @@ Durch einsetzen und algebraisches Umstellen erhalten wir
     })
   ]
   $
-  
+
   #annot-cetz(
     (<fx>, <x>),
     cetz,
@@ -175,7 +175,7 @@ Wir nennen diese Größe _Relative Kondition_ oder $kappa_"rel"$.
 #task(title: [Skript-Aufgabe 1.4])[
   *Absolute Kondition:*
   Um eine beliebig schlechte Kondition $kappa_"abs" (x_0) = infinity$ herbeizuführen, müssen wir eine Funktion finden, dessen Steigung an einem $x_0$ unendlich ist. Lösung:
-  
+
   $
   f(x) = root(3, x) space , space x_0=0
   $
@@ -187,21 +187,21 @@ Wir nennen diese Größe _Relative Kondition_ oder $kappa_"rel"$.
   = lim_(x -> 0) x^(-2/3)
   = lim_(x -> 0) 1/root(3, x^2) = infinity
   $
-  
+
   $
   => kappa_"abs" (x_0) =^dot infinity
   $
-  
+
   *Relative Kondition:* Wenn der Nenner von $kappa_"rel"$ gegen 0 geht
-  
+
   $ lim_(x -> x_0) f(x)= 0 $
-  
+
   aber der Zähler nicht, dann ist $kappa_"rel" (x_0) = infinity$. Lösung:
-  
+
   $
   f(x) = x-1, x_0 = 1 \
   $
-  
+
   $
   => kappa_"rel" (x_0) &= lim_(x -> x_0) abs(x/(x-1)) \
   &= lim_(x -> 1) abs(x/(x-1)) = infinity
@@ -218,11 +218,11 @@ Herleitung analog zur relativen Kondition (@krel).
   #table(
     columns: 3,
     [], [Relative Kondition], [Absolute Kondition],
-    
+
     [Fragestellung],
     [Um wie viel % verstärkt sich der relative Fehler durch $f$?],
     [Um wie viel % verstärkt sich der absolute Fehler durch $f$?],
-    
+
     [Definition],
     $
     kappa_"rel" (x) &= delta_y/delta_x \
@@ -232,21 +232,21 @@ Herleitung analog zur relativen Kondition (@krel).
     kappa_"abs" (x) &= Delta_y/Delta_x \
     &=^dot markhl(abs(f'(x)), color: #blue)
     $,
-  
+
     [Beispiel],
     [
       - Davor: $delta_x = 2%$
       - Danach: $delta_y = 50%$
-  
+
       $ => kappa_"rel" (x) =^dot delta_y/delta_x = 25 mark(space.hair = 2500%, color: #gray) $
     ],
     [
       - Davor: $Delta_x = 1$
       - Danach: $Delta_y = 12$
-  
+
       $ => kappa_"abs" =^dot Delta_y/Delta_x = 12 mark(space.hair = 1200%, color: #gray) $
     ],
-  
+
     [Beispiel $f$],
     [
       - $f(x) = x^25$
@@ -283,9 +283,9 @@ Herleitung analog zur relativen Kondition (@krel).
     $
     T_n (f, x_0, x) = sum_(k=0)^n (f^((k))(x_0))/k! (x-x_0)^k
     $
-    
+
     Jede differenzierbare Funktion kann als Polynom approximiert werden (_Taylorentwicklung_).
-    
+
     $
     f(x) = T_n (f, x_0, x) + R_(n + 1)
     $
@@ -333,14 +333,14 @@ Herleitung analog zur relativen Kondition (@krel).
     (f(tilde(x))-f(x))/mark(f(x), tag: #<aufgabe_1_7_swap1>) dot
     x/mark(tilde(x)-x, tag: #<aufgabe_1_7_swap2>)
   )
-  
+
   &= lim_(tilde(x) -> x) abs(markhl(
     (f(tilde(x))-f(x))/(tilde(x)-x),
     tag: #<aufgabe_1_7_kabs>
   ) dot x/f(x))
 
   #annot(<aufgabe_1_7_kabs>)[$kappa_"abs"$]
-  $ 
+  $
 
   #annot-cetz(
     (<aufgabe_1_7_swap1>, <aufgabe_1_7_swap2>),
