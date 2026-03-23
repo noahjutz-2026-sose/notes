@@ -1,7 +1,11 @@
-#set heading(numbering: "1.1")
-#set page(numbering: "1")
+#import "/template.typ": template
+
+#import "@preview/cetz:0.4.2"
+
+#show: template
 
 #title[Data Warehousing]
+Notizen
 
 #outline()
 
@@ -10,19 +14,25 @@
 = Organisatorisches
 
 - Prüfung
-  #[
-    #set enum(start: 0)
-    + Escape Room
-    + Idee Szenario + Präsentation April
-    + Peer-Review Szenario
-      - Präsentation zuhören und 1-2 Wochen später: Schwächen am Ansatz, was ist gut, ...
-    + Workbook
-    + Workbook, Power BI Dashboard
-  ]
+  #table(columns: 5,
+      [], [Challenge], [Punkte], [Deadline], [Informationen],
+      [0], [Escape Room], [5], [], [
+          - Laptop + DBeaver + Fortinet VPN
+          - 90min
+          - Slot wählen in KW13
+      ],
+      [1], [Szenario], [], [], [],
+      [2], [Peer-Review], [], [], [],
+      [3], [], [], [], [Workbook],
+      [4], [], [], [], [
+          - Workbook
+          - Power BI Dashboard
+      ]
+  )
 - Übungen
   - 7 Blätter
 
-= Exasol
+= Einführung in Data Warehousing
 
 == OLTP vs OLAP
 
@@ -38,6 +48,18 @@
 
 == Fakten und Dimensionen
 
-- Faktentabelle: 
-- Dimensionstabelle: W-Fragen
-- ETL: Extract, Transform, Load
+- _Faktentabelle_:
+- _Dimensionstabelle_: W-Fragen
+- _ETL_: #strong[E]xtract, #strong[T]ransform, #strong[L]oad
+
+#align(end)[2026-03-23 VL02]
+== Eigenschaften von Data Warehouses
+
+- _subject-oriented_: Kunden, Produkte, Aktivitäten
+- _integrated_: Aus mehreren Quellen
+- _non-volatile_: Daten sind statisch
+- _time-variant_: Mehrere Snapshots mit Timestamps
+
+
+== Architektur
+- _Data Mart_: View oder Kopie eines Data Warehouses
