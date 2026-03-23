@@ -1,5 +1,5 @@
-#import "template.typ": template
-#import "components.typ": *
+#import "/template.typ": template
+#import "/components.typ": *
 
 #show: template
 
@@ -80,7 +80,7 @@ Wir müssen mit einem Ausgabefehler von $0.2 "m"$ rechnen.
   &= abs((1/2 dot 10 dot 2.01^2) - (1/2 dot 10 dot 2^2)) \
   &= abs(20.2005-20) \
   &= 0.2005
-  $ 
+  $
   Der Ausgabefehler ist exakt $0.2005 "m"$.
 ]
 
@@ -114,9 +114,9 @@ Unter $t=10 "s"$ bleibt der Ausgabefehler $h < 1 "m"$.
   $
   Delta_t = 0.01 dot t/2
   $
-  
+
   Gesucht sind alle Eingabewerte $t$, für die der Ausgabefehler kleiner als $1 "m"$ ist.
-  
+
   $
   Delta_y &< 1 \
   kappa_"abs" (h) dot Delta_t &< 1 \
@@ -149,4 +149,3 @@ Siehe Skript-Aufgabe 1.4
 == Kondition differenzierbarer Funktionen
 
 Siehe Skript-Aufgabe 1.7
-

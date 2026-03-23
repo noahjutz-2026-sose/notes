@@ -4,7 +4,7 @@
 #import "@preview/mannot:0.3.2": *
 #import "@preview/meander:0.4.1"
 
-#import "/template.typ": template, template_exercises
+#import "/template.typ": template
 #import "/components.typ": *
 
 
@@ -356,9 +356,3 @@ Herleitung analog zur relativen Kondition (@krel).
 #align(end)[2026-03-24 VL02]
 
 =
-
-#show: template_exercises
-
-=
-
-==
