@@ -1,6 +1,7 @@
 #import "/template.typ": template
 
 #import "@preview/cetz:0.4.2"
+#import "@preview/codly:1.3.0"
 
 #show: template
 
@@ -63,3 +64,9 @@ Notizen
 
 == Architektur
 - _Data Mart_: View oder Kopie eines Data Warehouses
+
+= Exasol
+
+```sh
+sudo podman run -p 127.0.0.1:9563:9563 -d --privileged docker.io/exasol/docker-db
+```

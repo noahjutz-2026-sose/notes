@@ -3,6 +3,8 @@
 #import "@preview/gentle-clues:1.3.1": *
 #import "@preview/mannot:0.3.2": *
 #import "@preview/meander:0.4.1"
+#import "@preview/codly:1.3.0"
+#import "@preview/codly-languages:0.1.10"
 
 #let template(body) = {
   set text(lang: "de", font: "Fira Sans")
@@ -14,6 +16,12 @@
   show math.equation.where(block: true): align.with(start)
   show: gentle-clues.with(
     breakable: true
+  )
+  show: codly.codly-init
+
+  codly.codly(
+      number-format: none,
+      languages: codly-languages.codly-languages
   )
 
   body
