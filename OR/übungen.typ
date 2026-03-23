@@ -15,7 +15,7 @@
 
 == Produktionsplanung
 
-Siehe [or-ue01/excel_solver.xlsx](https://github.com/noahjutz-2026-sose/or-ue01)
+Siehe #link("https://github.com/noahjutz-2026-sose/or-ue01")[or-ue01/excel_solver.xlsx]
 
 == Automobilproduktion
 
