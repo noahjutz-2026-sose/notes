@@ -1,15 +1,4 @@
-#import "/template.typ": template
 #import "/components.typ": *
-
-#show: template
-
-#set heading(numbering: "1.1")
-
-#title[Numerische Mathematik]
-
-Theorie-Übungen #sym.dot 2026 SoSe #sym.dot Noah Jutz
-
-#outline(depth: 2)
 
 = Fehler und Kondition
 
