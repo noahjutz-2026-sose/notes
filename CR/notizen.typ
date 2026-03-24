@@ -348,4 +348,114 @@ Herleitung analog zur relativen Kondition (@krel).
 
 #align(end)[2026-03-24 VL02]
 
-=
+= Beispiele für Fehlerberechnung
+
+#note[
+    - Absolute Fehler sind nur für $x != 0$ definiert.
+    - Relative Fehler sind nur für $f(x) != 0$ definiert.
+    - $kappa$ ist die *kleinste Zahl* mit
+      $
+          Delta_y <=^dot kappa_"abs" (x) dot Delta_x \
+          delta_y <=^dot kappa_"abs" (x) dot delta_x \
+      $
+    - $exists.not kappa => f$ ist _schlecht konditioniert_, $kappa = infinity$
+]
+
+#example(title: [Brot backen: Relative Kondition])[
+    Brot muss bei $T=200 degree "C"$ für $t=1 "h"$ gebacken werden.
+
+    $
+        t = (200/T)^2
+    $
+
+    Vereinfacht $x := T/100 quad ; quad f(x) := t$:
+
+    $
+        f(x) = (2/x)^2
+    $
+
+    Der Ofen misst die Temperatur $x$ auf $delta_x = 3%$ genau, wie exakt ist $f(x)$?
+
+    $
+        kappa_"rel" (x) &= abs((x f'(x))/f(x)) = 2
+    $
+
+    Lösung:
+
+    $
+        delta_y &<= kappa_"rel" (x) delta_x \
+        &<= 2 dot 0.03 \
+        &<= underline(0.06)
+    $
+
+    #box(fill: green.transparentize(50%), inset: 4pt)[
+        Wir müssen mit 6% Abweichung in der Backzeit rechnen.
+    ]
+]
+
+#example(title: [Brot backen: Relativ $->$ Absolut])[
+    Man kann aus dem relativen Fehler den absoluten berechnen: Beispiel mit $250 degree "C"$:
+
+    $
+        f(2.5) approx 0.64 quad delta_y = 0.06 \
+        => Delta_y = 0.64 dot 0.06 approx underline(0.04 "h")
+    $
+
+    #box(fill: green.transparentize(50%), inset: 4pt)[
+        Die Backzeit bei $250 degree "C"$ ist $0.64 "h"$ mit bis zu $0.04 "h"$ Abweichung.
+    ]
+]
+
+#example(title: [Brot backen: Absolute Kondition])[
+    Ofen 2 misst die Temperatur auf $5 degree"C"$ genau.
+
+    $
+        Delta_x = 0.05 quad ; quad
+        kappa_"abs" (x) = abs(8/x^3)
+    $
+
+    Was ist die absolute Abweichung in der Backzeit?
+
+    $
+        kappa_"abs" (2.5) = abs(8/2.5^3) approx 1/2
+    $
+
+    Die Fehlerverstärkung bei der Berechnung der Backzeit ist $50%$.
+
+    $
+        Delta_f(2.5) &<= kappa_"abs" (2.5) dot Delta_x \
+        &<= 1/2 dot 1/20 \
+        &<= underline(0.025 "h")
+    $
+
+    #box(fill: green.transparentize(50%), inset: 4pt)[
+        Wir müssen bei $250 degree"C"$ mit $1.5 "min"$ Abweichung rechnen.
+    ]
+]
+
+#note(title: [Kryptographische Hash-Funktion])[
+    Kryptographische Hashfunktionen sind gewollt schlecht konditioniert.
+]
+
+#example(title: [Pendel])[
+    Der Winkel lässt sich aus der gemessenen Zeit ableiten durch
+
+    $
+        phi(t) = sin(20 pi t)
+    $
+
+    Gegeben sind
+
+    $
+        t = 1 quad ; Delta_t = 0.1 ; tilde(t) = 1.1
+    $
+
+    Was ist die Fehlerverstärkung $kappa_"abs"$?
+
+    $
+        Delta_phi(x) &<= kappa_"abs" (x) dot Delta_t \
+        0 &<= kappa_"abs" (x) dot abs(1.1 - 1) \
+        //0 &<= kappa_"abs" (x)
+
+    $
+]
