@@ -65,4 +65,5 @@ $
 
 == Python
 
-=== Google OR-Tools
+- Google OR-Tools: #link("https://github.com/noahjutz-2026-sose/or-ue01")[or-ue01/ue1-3a]
+- Scipy: #link("https://github.com/noahjutz-2026-sose/or-ue01")[or-ue01/ue1-3b]
