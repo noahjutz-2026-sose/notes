@@ -1,6 +1,16 @@
+#import "/components.typ": *
+
 #align(end)[2026-03-20 TT01]
 
 =
+
+#note(title: [Wiederholung Mathematik])[
+    Orthogonale Matrix:
+    - Jede Zeile und Spalte steht zu jeder anderen senkrecht
+    - Jede Zeile und Spalte ist ein Einheitsvektor (Länge 1)
+    - Spannt ein Koordinatensystem auf
+    - Es gilt: $M^(-1) = M^T$
+]
 
 + #[
   - Retina: Teil des Auges, das Licht aufnimmt und als Signale ans Gehirn schickt.
@@ -14,15 +24,3 @@
 
   - Effizient: $(2/15, 1/15, 0, 1/5)$
 ]
-
-
-== Matrizen, Vektoren
-
-Orthogonale Matrix:
-- Jede Zeile und Spalte steht zu jeder anderen senkrecht
-- Jede Zeile und Spalte ist ein Einheitsvektor (Länge 1)
-- Spannt ein Koordinatensystem auf
-
-$ M^(-1) = M^T $
-
-== Asymptote

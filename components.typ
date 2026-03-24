@@ -12,7 +12,7 @@
 )
 
 #let task(
-  title: "Beispiel",
+  title: "Aufgabe",
   icon: [\u{f0132}],
   ..args
 ) = clue(
@@ -20,6 +20,17 @@
   icon: icon,
   accent-color: purple,
   ..args
+)
+
+#let note(
+    title: "Notiz",
+    icon: [\u{f03eb}],
+    ..args
+) = clue(
+    title: title,
+    icon: icon,
+    accent-color: blue,
+    ..args
 )
 
 #let further(
