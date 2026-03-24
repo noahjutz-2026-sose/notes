@@ -7,14 +7,7 @@
 #import "/template.typ": template
 #import "/components.typ": *
 
-
 #show: template
-
-#title[Numerische Mathematik]
-
-Notizen #sym.dot 2026 SoSe #sym.dot Noah Jutz
-
-#outline()
 
 #align(end)[2026-03-17 VL01]
 
