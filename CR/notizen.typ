@@ -313,8 +313,8 @@ Herleitung analog zur relativen Kondition (@krel).
   kappa_"rel" (x) &= lim_(tilde(x) -> x) delta_y/delta_x \
   &= lim_(tilde(x) -> x) abs(((f(tilde(x))-f(x))/f(x))/((tilde(x)-x)/x)) \
   &= lim_(tilde(x) -> x) abs((markhl(f(tilde(x)))-f(x))/(f(x)) dot x/(tilde(x)-x)) \
-  &= lim_(tilde(x) -> x) abs((markhl(f(x)+f'(x)(tilde(x)-x))-f(x))/f(x) dot x/(tilde(x)-x)) \
-  &= lim_(tilde(x) -> x) abs((x f'(x))/f(x)) space square.filled
+  &=^dot lim_(tilde(x) -> x) abs((markhl(f(x)+f'(x)(tilde(x)-x))-f(x))/f(x) dot x/(tilde(x)-x)) \
+  &= abs((x f'(x))/f(x)) space square.filled
   $
 ]
 
@@ -348,7 +348,9 @@ Herleitung analog zur relativen Kondition (@krel).
 
 #align(end)[2026-03-24 VL02]
 
-= Beispiele für Fehlerberechnung
+= Wiederholung Kondition
+
+== Beispiele für Fehlerberechnung
 
 #note[
     - Absolute Fehler sind nur für $x != 0$ definiert.
@@ -359,6 +361,7 @@ Herleitung analog zur relativen Kondition (@krel).
           delta_y <=^dot kappa_"abs" (x) dot delta_x \
       $
     - $exists.not kappa => f$ ist _schlecht konditioniert_, $kappa = infinity$
+    - Kryptographische Hashfunktionen sind gewollt schlecht konditioniert.
 ]
 
 #example(title: [Brot backen: Relative Kondition])[
@@ -433,10 +436,6 @@ Herleitung analog zur relativen Kondition (@krel).
     ]
 ]
 
-#note(title: [Kryptographische Hash-Funktion])[
-    Kryptographische Hashfunktionen sind gewollt schlecht konditioniert.
-]
-
 #example(title: [Pendel])[
     Der Winkel lässt sich aus der gemessenen Zeit ableiten durch
 
@@ -453,9 +452,66 @@ Herleitung analog zur relativen Kondition (@krel).
     Was ist die Fehlerverstärkung $kappa_"abs"$?
 
     $
-        Delta_phi(x) &<= kappa_"abs" (x) dot Delta_t \
-        0 &<= kappa_"abs" (x) dot abs(1.1 - 1) \
-        //0 &<= kappa_"abs" (x)
+        Delta_phi(t) &<= kappa_"abs" (1) dot Delta_t \
+        0 &<= kappa_"abs" (1) dot abs(1.1 - 1) \
+    $
 
+    TODO damit demonstrieren dass wir nur kleine Fehler abschätzen wollen
+]
+
+== Landau-Notation
+
+Die Kondition ist nur für "kleine" Fehler aussagekräftig, weil wir approximieren:
+
+$
+    Delta_y <= k_"abs" (x) dot Delta_x + markhl(g(tilde(x), x))
+$
+
+#clue(title: [Definition])[
+    Wir definieren $g(tilde(x), x)$ mit
+    $
+        lim_abs(tilde(x)-x) abs(g(tilde(x), x))/abs(tilde(x)-x) = 0
+    $
+
+    Die Funktion wächst also langsamer als $Delta_x$ und ist deshalb vernachlässigbar.
+]
+
+Analog für relative Kondition:
+
+$
+    delta_y <= k_"rel" (x) dot delta_x + g(tilde(x), x)
+$
+
+_Näherung erster Ordnung:_ Wir vernachlässigen $g$.
+
+#clue(title: [Definition])[
+    _Näherung erster Ordnung:_ Glieder höherer Ordnung sind lokal um $x_0$ unwichtig.
+]
+
+== Alternative Herleitung Kondition
+
+#proof(title: [Herleitung Absolute Kondition mittels Taylorentwicklung])[
+    $
+        f(tilde(x)) &=^dot f(x) + f'(x) (tilde(x)-x) \
+        f(tilde(x))-f(x) &=^dot f'(x) dot (tilde(x)-x) \
+        underbrace(
+            abs(f(tilde(x))-f(x)),
+            Delta_y
+        )
+        &=^dot abs(f'(x)) dot underbrace(
+            tilde(x)-x,
+            Delta_x
+        ) \
+        => kappa_"abs" = abs(f'(x))
+    $
+]
+
+#proof(title: [Herleitung Relative Kondition mittels Taylorentwicklung])[
+    $
+        delta_y &<=^dot kappa_"rel" (x) delta_x \
+        delta_y/delta_x &<=^dot kappa_"rel" (x) \
+        &<=^dot ... space mark("Einsetzen und umformen", color: #gray) \
+        &<=^dot kappa_"abs" (x) abs(x/f(x)) \
+        &<=^dot abs((x f'(x))/f(x))
     $
 ]
