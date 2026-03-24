@@ -10,4 +10,4 @@
 
 #show: template_exercises
 
-#include "übungen.typ"
+#include "uebungen.typ"
