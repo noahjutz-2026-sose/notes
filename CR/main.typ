@@ -3,7 +3,7 @@
 
 #title[Numerische Mathematik]
 
-#outline()
+#outline(depth: 2)
 
 #include "notizen.typ"
 

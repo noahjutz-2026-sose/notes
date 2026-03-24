@@ -2,7 +2,7 @@
 
 = Fehler und Kondition
 
-== Wiederholung
+== Mathematik-Grundlagen
 
 *Lineare Algebra (MA1)*
 - _Vektor_ $arrow(v) = (v_1, ..., v_n)^T$
@@ -59,7 +59,9 @@ Delta_y &=^dot kappa_"abs" (x) dot Delta_x \
 &= 0.2
 $
 
-Wir müssen mit einem Ausgabefehler von $0.2 "m"$ rechnen.
+#box(fill: green.transparentize(50%), inset: 4pt)[
+    Wir müssen mit einem Ausgabefehler von $0.2 "m"$ rechnen.
+]
 
 #alternative[
   Wenn wir von einem Messwert $tilde(x) = 2.01$ ausgehen.
@@ -95,7 +97,9 @@ t &< 100 / 10 \
 t &< 10
 $
 
-Unter $t=10 "s"$ bleibt der Ausgabefehler $h < 1 "m"$.
+#box(fill: green.transparentize(50%), inset: 4pt)[
+    Unter $t=10 "s"$ bleibt der Ausgabefehler $h < 1 "m"$.
+]
 
 #alternative[
   Wenn wir davon ausgehen, dass der Messfehler $Delta_t$ der Stoppuhr proportional zur Zeit $t$ steigt.
@@ -129,11 +133,25 @@ delta_y &=^dot kappa_"rel" (t) dot delta_t \
 &= 2.5%
 $
 
-Der Eingabefehler darf maximal $2.5%$ sein, sodass der Ausgabefehler $5%$ ist.
+#box(fill: green.transparentize(50%), inset: 4pt)[
+    Der Eingabefehler darf maximal $2.5%$ sein, sodass der Ausgabefehler $5%$ ist.
+]
 
 == Schlecht konditionierte Abbildungen
 
 Siehe Skript-Aufgabe 1.4
+
+#task(title: [Zusatzaufgabe])[
+    $
+        f(x) = cases(
+            -1 "für" x <= 1,
+            1 "für" x > 1
+        )
+    $
+
+    Beweise, dass $k_"abs" (1) = infinity$.
+]
+
 
 == Kondition differenzierbarer Funktionen
 
