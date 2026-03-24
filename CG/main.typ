@@ -8,6 +8,8 @@
 
 #include "notizen.typ"
 
+#pagebreak()
+
 #show: template_exercises
 
 #include "uebungen.typ"
