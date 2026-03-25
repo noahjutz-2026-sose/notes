@@ -1,5 +1,6 @@
 #import "/components.typ": *
 #import "@preview/cetz:0.4.2"
+#import "@preview/codly:1.3.0"
 
 #align(end)[2026-03-20 TT01]
 
@@ -58,4 +59,58 @@ S &= N_triangle dot 3 S_V  \
 &= 432 "B"
 $
 
-===
+=== Indexed Face Set
+
+$
+    V = (#range(1, 9).map(i => $v_#i$).join(","))
+$
+
+$
+    I = (
+        1, 3, 2,
+        1, 4, 3,
+        1, 5, 4,
+        1, 8, 5,
+        7, 5, 8,
+        7, 6, 5
+    )
+$
+
+#codly.local(header: [Pseudocode], lang-format: none)[
+    ```c
+    struct V {
+        float x; float y; float z;
+        float r; float g; float b;
+    }
+    struct V vectors[] = {
+        { 0.0f, 0.0f, 0.0f,   1.0f, 0.0f, 0.0f },
+        ...
+    }
+    int indices[] = {
+        1, 3, 2, ...
+    }
+    ```
+]
+
+=== Größe Indexed Face Set
+
+$
+    S &= N_I + N_V \
+    &= 3 N_triangle dot S_"short" + 6 N_V dot S_"float" \
+    &= 3 dot 6 dot 2 + 6 dot 8 dot 4 = 228 "B"
+$
+
+== Signed Distance
+
+$
+    triangle_1 &= ((0, 0), (16, 2), (12, 4)) \
+    p_1 &= (7,1) \
+    p_2 &= (11, 4) \
+    p_3 &= (13, 3)
+$
+
+Als erstes müssen die Eckpunkte des Dreiecks in eine CCW Reihenfolge gebracht werden.
+
+$
+    det(mat(arrow(A B);stretch(arrow(A C))))
+$

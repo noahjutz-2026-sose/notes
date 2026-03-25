@@ -10,9 +10,10 @@
   set text(lang: "de", font: "Fira Sans")
   set heading(numbering: (n0, ..x) => numbering("1.1",   n0 - 1, ..x))
   set page(numbering: "1")
+  set math.mat(delim: "[")
 
   show link: set text(blue)
-  show math.equation: set text(font: "Fira Math")
+  show math.equation: set text(font: "Lete Sans Math")
   show math.equation.where(block: true): align.with(start)
   show: gentle-clues.with(
     breakable: true
@@ -21,7 +22,8 @@
 
   codly.codly(
       number-format: none,
-      languages: codly-languages.codly-languages
+      languages: codly-languages.codly-languages,
+      header-transform: it => align(center, strong(it))
   )
 
   body
