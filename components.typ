@@ -63,3 +63,14 @@
   icon: icon,
   ..args
 )
+
+#let code(
+    title: "Code",
+    icon: [\u{f0169}],
+    ..args
+) = clue(
+    title: title,
+    icon: icon,
+    accent-color: blue.darken(10%),
+    ..args
+)
