@@ -255,3 +255,35 @@ $
 ]
 
 == Asymptote
+
+=== raster_signed_distance
+
+Siehe #link("https://github.com/noahjutz-2026-sose/cg-ue01/blob/d7813c99a6d1761914f2125729ae45782330770e/raster-sd1.asy#L74-L96")[cg-ue01/raster-sd1.asy]
+
+=== Konservative Rasterisierung
+
+Man muss nicht nur den Mittelpunkt, sondern auch die Größe des Pixels wissen.
+
+Implementierung: Siehe #link("https://github.com/noahjutz-2026-sose/cg-ue01/blob/85191ac5da4ec5e00f3fa287b4c7fe89afecc639/raster-sd1.asy#L78-L111")[cg-ue01/raster-sd01.asy]
+
+=== Bounding Box Optimierung
+
+Implementierung: Siehe #link("https://github.com/noahjutz-2026-sose/cg-ue01/blob/0728bcc23bec8cabe69011dcd4ce3b2dad5145f8/raster-sd1.asy#L76-L81")[cg-ue01/raster-sd01.asy]
+
+Zeitmessung (500x500):
+
+```sh
+$ time asy -f pdf raster-sd1.asy # without optimization
+
+________________________________________________________
+Executed in    7.82 secs    fish           external
+   usr time   13.13 secs    0.00 millis   13.13 secs
+   sys time    0.51 secs    1.44 millis    0.51 secs
+
+$ time asy -f pdf raster-sd1.asy # with optimization
+
+________________________________________________________
+Executed in    6.03 secs    fish           external
+   usr time   10.40 secs    0.48 millis   10.40 secs
+   sys time    0.50 secs    1.10 millis    0.49 secs
+```
