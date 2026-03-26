@@ -1,4 +1,5 @@
 #import "@preview/codly:1.3.0": codly
+#import "/components.typ": *
 
 #align(end)[2026-03-19]
 
@@ -41,7 +42,7 @@ $ ./reader
 
 #align(end)[2026-03-26 VL10 (2025-11-04)]
 
-= IPC Mit Pipes
+= IPC mit Pipes
 
 #codly(header: [Pipes])
 #raw(
@@ -57,6 +58,15 @@ Child received: pong
 Parent received: ping
 ```
 
-= Exec und Fork
+= Scheduling
 
-= Cron Daemon
+- Ready Queue: FIFO
+- _Daemon Process_
+- _Zombie Process:_ Beendeter Prozess, der noch in der Prozesstabelle ist.
+    - Lösung: Elternprozess terminieren
+- _Niceness:_ Priorität
+    - $(20-(-20))/(20-0)=2 =>$ Prozess mit niceness -20 erhält doppelt so viel CPU-Zeit.
+- _Starvation:_ Prozess kommt nie zum Zug
+- _Shortest Job First (SJF)_
+
+#align(end)[2026-04-02 VL11 (2025-11-10)]
