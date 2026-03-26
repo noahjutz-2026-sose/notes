@@ -19,18 +19,24 @@ Siehe `2025_sose/notizen.xopp` für
 
 = IPC mit Shared Memory
 
-#codly(header: [\u{f4a5} writer.c])
-```c
-todo
-```
+#codly(header: [Writer])
+#raw(
+    block: true,
+    lang: "c",
+    read("assets/writer.c")
+)
 
-#codly(header: [\u{f4a5} reader.c])
-```c
-todo
-```
+#codly(header: [Reader])
+#raw(
+    block: true,
+    lang: "c",
+    read("assets/reader.c")
+)
 
 ```sh
-todo
+$ ./writer
+$ ./reader
+0 2 4 6 8 10 12 14 16 18
 ```
 
 == Prozess Scheduling Queues
@@ -39,7 +45,7 @@ todo
 
 = IPC Mit Pipes
 
-#codly(header: [\u{f4a5} pipes.c])
+#codly(header: [pipes.c])
 ```c
 
 ```
