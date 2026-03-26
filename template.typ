@@ -9,7 +9,7 @@
 #let template(body) = {
   set text(
       lang: "de",
-      font: "Fira Sans"
+      font: "Lato"
   )
   set heading(numbering: (n0, ..x) => numbering("1.1",   n0 - 1, ..x))
   set page(numbering: "1")
