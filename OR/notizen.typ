@@ -1,4 +1,6 @@
 #import "/components.typ": *
+#import "@preview/cetz:0.4.2"
+#import "@preview/cetz-plot:0.1.3"
 
 #align(end)[2026-03-19 VL01]
 
@@ -75,4 +77,96 @@ $
   - Zielfunktionsvektor $c$ (z.B. Gewinn, Zeit)
 ]
 
-#align(end)[2026-03-25 VL02]
+#align(end)[2026-03-26 VL02]
+
+= LP Graphische Lösung
+
+#cetz.canvas({
+    import cetz-plot: *
+    import cetz.draw: *
+
+    let nb1 = x => 100 - x
+    let nb2 = x => 80 - (2/3) * x
+    let nb3 = x => 60
+    let nb4 = x => 0
+
+    plot.plot(
+        size: (10, 5),
+        x-label: $x_1$,
+        y-label: $x_2$,
+        {
+            plot.add(
+                domain: (0, 100), nb1,
+                label: $x_1+x_2<=100$
+            )
+            plot.add(
+                domain: (0, 120), nb2,
+                label: $6x_1+9x_2<=720$
+            )
+            plot.add(
+                domain: (0, 150), nb3,
+                label: $x_2<=60$
+            )
+            plot.add(
+                domain: (0, 150), nb4,
+                label: $x > 0$
+            )
+            plot.add(
+                domain: (0, 40), x => 20 - .5 * x,
+                label: $400 = 10 x_1 + 20x_2$,
+                style: (stroke: (
+                    thickness: 2pt,
+                    dash: "dashed",
+                    paint: black
+                )),
+            )
+            plot.add(
+                domain: (0, 120), x => 60 - .5 * x,
+                label: $1200 = 10 x_1 + 20 x_2$,
+                style: (stroke: (
+                    thickness: 2pt,
+                    dash: "dashed",
+                    paint: black.transparentize(50%)
+                )),
+            )
+            plot.add(
+                domain: (0, 150), x => 75 - .5 * x,
+                label: $1500 = 10 x_1 + 20 x_2$,
+                style: (stroke: (
+                    thickness: 2pt,
+                    dash: "dashed",
+                    paint: black.transparentize(75%)
+                )),
+            )
+            plot.add-fill-between(
+                domain: (0, 100),
+                x => calc.min(
+                    nb1(x),
+                    nb2(x),
+                    nb3(x),
+                ),
+                nb4,
+                label: $Z$
+            )
+        }
+    )
+})
+
+$
+    F(x_1, x_2) = 10x_1+20x_2
+$
+
+= Simplex-Algorithmus
+
+- $n$ Variablen, davon $n-m$ Strukturvariablen und $m$ Schlupfvariablen
+- Unterste Zeile: F-Zeile: Negierte Zielfunktionskoeffizienten
+
+#example(title: [Simplex anhand Stiefel-Sneaker])[
+    #set enum(start: 0)
+    + Erste $n-m=2$ Variablen auf 0 setzen
+        - $b_i>=0=>"Zulässig"$
+        - $c_i<0=>"Nicht Optimal"$
+    + Pivotspalte: Kleinstes $c$ in F-Zeile
+    + $x_2$ (Pivotspalte) mit $x_5$ (Pivotzeile) tauschen
+    + Elementare Zeilenumformungen
+]

@@ -7,7 +7,10 @@
 #import "@preview/codly-languages:0.1.10"
 
 #let template(body) = {
-  set text(lang: "de", font: "Fira Sans")
+  set text(
+      lang: "de",
+      font: "Fira Sans"
+  )
   set heading(numbering: (n0, ..x) => numbering("1.1",   n0 - 1, ..x))
   set page(numbering: "1")
   set math.mat(delim: "[")
