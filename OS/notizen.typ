@@ -39,15 +39,24 @@ $ ./reader
 0 2 4 6 8 10 12 14 16 18
 ```
 
-== Prozess Scheduling Queues
-
-== Exec
+#align(end)[2026-03-26 VL10 (2025-11-04)]
 
 = IPC Mit Pipes
 
-#codly(header: [pipes.c])
-```c
+#codly(header: [Pipes])
+#raw(
+    block: true,
+    lang: "c",
+    read("assets/pipe.c")
+)
 
+```sh
+$ ./pipe
+Child received: pong
+
+Parent received: ping
 ```
 
-#align(end)[2026-03-26 VL10]
+= Exec und Fork
+
+= Cron Daemon

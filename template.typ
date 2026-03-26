@@ -31,7 +31,7 @@
 
   show raw: set text(
       font: "JetBrainsMono NF",
-      size: text_size
+      size: text_size - 2pt
   )
 
   codly.codly(
@@ -49,6 +49,7 @@
       stroke: 1pt + black.transparentize(85%),
       zebra-fill: none,
       lang-stroke: none,
+      lang-fill: it => rgb(0, 0, 0, 0),
   )
 
   body
