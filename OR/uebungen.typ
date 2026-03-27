@@ -92,105 +92,109 @@ $
 
 === Optimum
 
-#cetz.canvas({
-    import cetz-plot: *
-    import cetz.draw: *
+#figure(
+    caption: [Graphische Lösung des LP-Problems]
+)[
+    #cetz.canvas({
+        import cetz-plot: *
+        import cetz.draw: *
 
-    let nb1 = x => 3 - x/3
-    let nb2 = x => 1 + x/2
-    let nb3 = x => 0
+        let nb1 = x => 3 - x/3
+        let nb2 = x => 1 + x/2
+        let nb3 = x => 0
 
-    let f20 = x => (20-4*x)/3
-    let f10 = x => (10-4*x)/3
+        let f20 = x => (20-4*x)/3
+        let f10 = x => (10-4*x)/3
 
-    let f_opt = x => 81/15 - 4/3 * x
+        let f_opt = x => 81/15 - 4/3 * x
 
-    //content((10, 10))[#cas.display(nb2_eq)]
+        //content((10, 10))[#cas.display(nb2_eq)]
 
-    plot.plot(
-        size: (10, 5),
-        axis-style: "school-book",
-        legend-style: (stroke: none),
-        x-label: $x_1$,
-        x-min: 0,
-        x-max: 10,
-        x-tick-step: 1,
-        y-label: $x_2$,
-        y-min: 0,
-        y-max: 4,
-        y-tick-step: 1,
-        {
-            for (label, f) in (
-                "NB1": nb1,
-                "NB2": nb2,
-                "NB3": nb3
-            ).pairs() {
-                plot.add(
-                    domain: (0, 10),
-                    f,
+        plot.plot(
+            size: (10, 5),
+            axis-style: "school-book",
+            legend-style: (stroke: none),
+            x-label: $x_1$,
+            x-min: 0,
+            x-max: 10,
+            x-tick-step: 1,
+            y-label: $x_2$,
+            y-min: 0,
+            y-max: 4,
+            y-tick-step: 1,
+            {
+                for (label, f) in (
+                    "NB1": nb1,
+                    "NB2": nb2,
+                    "NB3": nb3
+                ).pairs() {
+                    plot.add(
+                        domain: (0, 10),
+                        f,
+                        style: (stroke: (
+                            paint: black.lighten(85%),
+                            dash: "dashed"
+                        )),
+                        label: label
+                    )
+                }
+                plot.add-vline(
+                    0,
                     style: (stroke: (
                         paint: black.lighten(85%),
                         dash: "dashed"
                     )),
-                    label: label
+                    label: "NB4"
                 )
-            }
-            plot.add-vline(
-                0,
-                style: (stroke: (
-                    paint: black.lighten(85%),
-                    dash: "dashed"
-                )),
-                label: "NB4"
-            )
 
-            plot.add-fill-between(
-                domain: (0, 9),
-                x => calc.min(
-                    nb1(x),
-                    nb2(x),
-                ),
-                nb3,
-                style: (stroke: none),
-                label: $Z$
-            )
+                plot.add-fill-between(
+                    domain: (0, 9),
+                    x => calc.min(
+                        nb1(x),
+                        nb2(x),
+                    ),
+                    nb3,
+                    style: (stroke: none),
+                    label: $Z$
+                )
 
-            for (label, f) in (
-                ($F=20$, f20),
-                ($F=10$, f10),
-                ($F=81 slash 5$, f_opt)
-            ) {
+                for (label, f) in (
+                    ($F=20$, f20),
+                    ($F=10$, f10),
+                    ($F=81 slash 5$, f_opt)
+                ) {
+                    plot.add(
+                        domain: (0, 10),
+                        f,
+                        label: label
+                    )
+                }
+
                 plot.add(
-                    domain: (0, 10),
-                    f,
-                    label: label
+                    ((12/5, 11/5),),
+                    label: $"NB1"inter"NB2"$,
+                    mark: "triangle",
+                    style: (stroke: none),
+                    mark-style: (plot.default-mark-style(0))
+                )
+                plot.add(
+                    ((9, 0),),
+                    label: $"NB1"inter"NB3"$,
+                    mark: "square",
+                    style: (stroke: none),
+                    mark-style: (plot.default-mark-style(0))
+                )
+                plot.add(
+                    ((0, 1),),
+                    label: $"NB2"inter"NB4"$,
+                    mark: "o",
+                    style: (stroke: none),
+                    mark-style: (plot.default-mark-style(0))
                 )
             }
-
-            plot.add(
-                ((12/5, 11/5),),
-                label: $"NB1"inter"NB2"$,
-                mark: "triangle",
-                style: (stroke: none),
-                mark-style: (plot.default-mark-style(0))
-            )
-            plot.add(
-                ((9, 0),),
-                label: $"NB1"inter"NB3"$,
-                mark: "square",
-                style: (stroke: none),
-                mark-style: (plot.default-mark-style(0))
-            )
-            plot.add(
-                ((0, 1),),
-                label: $"NB2"inter"NB4"$,
-                mark: "o",
-                style: (stroke: none),
-                mark-style: (plot.default-mark-style(0))
-            )
-        }
-    )
-})
+        )
+    })
+] <lp-graph>
 
 *Eckpunkte*
 
@@ -294,3 +298,7 @@ $][
     - $R_2 -> R_2 + 1 dot R_1$
     - $R_3 -> R_3 + 4 dot R_1$
 ]
+
+== Basislösungen
+
+Siehe @lp-graph.
