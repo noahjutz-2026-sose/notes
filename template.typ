@@ -20,6 +20,7 @@
   set heading(numbering: (n0, ..x) => numbering("1.1",   n0 - 1, ..x))
   set page(numbering: "1")
   set math.mat(delim: "[")
+  set table(stroke: black.lighten(85%))
 
   show link: set text(blue)
   show math.equation: set text(font: "Lete Sans Math")
