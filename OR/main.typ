@@ -1,4 +1,4 @@
-#import "/template.typ": template
+#import "/template.typ": template, template_exercises
 
 #show: template
 
@@ -7,3 +7,7 @@
 #outline(depth: 2)
 
 #include "notizen.typ"
+
+#show: template_exercises
+
+#include "uebungen.typ"

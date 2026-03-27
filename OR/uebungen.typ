@@ -1,13 +1,5 @@
-#import "/template.typ": template
-
-#show: template
-#set heading(numbering: "1.1")
-
-#title[Operations Research]
-
-Übungen
-
-#outline(depth: 2)
+#import "@preview/cetz-plot:0.1.3"
+#import "/deps.typ": cetz
 
 #align(end)[2026-03-23 TT01]
 
@@ -67,3 +59,8 @@ $
 
 - Google OR-Tools: #link("https://github.com/noahjutz-2026-sose/or-ue01")[or-ue01/ue1-3a]
 - Scipy: #link("https://github.com/noahjutz-2026-sose/or-ue01")[or-ue01/ue1-3b]
+
+#align(end)[2026-03-30 TT02]
+= Lineare Optimierung
+
+==
