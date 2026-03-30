@@ -79,13 +79,25 @@ $
 - _Waiting Time:_
     - Ziel: minimieren
     - Lösung: _Shortest Job First (SJF)_
-    - _Exponentielle Glättung:_ Schätzung von Bursts anhand Vergangenheit
-        $
-            tau_(n+1) = alpha t_n + (1 - alpha) tau_n
-        $
-    - _Round Robin:_ Jeder Prozess darf maximal $q$ Schritte rechnen
+        - _Exponentielle Glättung:_ Schätzung von Bursts anhand Vergangenheit
+            $
+                tau_(n+1) = alpha t_n + (1 - alpha) tau_n
+            $
+    - Lösung: _Round Robin:_ Jeder Prozess darf maximal $q$ Schritte rechnen
 
 = PThread
+
+#codly(header: [Runner])
+```c
+void *runner(void *args) { return args; }
+```
+
+#codly(header: [PThread])
+```c
+pthread_t t;
+pthread_create(&t, NULL, runner, arg)
+pthread_join(t, NULL)
+```
 
 = Software Patterns
 
