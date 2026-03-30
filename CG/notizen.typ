@@ -1,7 +1,5 @@
-#import "@preview/gentle-clues:1.3.1": *
-#import "@preview/cetz:0.4.2"
-#import "@preview/cetz-plot:0.1.3"
-#import "@preview/suiji:0.5.1"
+#import "/components.typ": *
+#import "/deps.typ": gentle-clues, cetz, cetz-plot, suiji
 
 #align(end)[2026-03-16 VL01]
 
@@ -129,3 +127,98 @@ Kanten entlang laufen, wenn der Punkt immer auf der Seite nach innen liegt, ist 
         )
     })
 )
+
+#align(end)[2026-03-30 VL03]
+
+== Lineare Interpolation
+
+_Lerp:_
+
+$
+    "lerp"(a, b, t) = (1-t) dot h(a) + t dot h(b) quad quad t in [0;1]
+$
+
+#alternative[
+    $
+        "lerp"(a, b)(t) \
+        "lerp"(t)(a, b)
+    $
+]
+
+== Baryzentrische Interpolation
+
+#cetz.canvas({
+    import cetz.draw: *
+
+    grid((0, 0), (4, 4), stroke: black.lighten(90%))
+
+    let a = (1, 1)
+    let b = (2, 3)
+    let c = (3, 1)
+
+    let ab = cetz.vector.sub(b, a)
+    let ac = cetz.vector.sub(c, a)
+
+    line(
+        a,
+        b,
+        c,
+        close: true
+    )
+
+    for (p, l) in (a, b, c).zip(($a$, $b$, $c$)) {
+        content(p, anchor: "north", padding: 6pt)[#l]
+    }
+
+    let m = a.zip(b, c).map(it => it.sum() / 3)
+
+    circle(m, radius: 2pt, fill: red, stroke: none)
+
+    translate((5, 0))
+
+    grid((0, 0), (4, 4), stroke: black.lighten(90%))
+
+    set-style(mark: (end: "straight"), stroke: gray)
+
+    line((0, 0), a)
+    line((0, 0), b)
+    line((0, 0), c)
+
+    set-style(stroke: black)
+
+    let beta = .5
+    let gamma = .5
+
+    //line((0, 0), a)
+    //line((), cetz.vector.add(a, cetz.vector.scale(ab, beta)))
+})
+
+Wenn die längste Kante weniger als ein Pixel ist, muss man nur einen Pixel prüfen.
+
+== Clipping
+
+Bounding Box auf View begrenzen
+
+#align(end)[2026-04-13 VL04]
+
+= Transformationen
+
+_Affine Transformation:_ Translation, (Nicht-)Uniforme Skalierung, Rotation, Scherung
+
+#cetz.canvas({
+    import cetz.draw: *
+
+    set-transform((
+        (1, 0, 0, 0),
+        (0, 1, 0, 0),
+        (0, 0, 1, 0),
+        (0, 0, 0, 1)
+    ))
+
+    line(
+        (4, 0),
+        (3, 4),
+        (5, 4),
+        close: true
+    )
+})
