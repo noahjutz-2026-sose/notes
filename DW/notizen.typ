@@ -89,8 +89,8 @@ DROP SCHEMA noah;
 
 #codly(header: [Tables])
 ```sql
-CREATE TABLE t(i int);
-CREATE TABLE "t"(i int);
+CREATE TABLE t(i INT, name VARCHAR(100));
+CREATE TABLE "t"(i INT);
 ```
 
 #codly(header: [Strings])
@@ -104,4 +104,13 @@ SELECT add_hours(CURRENT_TIMESTAMP, -24);
 SELECT to_char(add_days(CURRENT_TIMESTAMP, -2), 'DD');
 SELECT hours_between('2025-03-03', CURRENT_DATE);
 SELECT trunc(CURRENT_TIMESTAMP, 'IW');
+```
+
+== JSON
+
+```sql
+SELECT json is json FROM table;
+SELECT json_value(json, '$.id') from table;
+SELECT json_extract(json, '$.id', '$.hobbies#')
+    EMITS (id INT, hobby VARCHAR(5000)) FROM people;
 ```
