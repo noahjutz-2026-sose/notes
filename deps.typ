@@ -2,3 +2,5 @@
 #import "@preview/cetz-plot:0.1.3"
 #import "@preview/gentle-clues:1.3.1"
 #import "@preview/mannot:0.3.2"
+#import "@preview/codly:1.3.0"
+#import "@preview/codly-languages:0.1.10"
