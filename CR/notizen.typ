@@ -2,10 +2,7 @@
 #import gentle-clues: *
 #import mannot: *
 #import codly: codly
-#import "/template.typ": template
 #import "/components.typ": *
-
-#show: template
 
 #align(end)[2026-03-17 VL01]
 
