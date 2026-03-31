@@ -152,6 +152,24 @@ Siehe Skript-Aufgabe 1.4
     Beweise, dass $k_"abs" (1) = infinity$.
 ]
 
+#alternative[
+    Ideen
+    #table(columns: 4,
+        table.header(
+            $ f(x) $, $ x $, $ kappa_"abs" (x) $, $ kappa_"rel" (x) $,
+        ),
+        table.hline(stroke: black),
+        $ cases(0 "für" x <= 0, 1 "sonst") $, $ 0 $, $ infinity $, [nicht def.],
+        $ sqrt(x) $, $ 0 $, [nicht def.], [nicht def.],
+        $ sqrt(abs(x)) $, $ 0 $, [nicht def.], [nicht def.],
+        $ 0 $, $ 0 $, $ 0 $, [nicht def.],
+        $ x $, $ 0 $, $ 1 $, $ 1 $,
+        $ 1/x $, $ 0 $, [nicht def.], [nicht def. oder 1?],
+        $ x - 1 $, $ 1 $, $ 1 $, [nicht def. ($arrow infinity$)]
+
+    )
+]
+
 
 == Kondition differenzierbarer Funktionen
 

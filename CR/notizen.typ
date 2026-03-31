@@ -1,9 +1,7 @@
-#import "@preview/cetz:0.4.2"
-#import "@preview/cetz-plot:0.1.3"
-#import "@preview/gentle-clues:1.3.1": *
-#import "@preview/mannot:0.3.2": *
-#import "@preview/meander:0.4.1"
-
+#import "/deps.typ": cetz, cetz-plot, gentle-clues, mannot, meander, codly
+#import gentle-clues: *
+#import mannot: *
+#import codly: codly
 #import "/template.typ": template
 #import "/components.typ": *
 
@@ -348,7 +346,7 @@ Herleitung analog zur relativen Kondition (@krel).
 
 #align(end)[2026-03-24 VL02]
 
-= Wiederholung Kondition
+= Mehr zu Kondition
 
 == Beispiele für Fehlerberechnung
 
@@ -515,3 +513,67 @@ _Näherung erster Ordnung:_ Wir vernachlässigen $g$.
         &<=^dot abs((x f'(x))/f(x))
     $
 ]
+
+#align(end)[2026-03-31 VL03]
+
+Ab jetzt $kappa := kappa_"rel"$.
+
+== Kondition der Grundrechenarten
+
+#table(columns: 3,
+    table.header(
+        [Operation], $ f(x) $, $ kappa $,
+    ),
+    table.hline(stroke: black),
+    [Multiplikation], $ c dot x $, $ 1 $,
+    [Division], $ c/x $, $ 1 $,
+    [Addition], $ c+x $, $ abs(x/(c+x)) $
+)
+
+- _Auslöschung:_ Bei Addition, wenn $c approx -x$ wird $kappa$ groß
+
+= Stabilität
+
+Sei $tilde(f)$ eine Implementierung von $f$, dann heißt $tilde(f)$ _stabil_, wenn die Fehlerverstärkung  von $tilde(f)$ in der Größenordnung von $kappa$ liegt.
+
+#example(title: [Auslöschung])[
+    $
+        f(x) = 1/(1+2x) - (1-x)/(1+x)
+    $
+
+    Für sehr kleine $x$ ist das eine Subtraktion von fast gleich großen Zahlen. Aber die Kondition nahe 0 ist gut.
+
+    $
+        kappa(x) stretch(=)^(x->0) 2
+    $
+
+    Wie erklären wir das?
+
+    $
+        f(x) &= 1/(1+2x) - (1-x)/(1+x) \
+        &= ((1+x)-(1-x)(1+2x))/((1+2x)(1+x)) \
+        &= underbrace(
+            (2x^2)/((1+2x)(1-x)),
+            "Besserer Algorithmus"
+        )
+    $
+
+    Durch Umformen können wir einen schlechten Ausgangsfehler vermeiden. Der Algorithmus ist stabil.
+]
+
+= Zahlendarstellung
+
+- _Stellenwertsystem:_ Siehe AD
+- _b-adische Darstellung:_ Darstellung einer Zahl zur Basis $b$
+    $
+        (d_N, d_(N-1), ..., d_0)_b \
+        sum_(j=0)^N d_j dot b^j quad quad d_j in {0, 1, ..., b-1}
+    $
+
+#codly(header: [b-adische Darstellung einer Zahl])
+```py
+while n > b:
+    r = n % b
+    n //= b
+    yield r
+```
