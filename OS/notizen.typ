@@ -85,7 +85,9 @@ $
             $
     - Lösung: _Round Robin:_ Jeder Prozess darf maximal $q$ Schritte rechnen
 
-= PThread
+= Threads
+
+== POSIX Thread
 
 #codly(header: [Runner])
 ```c
@@ -99,9 +101,15 @@ pthread_create(&t, NULL, runner, arg)
 pthread_join(t, NULL)
 ```
 
-= Software Patterns
+#align(end)[2026-03-31 VL12 (2025-11-11)]
+
+== Software Patterns
 
 - Compute Farm
-- Workcrew
+    #example[
 
-#align(end)[2026-04-02 VL12 (2025-11-11)]
+    ]
+- Workcrew
+- Pipeline
+
+== Synchronisation
