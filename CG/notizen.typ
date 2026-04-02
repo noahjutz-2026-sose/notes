@@ -1,4 +1,5 @@
 #import "/components.typ": *
+#import "/style.typ": *
 #import "/deps.typ": gentle-clues, cetz, cetz-plot, suiji
 
 #align(end)[2026-03-16 VL01]
@@ -205,20 +206,28 @@ Bounding Box auf View begrenzen
 
 _Affine Transformation:_ Translation, (Nicht-)Uniforme Skalierung, Rotation, Scherung
 
-#cetz.canvas({
+#cetz.canvas(length: .5cm, {
     import cetz.draw: *
 
-    set-transform((
-        (1, 0, 0, 0),
-        (0, 1, 0, 0),
-        (0, 0, 1, 0),
-        (0, 0, 0, 1)
-    ))
+    let d = 10
 
-    line(
-        (4, 0),
-        (3, 4),
-        (5, 4),
-        close: true
-    )
+    set-style(mark: (end: "straight"), stroke: colors.on_surface.light)
+    line((-d, 0), (d, 0))
+    line((0, -d), (0, d))
+
+    set-style(mark: none, stroke: black)
+
+    for i in range(-2, 3) {
+        let shear = cetz.matrix.transform-shear-x(i)
+        let id = cetz.matrix.ident(4)
+        let transform = cetz.matrix.mul-mat(id, shear)
+        set-transform(transform)
+        scale(y: -1)
+        line(
+            (1, 1),
+            (2, 3),
+            (3, 1),
+            close: true
+        )
+    }
 })

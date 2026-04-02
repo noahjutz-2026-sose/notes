@@ -1,6 +1,5 @@
 #import "/components.typ": *
-#import "@preview/cetz:0.4.2"
-#import "@preview/codly:1.3.0"
+#import "/deps.typ": cetz, codly
 
 #align(end)[2026-03-20 TT01]
 
@@ -287,3 +286,12 @@ Executed in    6.03 secs    fish           external
    usr time   10.40 secs    0.48 millis   10.40 secs
    sys time    0.50 secs    1.10 millis    0.49 secs
 ```
+
+#align(end)[2026-04-10 TT03]
+
+= Interpolation und Transformationen
+
+- _Lineare Interpolation:_ Mittelwerte zwischen zwei diskreten Werten ermitteln, z.B. Pfad zwischen zwei Punkten.
+- todo
+
+== Bayzentrische Koordinaten
