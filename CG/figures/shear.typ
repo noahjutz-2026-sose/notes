@@ -49,7 +49,7 @@
             shear-z.at(2).at(1) = ky
 
             let shear-x = cetz.matrix.ident(4)
-            shear-x.at(0).at(1) = kx
+            shear-x.at(0).at(1) = ky
             shear-x.at(0).at(2) = kz
 
             let shear-y = cetz.matrix.ident(4)

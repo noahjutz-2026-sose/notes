@@ -292,6 +292,9 @@ Executed in    6.03 secs    fish           external
 = Interpolation und Transformationen
 
 - _Lineare Interpolation:_ Mittelwerte zwischen zwei diskreten Werten ermitteln, z.B. Pfad zwischen zwei Punkten.
-- todo
+- Bei einer _Scherung_ verschieben sich Punkte immer mehr um den fixen Faktor,
+    - x: desto größer der y- oder z-Wert ist
+    - y: desto größer der x- oder z-Wert ist
+    - z: desto größer der x- oder y-Wert ist.
 
 == Bayzentrische Koordinaten
