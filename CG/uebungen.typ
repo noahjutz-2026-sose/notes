@@ -298,3 +298,57 @@ Executed in    6.03 secs    fish           external
     - z: desto größer der x- oder y-Wert ist.
 
 == Bayzentrische Koordinaten
+
+Die Bayzentrischen Koordinaten sind gegeben durch
+
+$
+    p &= alpha A + beta B + gamma C \
+    vec(13, 3) &= alpha vec(0, 0) + beta vec(16, 2) + gamma vec(12, 4)
+$
+
+Das lineare Gleichungssystem ist
+
+$
+    & mat(augment: #{-1},
+        0, 16, 12, 13;
+        0, 2, 4, 3
+    )
+    -> & mat(augment: #{-1},
+        0, 1, 3/4, 13/16;
+        0, 2, 4, 3
+    )
+    -> & mat(augment: #{-1},
+        0, 1, 3/4, 13/16;
+        0, 0, 2 1/2, 1 3/8
+    )
+    -> & mat(augment: #{-1},
+        0, 1, 3/4, 13/16;
+        0, 0, 1, 11/20
+    )
+    -> & mat(augment: #{-1},
+        0, 1, 0, 2/5;
+        0, 0, 1, 11/20
+    )
+$
+
+Das heißt
+
+$
+    alpha = 2/5 quad ; quad
+    beta = 11/20 quad ; quad
+    gamma = 1 - (alpha + beta) = 1/20
+$
+
+Die Baryzentrischen Koordinaten von $p$ sind also
+
+$
+    p = "bary"(2/5, 11/20, 1/20)
+$
+
+Der interpolierte Wert ist
+
+$
+    vec(alpha, beta, gamma) dot vec(m_1, m_2, m_3)
+    &= vec(2/5 dot 1/2, 11/20 dot 1/3, 1/20 dot 1/4)
+    &= vec(1/5, 11/60, 1/80)
+$
