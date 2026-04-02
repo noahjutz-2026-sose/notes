@@ -148,51 +148,10 @@ $
 
 == Baryzentrische Interpolation
 
-#cetz.canvas({
-    import cetz.draw: *
-
-    grid((0, 0), (4, 4), stroke: black.lighten(90%))
-
-    let a = (1, 1)
-    let b = (2, 3)
-    let c = (3, 1)
-
-    let ab = cetz.vector.sub(b, a)
-    let ac = cetz.vector.sub(c, a)
-
-    line(
-        a,
-        b,
-        c,
-        close: true
-    )
-
-    for (p, l) in (a, b, c).zip(($a$, $b$, $c$)) {
-        content(p, anchor: "north", padding: 6pt)[#l]
-    }
-
-    let m = a.zip(b, c).map(it => it.sum() / 3)
-
-    circle(m, radius: 2pt, fill: red, stroke: none)
-
-    translate((5, 0))
-
-    grid((0, 0), (4, 4), stroke: black.lighten(90%))
-
-    set-style(mark: (end: "straight"), stroke: gray)
-
-    line((0, 0), a)
-    line((0, 0), b)
-    line((0, 0), c)
-
-    set-style(stroke: black)
-
-    let beta = .5
-    let gamma = .5
-
-    //line((0, 0), a)
-    //line((), cetz.vector.add(a, cetz.vector.scale(ab, beta)))
-})
+#figure(
+    include "figures/bary_interp.typ",
+    caption: [Baryzentrischer Mittelpunkt]
+)
 
 Wenn die längste Kante weniger als ein Pixel ist, muss man nur einen Pixel prüfen.
 
