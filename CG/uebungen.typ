@@ -1,5 +1,6 @@
 #import "/components.typ": *
-#import "/deps.typ": cetz, codly
+#import "/deps.typ": cetz, codly, mannot
+#import mannot: *
 
 #align(end)[2026-03-20 TT01]
 
@@ -334,21 +335,108 @@ $
 Das heißt
 
 $
-    alpha = 2/5 quad ; quad
-    beta = 11/20 quad ; quad
-    gamma = 1 - (alpha + beta) = 1/20
+    beta = 2/5 quad ; quad
+    gamma = 11/20 quad ; quad
+    alpha = 1 - (beta + gamma) = 1/20
 $
 
 Die Baryzentrischen Koordinaten von $p$ sind also
 
 $
-    p = "bary"(2/5, 11/20, 1/20)
+    p = "bary"(1/20, 2/5, 11/20)
 $
 
 Der interpolierte Wert ist
 
 $
     vec(alpha, beta, gamma) dot vec(m_1, m_2, m_3)
-    &= vec(2/5 dot 1/2, 11/20 dot 1/3, 1/20 dot 1/4)
-    &= vec(1/5, 11/60, 1/80)
+    &= 1/20 dot 1/2 + 2/5 dot 1/3 + 11/20 dot 1/4
+    &= 71/240
 $
+
+== Lineare Interpolation
+
+Ich benenne Variablen um:
+$
+    p_1 =: p quad ; quad
+    p_2 =: q quad ; quad
+    (5, 3)^T =: r
+$
+
+Kartesische Koordinaten von $p$ und $q$:
+
+#grid(columns: (1fr,)*2)[
+    $
+        p &= a + lambda_p arrow(a c) \
+        &= a + abs((a_2-r_2)/(a_2-c_2)) arrow(a c) \
+        &= vec(1, 1) + 1/2 vec(5-1, 5-1) \
+        &= vec(3, 3)
+    $
+][
+    $
+        q &= b + lambda_q arrow(b c) \
+        &= b + abs((b_2-r_2)/(b_2-c_2)) arrow(b c) \
+        &= vec(7, -1) + 2/3 vec(5-7, 5+1) \
+        &= vec(5 2/3, 3)
+    $
+]
+
+Linear Interpolierte Werte von $p$ und $q$:
+
+#grid(columns: (1fr,)*2)[
+    $
+        alpha(p) &= alpha(a) + lambda_p (alpha(c) - alpha(a)) \
+        &= 4 + 1/2 (12-4) \
+        &= 8
+    $
+][
+    $
+        alpha(q) &= alpha(b) + lambda_q (alpha(c) - alpha(b)) \
+        &= 9 + 2/3 (12-9) \
+        &= 11
+    $
+]
+
+Linear interpolierter Wert von $r$:
+
+#grid(columns: (1fr,)*2)[
+    $
+        lambda_r &= abs((p_1-r_1)/(p_1 - q_1)) \
+        &= 2/(2 2/3) \
+        &= 3/4
+    $
+][
+    $
+        alpha(r) &= alpha(p) + lambda_r (alpha(q) - alpha(p)) \
+        &= 8 + 3/4 (11-8) \
+        &= markhl(10 1/4, color: #green)
+    $
+]
+
+#alternative(title: [Interpolation zwischen a und b])[
+    Sei $s$ der Punkt auf $arrow(a b)$ mit $x=5$.
+
+    $
+        s &= a + lambda_s arrow(a b) \
+        &= a + abs((a_1-r_1)/(a_1-b_1)) arrow(a b) \
+        &= vec(1, 1) + 2/3 vec(7-1, -1-1) \
+        &= vec(5, -1/3)
+    $
+
+    Das Attribut in $s$ ist demnach
+
+    $
+        alpha(s) &= alpha(a) + lambda_s (alpha_b-alpha(a)) \
+        &= 4 + 2/3 (9-4) \
+        &= 7 1/3
+    $
+
+    Somit
+
+    $
+        alpha(r) &= alpha(s) + lambda_r (alpha(c) - alpha(s)) \
+        &= alpha(s) + abs((s_2-r_2)/(s_2-c_2)) (alpha(c) - alpha(s)) \
+        &= 7 1/3 + 5/8 (12 - 7 1/3) \
+        &= markhl(10 1/4, color: #green)
+    $
+]
