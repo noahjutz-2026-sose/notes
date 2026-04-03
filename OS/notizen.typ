@@ -137,3 +137,5 @@ pthread_join(t, NULL)
         - getprio
         - setprio
         - PTHREAD_PROCESS_PRIVATE / PTHREAD_PROCESS_SHARED
+
+#align(end)[VL14 (2025-11-18]
