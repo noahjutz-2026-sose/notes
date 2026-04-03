@@ -113,3 +113,27 @@ pthread_join(t, NULL)
 - Pipeline
 
 == Synchronisation
+
+#align(end)[2026-04-03 VL13 (2025-11-17)]
+
+- In Java:
+    - Monitor-Objekt
+    - synchronized
+    - notify
+    - wait
+    - Ohne synchronized: IllegalMonitorStateException
+- In C:
+    - pthread_mutex_t
+        - init
+        - lock
+        - unlock
+        - destroy
+    - pthread_cond_t
+        - init
+        - wait
+        - signal
+        - destroy
+    - pthread_attr_t
+        - getprio
+        - setprio
+        - PTHREAD_PROCESS_PRIVATE / PTHREAD_PROCESS_SHARED
