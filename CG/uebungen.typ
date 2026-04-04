@@ -1,5 +1,6 @@
 #import "/components.typ": *
 #import "/deps.typ": cetz, codly, mannot
+#import "/style.typ": *
 #import mannot: *
 
 #align(end)[2026-03-20 TT01]
@@ -440,3 +441,98 @@ Linear interpolierter Wert von $r$:
         &= markhl(10 1/4, color: #green)
     $
 ]
+
+== Transformationen
+
+#table(columns: 4,
+    table.header(
+        [Skalierung], [Rotation], [Scherung], [Translation]
+    ),
+    $
+        mat(
+            k_x, 0, 0, 0;
+            0, k_y, 0, 0;
+            0, 0, k_z, 0;
+            0, 0, 0, 1;
+        )
+    $,
+    $
+        mat(
+            1, 0, 0, 0;
+            0, 1, 0, 0;
+            0, 0, 1, 0;
+            0, 0, 0, 1;
+        )
+    $
+)
+
+#cetz.canvas(length: .5cm, {
+    import cetz.draw: *
+
+    let unitsquare = line.with(
+        (0, 0),
+        (1, 0),
+        (1, 1),
+        (0, 1),
+        close: true
+    )
+
+    let dimens = (
+        (-1, -1),
+        (20, 10)
+    )
+
+    grid(
+        (dimens.at(0).at(0), dimens.at(0).at(1)),
+        (dimens.at(1).at(0), dimens.at(1).at(1)),
+        stroke: colors.on_surface.lighter
+    )
+
+    set-style(
+        stroke: colors.on_surface.light,
+        mark: (end: "straight")
+    )
+
+    line((dimens.at(0).at(0), 0), (dimens.at(1).at(0), 0))
+    line((0, dimens.at(0).at(1)), (0, dimens.at(1).at(1)))
+
+    set-style(stroke: black, mark: none)
+
+    group({
+        let stroke = red
+        for (i, op) in (
+            scale.with(5),
+            translate.with((3, 0)),
+            rotate.with(35deg)
+        ).enumerate() {
+            op()
+            unitsquare(stroke: stroke.transparentize(100% * i/3))
+        }
+    })
+
+    group({
+        let stroke = green
+        for (i, op) in (
+            translate.with((3, 0)),
+            rotate.with(35deg),
+            scale.with(5)
+        ).enumerate() {
+            op()
+            unitsquare(stroke: stroke.transparentize(100% * i/3))
+        }
+    })
+
+    group({
+        let stroke = blue
+        for (i, op) in (
+            rotate.with(35deg),
+            translate.with((3, 0)),
+            scale.with(5)
+        ).enumerate() {
+            op()
+            unitsquare(stroke: stroke.transparentize(100% * i/3))
+        }
+    })
+
+    unitsquare()
+})
