@@ -444,28 +444,6 @@ Linear interpolierter Wert von $r$:
 
 == Transformationen
 
-#table(columns: 4,
-    table.header(
-        [Skalierung], [Rotation], [Scherung], [Translation]
-    ),
-    $
-        mat(
-            k_x, 0, 0, 0;
-            0, k_y, 0, 0;
-            0, 0, k_z, 0;
-            0, 0, 0, 1;
-        )
-    $,
-    $
-        mat(
-            1, 0, 0, 0;
-            0, 1, 0, 0;
-            0, 0, 1, 0;
-            0, 0, 0, 1;
-        )
-    $
-)
-
 #cetz.canvas(length: .5cm, {
     import cetz.draw: *
 
@@ -536,3 +514,5 @@ Linear interpolierter Wert von $r$:
 
     unitsquare()
 })
+
+Weil der Raum des blauen Quadrats zuerst rotiert wurde, geschah die Translation (Verschiebung) um eine rotierte x-Achse. Dadurch landet das Quadrat weiter oben und links.
