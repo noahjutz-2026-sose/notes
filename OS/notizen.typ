@@ -139,3 +139,9 @@ pthread_join(t, NULL)
     - PTHREAD_PROCESS_PRIVATE / PTHREAD_PROCESS_SHARED
 
 #align(end)[2026-04-09 VL14 (2025-11-18)]
+
+#code(title: [searcher.c])[]
+
+== Matrixmultiplikation mit PThreads
+
+#code(title: [matmult.c])[]
