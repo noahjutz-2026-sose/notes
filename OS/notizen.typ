@@ -22,16 +22,16 @@ Siehe `2025_sose/notizen.xopp` für
 
 #codly(header: [Writer])
 #raw(
-    block: true,
-    lang: "c",
-    read("assets/writer.c")
+  block: true,
+  lang: "c",
+  read("assets/writer.c"),
 )
 
 #codly(header: [Reader])
 #raw(
-    block: true,
-    lang: "c",
-    read("assets/reader.c")
+  block: true,
+  lang: "c",
+  read("assets/reader.c"),
 )
 
 ```sh
@@ -46,9 +46,9 @@ $ ./reader
 
 #codly(header: [Pipes])
 #raw(
-    block: true,
-    lang: "c",
-    read("assets/pipe.c")
+  block: true,
+  lang: "c",
+  read("assets/pipe.c"),
 )
 
 ```sh
@@ -63,9 +63,9 @@ Parent received: ping
 - Ready Queue: FIFO
 - _Daemon Process_
 - _Zombie Process:_ Beendeter Prozess, der noch in der Prozesstabelle ist.
-    - Lösung: Elternprozess terminieren
+  - Lösung: Elternprozess terminieren
 - _Niceness:_ Priorität
-    - $(20-(-20))/(20-0)=2 =>$ Prozess mit niceness -20 erhält doppelt so viel CPU-Zeit.
+  - $(20-(-20))/(20-0)=2 =>$ Prozess mit niceness -20 erhält doppelt so viel CPU-Zeit.
 - _Starvation:_ Prozess kommt nie zum Zug
 
 #align(end)[2026-03-30 VL11 (2025-11-10)]
@@ -73,17 +73,17 @@ Parent received: ping
 == Preemtives Scheduling
 
 $
-    "Turnaround Time" = "Waiting Time" + "Burst Time"
+  "Turnaround Time" = "Waiting Time" + "Burst Time"
 $
 
 - _Waiting Time:_
-    - Ziel: minimieren
-    - Lösung: _Shortest Job First (SJF)_
-        - _Exponentielle Glättung:_ Schätzung von Bursts anhand Vergangenheit
-            $
-                tau_(n+1) = alpha t_n + (1 - alpha) tau_n
-            $
-    - Lösung: _Round Robin:_ Jeder Prozess darf maximal $q$ Schritte rechnen
+  - Ziel: minimieren
+  - Lösung: _Shortest Job First (SJF)_
+    - _Exponentielle Glättung:_ Schätzung von Bursts anhand Vergangenheit
+      $
+        tau_(n+1) = alpha t_n + (1 - alpha) tau_n
+      $
+  - Lösung: _Round Robin:_ Jeder Prozess darf maximal $q$ Schritte rechnen
 
 = Threads
 
@@ -106,9 +106,9 @@ pthread_join(t, NULL)
 == Software Patterns
 
 - Compute Farm
-    #example[
-
-    ]
+  #example[
+    siehe vl
+  ]
 - Workcrew
 - Pipeline
 
@@ -117,25 +117,25 @@ pthread_join(t, NULL)
 #align(end)[2026-04-03 VL13 (2025-11-17)]
 
 - In Java:
-    - Monitor-Objekt
-    - synchronized
-    - notify
-    - wait
-    - Ohne synchronized: IllegalMonitorStateException
+  - Monitor-Objekt
+  - synchronized
+  - notify
+  - wait
+  - Ohne synchronized: IllegalMonitorStateException
 - In C:
-    - pthread_mutex_t
-        - init
-        - lock
-        - unlock
-        - destroy
-    - pthread_cond_t
-        - init
-        - wait
-        - signal
-        - destroy
-    - pthread_attr_t
-        - getprio
-        - setprio
-        - PTHREAD_PROCESS_PRIVATE / PTHREAD_PROCESS_SHARED
+  - pthread_mutex_t
+    - init
+    - lock
+    - unlock
+    - destroy
+  - pthread_cond_t
+    - init
+    - wait
+    - signal
+    - destroy
+  - pthread_attr_t
+    - getprio
+    - setprio
+    - PTHREAD_PROCESS_PRIVATE / PTHREAD_PROCESS_SHARED
 
-#align(end)[VL14 (2025-11-18)]
+#align(end)[2026-04-09 VL14 (2025-11-18)]
