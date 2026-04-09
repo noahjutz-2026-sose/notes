@@ -194,6 +194,14 @@ Eine Basislösung ist ein Schnittpunkt von $n-m$ Nebenbedingungsgeraden. Es gibt
 - Primales Optimierungsproblem $cal(O)$
 - Duales Optimierungsproblem $cal(D O)$
 
+#table(
+  columns: 3,
+  table.header([], [Primal], [Dual]),
+  $n$, [Variablen $x$], [?],
+  $m$, [Schlupfvariablen $x$], [?],
+  $n-m$, [Strukturvariablen $x$], [?],
+)
+
 #table(columns: 3)[
 
 ][Primal][Dual][][$max F(x)$][$min "FD"(w)$][
