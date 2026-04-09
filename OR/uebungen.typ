@@ -338,23 +338,44 @@ $
 
 == Dualer Simplex
 
+#let p1l = <or_eq1_p1l>
+#let p1r = <or_eq1_p1r>
+#let p1b = <or_eq1_p1b>
+#let p1t = <or_eq1_p1t>
+
+#let p2b = <or_eq1_p2b>
+#let p2t = <or_eq1_p2t>
+#let p2l = <or_eq1_p2l>
+#let p2r = <or_eq1_p2r>
 $
      & mat(
-         , x_1, x_2, x_3, x_4, b, r;
-         x_3, 1, 3, 1, 0, 9, ;
-         mark(x_4, tag: #<a>), 1, -2, 0, 1, mark(-2, tag: #<b>);
-         F, -4, -3, 0, 0
+         , x_1, mark(x_2, tag: p1t), x_3, x_4, b;
+         x_3, 1, 3, 1, 0, 9;
+         mark(x_4, tag: p1l), 1, -2, 0, 1, mark(-2, tag: p1r);
+         c, -4, mark(-3, tag: p1b), 0, 0, 0;
+         r, "N.A.", 3/2
        ) quad
-       #text(gray)[$ b_2 < 0 => "Dual" => r=c/a $] \
+       text(fill: #gray, b_2 < 0 => "Dual" => r=c/a) \
   -> & mat(
-         , x_1, x_2, x_3, x_4, b, r;
-         x_3, 1, 3, 1, 0, 9, ;
-         x_4, 1, -2, 0, 1, -2;
-         F, -4, -3, 0, 0
-       )
-       #annot-cetz((<a>, <b>), cetz, {
+         , mark(x_1, tag: p2t), x_2, x_3, x_4, b, r;
+         mark(x_3, tag: p2l), 5/2, 0, 1, 3/2, mark(6, tag: p2r), 12/5;
+         bold(x_2), -1/2, 1, 0, -1/2, 1, -2;
+         c, mark(-5 1/2, tag: p2b), 0, 0, 3/2, 3
+       ) quad
+       text(fill: #gray, exists.not b < 0 => "Primal" => r = b/a) \
+  -> & mat(
+         , x_1, x_2, x_3, x_4, b;
+         bold(x_1), 1, 0, 2/5, 3/5, 12/5;
+         x_2, 0, 1, 1/5, -1/5, 11/5;
+         c, 0, 0, 12/5, 51/10, 87/5
+       ) quad
+       text(fill: #gray, "Optimale Lösung, da kein negativer Wert in F-Zeile") \
+       #annot-cetz((p1l, p1r, p1b, p1t, p2l, p2r, p2b, p2t), cetz, {
          import cetz.draw: *
          set-style(stroke: none, fill: colors.primary.transparenter)
-         rect("a.south-west", "b.north-east")
+         rect-around("or_eq1_p1l", "or_eq1_p1r")
+         rect-around("or_eq1_p1b", "or_eq1_p1t")
+         rect-around("or_eq1_p2b", "or_eq1_p2t")
+         rect-around("or_eq1_p2l", "or_eq1_p2r")
        })
 $
