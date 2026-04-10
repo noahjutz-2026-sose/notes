@@ -144,4 +144,19 @@ pthread_join(t, NULL)
 
 == Matrixmultiplikation mit PThreads
 
-#code(title: [matmult.c])[]
+#code(title: [matmult.c])[
+  - `register {short|int|long}`: schnellere Variable
+
+  Funktionen:
+
+  #table(
+    columns: 2,
+    [createMatrix], [Reserviere $A_(x times y)$ Matrix mit `struct matrix`],
+    [getValue], [Lese $a_(x y)$ (double)],
+    [setValue], [Schrebe `value` in $a_(x y)$ (double)],
+    [printMatrix], [Ausgabe auf 1 Nachkommastelle],
+    [peermult], [Multiplikation einer Komponente],
+    [forkmult], [Parallele Multiplikation mit fork],
+    [parmult], [Parallele Multiplikation mit pthread],
+  )
+]
