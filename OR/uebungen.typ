@@ -360,22 +360,116 @@ $
          , mark(x_1, tag: p2t), x_2, x_3, x_4, b, r;
          mark(x_3, tag: p2l), 5/2, 0, 1, 3/2, mark(6, tag: p2r), 12/5;
          bold(x_2), -1/2, 1, 0, -1/2, 1, -2;
-         c, mark(-5 1/2, tag: p2b), 0, 0, 3/2, 3
+         c, mark(-5 1/2, tag: p2b), 0, 0, -3/2, 3
        ) quad
        text(fill: #gray, exists.not b < 0 => "Primal" => r = b/a) \
   -> & mat(
          , x_1, x_2, x_3, x_4, b;
          bold(x_1), 1, 0, 2/5, 3/5, 12/5;
          x_2, 0, 1, 1/5, -1/5, 11/5;
-         c, 0, 0, 12/5, 51/10, 87/5
+         c, 0, 0, 11/5, 9/5, 81/5
        ) quad
        text(fill: #gray, "Optimale Lösung, da kein negativer Wert in F-Zeile") \
-       #annot-cetz((p1l, p1r, p1b, p1t, p2l, p2r, p2b, p2t), cetz, {
-         import cetz.draw: *
-         set-style(stroke: none, fill: colors.primary.transparenter)
-         rect-around("or_eq1_p1l", "or_eq1_p1r")
-         rect-around("or_eq1_p1b", "or_eq1_p1t")
-         rect-around("or_eq1_p2b", "or_eq1_p2t")
-         rect-around("or_eq1_p2l", "or_eq1_p2r")
-       })
+  #annot-cetz((p1l, p1r, p1b, p1t, p2l, p2r, p2b, p2t), cetz, {
+    import cetz.draw: *
+    set-style(stroke: none, fill: colors.primary.transparenter)
+    rect-around("or_eq1_p1l", "or_eq1_p1r")
+    rect-around("or_eq1_p1b", "or_eq1_p1t")
+    rect-around("or_eq1_p2b", "or_eq1_p2t")
+    rect-around("or_eq1_p2l", "or_eq1_p2r")
+  })
 $
+
+== Duale Normalform
+
+=== Primal zu Dual
+
+#table(
+  columns: 2,
+  table.header([Primal P], [Dual D]),
+  [Maxmiere $F(x) = 2x_1 + x_2 + 3x_3 + x_4$], [Minimiere $F(w) = 5w_1 + 4w_2 - 1w_3$],
+  $
+    x_1 + x_2 + x_3 + x_4 & <= 5 \
+       -2x_1 + x_2 - 3x_3 & = 4 \
+         -x_1 + x_3 - x_4 & <= -1 \
+  $,
+  $
+    w_1 - 2w_2 - w_3 & >= 2 \
+           w_1 + w_2 & = 1 \
+    w_1 - 3w_2 + w_3 & >= 3 \
+           w_1 - w_3 & = 1
+  $,
+
+  $
+    x_1, x_3 & >= 0 \
+    x_2, x_4 & in RR
+  $,
+  $
+     w_1, w_3 & >= 0 \
+    w_2 in RR
+  $,
+)
+
+=== Normalform PI
+
+$
+  A = mat(
+    1, 1, 1, 1;
+    -2, 1, -3, 0;
+    -1, 0, 1, -1
+  ) stretch(->)^"Schlupf" mat(
+    1, 1, 1, 1, markhl(1), markhl(0);
+    -2, 1, -3, 0, markhl(0), markhl(0);
+    -1, 0, 1, -1, markhl(0), markhl(1)
+  ) stretch(->)^"Nichtnegativ" mat(
+    1, 1, markhl(-1), 1, 1, markhl(-1), 1, 0;
+    -2, 1, markhl(-1), -3, 0, markhl(0), 0, 0;
+    -1, 0, markhl(0), 1, -1, markhl(1), 0, 1
+  )
+$
+
+Mit $x_1, x_2, ..., x_8 >= 0$.
+
+Maximiere $F(x) = 2x_1 + x_2 - x_3 + 3x_4 + x_5 - x_6 + 0x_7 + 0x_8$.
+
+=== Normalform DI
+
+$
+  A^T = mat(
+    1, -2, -1;
+    1, 1, 0;
+    -1, -1, 0;
+    1, -3, 1;
+    1, 0, -1;
+    -1, 0, 1;
+    1, 0, 0;
+    0, 0, 1
+  ) quad quad
+  c = vec(2, 1, -1, 3, 1, -1, 0, 0) quad quad
+  b = vec(5, 4, -1) quad quad
+  w = vec(w_1, w_2, w_3)
+$
+
+Mit $w_1, w_2, w_3 in RR$.
+
+Minimiere $F(w) = b^T w$ unter den NB $A^T w >= c$
+
+=== Äquivalenz D und DI
+
+D und DI sind äquivalent, weil
+
+$
+  underbrace(
+    mat(
+      augment: #{ -1 },
+      1, 1, 0, 1;
+      -1, -1, 0, -1
+    ), "NB2, NB3 (DI)" (>=)
+  )
+  <=> underbrace(
+    mat(augment: #{ -1 }, 1, 1, 0, 1),
+    "NB2 (D)" (=)
+  )
+$
+
+Analog für NB5, NB6 (DI) und NB4 (D).
