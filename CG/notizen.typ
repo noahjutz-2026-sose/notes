@@ -206,6 +206,34 @@ $
   x in RR -> vec(x, 1) in RR^2
 $
 
+#cetz.canvas({
+  import cetz-plot: *
+  import cetz.draw: *
+
+  plot.plot(
+    size: (10, 5),
+    axis-style: "school-book",
+    x-min: 0,
+    x-max: 10,
+    y-min: 0,
+    y-max: 5,
+    {
+      plot.add(((0, 0), (0, 0)), style: (stroke: none))
+      plot.add-hline(1)
+      plot.annotate({
+        import cetz.draw: *
+        set-style(mark: (end: "straight"))
+        line((0, 0), (3, 2))
+        content((), anchor: "north", padding: 6pt)[$ vec(3, 2) $]
+
+        set-style(stroke: none, fill: black)
+        circle((1.5, 1), radius: 2pt)
+        content((), anchor: "north", padding: 6pt)[$ vec(3/2, 2/2) $]
+      })
+    },
+  )
+})
+
 == Normalenvektor unter Transformation
 
 $
