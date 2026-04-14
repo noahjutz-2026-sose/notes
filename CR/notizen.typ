@@ -562,3 +562,101 @@ while n > b:
     n //= b
     yield r
 ```
+
+#align(end)[2026-04-14 VL04]
+
+#note(title: [Division mit Rest])[
+  Sei $x in ZZ, b in NN$ dann gibt es $m in ZZ$ und $r in {0, 1, ..., b-1}$ mit $x=m b + r$.
+]
+
+#code(title: [Implementierung])[
+  In C/Matlab rundet Integer division zum 0 hin, das Lemma rundet immer ab.
+
+  ```c
+  -5 / 3                // = -1
+  ```
+
+  ```matlab
+  idivide(int32(-5), 3)  % = -1
+  ```
+
+  ```python
+  -5 // 3                # = -2
+  ```
+
+  $
+    m = floor(x/b) = floor(-5/3) = -2
+  $
+]
+
+== Multiplikation mit b-adischen Zahlen
+
+#codly(header: [Multiplikation])
+```
+42 * 23
+-------
+84      <- 2 * 42
+126     <- 3 * 42
+-------
+966
+```
+
+Man kann die Multiplikation auf eine Addition zurückführen.
+
+$
+  x_3x_2x_1x_0 dot y_3y_2y_1y_0 = "TODO"
+$
+
+== Integer Overflow und Modulo
+
+Wenn ein zu großer Wert abgespeichert wird, werden die $n$ least significant bits gespeichert.
+
+```
+011111111 -> 11111111
+100000000 -> 00000000
+100000001 -> 00000001
+100000010 -> 00000010
+```
+
+$
+  2^n-1 & -> 2^n-1 \
+    2^n & -> 0 \
+  2^n+1 & -> 1 \
+  2^n+2 & -> 2
+$
+
+Das entspricht der Modulorechnung
+
+$
+  p = 2^n => n dot p + k equiv k (mod p)
+$
+
+Ein Term $x=a+b-c$ kann trotz Overflow den exakten Wert liefern, solange $x<2^n$
+
+#task[
+  Modulorechnung ist mit Addition, Subtraktion und Multiplikation kompatibel. Beweise.
+]
+
+#task[
+  Division ist möglich, wenn $p$ eine Primzahl ist. Berechne $3/4 (mod 7)$
+]
+
+== Zweierkomplement
+
+Um das Zweierkomplement zu erhalten, invertieren und inkrementieren. Warum eigentlich?
+
+*Invertieren:* Das ist das gleiche wie $111...1111 - n$, also $2^n-1-x$.
+
+*Inkrementieren:*
+
+$
+     &&     not x & = 2^n-1-x \
+  => && not x + 1 & = 2^n - x \
+  => && not x + 1 & = -x (mod 2^n)
+$
+
+#code(title: [Implementierung])[
+  - C/C++: unsigned int: Overflow wie beschrieben
+  - C/C++: signed int: undefined
+  - Matlab: kappt an den Grenzen
+]
