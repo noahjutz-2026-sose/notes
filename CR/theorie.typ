@@ -180,13 +180,31 @@ Siehe Skript-Aufgabe 1.7
 
 == Fehleranalyse
 
+Gegeben ist
+
 $
-            V(r) & = 4/3 pi r^3 \
-  => kappa_V (r) & = (r 12/3 pi r^2) / (4/3 pi r^3) \
-                 & = 12/4 = 3
+  V(r) & = 4/3 pi r^3 quad quad
+         delta_V <= 3%
 $
 
-Der Radius darf um höchstens 1% abweichen, sodass das Volumen um höchstens 3% abweicht.
+Wir berechnen die relative Kondition
+
+$
+  kappa_V (r) & = (r 12/3 pi r^2) / (4/3 pi r^3) \
+              & = 12/4 = 3
+$
+
+und setzen sie ein
+
+$
+  delta_V & <= kappa_V (r) dot delta_r \
+     0.03 & <= 3 dot delta_r \
+     0.01 & <= delta_r
+$
+
+#box(fill: green.transparentize(50%), inset: 4pt)[
+  Der Radius darf um höchstens $delta_r = 1%$ abweichen, sodass das Volumen um höchstens $delta_V = 3%$ abweicht.
+]
 
 == b-adische Darstellung
 
