@@ -7,6 +7,8 @@
 
 #include "notizen.typ"
 
+#pagebreak()
+
 #show: template_exercises
 
 #include "theorie.typ"

@@ -641,7 +641,7 @@ Ein Term $x=a+b-c$ kann trotz Overflow den exakten Wert liefern, solange $x<2^n$
   Division ist möglich, wenn $p$ eine Primzahl ist. Berechne $3/4 (mod 7)$
 ]
 
-== Zweierkomplement
+== Negative Zahlen
 
 Um das Zweierkomplement zu erhalten, invertieren und inkrementieren. Warum eigentlich?
 
@@ -659,4 +659,124 @@ $
   - C/C++: unsigned int: Overflow wie beschrieben
   - C/C++: signed int: undefined
   - Matlab: kappt an den Grenzen
+]
+
+== Reelle Zahlen
+
+Jede reelle Zahl $x in RR$ lässt sich wie folgt darstellen
+
+$
+  x = sigma dot
+  b^mark(e, tag: #<N>) dot
+  underbrace(
+    sum_(i=1)^infinity d_i b^(-i),
+    "Mantisse" m
+  )
+  #annot(<N>, pos: bottom, dy: 35pt, $"Exponent"$)
+$
+
+Mit
+
+$
+  sigma in {-1, 1} quad quad
+  N in ZZ quad quad
+  d_i in {0, 1, ..., b-1}
+$
+
+($N$ ist hier nicht die Bitlänge)
+
+#example(title: [Umrechnung dec $->$ bin])[
+  $
+    0.45 dot 2 & = 0 + 0.9 \
+     0.9 dot 2 & = 1 + 0.8 \
+     0.8 dot 2 & = 1 + 0.6 \
+     0.6 dot 2 & = 1 + 0.2 \
+     0.2 dot 2 & = 0 + 0.4 \
+     0.4 dot 2 & = 0 + 0.8 \
+     0.8 dot 2 & = 1 + 0.6 \
+  $
+
+  $
+    => 0.45_(10) = 0.01overline(1100)_2
+  $
+]
+
+#alternative[
+  Testen, ob $1/2^N$ "in der Zahl vorkommt".
+
+  $
+     1/2 & lt.eq.not 0.45 && => 0 \
+     1/4 & <= 0.45        && => 1 && quad quad 0.45-1/4=0.2 \
+     1/8 & <= 0.2         && => 1 && quad quad 0.2-1/8=0.075 \
+    1/16 & <= 0.075       && => 1 && quad quad ...
+  $
+]
+
+== Maschinenzahlen
+
+Mit Basis $b$, Mantissenlänge $m$, $e$-Lower-Bound $L$ und $e$-Upper-Bound $U$ sind die Maschinenzahlen definiert als
+
+$
+  MM(b, m, L, U) = {
+    x = sigma b^e sum_(i=1)^m d_i b^(-i) mid(|)
+    #block[$ sigma in {plus.minus 1} \
+    L <= e <= U \
+    d_i in {0, 1, ..., b-1} \
+    d_1 != 0 $]
+  } union {0}
+$
+
+#task[
+  Bestimme die Formel für kleinste/größte Zahl in $MM$.
+]
+
+== IEEE 754 Gleitkommazahlen
+
+=== Vorzeichen
+
+VZ: 0 ist nichtnegativ, 1 ist negativ
+
+=== Charakteristik
+
+Die Charakteristik $c$ ist definiert als
+
+$
+  c = e + B
+$
+
+mit Exponent $e$ und Bias $B in ZZ$
+
+Die Charakteristik `0` und `1111...` sind reserviert.
+
+=== Mantisse
+
+Die Mantisse $m$ ist
+
+$
+  m = 1 + sum_(i=1)^n 1/2^i d_i
+$
+
+=== Single Precision
+
+Bias $B=127$
+
+#table(
+  columns: (1fr,) * 32,
+  align: center,
+  table.cell(colspan: 32)[32],
+  [1],
+  table.cell(colspan: 8)[8],
+  table.cell(colspan: 23)[23],
+  ..([],) * 32,
+  [VZ],
+  table.cell(colspan: 8)[Charakteristik],
+  table.cell(colspan: 23)[Mantisse],
+)
+
+#example[
+  $x_1 = 1$
+
+  - VZ = 0
+  - $c = 0 + B = 127$
+  - $m = 0$
 ]
