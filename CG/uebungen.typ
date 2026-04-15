@@ -615,8 +615,10 @@ $
 $
 
 $
-  vec(0, 0) -> vec(0, 0) quad quad
-  vec(1, 0) ->
+  vec(0, 0, 1) -> vec(3, 2, 1) quad quad
+  vec(1, 0, 1) -> vec(7, 2, 1) quad quad
+  vec(1, 1, 1) -> vec(9, 6, 1) quad quad
+  vec(0, 1, 1) -> vec(5, 6, 1)
 $
 
 === Andere Reihenfolge
@@ -650,5 +652,245 @@ $
                   0, 4, 2;
                   0, 0, 1
                 )
+  $
+]
+
+$
+  vec(0, 0, 1) -> vec(2, 2, 1) quad quad
+  vec(1, 0, 1) -> vec(6, 2, 1) quad quad
+  vec(1, 1, 1) -> vec(8, 6, 1) quad quad
+  vec(0, 1, 1) -> vec(4, 6, 1)
+$
+
+== Rotationsmatrix
+
+Um um den Ursprung $o$ zu rotieren, müssen wir zu $o$ verschieben, rotieren, und um $-o$ zurückverschieben.
+
+#cetz.canvas(length: .25cm, {
+  import cetz.draw: *
+
+  let dim = 5
+
+  let bggrid = grid.with(
+    (-dim, -dim),
+    (dim, dim),
+    stroke: colors.on_surface.lighter,
+  )
+
+  bggrid()
+
+  let point = circle.with(stroke: none, fill: black, radius: 2pt)
+
+  point((2, 4))
+
+  let axes = () => {
+    set-style(mark: (end: ">", stroke: (dash: "solid")))
+    line((-dim, 0), (dim, 0))
+    line((0, -dim), (0, dim))
+  }
+  axes()
+
+  group({
+    set-style(stroke: colors.on_surface.light)
+    line((0, 0), (2, 4))
+    set-style(stroke: (dash: "dashed"))
+    translate((2, 4))
+    axes()
+  })
+
+  content((0, -dim - 1), anchor: "north")[1]
+
+  translate((2 * dim + 4, 0))
+
+  bggrid()
+  axes()
+  point((0, 0))
+
+  group({
+    set-style(stroke: colors.on_surface.light)
+    arc((0, 0), start: 0deg, stop: 45deg, radius: 20pt, anchor: "origin")
+    rotate(45deg)
+    set-style(stroke: (dash: "dashed"))
+    axes()
+  })
+
+  content((0, -dim - 1), anchor: "north")[2]
+
+  translate((2 * dim + 4, 0))
+
+  bggrid()
+  axes()
+  point((0, 0))
+
+  group({
+    set-style(stroke: colors.on_surface.light)
+    line((0, 0), (-2, -4))
+    set-style(stroke: (dash: "dashed"))
+    translate((-2, -4))
+    axes()
+  })
+
+  content((0, -dim - 1), anchor: "north")[3]
+})
+
+Die homogenen Transformationsmatrizen der drei Schritte sind:
+
+#table(
+  columns: 3,
+  table.header($A_1$, $A_2$, $A_3$),
+  $
+    mat(
+      1, 0, o_1;
+      0, 1, o_2;
+      0, 0, 1;
+    ) & = mat(
+          1, 0, 1;
+          0, 1, 1;
+          0, 0, 1
+        )
+  $,
+  $
+    mat(
+      cos Phi, -sin Phi, 0;
+      sin Phi, cos Phi, 0;
+      0, 0, 1
+    ) & = mat(
+          sqrt(2)/2, -sqrt(2)/2, 0;
+          sqrt(2)/2, sqrt(2)/2, 0;
+          0, 0, 1
+        )
+  $,
+  $
+    mat(
+      1, 0, -o_1;
+      0, 1, -o_2;
+      0, 0, 1;
+    ) & = mat(
+          1, 0, -1;
+          0, 1, -1;
+          0, 0, 1
+        )
+  $,
+)
+
+Konkateniert lautet die Transformation
+
+$
+  A_1A_2A_3 & = mat(
+                1, 0, 1;
+                0, 1, 1;
+                0, 0, 1
+              ) dot mat(
+                sqrt(2)/2, -sqrt(2)/2, 0;
+                sqrt(2)/2, sqrt(2)/2, 0;
+                0, 0, 1
+              ) dot mat(
+                1, 0, -1;
+                0, 1, -1;
+                0, 0, 1
+              ) \
+            & = mat(
+                sqrt(2)/2, sqrt(2)/2, 1;
+                sqrt(2)/2, sqrt(2)/2, 1;
+                0, 0, 1
+              ) dot mat(
+                1, 0, -1;
+                0, 1, -1;
+                0, 0, 1
+              ) \
+            & = mat(
+                sqrt(2)/2, sqrt(2)/2, -sqrt(2)+1;
+                sqrt(2)/2, sqrt(2)/2, -sqrt(2)+1;
+                0, 0, 1
+              )
+$
+
+Der Punkt $p = vec(2, 4)$ ist also transformiert
+
+$
+  mat(
+    sqrt(2)/2, sqrt(2)/2, -sqrt(2)+1;
+    sqrt(2)/2, sqrt(2)/2, -sqrt(2)+1;
+    0, 0, 1
+  ) dot vec(2, 4, 1) & = vec(
+                         2 sqrt(2) + 1,
+                         2 sqrt(2) + 1,
+                         1
+                       )
+$
+
+Visualisierung:
+
+#cetz.canvas(length: 0.25cm, {
+  import cetz.draw: *
+
+  let bounds = 5
+
+  grid(
+    (-bounds, -bounds),
+    (bounds, bounds),
+    stroke: colors.on_surface.lighter,
+  )
+
+  let o = (1, 1)
+  let p = (2, 4)
+
+  set-style(stroke: none, fill: black)
+  circle(o, radius: 2pt)
+  content((), anchor: "north", padding: 8pt)[$o$]
+  circle(p, radius: 2pt, fill: gray)
+  content((), anchor: "north", padding: 8pt)[$p$]
+
+  let s2 = calc.sqrt(2)
+
+  set-transform((
+    (s2 / 2, s2 / 2, 0, -s2 + 1),
+    (s2 / 2, -s2 / 2, 0, -s2 + 1),
+    (0, 0, 1, 0),
+    (0, 0, 0, 1),
+  ))
+
+  circle(p, radius: 2pt, fill: colors.primary.normal)
+  content((), anchor: "north", padding: 8pt)[$p'$]
+})
+
+== Komposition 3D-Rotationsmatrix
+
+#[
+  #show sym.alpha: text.with(red)
+  #show sym.beta: text.with(green)
+  #show sym.gamma: text.with(blue)
+  #show "cos": math.bold
+  #show "sin": math.italic
+
+  $
+    R & = R_X (alpha) R_Z (beta) R_X (gamma) \
+      & = mat(
+          1, 0, 0;
+          0, cos alpha, -sin alpha;
+          0, sin alpha, cos alpha
+        ) dot mat(
+          cos beta, -sin beta, 0;
+          sin beta, cos beta, 0;
+          0, 0, 1
+        ) dot mat(
+          1, 0, 0;
+          0, cos gamma, -sin gamma;
+          0, sin gamma, cos gamma
+        ) \
+      & = mat(
+          cos beta, -sin beta, 0;
+          cos alpha sin beta, cos alpha cos beta, -sin alpha;
+          sin alpha sin beta, sin alpha cos beta, cos alpha
+        ) dot mat(
+          1, 0, 0;
+          0, cos gamma, -sin gamma;
+          0, sin gamma, cos gamma
+        ) \
+      & = mat(
+          cos beta, -sin beta cos gamma, (-sin beta) (-sin gamma);
+          cos alpha sin beta, cos alpha cos beta cos gamma + (-sin alpha) sin gamma, cos alpha cos beta (-sin gamma) + (-sin alpha) cos gamma;
+          sin alpha sin beta, sin alpha cos beta cos gamma + cos alpha sin gamma, sin alpha cos beta (-sin gamma) + cos alpha cos gamma
+        )
   $
 ]
