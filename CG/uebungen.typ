@@ -856,6 +856,17 @@ Visualisierung:
 
 == Komposition 3D-Rotationsmatrix
 
+#note(title: [Einheitskreis])[
+  $
+    (x, y) = (cos theta, sin theta)
+  $
+  #include "figures/unit_circle.typ"
+]
+
+#further(title: [arcsin und arccos], width: 50%)[
+  #link("https://www.desmos.com/calculator/sxjpz2cb63")[Desmos]
+]
+
 #[
   #show sym.alpha: text.with(red)
   #show sym.beta: text.with(green)
@@ -894,3 +905,45 @@ Visualisierung:
         )
   $
 ]
+
+$beta$ berechnen:
+
+$
+   R_(1 1) & = M_(1 1) \
+  cos beta & = 0 \
+      beta & = arccos 0 \
+           & = plus.minus pi/2
+$
+
+Wähle $beta = +pi/2 in [0, pi]$. $alpha$ berechnen, indem wir $beta$ einsetzen:
+
+$
+  M_(2 1) & = R_(2 1) \
+     -0.5 & = cos alpha sin beta \
+     -0.5 & = cos alpha sin pi/2 \
+     -0.5 & = cos alpha \
+    alpha & = arccos -0.5 \
+          & = (2pi)/3
+$
+
+$gamma$ berechnen, indem wir $beta$ einsetzen:
+
+$
+  M_(1 2) & = R_(1 2) \
+        0 & = -sin beta cos gamma \
+        0 & = -sin pi/2 cos gamma \
+        0 & = -cos gamma \
+        0 & = cos gamma \
+    gamma & = arccos 0 \
+    gamma & = pi/2
+$
+
+#box(fill: green.transparentize(50%), inset: 4pt)[
+  $
+    alpha = (2pi)/3 quad quad
+    beta = pi/2 quad quad
+    gamma = pi/2
+  $
+]
+
+==
