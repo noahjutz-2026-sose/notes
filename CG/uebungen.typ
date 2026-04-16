@@ -946,4 +946,34 @@ $
   $
 ]
 
-==
+== Gimbal Lock
+
+Der Raum hat sich um $90degree$ um die x-Achse rotiert. Die y- und z-Achse "tauschen" ihre Rolle.
+
+== Winkel kodieren
+
+Ein Winkel ist ein $alpha in [0, 360]$ bzw. $alpha in [0, 2pi]$, allgemeiner ein Faktor $alpha in [0, 1]$ einer gesamten Rotation (Annahme: Anzahl Rotationen ist uns egal).
+
+Um einen Winkel so fein granular in einer Zahl $x$ mit $n$ bits zu speichern, bilde ich den Wertebereich ${0, 1, ..., 2^n-1}$ linear auf eine Kreisrotation $alpha in [0, 360]$ bzw. $alpha in [0, 2pi]$ ab.
+
+$
+  alpha_deg = x/(2^n-1) dot 360degree quad quad "bzw." quad quad
+  alpha_"rad" = x/(2^n-1) dot 2pi
+$
+
+Konkrete implementierung mit 32 bit:
+
+#codly.codly(header: [degrees_datastructure])
+```c
+uint32_t angles;
+
+uint32_t push_angle(uint32_t angles, double deg) {
+    double frac = (double) (1 << 10) / 360;
+    int enc = round(frac * deg);
+    enc &= (1 << 10) - 1;
+
+    angles <<= 11;
+    angles |= enc;
+    return angles;
+}
+```
