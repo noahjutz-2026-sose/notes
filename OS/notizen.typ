@@ -160,3 +160,34 @@ pthread_join(t, NULL)
     [parmult], [Parallele Multiplikation mit pthread],
   )
 ]
+
+#align(end)[2026-04-17 VL15 (2025-12-01)]
+
+= Remote Procedure Call
+
+- Sun RPC
+- getopt: Argumente in C auslesen
+- Statt "netpath" "tcp"
+- rpc.h ist in /usr/include/tirpc
+- Generierter code (rpcgen)
+  - `rpcgen date.x` -> date_clnt.c
+  - `rpcgen -Ss date.x` -> date_svc.c & server.c
+- `-DRPC_SVC_FG` compile flag: Server darf im Vordergrund laufen
+- `rpcbind` Daemon: route requests to functions
+
+= Deadlocks
+
+#note(title: [Begriffe])[
+  _Deadly Embrace:_ Deadlock zwischen genau zwei Prozessen.
+]
+
+Ein Deadlock tritt genau dann auf, wenn 4 Bedingungen erfüllt sind:
+
++ Mutual Exclusion: Es gibt im Programm Synchronisationsmechanismen
++ Incremental Acquisition: Während des Wartens auf eine Ressource gibt ein Prozess seine erlangten Ressourcen *nicht* zurück
++ No Preemption: Einem Prozess können Ressourcen nicht weggennommen werden
++ Circular Wait: Es gibt eine Prozesskette mit Prozessen die aufeinander warten
+
+== Vorbeugen
+
+#align(end)[VL16 (2025-12-02)]
