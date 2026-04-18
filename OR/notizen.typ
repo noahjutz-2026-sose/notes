@@ -224,3 +224,33 @@ wenn optimal $=>$ man kann FD verwenden, um F zu optimieren.
 + Primales Problem überführen
 + Zulässig wenn alle $b >= 0$
 + Optimal wenn alle $x >= 0$ in F-Zeile
+
+#align(end)[2026-04-17 VL04]
+
+= Integer Linear Programming
+
+== Definition
+
+- _LP:_ Stetig
+- _ILP:_ Diskrete Variablen
+- _MILP:_ Teilweise diskrete Variablen
+- _Relaxation:_ ILP auf LP zurückführen
+
+== Rounding Cuts
+
+Kleinergleich-Bedingungen abrunden.
+
+$
+    "Ausdruck" <= b -> "Ausdruck" <= floor(b)
+$
+
+== GGT Cuts
+
+Bedingung durch größten gemeinsamen Teiler teilen.
+
+$
+    & a_1 x_1 + a_2 x_2 &&>= b \
+    stretch(<=>)^(div gcd(a_i)) & a_1^' x_1 + a_2^' x_2 &&<= b/gcd(a_i)
+$
+
+== Branch & Bound
