@@ -499,3 +499,131 @@ Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/b272e4903507888
 #align(end)[2026-04-20 TT04]
 
 = Branch & Bound
+
+== Cuts
+
+=== GGT und Rounding Cuts
+
+$
+      && 10x_1 + 18x_2 & <= 109 \
+  <=> &&   5x_1 + 9x_2 & <= 54.5 \
+   => &&   5x_1 + 9x_2 & <= 54
+$
+
+$
+      && 21x_1 - 24x_2 & <= 44 \
+  <=> &&   7x_1 - 8x_2 & <= 14 2/3 \
+   => &&   7x_1 - 8x_2 & <= 14
+$
+
+=== Integer Linear Programming
+
+Maximiere
+
+$
+  F(x) = 7x_1 + 10x_2
+$
+
+Unter NB
+
+$
+  5x_1 + 9x_2 & <= 54 \
+    7x_1-8x_2 & <= 14 \
+     x_1, x_2 & in ZZ_(>=0)
+$
+
+== LP-Relaxation Graphisches Lösen <or_ue0402_ilp_relax>
+
+=== Aufstellen
+
+Ersetze NB $x_1, x_2 in ZZ_(>=0)$ mit $x_1, x_2 >= 0$.
+
+=== Lösen
+
+$
+            "NB1" & = "NB2" \
+     -5/9 x_1 + 6 & = 7/8x_1 - 1 3/4 \
+  (7/8 + 5/9) x_1 & = 7 3/4 \
+              x_1 & = (7 dot 4 + 3)/4 dot ((7 dot 9)/(8 dot 9) + (5 dot 8)/(9 dot 8))^(-1) \
+                  & = 31/4 dot 72/103 \
+                  & = (31 dot 18)/103 \
+                  & = 558/103
+$
+
+$
+  x_2 & = -5/9x_1+6 \
+      & = -5/9 dot 558/103 + 6 \
+      & = 308/103
+$
+
+$
+  => "Optimum in " (558/103, 308/103)
+$
+
+Zielgraph anpassen
+
+$
+  x_2 & = -7/10 x_1 \
+  x_2 & = -7/10 (x_1-558/103) + 308/103 \
+  x_2 & = -7/10 x_1 + 3493/515
+$
+
+Zielfunktion berechnen
+
+$
+  F(x) & = 7x_1 + 10x_2 \
+       & = 7 dot 558/103 + 10 dot 308/103 \
+       & = 6986/103
+$
+
+=== Obere Schranke
+
+Das Maximum des relaxierten Problems ist die obere Schranke des diskreten Problems. Ferner kann die Lösung nur Ganzzahlig sein.
+
+$
+  floor(6986/103) = 67
+$
+
+== Branch & Bound
+
++ ILP relaxieren und optimale $x, F(x)$ berechnen (siehe @or_ue0402_ilp_relax)
+  $
+    hat(x) = vec(558/103, 308/103) quad quad
+    F(hat(x)) = 6986/103
+  $
++ Nicht-ganzzahlige Variable wählen (beide): $hat(x)_1$
++ Branch: $x_1 <= floor(hat(x)_1)$ und $x_1 >= ceil(hat(x)_1)$
+  + $x_1 <= 5$ \
+    ILP relaxieren und optimale $x, F(x)$ berechnen (siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/f02f5c6ca42eb6149fb59ec23855cf4f1016e04c/OR/ue04/main.py")[practice/OR/ue04])
+    $
+      hat(x) = vec(5, 3) quad quad
+      F(hat(x)) = 65
+    $
+  + $x_1 >= 6$ \
+    Nicht lösbar
+
+Branchen nicht mehr möglich $=>$ Optimale Lösung gefunden
+
+== Schwierigkeiten
+
+=== Lösung
+
+$
+  sum_(i=1)^n 0.75 x_i & <= 1 \
+   3/4 sum_(i=1)^n x_i & <= 1 \
+$
+
+Jedes $x_i$ hat den gleichen Koeffizienten ($0.1$), und es darf aufgrund der NB nur ein $x_i$ gewählt werden. Die optimale Lösung ist also
+
+$
+  x_k = 1 \
+  x_i = 0 quad forall x_i in {x_1, ..., x_n} \\ {x_k}
+$
+
+für ein beliebiges $k$.
+
+=== Limitation Branch & Bound
+
+Der maximal erreichbarte Wert ist $1 1/3$. Das ist immer größer als die optimale Lösung des ILPs von $0.1$, für alle möglichen Kombinationen $binom(n, 3)$.
+
+=== Neuer Cut
