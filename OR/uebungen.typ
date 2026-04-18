@@ -473,3 +473,29 @@ $
 $
 
 Analog für NB5, NB6 (DI) und NB4 (D).
+
+== Ganzzahlige Optimierung
+
+=== Formulieren
+
+Maximiere
+
+$
+  F(x) = vec(3, 6, 6, 8, 1) x
+$
+
+Unter NB
+
+$
+  vec(5, 4, 2, 2 2) x <= 15
+$
+
+Mit $x_i in {0, 1, 2}$
+
+=== Lösen
+
+Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/b272e4903507888812c772da1218ac201ad347be/OR/ue03/main.py")[practice/OR/ue03].
+
+#align(end)[2026-04-20 TT04]
+
+= Branch & Bound
