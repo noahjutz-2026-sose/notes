@@ -12,7 +12,7 @@
     [], [Challenge], [Punkte], [Deadline], [Informationen],
     [0],
     [Escape Room],
-    [5],
+    [5/5],
     [2026-03-31],
     [
       - Laptop + DBeaver + Fortinet VPN
@@ -20,19 +20,19 @@
       - Slot wählen in KW13
     ],
 
-    [1], [Idee Präsentation], [15], [], [],
-    [2], [Peer-Review], [5], [], [],
-    [3], [], [25], [], [Workbook],
+    [1], [Idee Präsentation], [\_/15], [2026-04-26], [],
+    [2], [Peer-Review], [\_/5], [], [],
+    [3], [], [\_/25], [], [Workbook],
     [4],
     [],
-    [25],
+    [\_/25],
     [],
     [
       - Workbook
       - Power BI Dashboard
     ],
 
-    [5], [], [25],
+    [5], [], [\_/25],
   )
 - Übungen
   - 7 Blätter
@@ -210,3 +210,77 @@ Permissions
 SELECT * FROM sys.EXA_ALL_OBJ_PRIVS;
 SELECT * FROM sys.EXA_ALL_TABLES;
 ```
+
+#align(end)[2026-04-20 VL05]
+
+== Systemtabelle
+
+```sql
+SELECT * FROM EXA_SQL_
+```
+
+#{
+  set text(font: "JetBrainsMono NF")
+  let syntax = (
+    (
+      [EXA],
+    ),
+    (
+      [\_],
+    ),
+    (
+      [USER],
+      [ALL],
+      [DBA],
+    ),
+    (
+      [\_],
+    ),
+    (
+      [TABLES],
+      [COLUMNS],
+      [SESSIONS],
+      [SCRIPTS],
+    ),
+  )
+
+  grid(
+    columns: syntax.len(),
+    column-gutter: 8pt,
+    align: horizon,
+    ..syntax.map(it => table(..it))
+  )
+}
+
+```sql
+OPEN SCHEMA EXA_STATISTICS;
+```
+
+```sql
+COMMENT ON TABLE MY_TABLE IS 'hallo';
+DESC FULL MY_TABLE;
+```
+
+= Fakten und Dimensionen
+
+- _Fact / Measure:_ Es ist etwas passiert, z.B. Kaufpreis
+- _Dimension:_ Referenz auf andere Tabelle oder Kontext, z.B. Date
+
+== Multidimensional Data Cube
+
+- Product: z.B. Produktnummer
+- Position vom Punkt: Dimensionenabh.
+- Wert vom Punkt: Fakt
+
+_Slice Operation:_ Eine Dimension eingrenzen
+
+_Dice Operation:_ Mehrere Dimensionen eingrenzen
+
+== Dimensionshierarchie
+
+- Wann? \
+    Tag $->$ Monat $->$ Quartal $->$ Jahr $->$ Top
+- Wo? \
+    Stadt $->$ Kreis $->$ Region $->$ Bundesland $->$ Land $->$ Top
+
+== Measure
