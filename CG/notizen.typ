@@ -251,3 +251,57 @@ $=>$ Man kann den durch $A$ transformierten Vektor $t'$ mit $A^(-1)$ transformie
   + Um $N$ um $beta$
   + Um $y$ um $gamma$
 ]
+
+#align(end)[2026-04-20 VL06]
+
+= Komplexe Zahlen
+
+Eine komplexe Zahl in $CC$ hat einen reellen und einen imaginären Teil.
+
+$
+  a + i b
+$
+
+== Multiplikation
+
+$
+  (a + i b) (c + i d) & = a c + a i d + i b c + i^2 b d \
+                      & = a c - b d + i (a d + b c)
+$
+
+== Polare Koordinaten
+
+$
+  R = r (cos phi + i sin phi)
+$
+
+#example(title: [Rotation mit komplexen Zahlen])[
+  Sei $A = 0 + 3i$ und $R = cos pi/4 + i sin pi/4$. Dann ist $A R$ der CCW rotierte Punkt um $pi/4$.
+  $
+    A R & = (0 + 3 i) dot (cos pi/4 + i sin pi/4) \
+        & = 3 i cos pi/4 - 3 sin pi/4 \
+        & = - (3 sqrt(2))/2 + (3 sqrt(2))/2 i
+  $
+]
+
+= Quaternionen
+
+$
+  bold(upright(hat(q))) = (
+    bold(upright(q))_v, q_w
+  ) quad quad
+  bold(upright(q))_v = vec(q_x, q_y, q_z) = q_x i + q_y j + q_z k quad quad
+  i^2 = j^2 = k^2 = -1
+$
+
+#note(title: [Konjugat])[
+  $
+    bold(upright(hat(q)))^* = (-bold(upright(q))_v, q_w)
+  $
+]
+
+= Slerp
+
+Rotationsinterpolation
+
+= Camera Space
