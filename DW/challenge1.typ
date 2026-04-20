@@ -1,8 +1,8 @@
 #import "/template.typ": template_presentation
-#import "/deps.typ": polylux
-#import polylux: *
+#import "/deps.typ": touying
+#import touying: *
 
-#show: template_presentation
+#show: themes.simple.simple-theme.with(aspect-ratio: "16-9")
 
 // Ideas
 // - CyberRunner params: Observation, Loss, Fps over time
@@ -11,13 +11,10 @@
 // - Welche Autostraßen lohnen sich nicht aufrechtzuerhalten?
 //
 
-#slide[
-  #set align(horizon)
-  #title[hi]
-]
+= sec
 
-#slide[
-  = a
+cont
 
-  #alternatives[a][b]
-]
+== head
+
+con2
