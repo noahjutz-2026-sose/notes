@@ -76,3 +76,11 @@
 
   body
 }
+
+#let template_presentation(body) = {
+  show: template_base
+  let font_size = 25pt
+  set page(paper: "presentation-16-9")
+  set text(size: font_size)
+  body
+}

@@ -1,8 +1,23 @@
+#import "/template.typ": template_presentation
 #import "/deps.typ": polylux
 #import polylux: *
 
-#set page(paper: "presentation-16-9")
+#show: template_presentation
+
+// Ideas
+// - CyberRunner params: Observation, Loss, Fps over time
+// - GymRoutines, Orgzly over time
+// - RVV/DB: Verspätungen Ursachen, Verbesserungen im Netz
+// - Welche Autostraßen lohnen sich nicht aufrechtzuerhalten?
+//
 
 #slide[
-  hi
+  #set align(horizon)
+  #title[hi]
+]
+
+#slide[
+  = a
+
+  #alternatives[a][b]
 ]
