@@ -1,10 +1,4 @@
-#import "@preview/cetz:0.4.2"
-#import "@preview/cetz-plot:0.1.3"
-#import "@preview/gentle-clues:1.3.1": *
-#import "@preview/mannot:0.3.2": *
-#import "@preview/meander:0.4.1"
-#import "@preview/codly:1.3.0"
-#import "@preview/codly-languages:0.1.10"
+#import "/deps.typ": codly, codly-languages, gentle-clues
 
 #let template_base(body) = {
   set document(
@@ -24,7 +18,7 @@
   show link: set text(blue)
   show math.equation: set text(font: "Lete Sans Math")
   show math.equation.where(block: true): align.with(start)
-  show: gentle-clues.with(
+  show: gentle-clues.gentle-clues.with(
     breakable: true,
   )
   show: codly.codly-init

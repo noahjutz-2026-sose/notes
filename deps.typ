@@ -7,3 +7,4 @@
 #import "@preview/suiji:0.5.1"
 #import "@preview/meander:0.4.1"
 #import "@preview/polylux:0.4.0"
+#import "@preview/touying:0.7.1"
