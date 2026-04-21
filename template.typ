@@ -1,4 +1,4 @@
-#import "/deps.typ": codly, codly-languages, gentle-clues
+#import "/deps.typ": codly, codly-languages, gentle-clues, touying
 
 #let template_base(body) = {
   set document(
@@ -72,9 +72,34 @@
 }
 
 #let template_presentation(body) = {
+  import touying: *
   show: template_base
   let font_size = 25pt
-  set page(paper: "presentation-16-9")
+
   set text(size: font_size)
+
+  show: touying-slides.with(
+    config-page(
+      margin: 2em,
+      footer-descent: 0em,
+    ),
+    config-common(
+      slide-fn: themes.simple.slide,
+      zero-margin-footer: false,
+      zero-margin-header: false,
+    ),
+    config-store(
+      header: none,
+      subslide-preamble: block(below: 1em)[
+        #text(1.2em, weight: "bold", utils.display-current-heading(level: 1)) \
+        #text(.8em, weight: "bold", utils.display-current-heading(level: 2))
+      ],
+      header-right: {},
+      footer: {},
+      footer-right: context utils.slide-counter.display() + " / " + utils.last-slide-number,
+    ),
+  )
+
+  set table(stroke: 2pt, inset: 8pt)
   body
 }
