@@ -807,16 +807,28 @@ Bias $B=127$
 ]
 
 #task(title: [Skript-Aufgabe 1.32: Absoluter Rundungsfehler])[
-  Sei $n in NN$ die ursprüngliche Mantissenlänge und $m<n$ die nach Rundung.
+  Gegeben eine Zahl $x in RR$, die auf eine Mantisse mit länge $m$ gerundet wurde.
+  + Bildet man $x$ auf einen Intervall $[1, b[$ ab (scientific notation), hat jeder diskrete Wert einen Abstand zum Nachbarn von $b^(-m)$.
+  + Der Abstand einer gerundeten Zahl $"rd"(x)$ zu $x$ ist höchstens die Hälfte von $b^(-m)$. z.B. kann $"rd"(x)=3$ von $2.5$ oder $3.5$ stammen, aber nicht $2.49$ oder $3.51$. ($10^(-1)/2=0.5$)
+  + Multipliziert man die normierte Zahl um $b^e$, skaliert sich der Fehler proportional dazu.
+
+  Daher ist der Abstand zur Basis 2
+
   $
-    abs("rd"(x) - x) & stretch(=)^"def"
-                       (sigma 2^e sum_(i=1)^n d_i 2^(-i)) -
-                       (sigma 2^e sum_(i=1)^m d_i 2^(-i)) \
-                     & = 2^e (sum_(i=1)^n d_i 2^(-i) - sum_(i=1)^m d_i 2^(-i) ) \
-                     & = 2^e (sum_(i=m+1)^(n) d_i 2^(-i)) \
-                     & <= 2^e ( sum_(i=m+1)^n 2^(-i) ) \
-                     & <= 2^e ( sum_(i=m+1)^n 2^(i) )^(-1) \
-                     & = 2^e ((2^(n-1) - 2^(m+1))/(2-1))^(-1) \
-                     & = 2^e (2^(n-1) - 2^(m+1)) \
+    abs("rd"(x)-x) <= 2^e 2^(-m-1) space square.filled
   $
+]
+
+Die Maschinengenauigkeit $epsilon_"mach"$ ist der maximale relative Rundungsfehler.
+
+$
+  epsilon_"mach" = 2^(-m) >= abs("rd"(x)-x)/abs(x)
+$
+
+Herleitung: Siehe Skript Definition 1.33.
+
+#task(title: [Skript-Aufgabe 1.33])[
+  Für $b=10$:
+
+  TODO
 ]
