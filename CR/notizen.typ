@@ -780,3 +780,43 @@ Bias $B=127$
   - $c = 0 + B = 127$
   - $m = 0$
 ]
+
+#align(end)[2026-04-21 VL05]
+
+== Rundung
+
+#task(title: [Skript-Aufgabe 1.31: Round to even])[
+  #table(
+    columns: 4,
+    table.header($n$, [Sci], [Critical digits], [Rounded to even]),
+    $12501_10$, $1.2markhl(5)01 dot 10^4$, $5.01 > 5 => "up"$, $1.3 dot 10^4$,
+    $12500_10$, $1.markhl(2, color: #blue)markhl(5)0_10 dot 10^4$, $5 = 5 => 2 "even" => "down"$, $1.2 dot 10^4$,
+    $0.3748_10$, $3.7markhl(4)8 dot 10^-1$, $4 < 5 => "down"$, $3.7 dot 10^-1$,
+    $0.3750_10$, $3.markhl(7, color: #blue)markhl(5) dot 10^(-1)$, $5=5 => 7 "odd" => "up"$, $3.8 dot 10^(-1)$,
+    $11.1_2$, $1.markhl(1, color: #blue)markhl(1)0 dot 2^1$, $1 = 1 => "LSB odd" => "up"$, $10.0 dot 2^1 = 1.0 dot 2^2$,
+    $11.01_2$, $1.1markhl(0)1 dot 2^1$, $0 < 1 => "down"$, $1.1 dot 2^1$,
+    $0.01010_2$, $1.markhl(0, color: #blue)markhl(1)0 dot 2^(-2)$, $1 = 1 => "LSB even" => "down"$, $1.0 dot 2^(-2)$,
+    $0.01011_2$, $1.0markhl(1)1 dot 2^(-2)$, $1.1 > 1 => "up"$, $1.1 dot 2^(-2)$,
+  )
+
+  $
+    28_10 & = 2.8 dot 10^1 approx 3 dot 10^1 \
+          & = 11100_2 = 1.1100 dot 2^4 approx 1 dot 2^4 = 16_10 \
+          & => "Höhere Basis hat mehr Information auf gleiche Mantissenlänge"
+  $
+]
+
+#task(title: [Skript-Aufgabe 1.32: Absoluter Rundungsfehler])[
+  Sei $n in NN$ die ursprüngliche Mantissenlänge und $m<n$ die nach Rundung.
+  $
+    abs("rd"(x) - x) & stretch(=)^"def"
+                       (sigma 2^e sum_(i=1)^n d_i 2^(-i)) -
+                       (sigma 2^e sum_(i=1)^m d_i 2^(-i)) \
+                     & = 2^e (sum_(i=1)^n d_i 2^(-i) - sum_(i=1)^m d_i 2^(-i) ) \
+                     & = 2^e (sum_(i=m+1)^(n) d_i 2^(-i)) \
+                     & <= 2^e ( sum_(i=m+1)^n 2^(-i) ) \
+                     & <= 2^e ( sum_(i=m+1)^n 2^(i) )^(-1) \
+                     & = 2^e ((2^(n-1) - 2^(m+1))/(2-1))^(-1) \
+                     & = 2^e (2^(n-1) - 2^(m+1)) \
+  $
+]
