@@ -624,6 +624,6 @@ für ein beliebiges $k$.
 
 === Limitation Branch & Bound
 
-Der maximal erreichbarte Wert ist $1 1/3$. Das ist immer größer als die optimale Lösung des ILPs von $0.1$, für alle möglichen Kombinationen $binom(n, 3)$.
+Der maximal erreichbarte Wert ist $0.1 dot 1 1/3$. Das ist immer größer als die optimale Lösung des ILPs von $0.1$, für alle möglichen Kombinationen $binom(n, 3)$.
 
 === Neuer Cut
