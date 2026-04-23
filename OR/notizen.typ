@@ -241,7 +241,7 @@ wenn optimal $=>$ man kann FD verwenden, um F zu optimieren.
 Kleinergleich-Bedingungen abrunden.
 
 $
-    "Ausdruck" <= b -> "Ausdruck" <= floor(b)
+  "Ausdruck" <= b -> "Ausdruck" <= floor(b)
 $
 
 == GGT Cuts
@@ -249,8 +249,50 @@ $
 Bedingung durch größten gemeinsamen Teiler teilen.
 
 $
-    & a_1 x_1 + a_2 x_2 &&>= b \
-    stretch(<=>)^(div gcd(a_i)) & a_1^' x_1 + a_2^' x_2 &&<= b/gcd(a_i)
+                              & a_1 x_1 + a_2 x_2     && >= b \
+  stretch(<=>)^(div gcd(a_i)) & a_1^' x_1 + a_2^' x_2 && <= b/gcd(a_i)
 $
 
 == Branch & Bound
+
+#align(end)[2026-04-23 VL05]
+
+= Dynamische Optimierung
+
+DAG, Knoten sind Zustände, Übergänge sind Entscheidungen.
+
+- Zustandsvariable $z_k$: Knoten im Schritt $k$.
+- Problemvariable $x_k$: Optimale Entscheidung in Schritt $k$.
+
+_Stufenbezogene Entscheidungsfunktion:_ Gibt für eine Entscheidung $x$ vom Zustand $z$ den (zu maximierenden) Zielfunktionswert aus.
+
+$
+  f_k (z_(k-1), x_k) -> "Zielfunktionswert"
+$
+
+_Transformationsfunktion:_ Gibt für eine Entscheidung $x$ vom Zustand $z_(k-1)$ den neuen Zustand $z_k$ aus.
+
+$
+  t_k (z_(k-1), x_k) -> z_k
+$
+
+== Postkutschenproblem
+
+=== Entscheidungsfunktionswerte in Tabelle aufnehmen
+
+#table(
+  columns: 2,
+  align: horizon,
+  [], [Stufe $k$],
+  rotate(-90deg, reflow: true)[Stufe $k-1$], $f(z_(k-1), x_k)$,
+)
+
+=== Rückwärtsinduktion
+
+_Stufenbezogene Zielfunktion_
+
+Von $Z$ zu $A$: In jeder Stufe wird für jeden Zustand der optimale Pfad zu $Z$ bestimmt, indem die unmittelbaren Kosten auf die bisher akkumulierten Kosten addiert werden.
+
+$
+  min f_k + min sum_(k<i<=n) f_i
+$
