@@ -300,3 +300,40 @@ $
 #ieee754.single("010000010010011")
 
 == Rundung
+
+Siehe Skript-Aufgabe 1.31
+
+== Maschinengenauigkeit Epsilon
+
+Der Algorithmums liefert $e=-23$, also $epsilon = 2^(-23)$. Matlabs eingebaute `eps` liefert den gleichen Wert:
+
+```matlab
+log2(eps("single"))
+
+ans =
+  single
+   -23
+```
+
+Die Maschinengenauigkeit ist definiert als $2^(-m)$, also verwendet Matlab eine Mantissenlänge von $m=23$.
+
+Warum ist der Abstand zwischen $1$ und dem nächsten Wert $2^(-23)$, aber zwischen $1+2^(-23)$ und dem nächsten Wert $2^(-24)$?
+
+Weil letzterer Wert ungerade ist, und der kleinere Wert mit Aufrundung reicht. Betrachten wir die letzten 3 Bits der Mantisse:
+
+#table(
+  columns: 2,
+  table.header([Round down], [Round up]),
+  $
+           && ...000mark(color: #gray, 0) & \
+         + &&                           1 & \
+         = &&    000mark(color: #gray, 1) & mark(color: #gray, 000) \
+    approx &&   000 mark(color: #gray, 0) &
+  $,
+  $
+           && ...001mark(color: #gray, 0) & \
+         + &&                           1 & \
+         = &&    001mark(color: #gray, 1) & mark(color: #gray, 000) \
+    approx &&   010 mark(color: #gray, 0) &
+  $,
+)
