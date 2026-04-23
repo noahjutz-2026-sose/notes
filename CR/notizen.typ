@@ -827,8 +827,56 @@ $
 
 Herleitung: Siehe Skript Definition 1.33.
 
-#task(title: [Skript-Aufgabe 1.33])[
+#task(title: [Skript-Aufgabe 1.36: Maschinengenauigkeit])[
   Für $b=10$:
 
-  TODO
+  Eine Mantisse zur Basis 10 der Form
+
+  $
+    f_0.f_1f_2...f_m dot 10^e
+  $
+
+  Hat einen absoluten Rundungsfehler
+
+  $
+    abs("rd"(x)-x) <= 10^e 10^(-m-1)
+  $
+
+  Der relative Rundungsfehler ist
+
+  $
+    abs("rd"(x)-x)/abs(x) & = (10^e 10^(-m-1))/abs(x) \
+                          & <= (10^e 10^(-m-1))/(10^e 10^(-1)) \
+                          & = 10^(-m)
+  $
+
+  Die Maschinengenauigkeit ist also
+
+  $
+    epsilon_"mach" = 10^(-m)
+  $
+
+  Verallgemeinert ist die Machinengenauigkeit zur Basis $b$
+
+  $
+    epsilon_"mach" = b^(-m)
+  $
 ]
+
+== Gerundete Operation
+
+$
+  abs(((x tilde(*) y) - (x * y))/(x * y)) < epsilon_"mach"
+$
+
+#task(title: [Skript-Aufgabe 1.38])[
+  #table(
+    columns: 4,
+    table.header([], $x$, $tilde(x)$, $delta_x$),
+    $a$, $0.73563$, $7.36 dot 10^(-1)$, $0.0005...$,
+    $b$, $0.73441$, $7.34 dot 10^(-1)$, $0.0005...$,
+  )
+  $delta_- = 0.6393...$
+]
+
+#align(end)[2026-04-28 VL06]
