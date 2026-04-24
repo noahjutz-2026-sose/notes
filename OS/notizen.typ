@@ -188,6 +188,16 @@ Ein Deadlock tritt genau dann auf, wenn 4 Bedingungen erfüllt sind:
 + No Preemption: Einem Prozess können Ressourcen nicht weggennommen werden
 + Circular Wait: Es gibt eine Prozesskette mit Prozessen die aufeinander warten
 
-== Vorbeugen
+#align(end)[2026-04-24 VL16 (2025-12-02)]
 
-#align(end)[VL16 (2025-12-02)]
+== Deadlocks vermeiden
+
+- Keine Locks verwenden
+  - Optimistische Synchronisation: Timestamps, z.B. Datenbanken
+- Wartezyklus brechen:
+- _Zählsemaphor_
+
+== Sonstige Probleme
+
+- Starvation
+- _Priority Inversion:_ Niederpriorisierter p nimmt Ressource von hochpriorisiertem.
