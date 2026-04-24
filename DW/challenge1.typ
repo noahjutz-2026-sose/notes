@@ -14,6 +14,7 @@
 // Idea report: https://www.perplexity.ai/apps/21dccc17-f748-43d9-bb07-3bc24db7a125
 // Datasets Palestine: https://www.perplexity.ai/apps/dc39b110-548b-46e3-ba80-76d3dc594608
 // Clean datasets palestine: https://www.perplexity.ai/search/give-me-a-list-of-high-quality-r_tQkPkBQROegRvqSPw2_g
+// Datasets Politics Germany: https://www.perplexity.ai/search/finde-sehr-grosse-strukturiert-EPgyIpZWQVmkG1BiEhr5jg
 
 #slide[
   #align(horizon)[

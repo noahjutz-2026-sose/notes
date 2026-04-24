@@ -1,4 +1,4 @@
-#import "/deps.typ": cetz, cetz-plot, gentle-clues, mannot
+#import "/deps.typ": cetz, cetz-plot, diagraph, gentle-clues, mannot
 #import "/style.typ": colors
 #import mannot: *
 #import gentle-clues: clue
@@ -627,3 +627,153 @@ für ein beliebiges $k$.
 Der maximal erreichbarte Wert ist $0.1 dot 1 1/3$. Das ist immer größer als die optimale Lösung des ILPs von $0.1$, für alle möglichen Kombinationen $binom(n, 3)$.
 
 === Neuer Cut
+
+#align(end)[2026-04-23 TT05]
+
+= Dynamische Optimierung
+
+== Zeit minimieren
+
+- Bernd hat 6 Wochen
+- Je Woche eine Disziplin aus ${"schwimmen", "radfahren", "laufen"}$
+- Jede Disziplin: 1 bis 3 Wochen
+
+=== Zustandswertemengen
+
+$
+  Z_0 = {0} \
+  Z_1 = {1, 2, 3} \
+  Z_2 = {3, 4, 5} \
+  Z_3 = {6}
+$
+
+#diagraph.raw-render(
+  ```
+  digraph G {
+  rankdir=LR
+  node[math=false,shape=none,width=0,height=0,margin=0]
+  edge[math=false]
+  0 -> 1 [label="1,8"]
+  0 -> 2 [label="2,9"]
+  0 -> "3a" [label="3,10"]
+
+  1 -> "3b" [label="2,10"]
+  1 -> 4 [label="3,13"]
+
+  2 -> "3b" [label="1,6"]
+  2 -> 4 [label="2,10"]
+  2 -> 5 [label="3,13"]
+
+  "3a" -> 4 [label="1,6"]
+  "3a" -> 5 [label="2,10"]
+
+  "3b" -> 6 [label="3,16"]
+  4 -> 6 [label="2,12"]
+  5 -> 6 [label="1,10"]
+  "k=0"->"k=1" [label="x1"]
+  "k=1"->"k=2" [label="x2"]
+  "k=2"->"k=3" [label="x3"]
+  }
+  ```,
+  labels: rect,
+)
+
+=== Transformationsfunktion
+
+=== Zielfunktion
+
+$
+  F(x_1, x_2, x_3) = sum_(k=1)^3 f_k (z_(k-1), x_k)
+$
+
+=== Entscheidungsfunktionen
+
+$
+  f_3(z_2, x_3 = 1) = 10 \
+  f_2(z_1, x_2 = 3) = 13
+$
+
+=== Rückwärtsinduktion
+
+#table(
+  columns: 2,
+  $k=2$,
+  table(
+    columns: 2,
+    [], [6],
+    [3b], [3,16],
+    [4], [2,12],
+    [5], [1,10],
+  ),
+
+  $k=1$,
+  table(
+    columns: 4,
+    [], [3b], [4], [5],
+    [1], $2,16+10=26$, $3,12+13=25$, [],
+    [2], $1,16+6=32$, $2,12+10=22$, $3,10+13=23$,
+    [3a], [], $1,12+6=18$, $2,10+10=20$,
+  ),
+
+  $k=0$,
+  table(
+    columns: 4,
+    [], [1], [2], [3],
+    [0], $1,26+8=34$, $2,23+9=32$, $3,20+10=30$,
+  ),
+)
+
+== Bestellungen
+
+#table(
+  columns: 2,
+  $k=4$,
+  table(
+    columns: 2,
+    [], [0e],
+    [0d], $1Phi_4 + 0c_4=52$,
+    [60], $0Phi_4 + 0c_4=0$,
+  ),
+
+  $k=3$,
+  table(
+    columns: 4,
+    [], [0d], [60], $min$,
+    [0c], $mark(color: #gray, 52) + 1Phi_3 + 0c_3=89$, $mark(color: #gray, 0) + 2Phi_3 + 60c_3=92$, [0d],
+    [50], $mark(color: #gray, 52) + 0Phi_3 + 0c_3=52$, [], [0d],
+    [110], [], $mark(color: #gray, 0) + 0Phi_3 + 60c_3 = 18$, [60],
+  ),
+
+  $k=2$,
+  table(
+    columns: 5,
+    [], [0c], [50], [110], $min$,
+    [0b],
+    $mark(color: #gray, 55) + 1Phi_2 + 0c_2 = 85$,
+    $mark(color: #gray, 52) + 1Phi_2 + 50c_2 = 102$,
+    $mark(color: #gray, 18) + 2Phi_2 + 110c_2 = 122$,
+    [0c],
+
+    [40], $mark(color: #gray, 55) + 0Phi_2 + 0c_2 = 55$, [], [], [0c],
+    [90], [], $mark(color: #gray, 52) + 0Phi_2 + 50c_2 = 72$, [], [50],
+    [150], [], [], $mark(color: #gray, 18) + 0Phi_2 + 110c_2 = 62$, [110],
+  ),
+
+  $k=1$,
+  table(
+    columns: 6,
+    [], [0b], [40], [90], [150], $min$,
+    [0a],
+    $mark(color: #gray, 85) + 1Phi_1 + 0c_1 = 110$,
+    $mark(color: #gray, 55) + 2Phi_1 + 40c_1 = 125$,
+    $mark(color: #gray, 72) + 3Phi_1 + 90c_1 = 192$,
+    $mark(color: #gray, 62) + 4Phi_1 + 150c_1 = 237$,
+    [0b],
+  ),
+)
+
+Der Optimale Pfad ist
+
+$
+  "0a" -> "0b" -> "0c" -> "0d" -> "0e"
+$
