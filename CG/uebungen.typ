@@ -977,3 +977,7 @@ uint32_t push_angle(uint32_t angles, double deg) {
     return angles;
 }
 ```
+
+== Asymptote Rotation
+
+Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/da4a3d6907dcc10ddb0939c9616c458a9cbbea52/CG/ue04/solar.asy")[practive/CG/ue04].
