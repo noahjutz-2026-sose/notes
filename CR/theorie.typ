@@ -322,6 +322,14 @@ Warum ist der Abstand zwischen $1$ und dem nächsten Wert $2^(-23)$, aber zwisch
 Weil letzterer Wert ungerade ist, und der kleinere Wert mit Aufrundung reicht. Betrachten wir die letzten 3 Bits der Mantisse:
 
 #table(
+  columns: 5,
+  align: center,
+  stroke: none,
+  $...$, $0$, $0$, $0$, $mark(color: #gray, 0)$,
+  $$, $2^(-21)$, $2^(-22)$, $2^(-23)$, $mark(color: #gray, 2^(-24))$,
+)
+
+#table(
   columns: 2,
   table.header([Round down], [Round up]),
   $
@@ -337,3 +345,33 @@ Weil letzterer Wert ungerade ist, und der kleinere Wert mit Aufrundung reicht. B
     approx &&   010 mark(color: #gray, 0) &
   $,
 )
+
+== Maschinengenauigkeit für Basis verallgemeinern
+
+Siehe Skript-Aufgabe 1.36.
+
+== Auslöschung
+
+Siehe Skript-Aufgabe 1.38.
+
+== Stabilität
+
+$f_1$: Zwei fast gleiche Terme werden subtrahiert $=>$ Auslöschung
+
+$
+  f_1(x) & = sqrt(1+x^2) - sqrt(1-x^2) \
+         & = a-b \
+         & = (a-b) dot (a+b)/(a+b) \
+         & = (a^2 - b^2)/(a+b) \
+         & = (1+x^2-(1-x^2))/(sqrt(1+x^2)+sqrt(1-x^2)) \
+         & = markhl(color: #green, (2x^2)/(sqrt(1+x^2)+sqrt(1-x^2)))
+$
+
+$f_2$: $cos x -> 1$  für kleine $x$. Daher Auslöschung mit 1.
+
+$
+  f_2(x) & = (1-cos x)/x \
+         & = (1-cos x)/x dot (1+cos x)/(1+cos x) \
+         & = (1-cos^2 x)/(x + x cos x) \
+         & = (sin^2 x)/(x + x cos x)
+$
