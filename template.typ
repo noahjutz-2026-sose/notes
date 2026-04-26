@@ -93,7 +93,7 @@
       header: none,
       subslide-preamble: block(below: 1em)[
         #text(2em, weight: "black", utils.display-current-heading(level: 1)) \
-        #text(.8em, weight: "bold", utils.display-current-heading(level: 2))
+        #text(1em, weight: "bold", utils.display-current-heading(level: 2))
       ],
       header-right: none,
       footer: none,
@@ -123,6 +123,19 @@
   show title: set block(spacing: 8pt)
 
   set text(fill: white)
+
+  codly.codly(
+    stroke: 2pt
+      + gradient.linear(
+        angle: 45deg,
+        color.hsv(200deg, 80%, 80%),
+        color.hsv(200deg, 40%, 100%),
+      ),
+  )
+
+  set raw(theme: "/assets/cyberdream.tmTheme")
+
+  set table(stroke: 2pt, inset: 12pt)
 
   body
 }
