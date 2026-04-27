@@ -304,4 +304,22 @@ $
 
 Rotationsinterpolation
 
+#align(end)[2026-04-27 VL07]
+
 = Camera Space
+
+// #cetz.canvas({
+//   import cetz.draw: *
+//
+//   line((0, 0, 0), (0, 0, 1))
+//   line((0, 0, 0), (1, 0, 0))
+//   line((0, 0, 0), (0, 1, 0))
+// })
+
+Die Kamera schaut in die negative Z-Achse (Right-Hand Rule).
+
+== Orthographische Projektion
+
+- _Normalized Device Coordinates (NDC):_ Projektionswürfel
+
+== Perspektive Projektion
