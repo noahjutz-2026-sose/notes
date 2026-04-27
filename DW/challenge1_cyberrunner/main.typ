@@ -27,11 +27,11 @@
 = Thema
 
 #place(bottom + end, dy: 50%, dx: 10%)[
-  #image("assets/labyrinth.png", height: 130%)
+  #image("assets/labyrinth.png", height: 100%)
 ]
 
 #align(horizon)[
-  KI lernt, Kugel durch Labyrinth zu führen.
+  Reinforcement Learning lernt, Kugel durch Labyrinth zu führen.
 
   Dabei entstehen Performance-Daten über Zeit.
 
@@ -63,6 +63,12 @@
 ]
 
 = Daten
+
+== Quelle
+
+#align(horizon)[
+  Eigenes Training (einige Stunden, 2-20 GB)
+]
 
 == Format
 
@@ -147,6 +153,7 @@
 
 #align(horizon + center)[
   #set text(font: "JetBrainsMono NF")
+  #set table(stroke: fggrad)
   #grid(
     columns: 2,
     column-gutter: 16pt,
@@ -184,7 +191,12 @@
 = Mögliche Erkenntnisse
 
 #align(horizon)[
+  #text(fill: fggrad, weight: "black")[Hardware]
   - Welche Ressourcen sind bei geringen FPS ausgelastet?
-  - Welches Exploration Ratio maximiert den Reward?
+  #text(fill: fggrad, weight: "black")[Hyperparameter]
+  - Welche Entropy maximiert den Reward?
+  - Welche Replay Size maximiert den Reward?
+  - Wie verhält sich der Gradient descent, wenn länger kein Fortschritt gemacht wird?
+  #text(fill: fggrad, weight: "black")[Sonstiges]
   - Ist der Reward direkt an den Fortschritt gebunden?
 ]
