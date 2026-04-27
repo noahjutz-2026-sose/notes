@@ -279,8 +279,30 @@ _Dice Operation:_ Mehrere Dimensionen eingrenzen
 == Dimensionshierarchie
 
 - Wann? \
-    Tag $->$ Monat $->$ Quartal $->$ Jahr $->$ Top
+  Tag $->$ Monat $->$ Quartal $->$ Jahr $->$ Top
 - Wo? \
-    Stadt $->$ Kreis $->$ Region $->$ Bundesland $->$ Land $->$ Top
+  Stadt $->$ Kreis $->$ Region $->$ Bundesland $->$ Land $->$ Top
 
 == Measure
+
+#align(end)[2026-04-27 VL06]
+
+== Aggregation Type
+
+- _Flow:_ Immer addierbar
+  - z.B. Units sold
+- _Stock:_ Über Zeit nicht addierbar
+  - z.B. Lagerbestand
+- _Value Per Unit (VPU):_ allgemein nicht addierbar
+
+= Conceptual Modeling
+
+== M/ER-Diagramm
+
+== ROLAP
+
+_Snowflake Schema:_ Fakt $->$ Dimension $->$ Feinere Dimension
+
+- Attribute einer Tabelle sind Measures
+
+_Star Schema:_
