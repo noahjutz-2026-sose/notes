@@ -981,3 +981,28 @@ uint32_t push_angle(uint32_t angles, double deg) {
 == Asymptote Rotation
 
 Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/da4a3d6907dcc10ddb0939c9616c458a9cbbea52/CG/ue04/solar.asy")[practive/CG/ue04].
+
+#align(end)[2026-04-28]
+
+= Projektion
+
+- Nlerp stellt die länge wieder her, wodurch das Objekt unter Rotation rigide bleibt. Dabei ist die Interpolationsgeschwindigkeit nicht linear.
+- Slerp rotiert um einen Ursprung, ist also zeitlich linear.
+- $
+    mat(
+      a_(1 1), a_(1 2), a_(1 3), a_(1 4), t_1;
+      a_(2 1), a_(2 2), a_(2 3), a_(2 4), t_2;
+      a_(3 1), a_(3 2), a_(3 3), a_(3 4), t_3;
+      a_(4 1), a_(4 2), a_(4 3), a_(4 4), t_4;
+      0, 0, 0, 0, 1
+    )
+  $
+- Viewing Direction $g$ und Up Vector $t$
+- Viewing Direction Vector hat einen Rotationsfreiheitsgrad. Durch $t$ eingeschränkt.
+- nearest und farthest.
+- Orthographisch: Entfernte Objekte werden nicht kleiner. Perspektivisch: Distanz zur Kamera wird berücksichtigt
+- Orth.: Diagonale Matrix. Perspektivisch: Translation.
+- ?
+- ?
+
+== Slerp
