@@ -1,4 +1,5 @@
 #import "/deps.typ": cetz, cetz-plot, codly, gentle-clues, mannot, meander
+#import "/style.typ": *
 #import gentle-clues: *
 #import mannot: *
 #import codly: codly
@@ -863,6 +864,8 @@ Herleitung: Siehe Skript Definition 1.33.
   $
 ]
 
+Round to Even in binär bedeutet, die letzte Ziffer auf 0 zu runden.
+
 == Gerundete Operation
 
 $
@@ -880,3 +883,113 @@ $
 ]
 
 #align(end)[2026-04-28 VL06]
+
+= Fehlerrechnung in mehreren Dimensionen
+
+- Bis jetzt: $f : RR -> RR$.
+- Ziel: $f: RR^n -> RR^m$
+- Zuerst:
+  - $f: RR^n -> RR$
+  - $f: RR^n -> RR^n$ für lineare Abbildungen
+
+== Vektornorm
+
+Die _Norm_ auf einen reellen Vektorraum $V$ ist definiert als eine Abbildung
+
+$
+  norm(dot)_* : V -> RR
+$
+
+Eigenschaften:
+- Positivität: $norm(v) >= 0$
+- Definitheit: $norm(v) = 0 <=> v = 0$
+- Homogenität: $norm(lambda v) = abs(lambda) dot norm(v)$
+- Dreiecksungleichung: $norm(v+w) <= norm(v) + norm(w)$
+
+#example(title: [Beispiele für Normen])[
+  *2-Norm / Euklidische Norm*
+  $
+    norm(v)_2 = sqrt(sum v_i^2)
+  $
+
+  Wird für _mean squared error_ verwendet.
+
+  *1-Norm / Summennorm / Manhattanform*
+
+  $
+    norm(v)_1 = sum abs(v_i)
+  $
+
+  *Unendlich-Norm / Maximumsnorm*
+
+  $
+    norm(v)_infinity = max abs(v_i)
+  $
+]
+
+Allgemein: $p$-Norm mit $1<=p<infinity$
+
+$
+  norm(v)_p = (sum_(i=1)^n abs(v_i)^p)^(1/p)
+$
+
+Die Eigenschaften der Vektornorm gelten für alle $p$.
+
+#example(title: [Einheitskreis])[
+  $S = {v in RR^2 mid(|) norm(v)_* = 1}$
+  #cetz.canvas(length: 3cm, {
+    import cetz.draw: *
+
+    set-style(mark: (end: "straight"))
+
+    line((-1.1, 0), (1.1, 0))
+    line((0, -1.1), (0, 1.1))
+
+    line((0, 0), (-0.5, 0), (-0.5, 0.5), stroke: colors.primary.normal)
+    line((0, 0), (-calc.cos(calc.pi / 4), calc.sin(calc.pi / 4)), stroke: colors.secondary.normal)
+    line((0, 0), (1, 1), stroke: gray)
+
+    set-style(mark: none)
+    line((-1, 0), (0, 1), (1, 0), (0, -1), close: true, stroke: colors.primary.dark)
+    circle((0, 0), radius: 1, stroke: colors.secondary.dark)
+    rect((-1, -1), (1, 1), stroke: gray)
+  })
+
+  Man sieht: Die #text(colors.primary.normal)[1-Norm] ist für einen gegebenen Vektor stets größer gleich der #text(colors.secondary.normal)[2-Norm].
+]
+
+Abschätzung von Normen:
+
+$
+     norm(v)_infinity & <= norm(v)_2 && <= sqrt(n) norm(v)_infinity \
+  1/sqrt(n) norm(v)_1 & <= norm(v)_2 && <= norm(v)_1 \
+     norm(v)_infinity & <= norm(v)_1 && <= n norm(v)_infinity
+$
+
+== Partielle Ableitungen
+
+#example[
+  $
+    f(x_1, x_2) = x_1^2 + x_1 dot x_2
+  $
+
+  Nach $x_1$ ableiten:
+
+  $
+    (partial f)/(partial x_1)(x_1^*, x_2^*) = 2x_1^* + x_2^*
+  $
+
+  Nach $x_2$ ableiten:
+
+  $
+    (partial f)/(partial x_2)(x_1^*, x_2^*) = x_1^*
+  $
+
+  Gradient:
+
+  $
+    gradient f(x_1, x_2) = vec(2x_1+x_2, x_1)
+  $
+]
+
+#align(end)[2026-05-05 VL07]
