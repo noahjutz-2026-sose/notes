@@ -296,3 +296,35 @@ Von $Z$ zu $A$: In jeder Stufe wird für jeden Zustand der optimale Pfad zu $Z$ 
 $
   min f_k + min sum_(k<i<=n) f_i
 $
+
+#align(end)[2026-04-30 VL06]
+
+= Graphentheorie
+
+== Minimale Kantenüberdeckung
+
+Ziel: Minimale Anzahl Anzahl Kanten, sodass jeder Knoten mind. eine Kante hat.
+
+#note(title: [Formulierung als LP])[
+  $
+    min sum_({i, j} in E) x_(i j) quad quad
+    "Unter NB" quad quad
+    sum_(j in V) x_(i j) >= 1 space forall i in V
+  $
+]
+
+== Kürzeste Wege
+
+#note(title: [Formulierung als NP])[
+  $
+    min sum_((i, j) in E) c_(i j) x_(i j) quad quad
+    "Unter NB" quad quad
+    sum_(j) x_(i j) - sum_(j) x_(j i) = 0 space forall i in V
+  $
+]
+
+== Chinese Postman
+
+Ziel: Kürzester Zyklus, bei dem jede Kante traversiert wird.
+
+Eulerkreis nur möglich, wenn alle Knotengrade gerade sind.
