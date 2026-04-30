@@ -1002,7 +1002,24 @@ Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/da4a3d6907dcc10
 - nearest und farthest.
 - Orthographisch: Entfernte Objekte werden nicht kleiner. Perspektivisch: Distanz zur Kamera wird berücksichtigt
 - Orth.: Diagonale Matrix. Perspektivisch: Translation.
-- ?
-- ?
+- #[
+    $
+      h = t = -b = n tan theta/2 quad ; quad
+      w = r = -l = a n tan theta/2
+    $
+  ]
+- #[
+    Extrinsische Parameter: View-Matrix
+
+    Intrinsische Parameter: Projektionsmatrix
+  ]
 
 == Slerp
+
+Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/ccbd5dfd868dbedbff902eb86b182561998c6cfe/CG/ue05/slerp.asy#L48-L54")[CG/ue05].
+
+== Eyespace
+
+Nichts zu tun
+
+==
