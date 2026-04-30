@@ -201,3 +201,42 @@ Ein Deadlock tritt genau dann auf, wenn 4 Bedingungen erfüllt sind:
 
 - Starvation
 - _Priority Inversion:_ Niederpriorisierter p nimmt Ressource von hochpriorisiertem.
+
+#align(end)[2026-04-30 VL17 (2025-12-08)]
+
+== Avoidance Algorithmen
+
+- Deadlock detecting lock: Erlaubt keine Zyklen
+
+=== Safety Algorithmus
+
+- Available: Für jede R, wie viele Instanzen verf. sind
+- Max: Für jeden P, für jedes R, wie viele max gebraucht werden
+- Allocation: Für jeden P, für jedes R, wie viele gerade hat
+- Need: $"Max" - "Allocation"$
+
+=== Resource-Request Algorithmus
+
+=== Bankiers Algorithmus
+
+== Datenstrukturen (Graphen)
+
+=== Resource Allocation Graph
+
+_Resource Allocation Graph:_ Knoten: Prozesse P und Ressourcen R. Kanten: Anforderung, Besitz.
+
+=== Wait-For Graph
+
+Knoten sind Prozesse, $P_1 -> P_2$ bedeutet: P1 wartet auf P2.
+
+== Recovery
+
+Kill Process in Deadlock
+
+= Memory Management
+
+- OS-Mapping von Pages (HW) zu Frames (SW) durch Page Table
+
+== Contiguous Memory Allocation
+
+#align(end)[2026-04-30 VL18 (2025-12-09)]
