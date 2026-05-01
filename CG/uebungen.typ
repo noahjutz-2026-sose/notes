@@ -1022,4 +1022,38 @@ Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/ccbd5dfd868dbed
 
 Nichts zu tun
 
-==
+== Projektionsmatrix und Viewport-Matrix
+
+$
+  P = mat(
+    0.1, 0, 0, 0;
+    0, 0.2, 0, 0;
+    0, 0, -0.02, -1.02;
+    0, 0, 0, 1;
+  ) quad quad
+  W = mat(
+    960, 0, 0, 960;
+    0, 540, 0, 540;
+    0, 0, 50, 51;
+    0, 0, 0, 1
+  )
+$
+
+=== Verzerrung oder Größenänderung
+
+Wähle
+
+$
+  triangle_1 = mat(
+    0, 1, 0;
+    0, 1, 2;
+    0, 1, 0;
+    1, 1, 1;
+  ) quad quad
+  triangle_2 = mat(
+    0, 1, 0;
+    0, 1, 2;
+    0, 1, 0;
+    2, 2, 2;
+  )
+$
