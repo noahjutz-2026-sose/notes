@@ -376,3 +376,61 @@ $
          & = (1-cos^2 x)/(x + x cos x) \
          & = (sin^2 x)/(x + x cos x)
 $
+
+#align(end)[2026-05-02 TT04]
+
+= IEEE 754
+
+== Kleinste und größte Maschinenzahl
+
+IEEE Single:
+
+#grid(
+  columns: (1fr,) * 2,
+  $
+    c_min & = 1 \
+    e_min & = -126 "(def.)" \
+    m_min & = 2^(-23) \
+    x_min & = 2^(-23) dot 2^(-126) = 2^(-149) \
+  $,
+  $
+    c_max & = 2^8-2 \
+    e_max & = 2^8-2-127 = 2^8-129 \
+    m_max & = bold(1+)(2^23-1) dot 2^(-23) = 2 - 2^(-23) \
+    x_max & = (2-2^(-23)) dot 2^(2^8-129) \
+          & = (2-2^(-23)) dot 2^(127) \
+          & = 2^128-2^104 \
+  $,
+)
+
+Allgemein für $MM(b, m, L, U)$:
+
+#grid(
+  columns: (1fr,) * 2,
+  $
+    e_min & = L \
+    m_min & = 2^(-m) \
+    x_min & = e_min dot m_min = b^L dot 2^(-m) \
+  $,
+  $
+    e_max & = U \
+    m_max & = 2 - 2^(-m) \
+    x_max & = e_max dot m_max = b^U dot (2 - 2^(2-m))
+  $,
+)
+
+== IEEE Rechenoperationen
+
+=== Bitmuster
+
+$
+  x_1 / 8 & = x_1 >> 3 \
+          & = 00101011 00000000 01111100 >> 3 \
+          & = 00000101 01100000 00001111100 #text(gray)[100 ist exakte mitte, LSB odd] \
+          & approx 00000101 01100000 00001111 + 1 \
+          & = 00000101 01100000 00010000
+$
+
+$
+  6.3_10 & =
+$
