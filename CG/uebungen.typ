@@ -1039,21 +1039,4 @@ $
   )
 $
 
-=== Verzerrung oder Größenänderung
-
-Wähle
-
-$
-  triangle_1 = mat(
-    0, 1, 0;
-    0, 1, 2;
-    0, 1, 0;
-    1, 1, 1;
-  ) quad quad
-  triangle_2 = mat(
-    0, 1, 0;
-    0, 1, 2;
-    0, 1, 0;
-    2, 2, 2;
-  )
-$
+Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/ef6b3849b03f76d58514e82117a5f8ad2c0993c9/CG/ue05/projection.m")[CG/ue05/projection.m].
