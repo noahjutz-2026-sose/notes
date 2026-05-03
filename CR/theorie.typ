@@ -423,6 +423,10 @@ Allgemein für $MM(b, m, L, U)$:
 
 === Bitmuster
 
+#further(width: 50%)[
+  #link("https://www.youtube.com/watch?v=PjmWG_8b3os")[Binary Multiplication]
+]
+
 #table(
   columns: 2,
   $
@@ -440,12 +444,13 @@ Allgemein für $MM(b, m, L, U)$:
     y_2 & = 6.3_10 \
   $,
   $
-          & = 110.0overline(100) \
-          & = 1.100overline(100) dot 2^2 \
-    c_y_2 & = 127 + 2 \
-    m_y_2 & = 10010010010010010010010 text(#gray, | 0100...) \
-          & approx 10010010010010010010010 \
-    s_y_2 & = 0
+    6.3_10 & = 110.0overline(100) \
+           & = 1.100overline(100) dot 2^2 \
+     c_y_2 & = 127 + 2 = 10000001 \
+     m_y_2 & = 100100100100100 text(#gray, | 10010010...) \
+           & approx 100100100100100 + 1 \
+           & = 100100100100101 \
+     s_y_2 & = 0
   $,
 
   $
@@ -453,6 +458,89 @@ Allgemein für $MM(b, m, L, U)$:
   $,
   $
     m_y_3 & = m^2_x_2 \
-          & = 0110000 00000000^2
+          & = 0110000 00000000^2 \
+          & = 1001000000000000000000000000 \
+          & = 2^13 dot 100100000000000 \
+    c_y_3 & = c_x_2 + 13 = 11111110 \
+    s_y_3 & = 0
+  $,
+)
+
+=== IEEE zu Dezimal
+
+$
+          x_3 & = 01000000 10110000 00000000 \
+              & = + (1 + 0.011000000000000_2) dot 2^(10000001_2-127) \
+              & = 1.011_2 dot 2^(257-127) \
+              & = 1.375 dot 2^130 \
+  log_10(x_3) & =log_10(1.375) + 130 dot log_10(2) \
+              & = 39.272202134483834 \
+          x_3 & = 10^0.272202134483834 dot 10^39 \
+              & approx 1.87 dot 10^39
+$
+
+=== Ordnen
+
++ $z_2$ (negativ)
++ $z_4$ (kleinster exponent)
++ $z_3$ (kleinere Mantisse)
++ $z_1$
+
+== Endliche Darstellbarkeit in Dezimal- und Binärform
+
+=== Endlicher Dezimalbruch zu Binärbruch
+
+Falsch, gegenbeispiel: $6.3_10 = 110.overline(1001)_2$
+
+=== Binärbruch zu Endlicher Dezimalbruch
+
+Wahr, weil:
+
+Endliche Dezimalbrüche bleiben sind unter Addition abgeschlossen.
+
+$=>$ auch unter Multiplikation, weil das eine wiederholte Addition ist.
+
+$=>$ auch unter Potenzierung, weil das eine wiederholte Multiplikation ist.
+
+$=>$ $forall e in ZZ : 2^(e)$ ist endlicher Dezimalbruch.
+
+Weil das auch unter Addition und Multiplikation abgeschlossen ist, ist die Summation der Mantissebits und Multiplikation um Exponenten sowie Sign-Bit endlich darstellbar.
+
+$
+  => s dot 2^e dot (1 + sum_(i=0)^m d_i 2^(-i)) "kann als endlicher Dezimalbruch dargestellt werden." square.filled
+$
+
+== Vektornormen
+
+=== Dreiecksungleichung
+
+#table(
+  columns: 2,
+  [1-Norm],
+  $
+    abs(a + b) <= abs(a) + abs(b)
+  $,
+
+  [$infinity$-Norm],
+  $
+    max a + b <= max a + max b
+  $,
+)
+
+=== Beweis
+
+TODO
+
+== Partielle Ableitungen
+
+#grid(
+  columns: (1fr,) * 2,
+  $
+    (partial f_1)/(partial x) & = 2x \
+    (partial f_1)/(partial y) & = 3y^2
+  $,
+  $
+    (partial f_2)/(partial x) & = sin y \
+    (partial f_2)/(partial y) & = x cos y
   $,
 )
