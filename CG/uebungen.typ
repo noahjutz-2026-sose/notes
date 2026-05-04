@@ -1040,3 +1040,9 @@ $
 $
 
 Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/ef6b3849b03f76d58514e82117a5f8ad2c0993c9/CG/ue05/projection.m")[CG/ue05/projection.m].
+
+== Frustumsgrenze
+
+$
+  x_max(z) & =
+$

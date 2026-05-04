@@ -301,8 +301,49 @@ _Dice Operation:_ Mehrere Dimensionen eingrenzen
 
 == ROLAP
 
+#align(end)[2026-05-04 VL07]
+
+=== Snowflake Schema
+
 _Snowflake Schema:_ Fakt $->$ Dimension $->$ Feinere Dimension
 
-- Attribute einer Tabelle sind Measures
+```sql
+WHERE ...
+    AND s.market_id=m.market_id -- Join 1
+    AND m.city_id=ci.city_id -- Join 2
+    AND ci.region_id=r.region_id -- Join 3
+    AND r.region = 'Bavaria'
+```
 
-_Star Schema:_
+Viele Joins notwendig!
+
+=== Star Schema
+
+_Star Schema:_ Nur 1 Tabelle pro Dimension $=>$ Redundanz, weniger Joins. Denormalisiert.
+
+== Dimensionentabellen
+
+- _Typ 0:_ Es gibt keine Veränderungen
+- _Typ 1:_ Es gibt nur den neuesten Stand
+- _Typ 2:_ Valid from, until Spalten
+  ```sql
+  ... WHERE '2022-10-01' BETWEEN valid_from AND valid_until;
+  ... WHERE valid_until > current_timestamp;
+  ```
+  - Konvention: From inklusive, until exklusive
+- _Typ 3:_ Zwei varianten: Original und current
+
+== Fakttabellen
+
+- _Transactional Fact Table:_ Jeder Eintrag ist ein Event
+  - Eine Tabelle pro Event-Type oder mehrere Types in einer Tabelle
+- _Periodic Snapshot Fact Table:_ Jeder Eintrag ist ein Zustand zu einem Zeitpunkt
+- _Accumulated Snapshot Fact Table:_ Einträge ändern sich über Zeit
+  #[
+    #codly(header: [Beispiel])
+    ```sql
+    SELECT * FROM exa_dba_audit_sessions WHERE logout_time is null;
+    ```
+  ]
+
+  = Multi-Tentancy
