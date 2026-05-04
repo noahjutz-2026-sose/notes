@@ -320,6 +320,54 @@ Die Kamera schaut in die negative Z-Achse (Right-Hand Rule).
 
 == Orthographische Projektion
 
-- _Normalized Device Coordinates (NDC):_ Projektionswürfel
+- _Normalized Device Coordinates (NDC):_ Projektionswürfel (in 3D), Quadrat (in 2D)
 
 == Perspektive Projektion
+
+#align(end)[2026-05-04 VL08]
+
+_Dehomogenisierte Koordinaten:_
+
+$
+  H(vec(x_1, x_2, x_3)) = vec(x_1 slash x_3, x_2 slash x_3)
+$
+
+#example(title: [Perspektivische Projektion in 2D])[
+  #cetz.canvas(length: .5cm, {
+    import cetz.draw: *
+    line((0, 0), (5, 5))
+    line((0, 0), (5, -5))
+
+    line((2, 2), (2, -2), stroke: orange)
+
+    circle((2, 2), radius: 2pt, fill: purple, stroke: none)
+    circle((4, 0), radius: 2pt, fill: purple, stroke: none)
+
+    translate((10, 0))
+
+    grid(
+      (0, -5),
+      (10, 5),
+      stroke: colors.on_surface.lighter,
+    )
+    line((0, -5), (0, 5), stroke: orange)
+  })
+]
+
+=== Nichtlineares Z
+
+- x-Achse: Eingabe-Z (nach rechts negativ)
+- y-Achse: NDC-Z
+  - near-Distanz: $f(1)$
+  - far-Distanz: $f(-1)$
+
+== Clipping
+
+$
+  "Local Space " ->^M
+  "World Space" ->^V
+  "Eye Space" ->^P
+  bold("ClipSpace") ->^H(dot)
+  "NDC" ->^W
+  "Window Coordinates"
+$
