@@ -993,3 +993,256 @@ $
 ]
 
 #align(end)[2026-05-05 VL07]
+
+Definition:
+
+$
+  f: RR^n -> RR, quad x^* in RR^n
+$
+
+Dann ist die partielle Ableitung von $f$ nach $x_i$ an der Stelle $x^*$:
+
+$
+  (partial f)/(partial x_i) (x^*) = lim_(h=0) (f(x^*+h dot e_i) - f(x^*))/h
+$
+
+#note[
+  $e_i$ ist der Einheitsvektor in Richtung $i$.
+]
+
+Wir lassen fortan $*$ weg.
+
+#example(title: [Kugelvolumen])[
+  $
+    V(r, h) = 1/3 pi r^2 h \
+  $
+
+  Nach $r$ ableiten:
+
+  $
+    (partial V)/(partial r) (r, h) & = 2/3 pi r h
+  $
+
+  Nach $h$ ableiten:
+
+  $
+    (partial V)/(partial h) (r, h) & = 1/3 pi r^2
+  $
+]
+
+== Gradient
+
+Definition:
+
+$
+  f: RR^n -> RR, x^* in RR^n
+$
+
+Der Gradient von $f$ an der Stelle $x^*$ ist
+
+$
+  gradient f(x^*) = vec(
+    (partial f)/(partial x_1) (x^*),
+    (partial f)/(partial x_2) (x^*),
+    ...,
+    (partial f)/(partial x_n) (x^*),
+  )
+$
+
+== Jakobi-Matrix
+
+$
+  f: RR^n -> RR^m
+$
+
+mit Komponentenfunktion
+
+$
+  f_i: RR^n -> RR
+$
+
+also
+
+$
+  f = vec(f_1, ..., f_m)
+$
+
+und
+
+$
+  x^* in RR^n
+$
+
+Dann ist
+
+$
+  D f(x^*) = J f(x^*) = mat(
+    (partial f_1)/(partial x_1) (x^*), ..., (partial f_1)/(partial x_n) (x^*);
+    ..., ..., ...;
+    (partial f_m)/(partial x_1)(x^*), ..., (partial f_m)/(partial x_n)(x^*)
+  )
+$
+
+Die Jakobi-Matrix von $f$ bei $x^*$.
+
+== Hesse-Matrix
+
+Um aus einer Funktion $f: RR^n -> RR$ eine Jakobi-Matrix zu erhalten, bilden wir den Gradienten:
+
+$
+  D(gradient f) = mat(
+    (partial^z f)/(partial x_1 partial x_z), ..., (partial^z f)/(partial x_1 partial x_n);
+    ..., ..., ...;
+    (partial^z f)/(partial x_n partial x_1), ..., (partial^z f)/(partial x_n partial x_n)
+  )
+$
+
+Wir nennen $H f = D(partial f)$ die _Hesse-Matrix_ von $f$.
+
+#example(title: [Hesse-Matrix vom Kugelvolumen])[
+  $
+    gradient V(r, h) = pi/3 vec(2 r h, r^2)
+  $
+
+  $
+    H V(r, h) = pi/3 dot mat(2h, 2r; 2r, 0)
+  $
+]
+
+#note[
+  Die Hesse-Matrix ist symmetrisch, wenn $f$ "glatt genug" ist.
+
+  $
+    (partial f)/(partial x_i partial x_j) = (partial f)/(partial x_j partial x_i)
+  $
+]
+
+== Mehrdimensionale Kondition
+
+Sei $f: RR^n -> RR$
+
+Taylorentwicklung von $f$ in $x$ ist
+
+$
+  f(tilde(x)) & = f(x) + (gradient f(x))^t dot (tilde(x)-x) + o(norm(tilde(x)-x)) \
+  & =^dot f(x) + (gradient f(x))^t dot (tilde(x)-x) \
+  & = f(x) + sum_(i=1)^n (partial f)/(partial x_i) (x) dot (tilde(x_i)-x_i) \
+  stretch(=>)^(-f(x)) f(tilde(x))-f(x) & = sum_(i=1)^n (partial f)/(partial x_i) (x) dot (tilde(x_i) - x_i) \
+  stretch(=>)^(abs(space/f(x))) abs((f(tilde(x))-f(x))/f(x)) &= abs(
+    sum_(i=1)^n 1/f(x) (partial f)/(partial x_i) (x) dot (tilde(x)_1 - x_1) \
+    &= abs(sum (partial f)/(partial x_i) (x) dot 1/f(x) dot x_i dot (tilde(x)_i-x_i)/x_i) \
+    &<= sum abs((partial f)/(partial x_i) (x) dot x_i/f(x) dot abs((tilde(x)-x_i)/x_i))
+  )
+$
+
+#note[
+  $
+    phi_i (x) := (partial f)/(partial x_i) (x) dot (x_i)/f(x) \
+    delta_x_i = (tilde(x_i)-x_i)/x_i \
+    delta_x = (delta_x_1,...,delta_x_n) \
+    phi = (phi_1,...,phi_n)
+  $
+]
+
+$
+  ... = sum abs(phi_i) dot abs(delta_x_i) \
+  <= sum (max abs(phi_j (x))) dot abs(delta_x_i) \
+  = max abs(phi_j (x)) dot sum abs(delta_x_i) \
+  = norm(phi)_infinity dot norm(delta_x)_1
+$
+
+Wir haben oben gezeigt dass das größer gleich $delta_y$ ist.
+
+$
+  delta_y <= norm(phi)_infinity dot norm(delta_x)_1
+$
+
+Daraus folgt die Kondition
+
+$
+  kappa_"rel"^infinity = norm(phi)_infinity = max abs((partial f)/(partial x_i) (x) dot x_i/f(x))
+$
+
+#example(title: [Relative Kondition Kugelvolumen])[
+  $
+    phi_r (r, h) = (partial V)/(partial r) (r, h) dot r/(1/3 pi r^2 h) \
+    = pi/3 2 r h r / (1/3 pi r^2 h) \
+    = 2
+  $
+
+  $
+    phi_h (r, h) = (partial V)/(partial h) (r, h) dot h/(1/3 pi r^2 h) = ... \
+    = 1
+  $
+
+  $
+    kappa_"rel"^infinity (r, h) = max {abs(2), abs(1)} =2
+  $
+]
+
+
+#note[
+  Wir betrachten Eingabefehler *Komponentenweise*.
+
+  $
+    delta_x = (delta_x_1, ..., delta_x_n)
+  $
+]
+
+== Matrixnormen
+
+=== Bei quadratischen Matrizen
+
+Eine Matrix ist ein Vektorraum.
+
+==== Frabenius-Norm / Euklidische Norm
+
+$
+  norm(A)_F = sqrt(sum_(i, j = 1)^n a_(i j)^2)
+$
+
+Das ist nicht die 2-Norm.
+
+==== Induzierte Norm / Matrixnorm
+
+Definition auf Vektornorm zurückführen:
+
+$
+  norm(A)_* = max_(x in RR^n, x != 0) (norm(A x)_*)/(norm(x)_*)
+$
+
+#task[
+  Beweise, dass induzierte Normen tatsächlich Matrixnormen definieren.
+]
+
+Induzierte Normen sind _Submultiplikativ:_ Dreiecksungleichung gilt.
+
+#proof[
+  Siehe VL
+]
+
+==== Spektralnorm
+
+Von 2-Norm induziert. Abhängig von Eigenwerten der Matrix.
+
+==== Spaltensummennorm
+
+Von 1-Norm induziert.
+
+$
+  norm(A)_1 = max_(j=1,...,n) (sum_(i=1)^n abs(a_(i j)))
+$
+
+#example[
+  $
+    norm(mat(1, 2; 3, -1))_1 = max{abs(1)+abs(3), abs(2)+abs(-1)} = 4
+  $
+]
+
+==== Zeilensummennorm
+
+Von $infinity$-Norm induziert
+
+$
+  norm(A)_infinity = max_(i=1,...,n) (sum_(j=1)^n abs(a_(i j)))
+$
