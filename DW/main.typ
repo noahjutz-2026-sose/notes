@@ -1,4 +1,4 @@
-#import "/template.typ": template
+#import "/template.typ": template, template_exercises
 
 #show: template
 
@@ -9,3 +9,9 @@
 #pagebreak()
 
 #include "notizen.typ"
+
+#pagebreak()
+
+#show: template_exercises
+
+#include "challenges.typ"
