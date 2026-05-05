@@ -1,5 +1,6 @@
 #import "/deps.typ": cetz, cetz-plot, diagraph, gentle-clues, mannot
 #import "/style.typ": colors
+#import "/components.typ": *
 #import mannot: *
 #import gentle-clues: clue
 
@@ -777,3 +778,62 @@ Der Optimale Pfad ist
 $
   "0a" -> "0b" -> "0c" -> "0d" -> "0e"
 $
+
+#align(end)[2026-07-05]
+
+= Graphen
+
+== Kürzeste Wege
+
+$
+  min F(x) = sum_((i, j) in E) c_(i j) x_(i j) \
+$
+
+Unter NB
+
+$
+  sum_j x_(i j) - sum_j x_(j i) = cases(
+    1 & "wenn" i=s,
+    -1 & "wenn" i=t,
+    0 & "sonst"
+  )
+$
+
+Siehe practice/OR/ue06.
+
+== Maximum Flow
+
+$
+  G = (V, E, c)
+$
+
+$
+  c = (c_(i j) mid(|) "Flusskapazität von" i "nach" j) \
+  x = (x_(i j) mid(|) "Fluss von" i "nach" j)
+$
+
+$
+  max sum_{j mid(|) (s, j) in E} x_(s j)
+$
+
+Unter NB
+
+$
+  sum_j x_(i j) - sum_j x_(j i) = cases(
+    F(x) & "wenn" i=s,
+    -F(x) & "wenn" i=t,
+    =0 & "sonst"
+  )
+$
+
+und
+
+$
+  0 <= x_(i j) <= c_(i j)
+$
+
+== Chinese Postman
+
+#further(width: 50%)[
+  #link("https://www.youtube.com/watch?v=EsECAdYGA1w")[Chinese Postman Problem]
+]
