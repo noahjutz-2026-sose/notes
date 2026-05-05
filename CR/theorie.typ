@@ -392,6 +392,7 @@ IEEE Single:
     e_min & = -126 "(def.)" \
     m_min & = 2^(-23) \
     x_min & = 2^(-23) dot 2^(-126) = 2^(-149) \
+          & "(Denormalisierte Zahl)"
   $,
   $
     c_max & = 2^8-2 \
