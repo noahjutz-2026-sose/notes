@@ -1069,13 +1069,14 @@ Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/ef6b3849b03f76d
 
   set-style(stroke: (paint: black, dash: "dashed"))
   line((0, 0), (0, -6))
-
-  circle((2, -2), radius: 4pt, fill: black, stroke: none)
-  content((), anchor: "north-west", padding: 4pt)[$
-    vec() -> vec(1, square, 0)
-  $]
 })
 
 $
-  x_max(z) & =
+  z' & = (n+f)/(n-f) z + (2f n)/(n-f) \
+   z & = (z' - (2f n)/(n - f))/((n+f)/(n-f)) \
+     & = z' (n-f)/(n+f) - (2f n)/(n+f) \
+$
+
+$
+  x_max (z') & = r/n dot z \
 $
