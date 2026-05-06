@@ -1043,6 +1043,39 @@ Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/ef6b3849b03f76d
 
 == Frustumsgrenze
 
+#figure[
+  #image("assets/frustum.png", width: 50%)
+]
+
+#cetz.canvas(length: .5cm, {
+  import cetz.draw: *
+
+  let bounds = 10
+
+  grid(
+    (-bounds, -1),
+    (bounds, bounds),
+    stroke: colors.on_surface.lighter,
+  )
+
+  set-transform(cetz.matrix.ident(4))
+
+  line((0, 0), (-bounds, -bounds))
+  line((0, 0), (bounds, -bounds))
+
+  set-style(stroke: colors.primary.normal)
+  line((-2, -2), (2, -2))
+  line((-6, -6), (6, -6))
+
+  set-style(stroke: (paint: black, dash: "dashed"))
+  line((0, 0), (0, -6))
+
+  circle((2, -2), radius: 4pt, fill: black, stroke: none)
+  content((), anchor: "north-west", padding: 4pt)[$
+    vec() -> vec(1, square, 0)
+  $]
+})
+
 $
   x_max(z) & =
 $

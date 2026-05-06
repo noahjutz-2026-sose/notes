@@ -322,7 +322,84 @@ Die Kamera schaut in die negative Z-Achse (Right-Hand Rule).
 
 - _Normalized Device Coordinates (NDC):_ Projektionswürfel (in 3D), Quadrat (in 2D)
 
+Orthographische Projektionsmatrix:
+
+$
+  P = mat(
+    2/(x_max-x_min), 0, 0, -(x_max+x_min)/(x_max-x_min);
+    0, 2/(y_max-y_min), 0, -(y_max+y_min)/(y_max-y_min);
+    0, 0, 2/(n-f), -(f+n)/(f-n);
+    0, 0, 0, 1
+  )
+$
+
 == Perspektive Projektion
+
+Top-Down view vom Viewing Frustum in 3D:
+
+#grid(
+  columns: 2,
+  column-gutter: 12pt,
+  cetz.canvas(length: 0.4cm, {
+    import cetz.draw: *
+
+    let bounds = 10
+
+    grid(
+      (-bounds, -1),
+      (bounds, bounds),
+      stroke: colors.on_surface.lighter,
+    )
+
+    set-transform(cetz.matrix.ident(4))
+
+    line((0, 0), (-bounds, -bounds))
+    line((0, 0), (bounds, -bounds))
+
+    group({
+      let n = 3
+      let f = 6
+      set-style(stroke: (dash: "dashed", thickness: 2pt))
+      line((-n, -n), (n, -n), stroke: colors.primary.normal)
+      line((-f, -f), (f, -f), stroke: colors.secondary.normal)
+    })
+
+    group({
+      set-style(stroke: colors.on_surface.light, mark: (end: "straight"))
+      line((-bounds, 0), (bounds, 0), name: "x")
+      content("x.end", anchor: "north-east", padding: 4pt)[$x$]
+
+      line((0, 1), (0, -bounds), name: "z")
+      content("z.end", anchor: "north-west", padding: 4pt)[$-z$]
+    })
+
+    set-style(stroke: 2pt)
+    line((0, 0), (0, -3), stroke: blue, name: "n")
+    content("n", anchor: "west", padding: 2pt)[$n$]
+    line((0, -3), (3, -3), stroke: green, name: "r")
+    content("r", anchor: "south", padding: 2pt)[$r$]
+
+    circle((3, -3), radius: 2pt, fill: black, stroke: none)
+    content((), anchor: "north-west", padding: 2pt)[$v$]
+  }),
+  table(
+    columns: 3,
+    [], $triangle_"eye"$, $triangle_"NDC"$,
+    $n$, $3$, $-1$,
+    $f$, $6$, $1$,
+    $r$, $3$, $1$,
+    $l$, $-3$, $-1$,
+  ),
+)
+
+$
+  P=mat(
+    (2n)/(r-l), 0, (l+r)/(r-l), 0;
+    0, (2n)/(t-b), (b+t)/(t-b), 0;
+    0, 0, (n+f)/(n-f), (2f n)/(n-f);
+    0, 0, -1, 0
+  )
+$
 
 #align(end)[2026-05-04 VL08]
 
