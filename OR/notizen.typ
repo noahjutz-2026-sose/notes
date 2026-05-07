@@ -325,6 +325,10 @@ Ziel: Minimale Anzahl Anzahl Kanten, sodass jeder Knoten mind. eine Kante hat.
 
 == Chinese Postman
 
+#further(width: 50%)[
+  #link("https://www.youtube.com/watch?v=JCSmxUO0v3k")[Route Inspection]
+]
+
 Ziel: Kürzester Zyklus, bei dem jede Kante traversiert wird.
 
 Eulerkreis nur möglich, wenn alle Knotengrade gerade sind.
