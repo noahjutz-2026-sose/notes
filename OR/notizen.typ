@@ -328,3 +328,44 @@ Ziel: Minimale Anzahl Anzahl Kanten, sodass jeder Knoten mind. eine Kante hat.
 Ziel: Kürzester Zyklus, bei dem jede Kante traversiert wird.
 
 Eulerkreis nur möglich, wenn alle Knotengrade gerade sind.
+
+#align(end)[2026-05-07 VL07]
+
+== Traveling Salesman (TSP)
+
+#further(width: 50%)[
+  #link("https://www.youtube.com/watch?v=RQpFffcI-ZI")[Nearest Neighbor Method]
+]
+
+Sukzessiver Einbau
+
+== Vehicle Routing Problem
+
+*NB1 & NB2:* Zu jedem Kunden führt genau eine Route hin und weg.
+
+$
+  sum_i x_(i j) = 1 quad quad
+  sum_j x_(i j) = 1
+$
+
+*NB3 & NB4:* Im Depot t enden und starten genau K Routen.
+
+$
+  sum_i x_(i t) = k quad quad
+  sum_j x_(t j) = k
+$
+
+*NB5:* Die Touren sind zusammenhängend
+
+$
+  forall S subset.eq V \\ {t}: quad
+  sum_(i in.not S) sum_(j in S) x_(i j) >= 1
+$
+
+In jede Knotenmenge muss mind. eine eingehende und eine ausgehende Kante sein.
+
+*NB6:* Ganzzahligkeit der Variablen
+
+$
+  x_(i j) in {0, 1}
+$
