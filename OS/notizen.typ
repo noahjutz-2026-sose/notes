@@ -240,3 +240,9 @@ Kill Process in Deadlock
 == Contiguous Memory Allocation
 
 #align(end)[2026-04-30 VL18 (2025-12-09)]
+
+Speicher wird in Blöcken verwaltet. _Pages_ und _Frames_ sind gleich große Einheiten.
+- Pages: Logischer/Virtueller Addressraum, von CPU gemanaged
+- Frames: Physikalischer Addressraum, von MMU verarbeitet
+
+Benutzerprogramm $<->$ OS $<->$ MMU $<->$ RAM
