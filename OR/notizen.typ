@@ -1,6 +1,5 @@
 #import "/components.typ": *
-#import "@preview/cetz:0.4.2"
-#import "@preview/cetz-plot:0.1.3"
+#import "/deps.typ": cetz, cetz-plot, codly
 
 #align(end)[2026-03-19 VL01]
 
@@ -332,6 +331,20 @@ Ziel: Minimale Anzahl Anzahl Kanten, sodass jeder Knoten mind. eine Kante hat.
 Ziel: Kürzester Zyklus, bei dem jede Kante traversiert wird.
 
 Eulerkreis nur möglich, wenn alle Knotengrade gerade sind.
+
+#codly.codly(header: [Eulerkreis])
+```py
+def eulerkreis(G: Graph, s: int) -> list[int]:
+    tour = [s]
+    while (u := tour.find(lambda u: G.E.any(lambda e: e[0] == u))):
+        v = u
+        while true:
+            e = G.E.remove(lambda e: e[0] == u)
+            v = e[1]
+            tour.push(e[1])
+            if v == u: break
+    return tour
+```
 
 #align(end)[2026-05-07 VL07]
 

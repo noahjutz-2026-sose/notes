@@ -837,3 +837,17 @@ $
 #further(width: 50%)[
   #link("https://www.youtube.com/watch?v=EsECAdYGA1w")[Chinese Postman Problem]
 ]
+
+Ungerade Knoten: A, C, E, G
+
+Paare:
+
+#table(
+  columns: 3,
+  [GE], [CA], [],
+  [8], [9], [17],
+  [GC], [EA], [],
+  [11], [5], [*16*],
+  [GA], [CE], [],
+  [13], [7], [20],
+)
