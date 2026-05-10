@@ -1080,3 +1080,15 @@ $
 $
   x_max (z') & = r/n dot z \
 $
+
+TODO fertig machen
+
+== C++ Rendering Pipeline
+
+=== NDC
+
+=== Perspectiv-Projektion
+
+=== Camera Space
+
+== Depth Buffer
