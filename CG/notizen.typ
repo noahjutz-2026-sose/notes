@@ -318,6 +318,52 @@ Rotationsinterpolation
 
 Die Kamera schaut in die negative Z-Achse (Right-Hand Rule).
 
+== Viewing Transform
+
+#[
+  #show "w": set text(red)
+  #show "u": set text(blue)
+  #show "v": set text(green)
+  $
+    w = (-g)/norm(g) \
+    u = (t times w) / norm(t times w) \
+    v = w times u
+  $
+
+  $
+    M_(C->W) & = T_(C->W) dot R_(C->W) \
+             & =mat(
+                 1, 0, 0, o_x;
+                 0, 1, 0, o_y;
+                 0, 0, 1, o_z;
+                 0, 0, 0, 1
+               ) dot mat(
+                 u_x, v_x, w_x, 0;
+                 u_y, v_y, w_y, 0;
+                 u_z, v_z, w_z, 0;
+                 0, 0, 0, 1
+               )
+  $
+
+  $
+    M_(W->C) & = M_(C->W)^(-1) \
+             & = R_(C->W)^(-1) T_(C->W)^(-1) \
+             & =
+               mat(
+                 u_x, u_y, u_z, 0;
+                 v_x, v_y, v_z, 0;
+                 w_x, w_y, w_z, 0;
+                 0, 0, 0, 1
+               ) dot mat(
+                 1, 0, 0, -o_x;
+                 0, 1, 0, -o_y;
+                 0, 0, 1, -o_z;
+                 0, 0, 0, 1
+               )
+  $
+
+]
+
 == Orthographische Projektion
 
 - _Normalized Device Coordinates (NDC):_ Projektionswürfel (in 3D), Quadrat (in 2D)
