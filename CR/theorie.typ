@@ -586,10 +586,6 @@ $square.filled$
 
 == Mehrdimensionale Kondition
 
-$
-  f(x_1, x_2) = x_1^2 x_2
-$
-
 #note[
   $
     phi_i (x) = (partial f)/(partial x_i) dot x_i/f(x) \
@@ -597,6 +593,41 @@ $
   $
 ]
 
+===
+
 $
-  phi_1 = (partial f)/(partial x_1) dot (x_1)/f(x)
+  f(x_1, x_2) = x_1^2 x_2
 $
+
+$
+  phi_1 & = (partial f)/(partial x_1) dot (x_1)/f(x) \
+        & = 2x_1 x_2 dot x_1/(x_1^2x_2) \
+        & = 2 \
+  phi_2 & = (partial f)/(partial x_2) dot x_2/f(x) \
+        & = x_1^2 dot x_2/(x_1^2x_2) \
+        & = 1
+$
+
+$
+  kappa_"rel"^infinity = max_i abs(phi_i) = phi_1 = 2
+$
+
+===
+
+$
+  a(s, t) = s/t^2
+$
+
+$
+  phi_s & = 1/t^2 dot s/(s/t^2) \
+        & = 1 \
+  phi_t & = s dot (-2) t^(-3) dot t/(s/t^2) \
+        & = -2 dot s dot t^(-3) dot t dot t^2 dot 1/s \
+        & = -2
+$
+
+$
+  kappa_"rel"^infinity = max abs(Phi) = abs(-2) = 2
+$
+
+TODO max Zeitmessung-Fehler
