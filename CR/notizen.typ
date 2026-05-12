@@ -1087,9 +1087,9 @@ Um aus einer Funktion $f: RR^n -> RR$ eine Jakobi-Matrix zu erhalten, bilden wir
 
 $
   D(gradient f) = mat(
-    (partial^z f)/(partial x_1 partial x_z), ..., (partial^z f)/(partial x_1 partial x_n);
+    (partial^2 f)/(partial x_1 partial x_2), ..., (partial^2 f)/(partial x_1 partial x_n);
     ..., ..., ...;
-    (partial^z f)/(partial x_n partial x_1), ..., (partial^z f)/(partial x_n partial x_n)
+    (partial^2 f)/(partial x_n partial x_1), ..., (partial^2 f)/(partial x_n partial x_n)
   )
 $
 
