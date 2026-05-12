@@ -1,6 +1,6 @@
 #import "/components.typ": *
 #import "/style.typ": *
-#import "/deps.typ": cetz, cetz-plot, gentle-clues, suiji
+#import "/deps.typ": cetz, cetz-plot, codly, gentle-clues, suiji
 
 #align(end)[2026-03-16 VL01]
 
@@ -507,3 +507,121 @@ $
   "NDC" ->^W
   "Window Coordinates"
 $
+
+#align(end)[2026-05-12 VL09]
+
+= OpenGL
+
+== Streams
+
+- _vbo:_ Vertex Buffer Object
+- _ibo:_ Index Buffer Object
+
+#codly.codly(header: [Daten einschleusen])
+
+```c
+glGenBuffers(...); // Create buffers
+glBindBuffer(...); // Bind buffer
+glBufferData(...); // Copy Data
+glBindBuffer(...); // Unbind buffer
+```
+
+#codly.codly(header: [Buffer an SM binden])
+```c
+glEnableVertexAttribArray(...); // Shader input an machen
+glVertexAttribPointer(...); // Buffer an stream binden
+```
+
+Diese Aufrufe sind langsam, weil CPU mit GPU synchronisiert kommuniziert. Schneller: _Vertex Array Objects_
+
+#codly.codly(header: [Vertex Array Object (VAO)])
+```c
+glGenVertexArrays(...); // Create
+glBindVertexArray(vao); // Bind
+glBindVertexArray(0); // Unbind
+```
+
+#note[
+  Zuerst VAO unbinden, dann Element Buffer
+]
+
+== State
+
+```c
+glEnable(...);
+glDisable(...);
+```
+
+== Shader
+
+- _Vertex Shader:_ Transformationen wie View, Projektion, Clip, NDC, Screen
+- _Fragment Shader:_ Raster-Werte
+- _Shader Program:_ Mehrere Shader
+
+#codly.codly(header: [Shader erstellen])
+```c
+glCreateShader();
+glShaderSource(); // Source code string
+glCompileShader();
+glGetShaderiv(); // iv: Int Vector (status codes)
+```
+
+#codly.codly(header: [Shader-Programm erstellen])
+```c
+glCreateProgram();
+glAttachShader(program, shader);
+glLinkProgram(program);
+glGetProgramiv(...);
+```
+
+#codly.codly(header: [Destructor])
+
+```c
+glDeleteProgram();
+glDeleteShader();
+```
+
+#codly.codly(header: [Programm nutzen])
+```c
+glUseProgram(program);
+```
+
+== OpenGL Shading Language GLSlang
+
+#codly.codly(header: [Vertex Shader])
+```glsl
+#version 130
+
+in vec3 local_vertex;
+
+void main() {
+    gl_Position = local_vertex; // ohne Verarbeitung weitergeben
+}
+```
+
+#codly.codly(header: [Fragment Shader])
+```glsl
+#version 130
+
+uniform vec3 col;
+out vec4 out_color;
+
+void main() {
+    out_color = vec4(col, 1); // immer gleiche Farbe
+}
+```
+
+=== Datenmanagement
+
+#codly.codly(header: [Uniform])
+```c
+glUniform1f(location, value);
+glUniformMatrix4fv(location, amount, transpose, ptr);
+```
+
+== Error Handling
+
+#codly.codly(header: [Debugging])
+```c
+glDebugMessageCallback
+```
