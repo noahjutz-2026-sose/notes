@@ -884,50 +884,50 @@ $
 
 #align(end)[2026-04-28 VL06]
 
-= Fehlerrechnung in mehreren Dimensionen
+= Fehlerrechnung in 2D
 
-- Bis jetzt: $f : RR -> RR$.
-- Ziel: $f: RR^n -> RR^m$
-- Zuerst:
+- Bis jetzt 1D-Norm: $f : RR -> RR$.
+- In diesem Kapitel: $f: RR^n -> RR$
+#clue[
+  Wir behandeln
   - $f: RR^n -> RR$
   - $f: RR^n -> RR^n$ für lineare Abbildungen
+]
 
-== Vektornorm
-
-Die _Norm_ auf einen reellen Vektorraum $V$ ist definiert als eine Abbildung
+Die Norm auf einen reellen Vektorraum $V$ ist definiert als eine Abbildung
 
 $
   norm(dot)_* : V -> RR
 $
 
-Eigenschaften:
+== Eigenschaften
+
 - Positivität: $norm(v) >= 0$
 - Definitheit: $norm(v) = 0 <=> v = 0$
 - Homogenität: $norm(lambda v) = abs(lambda) dot norm(v)$
 - Dreiecksungleichung: $norm(v+w) <= norm(v) + norm(w)$
 
-#example(title: [Beispiele für Normen])[
-  *2-Norm / Euklidische Norm*
-  $
-    norm(v)_2 = sqrt(sum v_i^2)
-  $
+== Verschiedene Vektornormen
 
-  Wird für _mean squared error_ verwendet.
+#table(
+  columns: 2,
+  table.header([*Norm*], [*Definition*]),
+  [2-Norm / Euklidische Norm / Mean Squared Error], $ norm(v)_2 = sqrt(sum v_i^2) $,
+  [1-Norm / Manhattan-Norm], $ norm(v)_1 = sum |v_i| $,
+  [Unendlich-Norm / Max-Norm], $ norm(v)_oo = max |v_i| $,
+)
 
-  *1-Norm / Summennorm / Manhattanform*
+=== Abschätzung
 
-  $
-    norm(v)_1 = sum abs(v_i)
-  $
+$
+     norm(v)_infinity & <= norm(v)_2 && <= sqrt(n) norm(v)_infinity \
+  1/sqrt(n) norm(v)_1 & <= norm(v)_2 && <= norm(v)_1 \
+     norm(v)_infinity & <= norm(v)_1 && <= n norm(v)_infinity
+$
 
-  *Unendlich-Norm / Maximumsnorm*
+== Allgemeine Definition
 
-  $
-    norm(v)_infinity = max abs(v_i)
-  $
-]
-
-Allgemein: $p$-Norm mit $1<=p<infinity$
+Die $p$-Norm mit $1<=p<infinity$ ist definiert als
 
 $
   norm(v)_p = (sum_(i=1)^n abs(v_i)^p)^(1/p)
@@ -958,15 +958,7 @@ Die Eigenschaften der Vektornorm gelten für alle $p$.
   Man sieht: Die #text(colors.primary.normal)[1-Norm] ist für einen gegebenen Vektor stets größer gleich der #text(colors.secondary.normal)[2-Norm].
 ]
 
-Abschätzung von Normen:
-
-$
-     norm(v)_infinity & <= norm(v)_2 && <= sqrt(n) norm(v)_infinity \
-  1/sqrt(n) norm(v)_1 & <= norm(v)_2 && <= norm(v)_1 \
-     norm(v)_infinity & <= norm(v)_1 && <= n norm(v)_infinity
-$
-
-== Partielle Ableitungen
+= Partielle Ableitungen
 
 #example[
   $
@@ -1048,6 +1040,8 @@ $
     (partial f)/(partial x_n) (x^*),
   )
 $
+
+= Fehlerrechnung in mehreren Dimensionen
 
 == Jakobi-Matrix
 
