@@ -346,4 +346,24 @@ _Star Schema:_ Nur 1 Tabelle pro Dimension $=>$ Redundanz, weniger Joins. Denorm
     ```
   ]
 
-  = Multi-Tentancy
+#align(end)[2026-05-11 VL08]
+
+== Schema Integration
+
++ _Schema Integration:_ Zuerst Daten sammeln, Schema danach definieren
+  - Schema Matching
+- _Data Integration:_ Daten inserten
+  - Entity Matching
+
+== Hetoregenität
+
+- Technisch
+- Datenmodell
+- Syntaktisch
+- Semantisch
+- _Strukturell:_ Joins
+- _Schematisch:_ Das gleiche wird auf versch. Weisen modelliert
+
+_Schema Matching:_ Paarweise korrespondenzen zweier Schemata
+
+= ETL und ELT
