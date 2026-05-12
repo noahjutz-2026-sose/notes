@@ -1221,3 +1221,211 @@ Induzierte Normen sind _Submultiplikativ:_ Dreiecksungleichung gilt.
 - Spektralnorm ist abhängig von Eigenwerten der Matrix
 
 #align(end)[2026-05-12 VL08]
+
+#proof(title: [Spaltensummennorm])[
+  1-Norm eines Vektors ist die Summe der (Beträge der) Komponenten.
+]
+
+#proof(title: [Zeilensummennorm])[
+
+]
+
+= Matrixkondition
+
+#note[
+  Weil wir den Vektor $x$ als 1-Spaltige Matrix betrachten können, ist $norm(A x)$ submultiplikativ.
+
+  $
+    norm(A x) <= norm(A) dot norm(x)
+  $
+]
+
+#example(title: [Geradenschnitt])[
+  $
+    y=m_i x+b_i
+  $
+
+  Wie wirkt sich ein Fehler in beiden $b$ auf den Schnittpunkt zwischen 2 Geraden aus?
+
+  Als Matrix umschreiben:
+
+  #grid(
+    columns: (1fr,) * 2,
+    align: horizon,
+    $
+      a_(1 1) x + a_(1 2) y & = b_1 \
+      a_(2 1) x + a_(2 2) y & = b_2 \
+    $,
+
+    $
+      <=> A dot v = b;
+      A=vec(x, y)
+    $,
+  )
+
+  Desto kleiner der Winkel ist, desto größer ist der Bereich, in dem der Schnittpunkt sein könnte.
+
+  #cetz.canvas(length: 0.1cm, {
+    import cetz.draw: *
+
+    line((0, -1), (50, 1), stroke: 10pt + blue.transparentize(70%))
+    line((0, -1), (50, 1))
+    line((0, 1), (50, -1), stroke: 10pt + red.transparentize(70%))
+    line((0, 1), (50, -1))
+  })
+]
+
+$
+  b = A x; tilde(b) = A tilde(x)
+$
+
+== Absoluter Fehler
+
+$
+       && norm(tilde(b)-b) & = norm(A tilde(x)-A x) \
+       &&                  & = norm(A (tilde(x)-x)) \
+       &&                  & = norm(A) dot norm(tilde(x)-x) \
+  <==> &&          Delta_b & <= norm(A) Delta_x
+$
+
+== Relativer Fehler
+
+$
+       &&                  norm(x) & = norm(A^(-1) b) \
+       &&                          & <= norm(A^(-1)) dot norm(b) \
+  <==> &&                1/norm(b) & <= norm(A^(-1))/norm(x) \
+  <==> && norm(b-tilde(b))/norm(b) & <= norm(A) dot norm(A^(-1)) dot norm(tilde(x)-x)/norm(x) \
+  <==> &&                  delta_b & <= norm(A) dot norm(A^(-1)) dot delta_x
+$
+
+Definition:
+
+$
+  kappa_*(A) = norm(A)_* dot norm(A^(-1))_*
+$
+
+Daraus folgt
+
+$
+  kappa_*(A) = kappa_*(A^(-1))
+$
+
+Daraus folgt
+
+$
+  delta_x <= kappa_* (A) dot delta_b
+$
+
+= Lineare Gleichungssysteme
+
+Sei $A$ quadratische invertierbare Matrix und $b$ Vektor. Um Gleichungssystem zu lösen:
+
+$
+      &&      A x & = b \
+  <=> && A^(-1) b & = x
+$
+
+Invertieren ist aufwendig und numerisch instabil. Alternativen:
+- Gauß-Algorithmus $mat(augment: #1, A, b)$
+- "Erweiterter Gauß"
+- QR-Zerlegung
+
+== "Erweiterter Gauß"
+
++ #[
+    Zerlege $A = L R$
+
+    - L ist linke untere Dreiecksmatrix
+    - R ist rechte obere Dreiecksmatrix
+
+    $A x = b <=> L R x = b => z = R x$
+  ]
++ Löse $L z = b$ (_Vorwärtselimination_)
++ Löse $R x = z$ (_Rücksubstitution_)
+
+*Vorteil:* Liefert mehr Informationen, z.B. Determinante.
+
+#example[
+  $
+    L = mat(1, 0, 0; 2, 1, 0; -1, 0, 1) quad quad
+    R = mat(1, -1, 0; 0, 3, 1; 0, 0, 2) quad quad
+    b = vec(3, 7, -7)
+  $
+
+  *Schritt 1:* $L z = b$
+
+  $
+           z_1 & = 3  && ==> z_1 && = 3 \
+    2z_1 + z_2 & = 7  && ==> z_2 && = 1 \
+    -z_1 + z_3 & = -7 && ==> z_3 && = -4
+  $
+
+  *Schritt 2:* $R x = z$
+
+  $
+       2 x_3 & = -4 && ==> x_3 && = -2 \
+    3x_2+x_3 & = 1  && ==> x_2 && = 1 \
+     x_1-x_2 & = 3  && ==> x_1 && = 4
+  $
+]
+
+== LR-Zerlegung
+
+#example[
+  $
+    A = mat(
+      2, 1, 0;
+      -2, 1, -2;
+      -4, 4, -7
+    )
+  $
+
+  Was sind $L$ und $R$?
+
+  Gauß-Algorithmus mit nur ersetzen liefert $R$.
+
+  $
+    A^1 & = mat(
+            2, 1, 0;
+            0, 2, -2;
+            0, 6, -7
+          ) \
+    A^2 & = mat(
+            2, 1, 0;
+            0, 2, -2;
+            0, 0, -1
+          ) = R
+  $
+]
+
+=== Formalisierung von Gauß-Ersetzen
+
+Sei
+$
+  L^(r,s) (lambda) = mat(
+    1, , , , ;
+    , 1, , , ;
+    , lambda, dots.down, , ;
+    , , , , 1;
+  )
+$
+
+Mit $lambda$ an stelle $(r, s)$.
+
+Dann ist
+
+$
+  A^1 = L^(r, s)(lambda) dot A
+$
+
+Addition der s-ten Zeile von $A$ auf die r-te Zeile von $A$.
+
+Um jetzt von $R$ auf $L$ zu schließen:
+
+$
+       && R & = L^2 A^1 = L^2 L^1 A \
+       && A & = L R \
+       &&   & = (L^2 L^1)^(-1) R \
+       &&   & = (L^1)^(-1) (L^2)^(-1) R \
+  <==> && L & = (L^1)^(-1) (L^2)^(-1)
+$
