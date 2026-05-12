@@ -1079,6 +1079,8 @@ $
 
 Die Jakobi-Matrix von $f$ bei $x^*$.
 
+Im Fall $m=1$ ist die Jakobi-Matrix der Gradient $J f = gradient f$.
+
 == Hesse-Matrix
 
 Um aus einer Funktion $f: RR^n -> RR$ eine Jakobi-Matrix zu erhalten, bilden wir den Gradienten:
