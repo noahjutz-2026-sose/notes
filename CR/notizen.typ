@@ -1189,60 +1189,41 @@ $
   $
 ]
 
-== Matrixnormen
+= Matrixnormen
 
-=== Bei quadratischen Matrizen
-
-Eine Matrix ist ein Vektorraum.
-
-==== Frabenius-Norm / Euklidische Norm
-
-$
-  norm(A)_F = sqrt(sum_(i, j = 1)^n a_(i j)^2)
-$
-
-Das ist nicht die 2-Norm.
-
-==== Induzierte Norm / Matrixnorm
+== Induzierte Norm
 
 Definition auf Vektornorm zurückführen:
 
 $
-  norm(A)_* = max_(x in RR^n, x != 0) (norm(A x)_*)/(norm(x)_*)
+  norm(A)_* & = max_(x in RR^n, x != 0) (norm(A x)_*)/(norm(x)_*) \
+            & = max_(x in RR^n, norm(x)_* = 1) norm(A x)
 $
-
-#task[
-  Beweise, dass induzierte Normen tatsächlich Matrixnormen definieren.
-]
 
 Induzierte Normen sind _Submultiplikativ:_ Dreiecksungleichung gilt.
 
-#proof[
-  Siehe VL
-]
+== Verschiedene Matrixnormen
 
-==== Spektralnorm
+#{
+  show table.cell.where(y: 0): text.with(weight: "bold")
+  show table.cell.where(x: 0): text.with(weight: "bold")
+  table(
+    columns: 4,
+    table.header([Norm], [Induziert von], [Formel], [$ norm(mat(a, b; c, d)) $]),
+    [Frobenius-], [], $ norm(A)_F = sqrt(sum_(i=1)^n sum_(j=1)^m a_(i j)^2) $, $ sqrt(a^2 + b^2 + c^2 + d^2) $,
+    [Spektral-], [2-Norm], $ norm(A)_2 = max_(norm(x)_2 = 1) norm(A x)_2 $, $$,
+    [Spaltensummen-],
+    [1-Norm],
+    $ norm(A)_1 = max_(j=1,...,n) sum_(i=1)^m abs(a_(i j)) $,
+    $ max {abs(a)+abs(c), abs(b)+abs(d)} $,
 
-Von 2-Norm induziert. Abhängig von Eigenwerten der Matrix.
+    [Zeilensummen-],
+    [$infinity$-Norm],
+    $ norm(A)_infinity = max_(i=1,...,m) sum_(j=1)^n abs(a_(i j)) $,
+    $ max {abs(a)+abs(b), abs(c)+abs(d)} $,
+  )
+}
 
-==== Spaltensummennorm
+- Spektralnorm ist abhängig von Eigenwerten der Matrix
 
-Von 1-Norm induziert.
-
-$
-  norm(A)_1 = max_(j=1,...,n) (sum_(i=1)^n abs(a_(i j)))
-$
-
-#example[
-  $
-    norm(mat(1, 2; 3, -1))_1 = max{abs(1)+abs(3), abs(2)+abs(-1)} = 4
-  $
-]
-
-==== Zeilensummennorm
-
-Von $infinity$-Norm induziert
-
-$
-  norm(A)_infinity = max_(i=1,...,n) (sum_(j=1)^n abs(a_(i j)))
-$
+#align(end)[2026-05-12 VL08]

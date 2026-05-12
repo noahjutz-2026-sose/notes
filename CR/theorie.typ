@@ -545,3 +545,58 @@ TODO
     (partial f_2)/(partial y) & = x cos y
   $,
 )
+
+#align(end)[2026-05-12]
+
+= Matrixnormen
+
+== Beweis Induzierte Norm einschränken
+
+Die induzierte Norm einer Matrix $A$ beschreibt den maximale Streckungsfaktor eines Vektors $x$ unter Linearer Transformation mit $A$.
+
+$
+  "Streckungsfaktor" = (norm(A x)_*)/norm(x)_*
+$
+
+Um zu beweisen, dass das Maximum aller Vektoren $x in RR^n$ gleich ist mit dem der Einheitsvektoren $norm(x)_* = 1$, beweise ich noch genereller, dass der Streckungsfaktor gleich bleibt, egal wie lang $x$ ist.
+
+$
+  norm(A x)/norm(x) & = 1/norm(x) norm(A x) \
+                    & = norm(1/norm(x) A x) \
+                    & = norm(A x/norm(x)) space square.filled
+$
+
+== Beweis Induzierte Norm
+
+Für eine Norm muss gelten:
+
++ Positivität: $norm(v) >= 0$
++ Definitheit: $norm(v) = 0 <=> v = 0$
++ Homogenität: $norm(lambda v) = abs(lambda) dot norm(v)$
++ Dreiecksungleichung: $norm(v+w) <= norm(v) + norm(w)$
+
+Wir setzen voraus, dass das für Vektornormen gilt und führen induzierte Normen darauf zurück. Wir müssen nur den Term $norm(A x)$ betrachten.
+
+1. *Positivität:* Ein linear transformierter Vektor bleibt ein Vektor. $square$
+2. *Definitheit:* Ausschließlich Nullmatrix kann alle Vektoren zu 0 komprimieren. $square$
+3. *Homogenität:* Ziehe Streckung aus Matrix. $(abs(lambda) A) v = A dot (abs(lambda) v) space square$
+4. *Dreiecksungleichung:* $norm((A+B)x)=norm(A x + B x) <=^(1) norm(A x) + norm(B x)$. (1): $A x$ und $B x$ sind vektoren. $square$
+
+$square.filled$
+
+== Mehrdimensionale Kondition
+
+$
+  f(x_1, x_2) = x_1^2 x_2
+$
+
+#note[
+  $
+    phi_i (x) = (partial f)/(partial x_i) dot x_i/f(x) \
+    kappa_"rel"^infinity = norm(phi)_infinity = max_i abs((partial f)/(partial x_i) (x) dot x_i/f(x))
+  $
+]
+
+$
+  phi_1 = (partial f)/(partial x_1) dot (x_1)/f(x)
+$
