@@ -20,8 +20,8 @@
       - Slot wählen in KW13
     ],
 
-    [1], [Idee Präsentation], [\_/15], [2026-04-26], [],
-    [2], [Peer-Review], [\_/5], [2026-05-10], [],
+    [1], [Idee Präsentation], [13/15], [2026-04-26], [],
+    [2], [Peer-Review], [5/5], [2026-05-10], [],
     [3], [Schema Integration], [\_/25], [2026-05-24], [Workbook],
     [4],
     [],
