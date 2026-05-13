@@ -33,24 +33,37 @@ Siehe #link("https://github.com/noahjutz-2026-sose/notes/blob/03435341582ceda5cb
 
 == Measures
 
-#table(
-  columns: 4,
-  table.header([Measure], [Data Type], [Range], [Aggregation Type]),
-  [wahlbereitschaft], `int`, $1,...,4$, [VPU],
-  [skalometer_partei], `int`, $-5,...,5$, [VPU],
-  [skalometer_regierung], `int`, $-5,...,5$, [VPU],
-  [skalometer_opposition], `int`, $-5,...,5$, [VPU],
-  [demokratiezufriedenheit], `int`, $1,...,4$, [VPU],
-  [politikinteresse], `int`, $1,...,3$, [VPU],
-  [wie_links_rechts], `int`, $1,...,11$, [VPU],
-  [wie_links], `int`, $1,...,5$, [VPU],
-  [wie_rechts], `int`, $1,...,5$, [VPU],
-  [wirtschaft], `int`, $1,...,5$, [VPU],
-  [asylrecht], `boolean`, $0, 1$, [FLOW],
-  [kernkraft], `boolean`, $0, 1$, [FLOW],
-  [kriminalität], `boolean`, $0, 1$, [FLOW],
-  [eu_mitgliedschaft], `int`, $1,...,3$, [VPU],
-  [milit_bedroht], `boolean`, $0, 1$, [FLOW],
-  [jahresrückblick], `boolean`, $0, 1$, [FLOW],
-  [jahresausblick], `int`, $1, ..., 3$, [VPU],
-)
+#[
+  #show table.cell.where(y: 0): strong
+
+  #table(
+    columns: 4,
+    table.header([Measure], [Data Type], [Range], [Aggregation Type]),
+    [wahlbereitschaft], `int`, $1,...,4$, [VPU],
+    [skalometer_partei], `int`, $-5,...,5$, [VPU],
+    [skalometer_regierung], `int`, $-5,...,5$, [VPU],
+    [skalometer_opposition], `int`, $-5,...,5$, [VPU],
+    [demokratiezufriedenheit], `int`, $1,...,4$, [VPU],
+    [politikinteresse], `int`, $1,...,3$, [VPU],
+    [wie_links_rechts], `int`, $1,...,11$, [VPU],
+    [wie_links], `int`, $1,...,5$, [VPU],
+    [wie_rechts], `int`, $1,...,5$, [VPU],
+    [wirtschaft], `int`, $1,...,5$, [VPU],
+    [asylrecht], `boolean`, $0, 1$, [FLOW],
+    [kernkraft], `boolean`, $0, 1$, [FLOW],
+    [kriminalität], `boolean`, $0, 1$, [FLOW],
+    [eu_mitgliedschaft], `int`, $1,...,3$, [VPU],
+    [milit_bedroht], `boolean`, $0, 1$, [FLOW],
+    [jahresrückblick], `boolean`, $0, 1$, [FLOW],
+    [jahresausblick], `int`, $1, ..., 3$, [VPU],
+    table.hline(stroke: black),
+    [sitze], `int`, $1,...,736$, [STOCK],
+    table.hline(stroke: black),
+    [wahlberechtigte], `int`, $1,...,10^8$, [STOCK],
+    [gueltige], `int`, $1,...,10^8$, [FLOW],
+    [ungueltige], `int`, $1,...,10^8$, [FLOW],
+    [waehlende], `int`, $1,...,10^8$, [FLOW],
+    [stimmen], `int`, $1,...,10^8$, [FLOW],
+    [anteil], `fraction`, $[0; 1]$, [STOCK],
+  )
+]

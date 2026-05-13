@@ -107,7 +107,10 @@
                 rel_beurteilung -> measure_wirtschaft
                 rel_beurteilung -> measure_asylrecht
                 rel_beurteilung -> measure_kernkraft
+                rel_beurteilung -> measure_kriminalität
                 rel_beurteilung -> measure_milit_bedroht
+                rel_beurteilung -> measure_jahresrückblick
+                rel_beurteilung -> measure_jahresausblick
             // dim_befragter -> rel_kompetenzzuschreibung
             //     rel_kompetenzzuschreibung -> dim_thema
             //     rel_kompetenzzuschreibung -> dim_partei
