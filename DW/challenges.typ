@@ -146,6 +146,7 @@ CREATE TABLE Sitzverteilung (
 #codly.codly(header: [(Datenquelle: Politbarometer)])
 ```sql
 CREATE TABLE Befragung_Wahlumfrage (
+    month INT,
     year INT,
     questionee_id INT,
     party_id INT,
@@ -155,3 +156,34 @@ CREATE TABLE Befragung_Wahlumfrage (
     rating INT
 );
 ```
+
+#codly.codly(header: [(Datenquelle: Politbarometer)])
+```sql
+CREATE TABLE Befragung_Beurteilung (
+    month INT,
+    year INT,
+    wahlbereitschaft INT,
+    -- TODO skalometer_regierung INT,
+    -- TODO skalometer_opposition INT,
+    demokratiezufriedenheit INT,
+    politikinteresse INT,
+    wie_links_rechts INT,
+    wie_links INT,
+    wie_rechts INT,
+    wirtschaft INT,
+    asylrecht BOOLEAN,
+    kernkraft BOOLEAN,
+    kriminalität BOOLEAN,
+    eu_mitgliedschaft INT,
+    jahresausblick INT,
+    jahresrückblick BOOLEAN
+)
+```
+
+TODO: Sollten Befragung_Wahlumfrage und Befragung_Beurteilung im M/ER Fakten sein?
+
+== Example Rows
+
+== Snowflake Schema
+
+== Snowflake vs Star Schema
