@@ -78,20 +78,32 @@
       fact_sitzverteilung -> dim_partei
       fact_sitzverteilung -> dim_year
       fact_sitzverteilung -> measure_sitze
-    fact_abstimmung
-      fact_abstimmung -> dim_date
-          dim_date -> dim_day [arrowhead=normal]
-              dim_day -> dim_month [arrowhead=normal]
-              dim_month -> dim_year [arrowhead=normal]
-        fact_abstimmung -> rel_sponsor
-            rel_sponsor -> dim_partei
-        fact_abstimmung -> rel_voting_behavior
-            rel_voting_behavior -> dim_partei
-        fact_abstimmung -> measure_result
-        fact_abstimmung -> dim_abstimmungstyp
+    // fact_abstimmung
+    //   fact_abstimmung -> dim_date
+    //       dim_date -> dim_day [arrowhead=normal]
+    //           dim_day -> dim_month [arrowhead=normal]
+    //           dim_month -> dim_year [arrowhead=normal]
+    //     fact_abstimmung -> rel_sponsor
+    //         rel_sponsor -> dim_partei
+    //     fact_abstimmung -> rel_voting_behavior
+    //         rel_voting_behavior -> dim_partei
+    //     fact_abstimmung -> measure_result
+    //     fact_abstimmung -> dim_abstimmungstyp
     fact_politbarometer
-        fact_politbarometer -> measure_v52_konfession
         fact_politbarometer -> dim_month
+        fact_politbarometer -> dim_respid
+            dim_respid -> rel_wahlumfrage
+                rel_wahlumfrage -> dim_partei
+                rel_wahlumfrage -> measure_wahlabsicht
+                rel_wahlumfrage -> measure_skalometer_partei
+            dim_respid -> rel_demographie
+                rel_demographie -> measure_alter
+                rel_demographie -> measure_geschlecht
+                rel_demographie -> measure_berufsgruppe
+            dim_respid -> rel_beurteilungen
+                rel_beurteilungen -> measure_links_rechts
+                rel_beurteilungen -> measure_links
+                rel_beurteilungen -> measure_rechts
     }
   ```,
   labels: it => {
