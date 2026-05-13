@@ -7,9 +7,8 @@
     content((), body, name: "body", padding: (4pt, 8pt))
 
     let (width, height) = measure(body)
-    let displacement = width / 4
+    let displacement = 20pt // width / 4
     set-style(stroke: s)
-    set-style(stroke: (dash: "dashed"))
     line(
       "body.north-east",
       (rel: (0, displacement), to: "body.north"),
@@ -113,17 +112,20 @@
     }
   ```,
   labels: it => {
-    let text = str(it)
-    let type = text.split("_").at(0)
-    let body = text.split("_").slice(1).join("_")
-    let fn = (
-      "fact": it => fact(strong(it)),
+    let txt = str(it)
+    let type = txt.split("_").at(0)
+    let body = txt.split("_").slice(1).join("_")
+    let dfn = (
+      "fact": it => {
+        set text(weight: "bold", size: 20pt)
+        fact(it, s: colors.on_surface.transparenter + 4pt)
+      },
       "dim": rect.with(stroke: colors.secondary.normal + 2pt),
       "rel": relation.with(s: colors.on_surface.light + 2pt),
       "measure": ellipse.with(stroke: colors.primary.normal + 2pt),
     ).at(type, default: box)
 
-    fn(body)
+    dfn(body)
   },
   engine: "neato",
 )
