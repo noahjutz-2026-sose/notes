@@ -9,6 +9,7 @@
     let (width, height) = measure(body)
     let displacement = width / 4
     set-style(stroke: s)
+    set-style(stroke: (dash: "dashed"))
     line(
       "body.north-east",
       (rel: (0, displacement), to: "body.north"),
@@ -56,7 +57,7 @@
     overlap=scalexy
     node[shape=none, width=0, height=0, margin=0]
     edge[arrowhead=none]
-    dim_day -> dim_month -> dim_year
+    dim_day -> dim_month -> dim_year [arrowhead=normal]
 
     fact_bundestagswahl
       fact_bundestagswahl -> dim_wahlkreis
@@ -90,17 +91,17 @@
     //     fact_abstimmung -> measure_result
     //     fact_abstimmung -> dim_abstimmungstyp
     fact_politbarometer
-        fact_politbarometer -> dim_month
-        fact_politbarometer -> dim_respid
-            dim_respid -> rel_wahlumfrage
+        fact_politbarometer -> dim_befragter
+            dim_befragter -> measure_alter
+            dim_befragter -> measure_geschlecht
+            dim_befragter -> measure_berufsgruppe
+            dim_befragter -> rel_wahlumfrage
                 rel_wahlumfrage -> dim_partei
                 rel_wahlumfrage -> measure_wahlabsicht
                 rel_wahlumfrage -> measure_skalometer_partei
-            dim_respid -> rel_demographie
-                rel_demographie -> measure_alter
-                rel_demographie -> measure_geschlecht
-                rel_demographie -> measure_berufsgruppe
-            dim_respid -> rel_beurteilungen
+                rel_wahlumfrage -> dim_month
+            dim_befragter -> rel_beurteilungen
+                rel_beurteilungen -> dim_month
                 rel_beurteilungen -> measure_links_rechts
                 rel_beurteilungen -> measure_links
                 rel_beurteilungen -> measure_rechts
@@ -111,7 +112,7 @@
     let type = text.split("_").at(0)
     let body = text.split("_").slice(1).join("_")
     let fn = (
-      "fact": fact,
+      "fact": it => fact(strong(it)),
       "dim": rect.with(stroke: colors.secondary.normal + 2pt),
       "rel": relation.with(s: colors.on_surface.light + 2pt),
       "measure": ellipse.with(stroke: colors.primary.normal + 2pt),
