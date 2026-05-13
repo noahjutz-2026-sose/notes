@@ -1,14 +1,14 @@
 #import "/deps.typ": cetz, diagraph, fletcher
 #import "/style.typ": colors
 
-#let fact(body) = {
+#let fact(body, s: gray + 1pt) = {
   cetz.canvas({
     import cetz.draw: *
     content((), body, name: "body", padding: (4pt, 8pt))
 
     let (width, height) = measure(body)
     let displacement = width / 4
-    set-style(stroke: colors.on_surface.lighter)
+    set-style(stroke: s)
     line(
       "body.north-east",
       (rel: (0, displacement), to: "body.north"),
@@ -23,18 +23,16 @@
         "body.south-west",
         (rel: (0, displacement), to: "body.south"),
         "body.south-east",
-        stroke: colors.on_surface.lighter,
       )
       line(
         (rel: (0, displacement), to: "body.south"),
         (rel: (0, displacement), to: "body.north"),
-        stroke: colors.on_surface.lighter,
       )
     })
   })
 }
 
-#let relation(body) = context {
+#let relation(body, s: gray) = context {
   cetz.canvas({
     import cetz.draw: *
     content((), body, padding: (4pt, 8pt), name: "body")
@@ -46,7 +44,7 @@
       (rel: (0, displacement), to: "body.north"),
       "body.west",
       close: true,
-      stroke: colors.on_surface.lighter,
+      stroke: s,
     )
   })
 }
@@ -58,6 +56,8 @@
     overlap=scalexy
     node[shape=none, width=0, height=0, margin=0]
     edge[arrowhead=none]
+    dim_day -> dim_month -> dim_year
+
     fact_bundestagswahl
       fact_bundestagswahl -> dim_wahlkreis
           dim_wahlkreis -> measure_nr
@@ -112,9 +112,9 @@
     let body = text.split("_").slice(1).join("_")
     let fn = (
       "fact": fact,
-      "dim": rect.with(stroke: colors.on_surface.lighter),
-      "rel": relation,
-      "measure": ellipse.with(stroke: colors.on_surface.lighter),
+      "dim": rect.with(stroke: colors.secondary.normal + 2pt),
+      "rel": relation.with(s: colors.on_surface.light + 2pt),
+      "measure": ellipse.with(stroke: colors.primary.normal + 2pt),
     ).at(type, default: box)
 
     fn(body)
