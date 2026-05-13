@@ -85,6 +85,12 @@
             dim_befragter -> measure_geschlecht
             dim_befragter -> measure_berufsgruppe
             dim_befragter -> measure_wirtschaftl_lage
+            dim_befragter -> measure_familienstand
+            dim_befragter -> measure_zusammenleben
+            dim_befragter -> measure_erwerbsstatus
+            dim_befragter -> measure_gewerkschaft
+            dim_befragter -> measure_parteineigung_
+            dim_befragter -> measure_bundesland_
             dim_befragter -> rel_wahlumfrage
                 rel_wahlumfrage -> dim_partei
                 rel_wahlumfrage -> measure_wahlabsicht
@@ -101,6 +107,7 @@
                 rel_beurteilung -> measure_wirtschaft
                 rel_beurteilung -> measure_asylrecht
                 rel_beurteilung -> measure_kernkraft
+                rel_beurteilung -> measure_milit_bedroht
             // dim_befragter -> rel_kompetenzzuschreibung
             //     rel_kompetenzzuschreibung -> dim_thema
             //     rel_kompetenzzuschreibung -> dim_partei
