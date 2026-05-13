@@ -65,10 +65,10 @@
     // Fakten
     fact_bundestagswahl_ergebnis
         fact_bundestagswahl_ergebnis -> dim_wahlkreis
-            dim_wahlkreis -> measure_nr
-            dim_wahlkreis -> measure_name
-            dim_wahlkreis -> dim_keys_hist [arrowhead=normal]
-                dim_keys_hist -> measure_fractions
+            dim_wahlkreis -> measure_wahlkreisnr
+            dim_wahlkreis -> measure_wahlkreisname
+            // dim_wahlkreis -> dim_keys_hist [arrowhead=normal]
+            //     dim_keys_hist -> measure_fractions
         fact_bundestagswahl_ergebnis -> dim_partei
         fact_bundestagswahl_ergebnis -> dim_year
         fact_bundestagswahl_ergebnis -> measure_stimmen

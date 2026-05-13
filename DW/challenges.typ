@@ -27,9 +27,15 @@ Siehe #link("https://github.com/noahjutz-2026-sose/notes/blob/03435341582ceda5cb
 
 == ME/R Diagramm
 
-#scale(20%, reflow: true)[
-  #include "challenge3_schema/mer_diagram.typ"
-]
+#context {
+  let (width, ..) = measure(include "challenge3_schema/mer_diagram.typ")
+  let w = width
+  layout(((width, ..)) => {
+    scale((width / w) * 100%, reflow: true)[
+      #include "challenge3_schema/mer_diagram.typ"
+    ]
+  })
+}
 
 == Measures
 
