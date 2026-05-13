@@ -1,4 +1,5 @@
 #import "/components.typ": *
+#import "/deps.typ": codly
 
 = Escape Room
 
@@ -73,3 +74,84 @@ Siehe #link("https://github.com/noahjutz-2026-sose/notes/blob/03435341582ceda5cb
     [anteil], `fraction`, $[0; 1]$, [STOCK],
   )
 ]
+
+== Star Schema
+
+=== Dimensionen
+
+#codly.codly(header: [Wer? Partei (z.B. SPD)])
+```sql
+CREATE TABLE Party (
+    id INT,
+    name VARCHAR(50)
+);
+```
+
+#codly.codly(header: [Wer? Befragte Person (Politbarometer)])
+```sql
+CREATE TABLE Questionee (
+    id INT,
+    age INT,
+    is_unionized BOOLEAN,
+    sex VARCHAR(50),
+    occupation VARCHAR(100),
+    marital_status VARCHAR(100),
+    is_residing_with_partner BOOLEAN
+);
+```
+
+#codly.codly(header: [Wo? Wahlkreis])
+```sql
+CREATE TABLE Voting_District (
+    id INT,
+    region VARCHAR(50),
+    city VARCHAR(100),
+    state VARCHAR(50)
+);
+```
+
+=== Fakten
+
+#codly.codly(header: [(Datenquelle: Zeit)])
+```sql
+CREATE TABLE Bundestagswahl_Ergebnis (
+    year INT,
+    fraction DECIMAL(10, 9),
+    votes INT,
+    voting_district_id INT
+    party_id INT
+);
+```
+
+#codly.codly(header: [(Datenquelle: Zeit)])
+```sql
+CREATE TABLE Bundestagswahl_Erhebung (
+    year INT,
+    gueltige INT,
+    ungueltige INT
+    wahlberechtigte INT,
+    waehlende INT,
+);
+```
+
+#codly.codly(header: [(Datenquelle: Germanhistorydocs)])
+```sql
+CREATE TABLE Sitzverteilung (
+    year INT,
+    party_id INT,
+    seats INT
+);
+```
+
+#codly.codly(header: [(Datenquelle: Politbarometer)])
+```sql
+CREATE TABLE Befragung_Wahlumfrage (
+    year INT,
+    questionee_id INT,
+    party_id INT,
+    is_aligned_with_party BOOLEAN,
+    is_intended_vote BOOLEAN,
+    is_last_voted BOOLEAN,
+    rating INT
+);
+```
