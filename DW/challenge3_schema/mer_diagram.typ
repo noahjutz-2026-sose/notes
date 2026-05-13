@@ -57,37 +57,28 @@
     splines=curved
     node[shape=none, width=0, height=0, margin=0]
     edge[arrowhead=none]
-    dim_month -> dim_year [arrowhead=normal]
 
+    // Dimensionen
+    dim_month -> dim_year [arrowhead=normal]
+    dim_wahlkreis -> dim_stadt -> dim_region -> dim_bundesland [arrowhead=normal]
+
+    // Fakten
     fact_bundestagswahl_ergebnis
-      fact_bundestagswahl_ergebnis -> dim_wahlkreis
-          dim_wahlkreis -> measure_nr
-          dim_wahlkreis -> measure_name
-          dim_wahlkreis -> dim_keys_hist [arrowhead=normal]
-              dim_keys_hist -> measure_fractions
-          dim_wahlkreis -> dim_stadt [arrowhead=normal]
-              dim_stadt -> dim_region [arrowhead=normal]
-              dim_region -> dim_bundesland [arrowhead=normal]
-      fact_bundestagswahl_ergebnis -> dim_partei
-      fact_bundestagswahl_ergebnis -> dim_year
-      fact_bundestagswahl_ergebnis -> measure_stimmen
-      fact_bundestagswahl_ergebnis -> measure_anteil
+        fact_bundestagswahl_ergebnis -> dim_wahlkreis
+            dim_wahlkreis -> measure_nr
+            dim_wahlkreis -> measure_name
+            dim_wahlkreis -> dim_keys_hist [arrowhead=normal]
+                dim_keys_hist -> measure_fractions
+        fact_bundestagswahl_ergebnis -> dim_partei
+        fact_bundestagswahl_ergebnis -> dim_year
+        fact_bundestagswahl_ergebnis -> measure_stimmen
+        fact_bundestagswahl_ergebnis -> measure_anteil
 
     fact_sitzverteilung
       fact_sitzverteilung -> dim_partei
       fact_sitzverteilung -> dim_year
       fact_sitzverteilung -> measure_sitze
-    // fact_abstimmung
-    //   fact_abstimmung -> dim_date
-    //       dim_date -> dim_day [arrowhead=normal]
-    //           dim_day -> dim_month [arrowhead=normal]
-    //           dim_month -> dim_year [arrowhead=normal]
-    //     fact_abstimmung -> rel_sponsor
-    //         rel_sponsor -> dim_partei
-    //     fact_abstimmung -> rel_voting_behavior
-    //         rel_voting_behavior -> dim_partei
-    //     fact_abstimmung -> measure_result
-    //     fact_abstimmung -> dim_abstimmungstyp
+
     fact_politbarometer
         fact_politbarometer -> dim_befragter
             dim_befragter -> measure_alter
