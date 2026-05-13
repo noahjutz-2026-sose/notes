@@ -62,6 +62,18 @@
     dim_month -> dim_year [arrowhead=normal]
     dim_wahlkreis -> dim_stadt -> dim_region -> dim_bundesland [arrowhead=normal]
 
+    dim_befragter
+        dim_befragter -> measure_alter
+        dim_befragter -> measure_geschlecht
+        dim_befragter -> measure_berufsgruppe
+        dim_befragter -> measure_wirtschaftl_lage
+        dim_befragter -> measure_familienstand
+        dim_befragter -> measure_zusammenleben
+        dim_befragter -> measure_erwerbsstatus
+        dim_befragter -> measure_gewerkschaft
+        dim_befragter -> measure_parteineigung_
+        dim_befragter -> measure_bundesland_
+
     // Fakten
     fact_bundestagswahl_ergebnis
         fact_bundestagswahl_ergebnis -> dim_wahlkreis
@@ -79,43 +91,29 @@
       fact_sitzverteilung -> dim_year
       fact_sitzverteilung -> measure_sitze
 
-    fact_politbarometer
-        fact_politbarometer -> dim_befragter
-            dim_befragter -> measure_alter
-            dim_befragter -> measure_geschlecht
-            dim_befragter -> measure_berufsgruppe
-            dim_befragter -> measure_wirtschaftl_lage
-            dim_befragter -> measure_familienstand
-            dim_befragter -> measure_zusammenleben
-            dim_befragter -> measure_erwerbsstatus
-            dim_befragter -> measure_gewerkschaft
-            dim_befragter -> measure_parteineigung_
-            dim_befragter -> measure_bundesland_
-            dim_befragter -> rel_wahlumfrage
-                rel_wahlumfrage -> dim_partei
-                rel_wahlumfrage -> dim_month
-                rel_wahlumfrage -> measure_skalometer_partei
-                rel_wahlumfrage -> measure_is_intended_vote
-                rel_wahlumfrage -> measure_is_last_vote
-                rel_wahlumfrage -> measure_is_aligned_party
-            dim_befragter -> rel_beurteilung
-                rel_beurteilung -> dim_month
-                rel_beurteilung -> measure_wie_links_rechts
-                rel_beurteilung -> measure_wie_links
-                rel_beurteilung -> measure_wie_rechts
-                rel_beurteilung -> measure_demokratiezufriedenheit
-                rel_beurteilung -> measure_politikinteresse
-                rel_beurteilung -> measure_wirtschaft
-                rel_beurteilung -> measure_asylrecht
-                rel_beurteilung -> measure_kernkraft
-                rel_beurteilung -> measure_kriminalität
-                rel_beurteilung -> measure_milit_bedroht
-                rel_beurteilung -> measure_jahresrückblick
-                rel_beurteilung -> measure_jahresausblick
-            // dim_befragter -> rel_kompetenzzuschreibung
-            //     rel_kompetenzzuschreibung -> dim_thema
-            //     rel_kompetenzzuschreibung -> dim_partei
-            //     rel_kompetenzzuschreibung -> dim_month
+    fact_wahlumfrage
+        fact_wahlumfrage -> dim_partei
+        fact_wahlumfrage -> dim_month
+        fact_wahlumfrage -> dim_befragter
+        fact_wahlumfrage -> measure_skalometer_partei
+        fact_wahlumfrage -> measure_is_intended_vote
+        fact_wahlumfrage -> measure_is_last_vote
+        fact_wahlumfrage -> measure_is_aligned_party
+    fact_beurteilung
+        fact_beurteilung -> dim_month
+        fact_beurteilung -> dim_befragter
+        fact_beurteilung -> measure_wie_links_rechts
+        fact_beurteilung -> measure_wie_links
+        fact_beurteilung -> measure_wie_rechts
+        fact_beurteilung -> measure_demokratiezufriedenheit
+        fact_beurteilung -> measure_politikinteresse
+        fact_beurteilung -> measure_wirtschaft
+        fact_beurteilung -> measure_asylrecht
+        fact_beurteilung -> measure_kernkraft
+        fact_beurteilung -> measure_kriminalität
+        fact_beurteilung -> measure_milit_bedroht
+        fact_beurteilung -> measure_jahresrückblick
+        fact_beurteilung -> measure_jahresausblick
 
     fact_bundestagswahl_erhebung
         fact_bundestagswahl_erhebung -> dim_year
