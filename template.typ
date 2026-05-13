@@ -64,10 +64,10 @@
   body
 }
 
-#let template_exercises(body, prefix: "Ü") = {
+#let template_exercises(body, prefix: "Ü", offset: 0) = {
   show: template_base
   counter(heading).update(0)
-  set heading(numbering: (..x) => numbering(prefix + "1.1", ..x))
+  set heading(numbering: (n0, ..x) => numbering(prefix + "1.1", n0 + offset, ..x))
 
   body
 }
