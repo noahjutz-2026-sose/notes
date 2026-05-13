@@ -84,16 +84,28 @@
             dim_befragter -> measure_alter
             dim_befragter -> measure_geschlecht
             dim_befragter -> measure_berufsgruppe
+            dim_befragter -> measure_wirtschaftl_lage
             dim_befragter -> rel_wahlumfrage
                 rel_wahlumfrage -> dim_partei
                 rel_wahlumfrage -> measure_wahlabsicht
                 rel_wahlumfrage -> measure_skalometer_partei
+                rel_wahlumfrage -> measure_wahlrückerinnerung
                 rel_wahlumfrage -> dim_month
-            dim_befragter -> rel_beurteilt
-                rel_beurteilt -> dim_month
-                rel_beurteilt -> measure_links_rechts
-                rel_beurteilt -> measure_links
-                rel_beurteilt -> measure_rechts
+            dim_befragter -> rel_beurteilung
+                rel_beurteilung -> dim_month
+                rel_beurteilung -> measure_wie_links_rechts
+                rel_beurteilung -> measure_wie_links
+                rel_beurteilung -> measure_wie_rechts
+                rel_beurteilung -> measure_demokratiezufriedenheit
+                rel_beurteilung -> measure_politikinteresse
+                rel_beurteilung -> measure_wirtschaft
+                rel_beurteilung -> measure_asylrecht
+                rel_beurteilung -> measure_kernkraft
+            // dim_befragter -> rel_kompetenzzuschreibung
+            //     rel_kompetenzzuschreibung -> dim_thema
+            //     rel_kompetenzzuschreibung -> dim_partei
+            //     rel_kompetenzzuschreibung -> dim_month
+
     fact_bundestagswahl_erhebung
         fact_bundestagswahl_erhebung -> dim_year
         fact_bundestagswahl_erhebung -> measure_wahlberechtigte
