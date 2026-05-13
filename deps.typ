@@ -9,3 +9,4 @@
 #import "@preview/touying:0.7.1"
 
 #import "@preview/diagraph:0.3.7"
+#import "@preview/fletcher:0.5.8"
