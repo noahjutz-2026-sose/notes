@@ -55,26 +55,25 @@
     digraph {
     rankdir=LR
     overlap=scalexy
+    splines=curved
     node[shape=none, width=0, height=0, margin=0]
     edge[arrowhead=none]
-    dim_day -> dim_month -> dim_year [arrowhead=normal]
+    dim_month -> dim_year [arrowhead=normal]
 
-    fact_bundestagswahl
-      fact_bundestagswahl -> dim_wahlkreis
+    fact_bundestagswahl_ergebnis
+      fact_bundestagswahl_ergebnis -> dim_wahlkreis
           dim_wahlkreis -> measure_nr
           dim_wahlkreis -> measure_name
           dim_wahlkreis -> dim_keys_hist [arrowhead=normal]
               dim_keys_hist -> measure_fractions
-          dim_wahlkreis -> dim_cities [arrowhead=normal]
-              dim_cities -> dim_states [arrowhead=normal]
-      fact_bundestagswahl -> dim_partei
-      fact_bundestagswahl -> dim_year
-      fact_bundestagswahl -> measure_stimmen
-      fact_bundestagswahl -> measure_anteil
-      fact_bundestagswahl -> measure_wahlberechtigte
-      fact_bundestagswahl -> measure_waehlende
-      fact_bundestagswahl -> measure_gueltige
-      fact_bundestagswahl -> measure_ungueltige
+          dim_wahlkreis -> dim_stadt [arrowhead=normal]
+              dim_stadt -> dim_region [arrowhead=normal]
+              dim_region -> dim_bundesland [arrowhead=normal]
+      fact_bundestagswahl_ergebnis -> dim_partei
+      fact_bundestagswahl_ergebnis -> dim_year
+      fact_bundestagswahl_ergebnis -> measure_stimmen
+      fact_bundestagswahl_ergebnis -> measure_anteil
+
     fact_sitzverteilung
       fact_sitzverteilung -> dim_partei
       fact_sitzverteilung -> dim_year
@@ -100,11 +99,17 @@
                 rel_wahlumfrage -> measure_wahlabsicht
                 rel_wahlumfrage -> measure_skalometer_partei
                 rel_wahlumfrage -> dim_month
-            dim_befragter -> rel_beurteilungen
-                rel_beurteilungen -> dim_month
-                rel_beurteilungen -> measure_links_rechts
-                rel_beurteilungen -> measure_links
-                rel_beurteilungen -> measure_rechts
+            dim_befragter -> rel_beurteilt
+                rel_beurteilt -> dim_month
+                rel_beurteilt -> measure_links_rechts
+                rel_beurteilt -> measure_links
+                rel_beurteilt -> measure_rechts
+    fact_bundestagswahl_erhebung
+        fact_bundestagswahl_erhebung -> dim_year
+        fact_bundestagswahl_erhebung -> measure_wahlberechtigte
+        fact_bundestagswahl_erhebung -> measure_waehlende
+        fact_bundestagswahl_erhebung -> measure_gueltige
+        fact_bundestagswahl_erhebung -> measure_ungueltige
     }
   ```,
   labels: it => {
@@ -120,4 +125,5 @@
 
     fn(body)
   },
+  engine: "neato",
 )
