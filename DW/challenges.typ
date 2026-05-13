@@ -36,5 +36,5 @@ Siehe #link("https://github.com/noahjutz-2026-sose/notes/blob/03435341582ceda5cb
 #table(
   columns: 4,
   table.header([Measure], [Data Type], [Range], [Aggregation Type]),
-  [],
+  [politikinteresse], [int], $-99,...,5$,
 )

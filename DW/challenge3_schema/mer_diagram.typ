@@ -92,10 +92,10 @@
             dim_befragter -> measure_parteineigung_
             dim_befragter -> measure_bundesland_
             dim_befragter -> rel_wahlumfrage
-                rel_wahlumfrage -> dim_partei
-                rel_wahlumfrage -> measure_wahlabsicht
+                rel_wahlumfrage -> dim_partei [label=absicht]
+                rel_wahlumfrage -> dim_partei [label=rückerinnerung]
+                rel_wahlumfrage -> dim_partei [label=neigung]
                 rel_wahlumfrage -> measure_skalometer_partei
-                rel_wahlumfrage -> measure_wahlrückerinnerung
                 rel_wahlumfrage -> dim_month
             dim_befragter -> rel_beurteilung
                 rel_beurteilung -> dim_month
