@@ -1092,3 +1092,13 @@ TODO fertig machen
 === Camera Space
 
 == Depth Buffer
+
+#align(end)[2026-05-14]
+
+= OpenGL
+
++ Binding Points sind Schnittstellen an GPU, um Daten von RAM in GPU buffer zu laden.
++ Weil batch-übertragen großer Buffers die Latenz zwischen CPU, PCIe und GPU nur einmal verursacht
++ _Vertex Buffer Object:_ Enthält für jeden Vertex 3 Floats. _Index Buffer Object:_ Enthält für jedes Dreieck drei Indexe auf VBO.
++ _Vertex Shader:_ Vertextransformation (Funktion für jeden Vertex). _Fragment Shader:_ Funktion Für jeden Pixel im Raster
++ Vertex Shader: `in vec3 local_vertex -> gl_Position`. Fragment Shader: `in vec3 color -> out vec4 out_color`
