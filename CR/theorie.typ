@@ -627,7 +627,7 @@ $
 $
 
 $
-  kappa_"rel"^infinity = max abs(Phi) = abs(-2) = 2
+  delta_y & = abs(phi_s) dot delta_s + abs(phi_t) dot delta_t \
+       3% & = 1 dot 1% + 2 dot delta_t \
+       1% & = delta_t
 $
-
-TODO max Zeitmessung-Fehler
