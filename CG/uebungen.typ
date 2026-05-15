@@ -1102,3 +1102,34 @@ TODO fertig machen
 + _Vertex Buffer Object:_ Enthält für jeden Vertex 3 Floats. _Index Buffer Object:_ Enthält für jedes Dreieck drei Indexe auf VBO.
 + _Vertex Shader:_ Vertextransformation (Funktion für jeden Vertex). _Fragment Shader:_ Funktion Für jeden Pixel im Raster
 + Vertex Shader: `in vec3 local_vertex -> gl_Position`. Fragment Shader: `in vec3 color -> out vec4 out_color`
+
+== Mesh Renderer
+
+#link("https://docs.gl/gl4/glClearColor")[`glClearColor`]
+
+$
+  "red" in [0,1]; "green" in [0,1]; "blue" in [0,1]; "alpha" in [0,1] |-> "void"
+$
+
+=== Swap Buffer
+
+```c
+glfwSwapBuffers(window);
+glfwSwapInterval(1);
+```
+
+- _Back Buffer:_ Langsam hier hin rendern
+- _Front Buffer:_ Wird am Bildschirm gezeichnet
+- _Buffer Swap (Vsync):_ Tauschen in regelmäßiger Frequenz
+  - Vermeidet Screen Tearing
+  - Vermeidet verschwendete Renders (Monitor Refresh Rate Bottleneck)
+
+=== Shader
+
+Delete Shader wird nur im Fehlerfall aufgerufen.
+
+=== Render from Clip Space
+
+Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/88a9d5db2f6b8ccc8a66f4e89f389f3ef70f8db1/CG/ue06/meshrenderer-2023/src/mesh.cpp#L50-L77")[CG/ue06].
+
+=== Render from Eye Space
