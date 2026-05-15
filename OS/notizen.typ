@@ -241,8 +241,20 @@ Kill Process in Deadlock
 
 #align(end)[2026-04-30 VL18 (2025-12-09)]
 
+== Paging
+
 Speicher wird in Blöcken verwaltet. _Pages_ und _Frames_ sind gleich große Einheiten.
 - Pages: Logischer/Virtueller Addressraum, von CPU gemanaged
 - Frames: Physikalischer Addressraum, von MMU verarbeitet
 
 Benutzerprogramm $<->$ OS $<->$ MMU $<->$ RAM
+
+#align(end)[2026-05-14 VL19 (2025-12-15)]
+
+- Translation look aside buffer
+
+== Segmentierung
+
+- Demand Paging
+- Copy-on-Write
+- Page Replacement
