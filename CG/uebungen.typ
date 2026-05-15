@@ -1133,3 +1133,23 @@ Delete Shader wird nur im Fehlerfall aufgerufen.
 Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/88a9d5db2f6b8ccc8a66f4e89f389f3ef70f8db1/CG/ue06/meshrenderer-2023/src/mesh.cpp#L50-L77")[CG/ue06].
 
 === Render from Eye Space
+
+Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/9487505de015ea35b26fe296c28f327f21fb2242/CG/ue06/meshrenderer-2023/src/main.cpp#L20-L25")[CG/ue06].
+
+=== Render from World Space
+
+Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/502ed12ef0a53ad93bfb5b6984636fbfe6b82405/CG/ue06/meshrenderer-2023/src/main.cpp#L29-L49")[CG/ue06].
+
+=== Color VBO
+
+Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/3950b27ebaf45ece28e0df7e9081a6f469603a94/CG/ue06/meshrenderer-2023/src/mesh.cpp#L68-L73")[CG/ue06].
+
+TODO Uniform gefärbte Dreiecke
+
+=== Kamera Rotieren
+
+Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/b52278d1639c9f5a006d628094996e9f04624664/CG/ue06/meshrenderer-2023/src/main.cpp#L71-L77")[CG/ue06]
+
+=== GL_DEPTH_TEST
+
+Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/6527cefe14135acbe299a6ea0cca57353cb4b9f7/CG/ue06/meshrenderer-2023/src/main.cpp#L67")[CG/ue06].
