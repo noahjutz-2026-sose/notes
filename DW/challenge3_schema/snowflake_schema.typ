@@ -22,7 +22,7 @@
   digraph {
     overlap=scalexy
     sep="+10"
-    start=123
+    start=7
     node[width=0,height=0,margin=0,shape=none,padding=0]
     edge[dir=both arrowhead=none arrowtail=none]
     dim_party
@@ -135,7 +135,14 @@
     "dim_questionee": table(
       [Person],
       [#type_num *respid*],
-      [],
+      [
+        #type_num age \
+        #type_bool is_unionized \
+        #type_str sex \
+        #type_str occupation \
+        #type_str marital_status \
+        #type_bool is_residing_with_partner \
+      ],
     ),
   ),
 )
