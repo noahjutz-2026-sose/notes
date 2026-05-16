@@ -163,8 +163,6 @@ CREATE TABLE Befragung_Beurteilung (
     month INT,
     year INT,
     wahlbereitschaft INT,
-    -- TODO skalometer_regierung INT,
-    -- TODO skalometer_opposition INT,
     demokratiezufriedenheit INT,
     politikinteresse INT,
     wie_links_rechts INT,
@@ -180,10 +178,12 @@ CREATE TABLE Befragung_Beurteilung (
 )
 ```
 
-TODO: Sollten Befragung_Wahlumfrage und Befragung_Beurteilung im M/ER Fakten sein?
-
 == Example Rows
 
 == Snowflake Schema
+
+#scale(40%, reflow: true)[
+  #include "challenge3_schema/snowflake_schema.typ"
+]
 
 == Snowflake vs Star Schema
