@@ -851,3 +851,65 @@ Paare:
   [GA], [CE], [],
   [13], [7], [20],
 )
+
+#align(end)[2026-05-16]
+
+= Graphen
+
+== Travelling Salesman Problem (TSP)
+
+=== Spiel
+
+--
+
+=== Distanzmatrix
+
+Siehe OR/ue07.
+
+=== Subtour Elimination Constraint
+
+$
+  abs(V)-1
+$
+
+bzw
+
+$
+  abs(V) + 1
+$
+
+=== TSP als LP
+
+Minimiere die Summe der Kantengewichte $c$, indem Kanten $i j$ gewählt werden ($x$ ist boolean)
+
+$
+  min sum_j sum_i c_(i j) x_(i j)
+$
+
+Unter der Nebenbedingung, dass alle Knoten in einem geschlossenen Kreis besucht werden.
+
+$
+  forall j: sum_i x_(i j) = 1 quad quad
+  forall i: sum_j x_(j i) = 1 \
+  forall S subset.neq V: abs(E(S)) <= abs(S) - 1
+$
+
+=== Mengenlehre
+
++ $
+    abs(V) = 127 => abs(E) = 127
+  $
++ $
+    abs(cal(P)(V)) = 2^abs(V) = 2^127 = 128 "Gi"
+  $
+
+== Vehicle Routing Problem (VRP)
+
++ TSP
++ $
+    E = {(i, j) mid(|) i = t or j = t; i != j}
+  $
+
+== Savings-Algorithmus für VRP
+
+Auf Papier.
