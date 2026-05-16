@@ -187,3 +187,6 @@ CREATE TABLE Befragung_Beurteilung (
 ]
 
 == Snowflake vs Star Schema
+
+Die einzige hierarchische Dimension ist Geographisch. Jede Hierarchiestufe hat höchstens ein Attribut, nämlich die Einwohnerzahl. Das kann man einfach als Star-Schema darstellen. Snowflake-Schema würde viele Joins benötigen.
+$=>$ Star-Schema
