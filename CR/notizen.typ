@@ -1024,62 +1024,46 @@ Wir lassen fortan $*$ weg.
 
 == Gradient
 
-Definition:
+Der Gradient von $f: RR^n -> RR$ an der Stelle $x^* in RR^n$ ist
 
-$
-  f: RR^n -> RR, x^* in RR^n
-$
-
-Der Gradient von $f$ an der Stelle $x^*$ ist
-
-$
-  gradient f(x^*) = vec(
-    (partial f)/(partial x_1) (x^*),
-    (partial f)/(partial x_2) (x^*),
-    ...,
-    (partial f)/(partial x_n) (x^*),
-  )
-$
+#box(inset: 4pt, fill: blue.transparentize(80%))[
+  $
+    gradient f(x^*) = vec(
+      (partial f)/(partial x_1) (x^*),
+      (partial f)/(partial x_2) (x^*),
+      ...,
+      (partial f)/(partial x_n) (x^*),
+    )
+  $
+]
 
 = Fehlerrechnung in mehreren Dimensionen
 
 == Jakobi-Matrix
 
-$
-  f: RR^n -> RR^m
-$
-
-mit Komponentenfunktion
-
-$
-  f_i: RR^n -> RR
-$
-
-also
+Sei $f: RR^n -> RR^m$ ein Funktion mit $m$ Komponentenfunktionen $f_i: RR^n -> RR$, also
 
 $
   f = vec(f_1, ..., f_m)
 $
 
-und
-
-$
-  x^* in RR^n
-$
-
 Dann ist
 
-$
-  D f(x^*) = J f(x^*) = mat(
-    (partial f_1)/(partial x_1) (x^*), ..., (partial f_1)/(partial x_n) (x^*);
-    ..., ..., ...;
-    (partial f_m)/(partial x_1)(x^*), ..., (partial f_m)/(partial x_n)(x^*)
-  )
-$
+#box(inset: 4pt, fill: blue.transparentize(80%))[
+  $
+    D f(x^*) = J f(x^*) = mat(
+      (partial f_1)/(partial x_1) (x^*), ..., (partial f_1)/(partial x_n) (x^*);
+      ..., ..., ...;
+      (partial f_m)/(partial x_1)(x^*), ..., (partial f_m)/(partial x_n)(x^*)
+    )
+  $
+]
 
-Die Jakobi-Matrix von $f$ bei $x^*$.
+Die Jakobi-Matrix von $f$ bei $x^* in RR^n$.
 
-Im Fall $m=1$ ist die Jakobi-Matrix der Gradient $J f = gradient f$.
+#note[
+  Im Fall $m=1$ ist die Jakobi-Matrix der Gradient $J f = gradient f$.
+]
 
 == Hesse-Matrix
 
