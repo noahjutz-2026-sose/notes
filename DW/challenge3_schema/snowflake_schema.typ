@@ -27,6 +27,7 @@
     edge[dir=both arrowhead=none arrowtail=none]
     dim_party
     dim_questionee
+        dim_questionee -> dim_state [arrowhead=normal]
     dim_voting_district
         dim_voting_district -> dim_city [arrowtail=odot arrowhead=odiamond]
             dim_city -> dim_region [arrowtail=odot arrowhead=odiamond]
@@ -134,7 +135,11 @@
     ),
     "dim_questionee": table(
       [Person],
-      [#type_num *respid*],
+      [
+        #type_num *respid* \
+        #type_num *studyid* \
+        #type_num *erhebungsgebiet*
+      ],
       [
         #type_num age \
         #type_bool is_unionized \
