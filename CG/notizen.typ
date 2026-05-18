@@ -625,3 +625,64 @@ glUniformMatrix4fv(location, amount, transpose, ptr);
 ```c
 glDebugMessageCallback
 ```
+
+#align(end)[2026-05-18]
+
+= Beleuchtung (Phong)
+
+== Drei Punkte
+
+- Kamera
+- Fragment / Oberfläche
+- Lichtquelle
+
+== Lichtquellentypen
+
+- _Directional:_ Parallele Strahlen; Quelle unendlich weit weg
+  - Richtung zum Licht $cal(l)$ konstant
+- _Point:_
+  - $cal(l)$: licht p $->$ punkt x
+- _Spot:_ Cone
+
+== Drei Komponenten
+
+Die Beleuchtung wird summiert aus drei Komponenten.
+
+1. _Ambientes Licht:_ Ausgleich für dunkle Stellen (wegen direktem Licht)
+
+- Farbe $k$
+- Intensität $I$
+- Licht $L=k I$
+
+2. _Diffuse Reflexion:_ Raue Oberflächen
+
+Winkel $theta$ zwischen Empfängeroberfläche (Normale $n$) und Lichtquelle ($cal(l)$) bestimmt intensität
+
+$
+  A' = A/(cos theta)
+$
+
+$
+  L & = k I cos theta \
+    & = k I lr(chevron.l n mid(|) cal(l) chevron.r)^+
+$
+
+3. _Spekulare Reflexion:_ Glanz
+
+Shinyness-Exponent $n_s$
+
+$
+  L = k I cos^(n_s) Phi
+$
+
+== Abfall
+
+Bei direktionalem Licht gibt es einen quadratischen Intensitäts-Falloff, weil die beleuchtete Fläche über Distanz quadratisch zunimmt.
+
+== Hemisphäre
+
+= Shading
+
+- Flat
+- Gouraud
+- Phong
