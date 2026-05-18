@@ -1051,7 +1051,7 @@ Dann ist
 
 #box(inset: 4pt, fill: blue.transparentize(80%))[
   $
-    D f(x^*) = J f(x^*) = mat(
+    D_f (x^*) = J_f (x^*) = mat(
       (partial f_1)/(partial x_1) (x^*), ..., (partial f_1)/(partial x_n) (x^*);
       ..., ..., ...;
       (partial f_m)/(partial x_1)(x^*), ..., (partial f_m)/(partial x_n)(x^*)
@@ -1062,22 +1062,29 @@ Dann ist
 Die Jakobi-Matrix von $f$ bei $x^* in RR^n$.
 
 #note[
-  Im Fall $m=1$ ist die Jakobi-Matrix der Gradient $J f = gradient f$.
+  Im Fall $m=1$ ist die Jakobi-Matrix der Gradient $J_f = gradient f$.
 ]
 
 == Hesse-Matrix
 
-Um aus einer Funktion $f: RR^n -> RR$ eine Jakobi-Matrix zu erhalten, bilden wir den Gradienten:
+Die _Hesse-Matrix_ $H_f$ einer Funktion $f: RR^n -> R$ ist
 
 $
-  D(gradient f) = mat(
-    (partial^2 f)/(partial x_1 partial x_2), ..., (partial^2 f)/(partial x_1 partial x_n);
-    ..., ..., ...;
-    (partial^2 f)/(partial x_n partial x_1), ..., (partial^2 f)/(partial x_n partial x_n)
+  H_f = mat(
+    (partial^2 f)/(partial x_1^2), (partial^2 f)/(partial x_1x_2), ..., (partial^2 f)/(partial x_1x_n);
+    (partial^2 f)/(partial x_2x_1), (partial^2 f)/(partial x_2^2), ..., (partial^2 f)/(partial x_2x_n);
+    dots.v, dots.v, dots.down, dots.v;
+    (partial^2 f)/(partial x_n x_1), (partial^2 f)/(partial x_n x_2), ..., (partial^2 f)/(partial x_n^2);
   )
 $
 
-Wir nennen $H f = D(partial f)$ die _Hesse-Matrix_ von $f$.
+#note[
+  Es gilt
+
+  $
+    H_f = J(gradient f)^T
+  $
+]
 
 #example(title: [Hesse-Matrix vom Kugelvolumen])[
   $
