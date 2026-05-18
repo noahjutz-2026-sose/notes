@@ -299,6 +299,11 @@ _Dice Operation:_ Mehrere Dimensionen eingrenzen
 
 == M/ER-Diagramm
 
+- Hierarchiestufen sind immer 1..n
+- Fakten sind nie direkt verbunden
+- Dimensionen sind nur über Krähfuß direkt verbunden
+- Doppelkreis für liste an Attributen
+
 == ROLAP
 
 #align(end)[2026-05-04 VL07]
@@ -366,4 +371,6 @@ _Star Schema:_ Nur 1 Tabelle pro Dimension $=>$ Redundanz, weniger Joins. Denorm
 
 _Schema Matching:_ Paarweise korrespondenzen zweier Schemata
 
-= ETL und ELT
+#align(end)[2026-05-18 VL09]
+
+= Daten Importieren
