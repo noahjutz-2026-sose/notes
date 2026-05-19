@@ -1548,3 +1548,38 @@ $
   $
   todo tafelbild ...
 ]
+
+#proof(title: [Pivotisierung funktioniert nur mit vollem Rang])[
+  Annahme: Was ist, wenn untere Rechte Teilmatrix $tilde(A)$ aus $A$ keinen vollen Rang hat?
+
+  $==>$ nicht invertierbar
+
+  $==> det tilde(A)^((k)) = 0$
+
+  $==> det A^((k)) = 0$
+
+  Aber $A^((k))$ muss invertierbar sein, weil es ein Produkt aus $P^((l)), L^((l)), A$ ist.
+
+  $==> det A^((k)) != 0 arrow.zigzag space square.filled$
+]
+
+Was ist eine gute Wahl für Permutation $P$?
+
+Wähle das betragsmäßig größte Element $a^((k))_(l, k+1)$, #highlight[selbst wenn] $a_(k+1,k+1)^((k)) != 0$. Das ist stabil, außer:
+
+$
+  mat(
+    1, 0, dots.c, 0, 1;
+    -1, 1, dots.down, dots.v, dots.v;
+    dots.v, dots.down, 1, 0, dots.v;
+    dots.v, , dots.down, 1, dots.v;
+    -1, dots.c, dots.c, -1, 1
+  )
+$
+
+#info(title: [Bessere Verfahren])[
+  Stabilere Verfahren als die LR-Zerlegung sind
+
+  - Cholesky-Zerlegung
+  - QR-Zerlegung
+]
