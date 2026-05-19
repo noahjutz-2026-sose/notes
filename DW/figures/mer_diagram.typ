@@ -56,14 +56,15 @@
     overlap=scalexy
     splines=curved
     node[shape=none, width=0, height=0, margin=0]
-    edge[arrowhead=none]
+    edge[dir=both arrowhead=none arrowtail=none]
 
     // Dimensionen
-    dim_month -> dim_year [arrowhead=normal]
-    dim_wahlkreis -> dim_stadt -> dim_region -> dim_bundesland [arrowhead=normal]
+    dim_month -> dim_year [arrowhead=normal arrowtail=crow]
+    dim_wahlkreis -> dim_stadt -> dim_region -> dim_bundesland [arrowhead=normal arrowtail=crow]
+    dim_befragter -> dim_alter [arrowhead=normal arrowtail=crow]
+    dim_befragter -> dim_bundesland [arrowhead=normal arrowtail=crow]
 
     dim_befragter
-        dim_befragter -> measure_alter
         dim_befragter -> measure_geschlecht
         dim_befragter -> measure_berufsgruppe
         dim_befragter -> measure_wirtschaftl_lage
