@@ -61,20 +61,19 @@
     edge[dir=both arrowhead=normal arrowtail=crow]
     dim_month -> dim_year
     dim_wahlkreis -> dim_stadt -> dim_region -> dim_bundesland
-    dim_respondent -> dim_age
     dim_respondent -> dim_bundesland
     dim_respondent -> dim_party
+    dim_respondent -> dim_age
+    dim_respondent -> dim_sex
+    dim_respondent -> dim_occupation
+    dim_respondent -> dim_financial_situation
+    dim_respondent -> dim_marital_status
+    dim_respondent -> dim_employment_status
+    dim_respondent -> dim_is_unionized
 
     edge[dir=both arrowhead=none arrowtail=none]
 
     // Attribute
-    dim_respondent
-        dim_respondent -> measure_sex
-        dim_respondent -> measure_occupation // todo dim?
-        dim_respondent -> measure_financial_situation
-        dim_respondent -> measure_marital_status
-        dim_respondent -> measure_employment_status
-        dim_respondent -> measure_is_unionized
 
     // Fakten
     fact_election_result
