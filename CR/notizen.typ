@@ -884,21 +884,22 @@ $
 
 #align(end)[2026-04-28 VL06]
 
-= Fehlerrechnung in 2D
+= Vektornorm
 
 - Bis jetzt 1D-Norm: $f : RR -> RR$.
 - In diesem Kapitel: $f: RR^n -> RR$
-#clue[
-  Wir behandeln
-  - $f: RR^n -> RR$
-  - $f: RR^n -> RR^n$ für lineare Abbildungen
+
+Wir behandeln
+- $f: RR^n -> RR$
+- $f: RR^n -> RR^n$ für lineare Abbildungen
+
+#definition(title: [Vektornorm])[
+  Die Norm auf einen reellen Vektorraum $V$ ist definiert als eine Abbildung
+
+  $
+    norm(dot)_* : V -> RR
+  $
 ]
-
-Die Norm auf einen reellen Vektorraum $V$ ist definiert als eine Abbildung
-
-$
-  norm(dot)_* : V -> RR
-$
 
 == Eigenschaften
 
@@ -937,13 +938,13 @@ Die Eigenschaften der Vektornorm gelten für alle $p$.
 
 #example(title: [Einheitskreis])[
   $S = {v in RR^2 mid(|) norm(v)_* = 1}$
-  #cetz.canvas(length: 3cm, {
+  #cetz.canvas(length: 1.25cm, {
     import cetz.draw: *
 
     set-style(mark: (end: "straight"))
 
-    line((-1.1, 0), (1.1, 0))
-    line((0, -1.1), (0, 1.1))
+    line((-1.5, 0), (1.5, 0))
+    line((0, -1.5), (0, 1.5))
 
     line((0, 0), (-0.5, 0), (-0.5, 0.5), stroke: colors.primary.normal)
     line((0, 0), (-calc.cos(calc.pi / 4), calc.sin(calc.pi / 4)), stroke: colors.secondary.normal)
@@ -958,9 +959,9 @@ Die Eigenschaften der Vektornorm gelten für alle $p$.
   Man sieht: Die #text(colors.primary.normal)[1-Norm] ist für einen gegebenen Vektor stets größer gleich der #text(colors.secondary.normal)[2-Norm].
 ]
 
-= Partielle Ableitungen
-
 #align(end)[2026-05-05 VL07]
+
+= Partielle Ableitungen
 
 #definition(title: [Partielle Ableitung])[
   Die _Partielle Ableitung_ von $f: RR^n -> RR$ an der Stelle $x^* in RR^n$ ist
