@@ -63,7 +63,7 @@
     dim_wahlkreis -> dim_stadt -> dim_region -> dim_bundesland
     dim_respondent -> dim_age
     dim_respondent -> dim_bundesland
-    dim_respondent -> dim_partei
+    dim_respondent -> dim_party
 
     edge[dir=both arrowhead=none arrowtail=none]
 
@@ -83,24 +83,25 @@
             dim_wahlkreis -> measure_wahlkreisname
             // dim_wahlkreis -> dim_keys_hist [arrowhead=normal]
             //     dim_keys_hist -> measure_fractions
-        fact_election_result -> dim_partei
+        fact_election_result -> dim_party
         fact_election_result -> dim_year
-        fact_election_result -> measure_stimmen
-        fact_election_result -> measure_anteil
+        fact_election_result -> measure_votes
+        fact_election_result -> measure_percentage
 
     fact_seat_distribution
-      fact_seat_distribution -> dim_partei
+      fact_seat_distribution -> dim_party
       fact_seat_distribution -> dim_year
       fact_seat_distribution -> measure_seats
 
     fact_politbarometer_election_poll
-        fact_politbarometer_election_poll -> dim_partei
+        fact_politbarometer_election_poll -> dim_party
         fact_politbarometer_election_poll -> dim_month
         fact_politbarometer_election_poll -> dim_respondent
-        fact_politbarometer_election_poll -> measure_skalometer_partei
+        fact_politbarometer_election_poll -> measure_rating
         fact_politbarometer_election_poll -> measure_is_intended_vote
         fact_politbarometer_election_poll -> measure_is_last_vote
         fact_politbarometer_election_poll -> measure_is_aligned_party
+
     fact_politbarometer_opinion_poll
         fact_politbarometer_opinion_poll -> dim_month
         fact_politbarometer_opinion_poll -> dim_respondent
