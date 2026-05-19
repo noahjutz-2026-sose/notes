@@ -61,7 +61,7 @@
     edge[dir=both arrowhead=normal arrowtail=crow]
     dim_month -> dim_year
     dim_wahlkreis -> dim_stadt -> dim_region -> dim_bundesland
-    dim_respondent -> dim_alter
+    dim_respondent -> dim_age
     dim_respondent -> dim_bundesland
     dim_respondent -> dim_partei
 
@@ -69,15 +69,13 @@
 
     // Attribute
     dim_respondent
-        dim_respondent -> measure_geschlecht
-        dim_respondent -> measure_berufsgruppe
+        dim_respondent -> measure_sex
+        dim_respondent -> measure_berufsgruppe // todo measure?
         dim_respondent -> measure_wirtschaftl_lage
         dim_respondent -> measure_familienstand
         dim_respondent -> measure_zusammenleben
         dim_respondent -> measure_erwerbsstatus
         dim_respondent -> measure_gewerkschaft
-        dim_respondent -> measure_parteineigung_
-        dim_respondent -> measure_bundesland_
 
     // Fakten
     fact_bundestagswahl_ergebnis
