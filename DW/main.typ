@@ -12,6 +12,12 @@
 
 #pagebreak()
 
-#show: template_exercises.with(offset: -1)
+#show: template_exercises
+
+#include "uebungen.typ"
+
+#pagebreak()
+
+#show: template_exercises.with(offset: -1, prefix: "Ch")
 
 #include "challenges.typ"
