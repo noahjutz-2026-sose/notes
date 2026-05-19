@@ -70,12 +70,11 @@
     // Attribute
     dim_respondent
         dim_respondent -> measure_sex
-        dim_respondent -> measure_berufsgruppe // todo measure?
-        dim_respondent -> measure_wirtschaftl_lage
-        dim_respondent -> measure_familienstand
-        dim_respondent -> measure_zusammenleben
-        dim_respondent -> measure_erwerbsstatus
-        dim_respondent -> measure_gewerkschaft
+        dim_respondent -> measure_occupation // todo dim?
+        dim_respondent -> measure_financial_situation
+        dim_respondent -> measure_marital_status
+        dim_respondent -> measure_employment_status
+        dim_respondent -> measure_is_unionized
 
     // Fakten
     fact_bundestagswahl_ergebnis
