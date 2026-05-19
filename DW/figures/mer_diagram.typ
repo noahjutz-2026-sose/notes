@@ -77,52 +77,52 @@
         dim_respondent -> measure_is_unionized
 
     // Fakten
-    fact_bundestagswahl_ergebnis
-        fact_bundestagswahl_ergebnis -> dim_wahlkreis
+    fact_election_result
+        fact_election_result -> dim_wahlkreis
             dim_wahlkreis -> measure_wahlkreisnr
             dim_wahlkreis -> measure_wahlkreisname
             // dim_wahlkreis -> dim_keys_hist [arrowhead=normal]
             //     dim_keys_hist -> measure_fractions
-        fact_bundestagswahl_ergebnis -> dim_partei
-        fact_bundestagswahl_ergebnis -> dim_year
-        fact_bundestagswahl_ergebnis -> measure_stimmen
-        fact_bundestagswahl_ergebnis -> measure_anteil
+        fact_election_result -> dim_partei
+        fact_election_result -> dim_year
+        fact_election_result -> measure_stimmen
+        fact_election_result -> measure_anteil
 
-    fact_sitzverteilung
-      fact_sitzverteilung -> dim_partei
-      fact_sitzverteilung -> dim_year
-      fact_sitzverteilung -> measure_sitze
+    fact_seat_distribution
+      fact_seat_distribution -> dim_partei
+      fact_seat_distribution -> dim_year
+      fact_seat_distribution -> measure_seats
 
-    fact_wahlumfrage
-        fact_wahlumfrage -> dim_partei
-        fact_wahlumfrage -> dim_month
-        fact_wahlumfrage -> dim_respondent
-        fact_wahlumfrage -> measure_skalometer_partei
-        fact_wahlumfrage -> measure_is_intended_vote
-        fact_wahlumfrage -> measure_is_last_vote
-        fact_wahlumfrage -> measure_is_aligned_party
-    fact_beurteilung
-        fact_beurteilung -> dim_month
-        fact_beurteilung -> dim_respondent
-        fact_beurteilung -> measure_wie_links_rechts
-        fact_beurteilung -> measure_wie_links
-        fact_beurteilung -> measure_wie_rechts
-        fact_beurteilung -> measure_demokratiezufriedenheit
-        fact_beurteilung -> measure_politikinteresse
-        fact_beurteilung -> measure_wirtschaft
-        fact_beurteilung -> measure_asylrecht
-        fact_beurteilung -> measure_kernkraft
-        fact_beurteilung -> measure_kriminalität
-        fact_beurteilung -> measure_milit_bedroht
-        fact_beurteilung -> measure_jahresrückblick
-        fact_beurteilung -> measure_jahresausblick
+    fact_politbarometer_election_poll
+        fact_politbarometer_election_poll -> dim_partei
+        fact_politbarometer_election_poll -> dim_month
+        fact_politbarometer_election_poll -> dim_respondent
+        fact_politbarometer_election_poll -> measure_skalometer_partei
+        fact_politbarometer_election_poll -> measure_is_intended_vote
+        fact_politbarometer_election_poll -> measure_is_last_vote
+        fact_politbarometer_election_poll -> measure_is_aligned_party
+    fact_politbarometer_opinion_poll
+        fact_politbarometer_opinion_poll -> dim_month
+        fact_politbarometer_opinion_poll -> dim_respondent
+        fact_politbarometer_opinion_poll -> measure_wie_links_rechts
+        fact_politbarometer_opinion_poll -> measure_wie_links
+        fact_politbarometer_opinion_poll -> measure_wie_rechts
+        fact_politbarometer_opinion_poll -> measure_demokratiezufriedenheit
+        fact_politbarometer_opinion_poll -> measure_politikinteresse
+        fact_politbarometer_opinion_poll -> measure_wirtschaft
+        fact_politbarometer_opinion_poll -> measure_asylrecht
+        fact_politbarometer_opinion_poll -> measure_kernkraft
+        fact_politbarometer_opinion_poll -> measure_kriminalität
+        fact_politbarometer_opinion_poll -> measure_milit_bedroht
+        fact_politbarometer_opinion_poll -> measure_jahresrückblick
+        fact_politbarometer_opinion_poll -> measure_jahresausblick
 
-    fact_bundestagswahl_erhebung
-        fact_bundestagswahl_erhebung -> dim_year
-        fact_bundestagswahl_erhebung -> measure_wahlberechtigte
-        fact_bundestagswahl_erhebung -> measure_waehlende
-        fact_bundestagswahl_erhebung -> measure_gueltige
-        fact_bundestagswahl_erhebung -> measure_ungueltige
+    fact_election_census
+        fact_election_census -> dim_year
+        fact_election_census -> measure_wahlberechtigte
+        fact_election_census -> measure_waehlende
+        fact_election_census -> measure_gueltige
+        fact_election_census -> measure_ungueltige
     }
   ```,
   labels: it => {
