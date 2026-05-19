@@ -1,5 +1,5 @@
 #import "@preview/codly:1.3.0": codly
-#import "/components.typ": *
+#import "/components/components.typ": *
 
 #align(end)[2026-03-19]
 
