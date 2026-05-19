@@ -960,30 +960,6 @@ Die Eigenschaften der Vektornorm gelten für alle $p$.
 
 = Partielle Ableitungen
 
-#example[
-  $
-    f(x_1, x_2) = x_1^2 + x_1 dot x_2
-  $
-
-  Nach $x_1$ ableiten:
-
-  $
-    (partial f)/(partial x_1)(x_1^*, x_2^*) = 2x_1^* + x_2^*
-  $
-
-  Nach $x_2$ ableiten:
-
-  $
-    (partial f)/(partial x_2)(x_1^*, x_2^*) = x_1^*
-  $
-
-  Gradient:
-
-  $
-    gradient f(x_1, x_2) = vec(2x_1+x_2, x_1)
-  $
-]
-
 #align(end)[2026-05-05 VL07]
 
 #definition(title: [Partielle Ableitung])[
@@ -1000,52 +976,75 @@ Die Eigenschaften der Vektornorm gelten für alle $p$.
 
 Wir lassen fortan $*$ weg.
 
-#example(title: [Kugelvolumen])[
-  $
-    V(r, h) = 1/3 pi r^2 h \
-  $
+#grid(
+  columns: (1fr,) * 2,
+  example[
+    $
+      f(x_1, x_2) = x_1^2 + x_1 dot x_2
+    $
 
-  Nach $r$ ableiten:
+    Nach $x_1$ ableiten:
 
-  $
-    (partial V)/(partial r) (r, h) & = 2/3 pi r h
-  $
+    $
+      (partial f)/(partial x_1)(x_1^*, x_2^*) = 2x_1^* + x_2^*
+    $
 
-  Nach $h$ ableiten:
+    Nach $x_2$ ableiten:
 
-  $
-    (partial V)/(partial h) (r, h) & = 1/3 pi r^2
-  $
-]
+    $
+      (partial f)/(partial x_2)(x_1^*, x_2^*) = x_1^*
+    $
 
+    Gradient:
+
+    $
+      gradient f(x_1, x_2) = vec(2x_1+x_2, x_1)
+    $
+  ],
+  example(title: [Kugelvolumen])[
+    $
+      V(r, h) = 1/3 pi r^2 h \
+    $
+
+    Nach $r$ ableiten:
+
+    $
+      (partial V)/(partial r) (r, h) & = 2/3 pi r h
+    $
+
+    Nach $h$ ableiten:
+
+    $
+      (partial V)/(partial h) (r, h) & = 1/3 pi r^2
+    $
+  ],
+)
 == Gradient
 
-Der Gradient von $f: RR^n -> RR$ an der Stelle $x^* in RR^n$ ist
+#definition(title: [Gradient])[
+  Der _Gradient_ von $f: RR^n -> RR$ an der Stelle $x^* in RR^n$ ist
 
-#box(inset: 4pt, fill: blue.transparentize(80%))[
   $
     gradient f(x^*) = vec(
       (partial f)/(partial x_1) (x^*),
       (partial f)/(partial x_2) (x^*),
-      ...,
+      dots.v,
       (partial f)/(partial x_n) (x^*),
     )
   $
 ]
 
-= Fehlerrechnung in mehreren Dimensionen
-
 == Jakobi-Matrix
 
-Sei $f: RR^n -> RR^m$ ein Funktion mit $m$ Komponentenfunktionen $f_i: RR^n -> RR$, also
+#definition(title: [Jakobi-Matrix])[
+  Sei $f: RR^n -> RR^m$ ein Funktion mit $m$ Komponentenfunktionen $f_i: RR^n -> RR$, also
 
-$
-  f = vec(f_1, ..., f_m)
-$
+  $
+    f = vec(f_1, ..., f_m)
+  $
 
-Dann ist
+  Dann ist
 
-#box(inset: 4pt, fill: blue.transparentize(80%))[
   $
     D_f (x^*) = J_f (x^*) = mat(
       (partial f_1)/(partial x_1) (x^*), ..., (partial f_1)/(partial x_n) (x^*);
@@ -1053,9 +1052,9 @@ Dann ist
       (partial f_m)/(partial x_1)(x^*), ..., (partial f_m)/(partial x_n)(x^*)
     )
   $
-]
 
-Die Jakobi-Matrix von $f$ bei $x^* in RR^n$.
+  Die Jakobi-Matrix von $f$ bei $x^* in RR^n$.
+]
 
 #note[
   Im Fall $m=1$ ist die Jakobi-Matrix der Gradient $J_f = gradient f$.
@@ -1063,18 +1062,20 @@ Die Jakobi-Matrix von $f$ bei $x^* in RR^n$.
 
 == Hesse-Matrix
 
-Die _Hesse-Matrix_ $H_f$ einer Funktion $f: RR^n -> R$ ist
+#definition(title: [Hesse-Matrix])[
+  Die _Hesse-Matrix_ $H_f$ einer Funktion $f: RR^n -> R$ ist
 
-$
-  H_f = mat(
-    (partial^2 f)/(partial x_1^2), (partial^2 f)/(partial x_1x_2), ..., (partial^2 f)/(partial x_1x_n);
-    (partial^2 f)/(partial x_2x_1), (partial^2 f)/(partial x_2^2), ..., (partial^2 f)/(partial x_2x_n);
-    dots.v, dots.v, dots.down, dots.v;
-    (partial^2 f)/(partial x_n x_1), (partial^2 f)/(partial x_n x_2), ..., (partial^2 f)/(partial x_n^2);
-  )
-$
+  $
+    H_f = mat(
+      (partial^2 f)/(partial x_1^2), (partial^2 f)/(partial x_1x_2), ..., (partial^2 f)/(partial x_1x_n);
+      (partial^2 f)/(partial x_2x_1), (partial^2 f)/(partial x_2^2), ..., (partial^2 f)/(partial x_2x_n);
+      dots.v, dots.v, dots.down, dots.v;
+      (partial^2 f)/(partial x_n x_1), (partial^2 f)/(partial x_n x_2), ..., (partial^2 f)/(partial x_n^2);
+    )
+  $
+]
 
-#note[
+#info[
   Es gilt
 
   $
@@ -1088,11 +1089,11 @@ $
   $
 
   $
-    H V(r, h) = pi/3 dot mat(2h, 2r; 2r, 0)
+    H_V = pi/3 dot mat(2h, 2r; 2r, 0)
   $
 ]
 
-#note[
+#info[
   Die Hesse-Matrix ist symmetrisch, wenn $f$ "glatt genug" ist.
 
   $
@@ -1100,7 +1101,7 @@ $
   $
 ]
 
-== Mehrdimensionale Kondition
+= Mehrdimensionale Kondition
 
 Sei $f: RR^n -> RR$
 
