@@ -1104,6 +1104,48 @@ Wir lassen fortan $*$ weg.
 
 = Mehrdimensionale Kondition
 
+== Taylorpolynom
+
+#info(
+  title: [Erinnerung: Taylorpolynom in 1D],
+)[
+  $
+    f: RR -> RR
+  $
+
+
+  $
+    T_n f(x; a) & = f(a) + f^'(a)/1! (x-a) + (f^('')(a))/2! (x-a)^2 + ... + (f^((n))(a))/n! (x-a)^n \
+                & = sum_(k=0)^n (f^((k))(a))/k! (x - a)^k
+  $
+]
+#definition(title: [Taylorpolynom beliebiger Dimension])[
+  Sei $alpha = (alpha_1, ..., alpha_d) in NN_0^d$ ein Tupel, welches beschreibt, dass $f: RR^d -> RR$ für jede Variable $x_i$ genau $alpha_i$ mal abgeleitet wird. Oder formal:
+
+  $
+    D^alpha = (partial^abs(alpha))/(partial x_1^alpha_1 dots.c partial x_d^alpha_d)
+  $
+
+  Dann ist das Taylorpolynom
+
+  $
+    T_n f(x; a) & = sum_(abs(alpha)=0)^n (x-a)^alpha/alpha! D^alpha f(a) \
+                & = f(a) + gradient f (x)^T (x-a) + ...
+  $
+]
+
+== Absolute Kondition
+
+#proof(title: [Herleitung Absolute Kondition])[
+
+]
+
+== Relative Kondition
+
+#proof(title: [Herleitung Relative Kondition])[TODO]
+
+== TODO überarbeiten
+
 Sei $f: RR^n -> RR$
 
 Taylorentwicklung von $f$ in $x$ ist
@@ -1420,3 +1462,5 @@ $
        &&   & = (L^1)^(-1) (L^2)^(-1) R \
   <==> && L & = (L^1)^(-1) (L^2)^(-1)
 $
+
+#align(end)[2026-05-19 VL09]
