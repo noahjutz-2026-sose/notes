@@ -1349,7 +1349,7 @@ $
   delta_x <= kappa_* (A) dot delta_b
 $
 
-= Lineare Gleichungssysteme
+= LR-Algorithmus
 
 Sei $A$ quadratische invertierbare Matrix und $b$ Vektor. Um Gleichungssystem zu lösen:
 
@@ -1360,10 +1360,10 @@ $
 
 Invertieren ist aufwendig und numerisch instabil. Alternativen:
 - Gauß-Algorithmus $mat(augment: #1, A, b)$
-- "Erweiterter Gauß"
+- "LR-Algorithmus"
 - QR-Zerlegung
 
-== "Erweiterter Gauß"
+== Dreiecksmatrizen lösen (Vorwärtselimination und Rücksubstitution)
 
 + #[
     Zerlege $A = L R$
@@ -1402,7 +1402,7 @@ Invertieren ist aufwendig und numerisch instabil. Alternativen:
   $
 ]
 
-== LR-Zerlegung
+== Dreiecksmatrizen erzeugen (LR-Zerlegung)
 
 #example[
   $
@@ -1431,7 +1431,9 @@ Invertieren ist aufwendig und numerisch instabil. Alternativen:
   $
 ]
 
-=== Formalisierung von Gauß-Ersetzen
+== Zeilenumformungsmatrizen
+
+=== Frobeniusmatrix
 
 Sei
 $
@@ -1464,3 +1466,85 @@ $
 $
 
 #align(end)[2026-05-19 VL09]
+
+#proof(title: [Eindeutigkeit LR-Zerlegung])[
+  Eine Zerlegung $A = L dot R$ mit $L$ mit 1en auf Diagonale ist eindeutig, wenn sie existiert.
+
+  $
+    L_1 R_1 = A = L_2 R_2 ==> L_1 = L_2, R_1 = R_2
+  $
+
+  Beweis durch $L_2^(-1) L_1 = R_2 R_1^(-1) = I$
+]
+
+== Pivotisierung
+
+#example(title: [Motivation])[
+  Die Matrix $mat(0, 1; 1, 0)$ hat keine LR-Zerlegung, weil wir nicht vertauschen dürfen.
+]
+
+#definition(title: [Permutationsmatrix])[
+  Sei $pi : {1, ..., n} -> {1, ..., n}$ eine bijektive Abbildung.
+
+  Das heißt: $pi(i)$ liefert für $i in {1, ..., n}$ einen Wert in ${1, ..., n}$.
+
+  $e_pi(i)$ ist der Einheitsvektor (als Zeile) mit 1 an Stelle $pi(i)$.
+  Die _Permutationsmatrix_ $P_pi$ ist
+  $
+    P_pi = mat(
+      e_pi(1);
+      e_pi(2);
+      dots.v;
+      e_pi(n);
+    )
+  $
+
+  Alternative Veranschaulichung: $P_pi$ entsteht durch Zeilentauschen der Einheitsmatrix $I$.
+]
+
+#info[
+  Für Permutationsmatrizen gilt
+
+  $
+    P^(-1) = P^T
+  $
+]
+
+Bei der _Pivotisierung_ für die obere Dreiecksmatrix $R$ gehen wir wie folgt vor:
+
+Wenn ein $A in.rev a_(k+1, k+1) = 0$, dann:
++ Finde ein $a_(l, k+1) != 0$ in Zeile $l$ *unter* $k+1$.
++ Vertausche Zeilen $k+1$ und $l$
+
+Dafür erstellen wir eine Permutationsmatrix.
+
+$
+  P_(l, k+1)
+$
+
+Wenn wir in jedem Schritt ein $P$ erstellen, erhalten wir
+
+#note[
+  Definiere $hat(L)^((k))$ als
+
+  $
+    hat(L)^((k)) = P_k dot L^((k)) dot P_k^(-1)
+  $
+
+]
+
+$
+  R = A^((n-1)) & = L^((n-1)) dot P^((n-1)) dot L^((n-2)) dot P^((n-2)) dot dots.c dot L^((1)) dot P^((1)) A \
+                & = "... Umformung ..." \
+                & = L^((n-1)) hat(L)^((n-1)) hat(L)^((n-3)) dot dots.c A \
+$
+
+#note[
+  Definiere $P_k$ als alle Vertauschungen zusammen
+  $
+        &&          P_k & := P^((n-1)) P^((n-2)) dots.c P^((k+1)) \
+    ==> &&   P_k^((-1)) & = P^((k+1)) P^((k+2)) dots.c P^((n-1)) \
+    ==> && hat(L)^((k)) & = P_k L^((k)) P_k^(-1)
+  $
+  todo tafelbild ...
+]
