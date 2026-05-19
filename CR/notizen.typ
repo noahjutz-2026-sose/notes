@@ -3,7 +3,7 @@
 #import gentle-clues: *
 #import mannot: *
 #import codly: codly
-#import "/components.typ": *
+#import "/components/admonitions.typ": *
 
 #align(end)[2026-03-17 VL01]
 

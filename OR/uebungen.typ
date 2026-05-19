@@ -1,6 +1,6 @@
 #import "/deps.typ": cetz, cetz-plot, diagraph, gentle-clues, mannot
 #import "/style.typ": colors
-#import "/components.typ": *
+#import "/components/admonitions.typ": *
 #import mannot: *
 #import gentle-clues: clue
 

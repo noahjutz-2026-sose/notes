@@ -1,4 +1,4 @@
-#import "/components.typ": *
+#import "/components/admonitions.typ": *
 #import "/deps.typ": codly
 
 = Escape Room

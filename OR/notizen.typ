@@ -1,4 +1,4 @@
-#import "/components.typ": *
+#import "/components/admonitions.typ": *
 #import "/deps.typ": cetz, cetz-plot, codly
 
 #align(end)[2026-03-19 VL01]

@@ -1,4 +1,4 @@
-#import "/components.typ": *
+#import "/components/admonitions.typ": *
 #import "/deps.typ": mannot
 #import "components/ieee754.typ"
 #import mannot: *

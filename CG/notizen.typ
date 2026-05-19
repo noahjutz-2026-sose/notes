@@ -1,4 +1,4 @@
-#import "/components.typ": *
+#import "/components/admonitions.typ": *
 #import "/style.typ": *
 #import "/deps.typ": cetz, cetz-plot, codly, gentle-clues, suiji
 
