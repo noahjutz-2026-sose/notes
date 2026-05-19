@@ -61,22 +61,23 @@
     edge[dir=both arrowhead=normal arrowtail=crow]
     dim_month -> dim_year
     dim_wahlkreis -> dim_stadt -> dim_region -> dim_bundesland
-    dim_befragter -> dim_alter
-    dim_befragter -> dim_bundesland
-    dim_befragter -> dim_partei
+    dim_respondent -> dim_alter
+    dim_respondent -> dim_bundesland
+    dim_respondent -> dim_partei
 
     edge[dir=both arrowhead=none arrowtail=none]
 
-    dim_befragter
-        dim_befragter -> measure_geschlecht
-        dim_befragter -> measure_berufsgruppe
-        dim_befragter -> measure_wirtschaftl_lage
-        dim_befragter -> measure_familienstand
-        dim_befragter -> measure_zusammenleben
-        dim_befragter -> measure_erwerbsstatus
-        dim_befragter -> measure_gewerkschaft
-        dim_befragter -> measure_parteineigung_
-        dim_befragter -> measure_bundesland_
+    // Attribute
+    dim_respondent
+        dim_respondent -> measure_geschlecht
+        dim_respondent -> measure_berufsgruppe
+        dim_respondent -> measure_wirtschaftl_lage
+        dim_respondent -> measure_familienstand
+        dim_respondent -> measure_zusammenleben
+        dim_respondent -> measure_erwerbsstatus
+        dim_respondent -> measure_gewerkschaft
+        dim_respondent -> measure_parteineigung_
+        dim_respondent -> measure_bundesland_
 
     // Fakten
     fact_bundestagswahl_ergebnis
@@ -98,14 +99,14 @@
     fact_wahlumfrage
         fact_wahlumfrage -> dim_partei
         fact_wahlumfrage -> dim_month
-        fact_wahlumfrage -> dim_befragter
+        fact_wahlumfrage -> dim_respondent
         fact_wahlumfrage -> measure_skalometer_partei
         fact_wahlumfrage -> measure_is_intended_vote
         fact_wahlumfrage -> measure_is_last_vote
         fact_wahlumfrage -> measure_is_aligned_party
     fact_beurteilung
         fact_beurteilung -> dim_month
-        fact_beurteilung -> dim_befragter
+        fact_beurteilung -> dim_respondent
         fact_beurteilung -> measure_wie_links_rechts
         fact_beurteilung -> measure_wie_links
         fact_beurteilung -> measure_wie_rechts
