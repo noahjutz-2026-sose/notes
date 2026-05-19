@@ -1,5 +1,7 @@
 #import "@preview/gentle-clues:1.3.1": clue
 
+#let _ico(body) = text(font: "JetBrainsMono NF", body)
+
 #let _common_args = (
   header-color: white,
   content-inset: 8pt,
@@ -9,7 +11,7 @@
 
 #let example(
   title: "Beispiel",
-  icon: [\u{f0208}],
+  icon: _ico[\u{f0208}],
   ..args,
 ) = clue(
   title: title,
@@ -21,7 +23,7 @@
 
 #let task(
   title: "Aufgabe",
-  icon: [\u{f0132}],
+  icon: _ico[\u{f0132}],
   ..args,
 ) = clue(
   title: title,
@@ -33,7 +35,7 @@
 
 #let note(
   title: "Notiz",
-  icon: [\u{f03eb}],
+  icon: _ico[\u{f03eb}],
   ..args,
 ) = clue(
   title: title,
@@ -45,7 +47,7 @@
 
 #let further(
   title: "Links",
-  icon: [\u{f0337}],
+  icon: _ico[\u{f0337}],
   ..args,
 ) = clue(
   title: title,
@@ -57,7 +59,7 @@
 
 #let proof(
   title: "Beweis",
-  icon: [\u{f0764}],
+  icon: _ico[\u{f0764}],
   ..args,
 ) = clue(
   title: title,
@@ -68,7 +70,7 @@
 
 #let alternative(
   title: "Alternative",
-  icon: [\u{f09bb}],
+  icon: _ico[\u{f09bb}],
   ..args,
 ) = clue(
   title: title,
@@ -79,12 +81,23 @@
 
 #let code(
   title: "Code",
-  icon: [\u{f0169}],
+  icon: _ico[\u{f0169}],
   ..args,
 ) = clue(
   title: title,
   icon: icon,
   accent-color: blue.darken(10%),
+  .._common_args,
+  ..args,
+)
+
+#let definition(
+  title: "Definition",
+  icon: _ico[\u{f405}],
+  ..args,
+) = clue(
+  title: title,
+  icon: icon,
   .._common_args,
   ..args,
 )

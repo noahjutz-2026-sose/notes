@@ -453,7 +453,7 @@ $
   Delta_y <= k_"abs" (x) dot Delta_x + markhl(g(tilde(x), x))
 $
 
-#clue(title: [Definition])[
+#definition[
   Wir definieren $g(tilde(x), x)$ mit
   $
     lim_abs(tilde(x)-x) abs(g(tilde(x), x))/abs(tilde(x)-x) = 0
@@ -470,7 +470,7 @@ $
 
 _Näherung erster Ordnung:_ Wir vernachlässigen $g$.
 
-#clue(title: [Definition])[
+#definition[
   _Näherung erster Ordnung:_ Glieder höherer Ordnung sind lokal um $x_0$ unwichtig.
 ]
 
