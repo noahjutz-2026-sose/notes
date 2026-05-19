@@ -23,7 +23,7 @@
 
 #let task(
   title: "Aufgabe",
-  icon: _ico[\u{f0132}],
+  icon: _ico[\u{f012c}],
   ..args,
 ) = clue(
   title: title,
