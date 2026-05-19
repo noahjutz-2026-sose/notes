@@ -986,19 +986,15 @@ Die Eigenschaften der Vektornorm gelten für alle $p$.
 
 #align(end)[2026-05-05 VL07]
 
-Definition:
+#definition(title: [Partielle Ableitung])[
+  Die _Partielle Ableitung_ von $f: RR^n -> RR$ an der Stelle $x^* in RR^n$ ist
 
-$
-  f: RR^n -> RR, quad x^* in RR^n
-$
+  $
+    (partial f)/(partial x_i) (x^*) = lim_(h=0) (f(x^*+h dot e_i) - f(x^*))/h
+  $
+]
 
-Dann ist die partielle Ableitung von $f$ nach $x_i$ an der Stelle $x^*$:
-
-$
-  (partial f)/(partial x_i) (x^*) = lim_(h=0) (f(x^*+h dot e_i) - f(x^*))/h
-$
-
-#note[
+#info[
   $e_i$ ist der Einheitsvektor in Richtung $i$.
 ]
 

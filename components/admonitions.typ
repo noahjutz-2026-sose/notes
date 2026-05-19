@@ -101,3 +101,15 @@
   .._common_args,
   ..args,
 )
+
+#let info(
+  title: [Info],
+  icon: _ico[\u{f02fd}],
+  ..args,
+) = clue(
+  title: title,
+  icon: icon,
+  accent-color: color.teal,
+  .._common_args,
+  ..args,
+)
