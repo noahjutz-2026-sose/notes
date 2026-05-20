@@ -21,5 +21,5 @@ for dir in "${TARGET_DIRS[@]}"; do
         --font-path . \
         --ignore-system-fonts \
         --pdf-standard a-4 \
-        --root .
+        --root src
 done
