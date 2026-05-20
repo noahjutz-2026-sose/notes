@@ -1,4 +1,4 @@
-#import "/deps.typ": cetz, cetz-plot, codly, gentle-clues, mannot, meander
+#import "/deps.typ": cetz, cetz-plot, codly, fletcher, gentle-clues, mannot, meander
 #import "/style.typ": *
 #import gentle-clues: *
 #import mannot: *
@@ -1140,15 +1140,44 @@ Wir lassen fortan $*$ weg.
 
 Sei $f: RR^n -> RR^m$. Dann
 
-$
-        x & in RR^n \
-     f(x) & in RR^m \
-  Delta_x & in RR^n \
-  Delta_y & in RR^m \
-  delta_x & in RR \
-  delta_y & in RR \
-    kappa & in RR
-$
+#block(breakable: false)[
+  #grid(columns: 3, column-gutter: 12pt, align: center + horizon)[
+    $RR^n$
+    #ellipse[
+      $
+        x = (x_1,...,x_n) \
+        Delta_x = (Delta_x_1, ..., Delta_x_n) \
+        delta_x = (delta_x_1, ..., delta_x_n) \
+        Phi = (Phi_1, ..., Phi_n)
+      $
+    ]
+  ][
+    $RR^m$
+    #ellipse[
+      $
+        y = (y_1, ..., y_m) \
+        Delta_y = (Delta_y_1, ..., Delta_y_m) \
+        delta_y = (delta_y_1, ..., delta_y_m)
+      $
+    ]
+  ][
+    $RR$
+    #ellipse[
+      $
+        kappa \
+        norm(delta_x) quad quad
+        norm(delta_y) \
+        delta_x_i quad quad
+        delta_y_i \
+        norm(Delta_x) quad quad
+        norm(Delta_y) \
+        Delta_x_i quad quad
+        Delta_y_i \
+        Phi_i (x) = (partial f)/(partial x_i) (x) dot x_i/f(x)
+      $
+    ]
+  ]
+]
 
 === Zusammenfassung
 
@@ -1160,7 +1189,7 @@ $
     norm(Delta_y) <= kappa_"abs" (x) dot norm(Delta_x)
   $,
   $
-    delta_y <= kappa_"rel" (x) dot delta_x
+    norm(delta_y) <= kappa_"rel" (x) dot norm(delta_x)
   $,
 
   $ RR -> RR $,
