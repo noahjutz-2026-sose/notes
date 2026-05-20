@@ -60,7 +60,7 @@ Wir wollen die gemessenen Rohdaten $tilde(x)$ mit einer Funktion $f : X -> Y$ au
 
 #further(width: 50%)[
   - #link("https://www.youtube.com/watch?v=a5oQktSURoE")[
-      \u{f05c3} #sym.space Floating Point Arithmetic
+      Floating Point Arithmetic
     ]
   - #link("https://gemini.google.com/share/9b4963171b5c")[Gemini]
 ]
