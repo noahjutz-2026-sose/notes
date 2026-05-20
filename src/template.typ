@@ -19,6 +19,7 @@
   show link: set text(blue)
   show math.equation: set text(font: "Lete Sans Math")
   show math.equation.where(block: true): align.with(start)
+  show math.equation.where(block: true): set block(breakable: true)
   show: gentle-clues.gentle-clues.with(
     breakable: true,
   )
