@@ -11,9 +11,10 @@ TARGET_DIRS=(
 )
 
 for dir in "${TARGET_DIRS[@]}"; do
-    file="${dir}/main.typ"
+    file="src/${dir}/main.typ"
 
     if [ ! -f "$file" ]; then
+        echo $file not found.
         exit 1
     fi
 
