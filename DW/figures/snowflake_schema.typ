@@ -1,4 +1,5 @@
 #import "/deps.typ": diagraph
+#import "/components/utils.typ": i
 #import "/style.typ": *
 
 #set table(
@@ -11,11 +12,11 @@
 
 #let ico = text.with(font: "JetBrainsMono NF", fill: colors.primary.dark)
 
-#let type_str = ico[\u{f100d}#sym.space]
-#let type_num = ico[\u{f03a0}#sym.space]
-#let type_float = ico[\u{f10a1}#sym.space]
-#let type_bool = ico[\u{f0521}#sym.space]
-#let type_date = ico[\u{f00ed}#sym.space]
+#let type_str = i("bars-3-bottom-left")
+#let type_num = i("calculator")
+#let type_float = i("divide")
+#let type_bool = i("power")
+#let type_date = i("calendar")
 
 #diagraph.raw-render(
   ```
