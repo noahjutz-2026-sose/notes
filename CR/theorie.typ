@@ -631,3 +631,13 @@ $
        3% & = 1 dot 1% + 2 dot delta_t \
        1% & = delta_t
 $
+
+=
+
+== I = 1
+
+===
+
+$max norm(I x) = 1$
+
+===
