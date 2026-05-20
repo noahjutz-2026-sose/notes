@@ -6,4 +6,4 @@ RUN mkdir -p /output
 
 COPY . .
 
-CMD ["bash", "-c", "./build.sh /output; tree"]
+CMD ["bash", "-c", "./build.sh /output"]
