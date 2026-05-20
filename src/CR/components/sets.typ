@@ -39,8 +39,6 @@
 }
 
 #let math_set(body, title: none, shape: squircle) = box(context {
-  set block(spacing: 4pt)
-  set par(spacing: 4pt)
   stack(
     if title != none {
       let (width, height) = measure(title)
