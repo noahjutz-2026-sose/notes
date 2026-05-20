@@ -1,7 +1,6 @@
 #import "/template.typ": template_presentation
 #import "/deps.typ": cetz, cetz-plot, codly, diagraph, suiji, touying
 #import "/style.typ": *
-#import "/components/presentation.typ": *
 #import touying: *
 
 #show: template_presentation
@@ -41,9 +40,7 @@
 #pagebreak()
 
 #align(center + horizon)[
-  #quot[
-    OTH-Stundent beschleunigt KI-Roboter um 200%
-  ]
+  "OTH-Stundent beschleunigt KI-Roboter um 200%"
 ]
 
 #place(bottom + left, dx: -32pt, dy: 96pt)[
