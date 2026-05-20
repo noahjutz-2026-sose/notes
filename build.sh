@@ -20,5 +20,6 @@ for dir in "${TARGET_DIRS[@]}"; do
     typst compile "$file" "$OUTPUT/${dir}.pdf" \
         --font-path . \
         --ignore-system-fonts \
+        --pdf-standard a-4 \
         --root .
 done
