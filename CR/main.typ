@@ -1,5 +1,5 @@
 #import "/template.typ": template, template_exercises
-#show: template
+#show: template.with(doc_title: [SS'26 #sym.dot CR/NMA])
 
 #title[Numerische Mathematik]
 

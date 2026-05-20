@@ -1,4 +1,4 @@
-#import "/deps.typ": codly, codly-languages, gentle-clues, touying
+#import "/deps.typ": codly, codly-languages, gentle-clues, hydra, touying
 #import "/style.typ": *
 
 #let template_base(body) = {
@@ -47,7 +47,7 @@
   body
 }
 
-#let template(body) = {
+#let template(body, doc_title: none) = {
   show: template_base
   let text_size = 11pt
   show title: set text(size: 32pt, weight: "black")
@@ -55,7 +55,18 @@
     size: text_size,
   )
   set heading(numbering: (n0, ..x) => numbering("1.1", n0 - 1, ..x))
-  set page(numbering: "1")
+  set page(
+    numbering: "1",
+    header: context {
+      set text(fill: colors.on_surface.light)
+      stack(
+        dir: ltr,
+        spacing: 1fr,
+        doc_title,
+        emph(hydra.hydra(1)),
+      )
+    },
+  )
 
   show raw: set text(
     size: text_size - 2pt,

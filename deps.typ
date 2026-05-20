@@ -10,3 +10,4 @@
 
 #import "@preview/diagraph:0.3.7"
 #import "@preview/fletcher:0.5.8"
+#import "@preview/hydra:0.6.2"
