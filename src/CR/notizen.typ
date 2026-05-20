@@ -1164,6 +1164,7 @@ Sei $f: RR^n -> RR^m$. Dann
     ],
 
     math_set(title: $RR$)[
+      #set align(center)
       $
         kappa \
         delta_x_i quad quad

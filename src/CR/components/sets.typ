@@ -1,7 +1,13 @@
 #import "/deps.typ": cetz
 
 // AI Generated function
-#let squircle(body, n: 6) = context {
+#let squircle(
+  body,
+  n: 6,
+  inset: 4pt,
+  stroke-style: 1pt,
+) = context {
+  let body = box(inset: inset, body)
   let size = measure(body)
 
   let k = calc.pow(2, 1 / n)
@@ -26,6 +32,7 @@
 
   cetz.canvas({
     import cetz.draw: *
+    set-style(stroke: stroke-style)
     line(..pts, close: true)
     content((0, 0), body)
   })
