@@ -1143,23 +1143,23 @@ Sei $f: RR^n -> RR^m$. Dann
 
 #block(breakable: false)[
   #grid(
-    columns: 2,
+    columns: 3,
     column-gutter: 12pt,
     row-gutter: 12pt,
     align: center + horizon,
     math_set(title: $RR^n$)[
       $
-        x = (x_1,...,x_n) \
-        Delta_x = (Delta_x_1, ..., Delta_x_n) \
-        delta_x = (delta_x_1, ..., delta_x_n) \
-        Phi = (Phi_1, ..., Phi_n)
+              x & = (x_1,...,x_n) \
+        Delta_x & = (Delta_x_1, ..., Delta_x_n) \
+        delta_x & = (delta_x_1, ..., delta_x_n) \
+         Phi(x) & = (Phi_1 (x), ..., Phi_n (x))
       $
     ],
     math_set(title: $RR^m$)[
       $
-        y = (y_1, ..., y_m) \
-        Delta_y = (Delta_y_1, ..., Delta_y_m) \
-        delta_y = (delta_y_1, ..., delta_y_m)
+              y & = (y_1, ..., y_m) \
+        Delta_y & = (Delta_y_1, ..., Delta_y_m) \
+        delta_y & = (delta_y_1, ..., delta_y_m)
       $
     ],
 
@@ -1173,7 +1173,7 @@ Sei $f: RR^n -> RR^m$. Dann
         Delta_y_i \
         Phi_i (x) = (partial f)/(partial x_i) (x) dot x_i/f(x)
       $
-      #math_set(title: $RR^+$)[
+      #math_set(title: $RR_0^+$)[
         $
           norm(delta_x) quad quad
           norm(delta_y) \
@@ -1222,7 +1222,7 @@ Sei $f: RR^n -> RR^m$. Dann
     (norm(f(tilde(x))-f(x))_A)/norm(f(x))_A <= kappa_"rel"^A (x) dot (norm(tilde(x)-x)_B)/norm(x)_B
   $,
 )
-#proof(title: [Herleitung Kondition])[
+#proof(title: [Herleitung Relative Kondition für $RR^n -> RR$])[
   Das Taylorpolynom erster Ordnung im Entwicklungspunkt $x$ ist
 
   $
@@ -1234,61 +1234,23 @@ Sei $f: RR^n -> RR^m$. Dann
 
   $
     delta_f(x) & = abs((f(tilde(x))-f(x))/f(x)) \
-    & =^dot abs((f(x) + sum_i (partial f)/(partial x_i) (x) (tilde(x)_i-x_i) - f(x)) / f(x)) \
-    & = abs(1/f(x) dot (sum_i (partial f)/(partial x_i) (x) (tilde(x)_i-x_i))) \
-    & = sum_i abs(1/f(x) dot (partial f)/(partial x_i) (x) dot (tilde(x)_i-x_i)) \
-    & = sum_i abs(x_i/x_i dot 1/f(x) dot (partial f)/(partial x_i) (x) dot (tilde(x)_i-x_i)) \
-    & = sum_i abs(x_i/f(x) dot (partial f)/(partial x_i) (x) dot (tilde(x)_i-x_i)/x_i) \
-    & <= sum_i abs(underbrace(x_i/f(x) dot (partial f)/(partial x_i) (x), =: Phi_i)) dot abs((tilde(x)_i-x_i)/x_i) \
-    & <= max_(i=1,...,n) abs(Phi_i)
+               & =^dot abs((f(x) + sum_i (partial f)/(partial x_i) (x) (tilde(x)_i-x_i) - f(x)) / f(x)) \
+               & = abs(1/f(x) dot (sum_i (partial f)/(partial x_i) (x) (tilde(x)_i-x_i))) \
+               & = sum_i abs(1/f(x) dot (partial f)/(partial x_i) (x) dot (tilde(x)_i-x_i)) \
+               & = sum_i abs(x_i/x_i dot 1/f(x) dot (partial f)/(partial x_i) (x) dot (tilde(x)_i-x_i)) \
+               & = sum_i abs(x_i/f(x) dot (partial f)/(partial x_i) (x) dot (tilde(x)_i-x_i)/x_i) \
+               & <= sum_i abs(x_i/f(x) dot (partial f)/(partial x_i) (x)) dot abs((tilde(x)_i-x_i)/x_i) \
+               & = sum_i abs(Phi_i (x)) dot abs((tilde(x)_i-x_i)/x_i) \
+               & <= max_(i=1,...,n) abs(Phi_i (x)) dot sum_(i=1)^n abs((tilde(x)_i-x_i)/x_i) \
+               & = norm(Phi(x))_infinity dot norm(delta_x)_1
+  $
+
+  Aus der Definition der relativen Kondition folgt:
+
+  $
+    kappa_"rel"^infinity (x) = norm(Phi(x))_infinity
   $
 ]
-
-== TODO überarbeiten
-
-Sei $f: RR^n -> RR$
-
-Taylorentwicklung von $f$ in $x$ ist
-
-$
-  f(tilde(x)) & = f(x) + (gradient f(x))^t dot (tilde(x)-x) + o(norm(tilde(x)-x)) \
-  & =^dot f(x) + (gradient f(x))^t dot (tilde(x)-x) \
-  & = f(x) + sum_(i=1)^n (partial f)/(partial x_i) (x) dot (tilde(x_i)-x_i) \
-  stretch(=>)^(-f(x)) f(tilde(x))-f(x) & = sum_(i=1)^n (partial f)/(partial x_i) (x) dot (tilde(x_i) - x_i) \
-  stretch(=>)^(abs(space/f(x))) abs((f(tilde(x))-f(x))/f(x)) &= abs(
-    sum_(i=1)^n 1/f(x) (partial f)/(partial x_i) (x) dot (tilde(x)_1 - x_1) \
-    &= abs(sum (partial f)/(partial x_i) (x) dot 1/f(x) dot x_i dot (tilde(x)_i-x_i)/x_i) \
-    &<= sum abs((partial f)/(partial x_i) (x) dot x_i/f(x) dot abs((tilde(x)-x_i)/x_i))
-  )
-$
-
-#note[
-  $
-    phi_i (x) := (partial f)/(partial x_i) (x) dot (x_i)/f(x) \
-    delta_x_i = (tilde(x_i)-x_i)/x_i \
-    delta_x = (delta_x_1,...,delta_x_n) \
-    phi = (phi_1,...,phi_n)
-  $
-]
-
-$
-  ... = sum abs(phi_i) dot abs(delta_x_i) \
-  <= sum (max abs(phi_j (x))) dot abs(delta_x_i) \
-  = max abs(phi_j (x)) dot sum abs(delta_x_i) \
-  = norm(phi)_infinity dot norm(delta_x)_1
-$
-
-Wir haben oben gezeigt dass das größer gleich $delta_y$ ist.
-
-$
-  delta_y <= norm(phi)_infinity dot norm(delta_x)_1
-$
-
-Daraus folgt die Kondition
-
-$
-  kappa_"rel"^infinity = norm(phi)_infinity = max abs((partial f)/(partial x_i) (x) dot x_i/f(x))
-$
 
 #example(title: [Relative Kondition Kugelvolumen])[
   $
@@ -1304,15 +1266,6 @@ $
 
   $
     kappa_"rel"^infinity (r, h) = max {abs(2), abs(1)} =2
-  $
-]
-
-
-#note[
-  Wir betrachten Eingabefehler *Komponentenweise*.
-
-  $
-    delta_x = (delta_x_1, ..., delta_x_n)
   $
 ]
 
