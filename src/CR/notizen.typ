@@ -4,6 +4,7 @@
 #import mannot: *
 #import codly: codly
 #import "/components/admonitions.typ": *
+#import "components/sets.typ": math_set
 
 #align(end)[2026-03-17 VL01]
 
@@ -1141,42 +1142,46 @@ Wir lassen fortan $*$ weg.
 Sei $f: RR^n -> RR^m$. Dann
 
 #block(breakable: false)[
-  #grid(columns: 3, column-gutter: 12pt, align: center + horizon)[
-    $RR^n$
-    #ellipse[
+  #grid(
+    columns: 2,
+    column-gutter: 12pt,
+    row-gutter: 12pt,
+    align: center + horizon,
+    math_set(title: $RR^n$)[
       $
         x = (x_1,...,x_n) \
         Delta_x = (Delta_x_1, ..., Delta_x_n) \
         delta_x = (delta_x_1, ..., delta_x_n) \
         Phi = (Phi_1, ..., Phi_n)
       $
-    ]
-  ][
-    $RR^m$
-    #ellipse[
+    ],
+    math_set(title: $RR^m$)[
       $
         y = (y_1, ..., y_m) \
         Delta_y = (Delta_y_1, ..., Delta_y_m) \
         delta_y = (delta_y_1, ..., delta_y_m)
       $
-    ]
-  ][
-    $RR$
-    #ellipse[
+    ],
+
+    math_set(title: $RR$)[
       $
         kappa \
-        norm(delta_x) quad quad
-        norm(delta_y) \
         delta_x_i quad quad
         delta_y_i \
-        norm(Delta_x) quad quad
-        norm(Delta_y) \
         Delta_x_i quad quad
         Delta_y_i \
         Phi_i (x) = (partial f)/(partial x_i) (x) dot x_i/f(x)
       $
-    ]
-  ]
+      #math_set(title: $RR^+$)[
+        $
+          norm(delta_x) quad quad
+          norm(delta_y) \
+          norm(Delta_x) quad quad
+          norm(Delta_y) \
+        $
+      ]
+    ],
+  )
 ]
 
 === Zusammenfassung
@@ -1234,6 +1239,7 @@ Sei $f: RR^n -> RR^m$. Dann
     & = sum_i abs(x_i/x_i dot 1/f(x) dot (partial f)/(partial x_i) (x) dot (tilde(x)_i-x_i)) \
     & = sum_i abs(x_i/f(x) dot (partial f)/(partial x_i) (x) dot (tilde(x)_i-x_i)/x_i) \
     & <= sum_i abs(underbrace(x_i/f(x) dot (partial f)/(partial x_i) (x), =: Phi_i)) dot abs((tilde(x)_i-x_i)/x_i) \
+    & <= max_(i=1,...,n) abs(Phi_i)
   $
 ]
 
