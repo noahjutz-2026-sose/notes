@@ -1104,36 +1104,6 @@ Wir lassen fortan $*$ weg.
 
 = Mehrdimensionale Kondition
 
-== Definition
-
-#table(
-  columns: 3,
-  table.header($f : x |-> y$, [Absolute Kondition], [Relative Kondition]),
-  $ RR -> RR $,
-  $
-    abs(f(tilde(x))-f(x)) <= kappa_"abs" (x) dot abs(tilde(x)-x)
-  $,
-  $
-    abs((f(tilde(x))-f(x))/f(x)) <= kappa_"rel" (x) dot abs((tilde(x)-x)/x)
-  $,
-
-  $ RR^n -> RR $,
-  $
-    abs(f(tilde(x))-f(x)) <= kappa_"abs"^* (x) dot norm(tilde(x)-x)_*
-  $,
-  $
-    abs((f(tilde(x))-f(x))/f(x)) <= kappa_"rel"^* (x) dot (norm(tilde(x)-x)_*)/norm(x)_*
-  $,
-
-  $ RR^n -> RR^m $,
-  $
-    norm(f(tilde(x))-f(x))_A <= kappa_"abs"^A (x) dot norm(tilde(x)-x)_B
-  $,
-  $
-    (norm(f(tilde(x))-f(x))_A)/norm(f(x))_A <= kappa_"rel"^A (x) dot (norm(tilde(x)-x)_B)/norm(x)_B
-  $,
-)
-
 == Taylorpolynom
 
 #info(
@@ -1164,9 +1134,36 @@ Wir lassen fortan $*$ weg.
   $
 ]
 
-== Absolute Kondition
+== Definition
 
-#proof(title: [Herleitung Absolute Kondition])[
+#table(
+  columns: 3,
+  table.header($f : x |-> y$, [Absolute Kondition], [Relative Kondition]),
+  $ RR -> RR $,
+  $
+    abs(f(tilde(x))-f(x)) <= kappa_"abs" (x) dot abs(tilde(x)-x)
+  $,
+  $
+    abs((f(tilde(x))-f(x))/f(x)) <= kappa_"rel" (x) dot abs((tilde(x)-x)/x)
+  $,
+
+  $ RR^n -> RR $,
+  $
+    abs(f(tilde(x))-f(x)) <= kappa_"abs"^* (x) dot norm(tilde(x)-x)_*
+  $,
+  $
+    abs((f(tilde(x))-f(x))/f(x)) <= kappa_"rel"^* (x) dot (norm(tilde(x)-x)_*)/norm(x)_*
+  $,
+
+  $ RR^n -> RR^m $,
+  $
+    norm(f(tilde(x))-f(x))_A <= kappa_"abs"^A (x) dot norm(tilde(x)-x)_B
+  $,
+  $
+    (norm(f(tilde(x))-f(x))_A)/norm(f(x))_A <= kappa_"rel"^A (x) dot (norm(tilde(x)-x)_B)/norm(x)_B
+  $,
+)
+#proof(title: [Herleitung Kondition])[
   Das Taylorpolynom erster Ordnung im Entwicklungspunkt $x$ ist
 
   $
@@ -1178,18 +1175,14 @@ Wir lassen fortan $*$ weg.
 
   $
     delta_f(x) & = abs((f(tilde(x))-f(x))/f(x)) \
-               & =^dot abs((f(x) + sum_i (partial f)/(partial x_i) (x) (tilde(x)_i-x_i) - f(x)) / f(x)) \
-               & = abs(1/f(x) dot (sum_i (partial f)/(partial x_i) (x) (tilde(x)_i-x_i))) \
-               & = sum_i abs(1/f(x) dot (partial f)/(partial x_i) (x) dot (tilde(x)_i-x_i)) \
-               & = sum_i abs(x_i/x_i dot 1/f(x) dot (partial f)/(partial x_i) (x) dot (tilde(x)_i-x_i)) \
-               & <= sum_i abs(x_i/f(x) dot (partial f)/(partial x_i) (x) dot (tilde(x)_i-x_i)/x_i) \
-               & = sum_i abs(x_i/f(x) dot (partial f)/(partial x_i) (x)) dot abs((tilde(x)_i-x_i)/x_i) \
+    & =^dot abs((f(x) + sum_i (partial f)/(partial x_i) (x) (tilde(x)_i-x_i) - f(x)) / f(x)) \
+    & = abs(1/f(x) dot (sum_i (partial f)/(partial x_i) (x) (tilde(x)_i-x_i))) \
+    & = sum_i abs(1/f(x) dot (partial f)/(partial x_i) (x) dot (tilde(x)_i-x_i)) \
+    & = sum_i abs(x_i/x_i dot 1/f(x) dot (partial f)/(partial x_i) (x) dot (tilde(x)_i-x_i)) \
+    & = sum_i abs(x_i/f(x) dot (partial f)/(partial x_i) (x) dot (tilde(x)_i-x_i)/x_i) \
+    & <= sum_i abs(underbrace(x_i/f(x) dot (partial f)/(partial x_i) (x), =: Phi_i)) dot abs((tilde(x)_i-x_i)/x_i) \
   $
 ]
-
-== Relative Kondition
-
-#proof(title: [Herleitung Relative Kondition])[TODO]
 
 == TODO überarbeiten
 
