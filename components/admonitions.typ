@@ -1,6 +1,5 @@
-#import "@preview/gentle-clues:1.3.1": clue
-
-#let _ico(body) = text(font: "JetBrainsMono NF", body)
+#import "/deps.typ": gentle-clues.clue
+#import "/components/utils.typ": i
 
 #let _common_args = (
   header-color: white,
@@ -11,7 +10,7 @@
 
 #let example(
   title: "Beispiel",
-  icon: _ico[\u{f0208}],
+  icon: i("eye"),
   ..args,
 ) = clue(
   title: title,
@@ -23,7 +22,7 @@
 
 #let task(
   title: "Aufgabe",
-  icon: _ico[\u{f012c}],
+  icon: i("check"),
   ..args,
 ) = clue(
   title: title,
@@ -35,7 +34,7 @@
 
 #let note(
   title: "Notiz",
-  icon: _ico[\u{f03eb}],
+  icon: i("pencil"),
   ..args,
 ) = clue(
   title: title,
@@ -47,7 +46,7 @@
 
 #let further(
   title: "Links",
-  icon: _ico[\u{f0337}],
+  icon: i("link"),
   ..args,
 ) = clue(
   title: title,
@@ -59,7 +58,7 @@
 
 #let proof(
   title: "Beweis",
-  icon: _ico[\u{f0764}],
+  icon: i("variable"),
   ..args,
 ) = clue(
   title: title,
@@ -70,7 +69,7 @@
 
 #let alternative(
   title: "Alternative",
-  icon: _ico[\u{f09bb}],
+  icon: i("arrow-turn-down-right"),
   ..args,
 ) = clue(
   title: title,
@@ -81,7 +80,7 @@
 
 #let code(
   title: "Code",
-  icon: _ico[\u{f0169}],
+  icon: i("code-bracket"),
   ..args,
 ) = clue(
   title: title,
@@ -93,7 +92,7 @@
 
 #let definition(
   title: "Definition",
-  icon: _ico[\u{f405}],
+  icon: i("book-open"),
   ..args,
 ) = clue(
   title: title,
@@ -104,7 +103,7 @@
 
 #let info(
   title: [Info],
-  icon: _ico[\u{f02fd}],
+  icon: i("information-circle"),
   ..args,
 ) = clue(
   title: title,
