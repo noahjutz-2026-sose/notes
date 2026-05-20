@@ -1136,9 +1136,33 @@ Wir lassen fortan $*$ weg.
 
 == Definition
 
+=== Datentypen
+
+Sei $f: RR^n -> RR^m$. Dann
+
+$
+        x & in RR^n \
+     f(x) & in RR^m \
+  Delta_x & in RR^n \
+  Delta_y & in RR^m \
+  delta_x & in RR \
+  delta_y & in RR \
+    kappa & in RR
+$
+
+=== Zusammenfassung
+
 #table(
   columns: 3,
   table.header($f : x |-> y$, [Absolute Kondition], [Relative Kondition]),
+  [Allgemein],
+  $
+    norm(Delta_y) <= kappa_"abs" (x) dot norm(Delta_x)
+  $,
+  $
+    delta_y <= kappa_"rel" (x) dot delta_x
+  $,
+
   $ RR -> RR $,
   $
     abs(f(tilde(x))-f(x)) <= kappa_"abs" (x) dot abs(tilde(x)-x)
