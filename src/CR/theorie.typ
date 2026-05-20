@@ -632,7 +632,7 @@ $
        1% & = delta_t
 $
 
-=
+= Matrixkondition
 
 == I = 1
 

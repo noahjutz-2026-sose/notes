@@ -1248,19 +1248,20 @@ Sei $f: RR^n -> RR^m$. Dann
   Aus der Definition der relativen Kondition folgt:
 
   $
-    kappa_"rel"^infinity (x) = norm(Phi(x))_infinity
+    kappa_"rel"^infinity (x) & = norm(Phi(x))_infinity \
+                             & = max_(i=1,...,n) abs(x_i/f(x) dot (partial f)/(partial x_i) (x))
   $
 ]
 
 #example(title: [Relative Kondition Kugelvolumen])[
   $
-    phi_r (r, h) = (partial V)/(partial r) (r, h) dot r/(1/3 pi r^2 h) \
+    Phi_r (r, h) = (partial V)/(partial r) (r, h) dot r/(1/3 pi r^2 h) \
     = pi/3 2 r h r / (1/3 pi r^2 h) \
     = 2
   $
 
   $
-    phi_h (r, h) = (partial V)/(partial h) (r, h) dot h/(1/3 pi r^2 h) = ... \
+    Phi_h (r, h) = (partial V)/(partial h) (r, h) dot h/(1/3 pi r^2 h) = ... \
     = 1
   $
 
@@ -1270,6 +1271,26 @@ Sei $f: RR^n -> RR^m$. Dann
 ]
 
 = Matrixnormen
+
+== Vektorraum
+
+#note[
+  Die Notation $"Mat"_(n, m)(M)$ beschreibt die Menge aller $n times m$ Matrizen $A$, dessen Einträge $a_(i j) in M$ sind.
+]
+
+Matrizen erfüllen die Bedingungen, um Einträge eines Vektorraums zu sein.
+
+Statt Vektoraddition haben wir Matrixaddition:
+
+$
+  A + B = C quad quad c_(i j) = a_(i j) + b_(i j)
+$
+
+Und statt Multiplikation eines Vektors mit einem Skalar, einer Matrix mit einem Skalar:
+
+$
+  lambda A = B quad quad b_(i j) = lambda a_(i j)
+$
 
 == Induzierte Norm
 
@@ -1309,11 +1330,11 @@ Induzierte Normen sind _Submultiplikativ:_ Dreiecksungleichung gilt.
 #align(end)[2026-05-12 VL08]
 
 #proof(title: [Spaltensummennorm])[
-  1-Norm eines Vektors ist die Summe der (Beträge der) Komponenten.
+  Siehe Skript NMA s23
 ]
 
 #proof(title: [Zeilensummennorm])[
-
+  Siehe Skript NMA s24
 ]
 
 = Matrixkondition
