@@ -258,3 +258,16 @@ Benutzerprogramm $<->$ OS $<->$ MMU $<->$ RAM
 - Demand Paging
 - Copy-on-Write
 - Page Replacement
+
+#align(end)[2026-05-21 VL20 (2025-12-16)]
+
+== Page Replacement
+
+- Page Fault
+- Algorithmen:
+  - FIFO
+  - _LRU:_ Page mit niedrigstem Index ist least recently used
+  - Victim Stack (LRU Approximation)
+  - Reference Bit / Second Chance (LRU Approximation)
+  - _LFU_, _MFU:_ Least/Most Frequently Used
+  - Optimaler Algorithmus: nur rückblickend möglich
