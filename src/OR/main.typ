@@ -1,6 +1,6 @@
 #import "/template.typ": template, template_exercises
 
-#show: template
+#show: template.with(doc_title: [SS'26 #sym.dot OR])
 
 #title[Operations Research]
 

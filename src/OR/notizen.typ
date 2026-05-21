@@ -1,5 +1,5 @@
 #import "/components/admonitions.typ": *
-#import "/deps.typ": cetz, cetz-plot, codly
+#import "/deps.typ": cetz, cetz-plot, codly, fletcher
 
 #align(end)[2026-03-19 VL01]
 
@@ -386,3 +386,101 @@ In jede Knotenmenge muss mind. eine eingehende und eine ausgehende Kante sein.
 $
   x_(i j) in {0, 1}
 $
+
+#align(end)[2026-05-21 VL08]
+
+= Scheduling / Maschinenbelegung
+
+*Gegeben*
+
+- Produkte/Aufträge $A_1,...,A_n$
+- Arbeitsschritte/Maschinen $M_1,...,M_n$
+
+*Ziel:* Zykluszeit $Z$ minimieren
+
+*Verfahren*
+#table(
+    columns: 3,
+    table.header([], [Johnson], [Akers]),
+    $A$, $n$, $2$,
+    $M$, $2$, $n$,
+    [Zeile], $M$, $A$,
+    [Spalte], $A$, $M$
+)
+
+*Vorgehen*
++ _Durchlaufterminierung:_ Benötigte Reihenfolge der Maschinen in der Fertigung
+
+== Johnson
+
++ Als erstes: $min_(a in A) a.M_1$
++ Als letztes: $min_(a in A) a.M_2$
++ Gruppen bilden:
+    $
+        A' = {a in A | a.M_1 <= a.M_2} \
+        A'' = A \\ A'
+    $
++ Gruppen nach Zeit sortieren
++ Gruppen konkatenieren: $A' A''$
+
+== Akers
+
++ Operationsfeld über $A_1$ und $A_2$ zeichnen
++ Konfliktzonen
++ Pro Zeitschritt nach oben/rechts/diagonal
+
+= Spieltheorie
+
+Mehrere Akteure konkurrieren, um eine Strategie zu entwickeln.
+
+- Kooperativ: Abmachungen zwischen Akteuren
+- Symmetrisch: Fair
+- Nullsumme: Genau ein Gewinner / Verlierer
+- Simultan: Akteure entscheiden gleichzeitig
+
+== 2-Personen-Nullsummen-Matrixspiel
+
+- Spieler $z$ und $s$
+- Entscheidungen $z_i$ bzw. $s_i$
+- Zahlung von $s$ an $z$: $m_(i j)$
+
+$
+    mat(
+        m_(1 1), m_(1 2), dots;
+        m_(2 1), m_(2 2), dots;
+        dots.v, dots.v, dots.down
+    )
+$
+
+#example(title: [Holmes vs. Moriarty])[
+    $
+        s = "Holmes" \
+        z = "Moriarty"
+    $
+
+    $
+        s_1 = "Canterbury" \
+        z_1 = "Canterbury" \
+        s_2 = "Dover" \
+        z_2 = "Dover"
+    $
+]
+
+=== Nash-Gleichgewicht
+
+- Beste Reaktion:
+    - Z: max Spalte
+    - S min Zeile
+- Worst Case / Mindestgewinn:
+    - Z: min Spalte
+- Best Case / Maximaler Gewinn:
+    - Z: max Spalte
+- Spielwert:
+    - _Unterer Spielwert:_ Z: $max min m$ (Maximaler Mindestgewinn)
+    - _Oberer Spielwert:_ S: $min max m$ (Minimaler Maximalverlust)
+
+#definition(title: [Nash-Gleichgewicht])[
+    $m$ für beide Spieler beste Reaktion.
+
+    Existiert, wenn unterer Spielwert = oberer Spielwert
+]
