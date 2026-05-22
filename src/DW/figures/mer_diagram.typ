@@ -60,16 +60,18 @@
     // Dimensionen
     edge[dir=both arrowhead=normal arrowtail=crow]
     dim_month -> dim_year
-    dim_wahlkreis -> dim_stadt -> dim_region -> dim_bundesland
-    dim_respondent -> dim_bundesland
-    dim_respondent -> dim_party
-    dim_respondent -> dim_age
-    dim_respondent -> dim_sex
-    dim_respondent -> dim_occupation
-    dim_respondent -> dim_financial_situation
-    dim_respondent -> dim_marital_status
-    dim_respondent -> dim_employment_status
-    dim_respondent -> dim_is_unionized
+    dim_district -> dim_stadt -> dim_region -> dim_bundesland
+    dim_respondent
+        dim_respondent -> dim_bundesland
+        dim_respondent -> dim_party
+        dim_respondent -> dim_age
+        dim_respondent -> dim_sex
+        dim_respondent -> dim_occupation
+        dim_respondent -> dim_financial_situation
+        dim_respondent -> dim_marital_status
+        dim_respondent -> dim_employment_status
+        dim_respondent -> dim_is_unionized
+        dim_respondent -> measure_respondent_id
 
     edge[dir=both arrowhead=none arrowtail=none]
 
@@ -77,11 +79,9 @@
 
     // Fakten
     fact_election_result
-        fact_election_result -> dim_wahlkreis
-            dim_wahlkreis -> measure_wahlkreisnr
-            dim_wahlkreis -> measure_wahlkreisname
-            // dim_wahlkreis -> dim_keys_hist [arrowhead=normal]
-            //     dim_keys_hist -> measure_fractions
+        fact_election_result -> dim_district
+            dim_district -> measure_district_id
+            dim_district -> measure_district_name
         fact_election_result -> dim_party
         fact_election_result -> dim_year
         fact_election_result -> measure_votes
@@ -119,10 +119,10 @@
 
     fact_election_census
         fact_election_census -> dim_year
-        fact_election_census -> measure_wahlberechtigte
-        fact_election_census -> measure_waehlende
-        fact_election_census -> measure_gueltige
-        fact_election_census -> measure_ungueltige
+        fact_election_census -> measure_eligible_voters
+        fact_election_census -> measure_voters
+        fact_election_census -> measure_valid
+        fact_election_census -> measure_invalid
     }
   ```,
   labels: it => {
