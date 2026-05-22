@@ -46,7 +46,7 @@ Siehe #link("https://github.com/noahjutz-2026-sose/notes/blob/03435341582ceda5cb
     )[Wikimedia Seat distribution in the Bundestag],
   ),
   [Lizenz], [CC0],
-  [Originalformat], [CSV, charset=utf-8, delim=`,`, ],
+  [Originalformat], [CSV, charset=utf-8, delim=`,`, LF],
 )
 
 #table(
@@ -55,3 +55,9 @@ Siehe #link("https://github.com/noahjutz-2026-sose/notes/blob/03435341582ceda5cb
   [Lizenz], ["Open Data"],
   [Originalformat], [XML, charset=utf-8],
 )
+
+== Exasol
+
+Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/5afa6df1741d2c004f5998ba7f6f2d0e346a06de/DW/challenges/ch3_import.sql#L6-L98")[DW/ch3_import.sql].
+
+== Heterogeneity
