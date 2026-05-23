@@ -69,7 +69,6 @@
         dim_respondent -> dim_religion
         dim_respondent -> dim_gender
         dim_respondent -> dim_age
-            dim_age -> dim_age_group // TODO show purpose (sometimes age missing)
         dim_respondent -> dim_marital_status
         dim_respondent -> dim_education
         dim_respondent -> dim_employment_status
