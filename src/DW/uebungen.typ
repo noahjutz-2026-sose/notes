@@ -168,10 +168,10 @@ CREATE TABLE Befragung_Beurteilung (
 
 == Example Rows
 
-== Snowflake Schema
+== Star / Snowflake Schema
 
 #scale(40%, reflow: true)[
-  #include "figures/snowflake_schema.typ"
+  #include "figures/star_schema.typ"
 ]
 
 == Snowflake vs Star Schema
