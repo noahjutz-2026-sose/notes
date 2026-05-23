@@ -118,7 +118,7 @@
         fact_politbarometer_opinion_poll -> measure_democracy_satisfaction
         fact_politbarometer_opinion_poll -> measure_political_interest
         fact_politbarometer_opinion_poll -> measure_left_right
-        fact_politbarometer_opinion_poll -> measure_economy_brd
+        fact_politbarometer_opinion_poll -> measure_economy_current
         fact_politbarometer_opinion_poll -> measure_economy_forecast
         fact_politbarometer_opinion_poll -> measure_reunification
         fact_politbarometer_opinion_poll -> measure_asylum

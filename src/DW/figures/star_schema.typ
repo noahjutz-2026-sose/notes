@@ -103,7 +103,7 @@
         #type_num_range v18_democracy_satisfaction \
         #type_num_trit v21_political_interest \
         #type_num_range v22_left_right \
-        #type_num_range v25_economy_brd \
+        #type_num_range v25_economy_current \
         #type_num_range v26_economy_forecast \
         #type_num_trit v29_reunification \
         #type_bool v30_asylum \
