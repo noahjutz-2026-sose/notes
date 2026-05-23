@@ -23,7 +23,7 @@
   digraph {
     overlap=scalexy
     sep="+10"
-    start=1
+    start=6
     node[width=0,height=0,margin=0,shape=none,padding=0]
     edge[dir=both arrowhead=odiamond arrowtail=odot]
     dim_party
@@ -34,7 +34,7 @@
 
     fact_bundestagswahl_result
         fact_bundestagswahl_result -> dim_party
-        fact_bundestagswahl_result -> dim_voting_district
+        fact_bundestagswahl_result -> dim_location
     fact_bundestagswahl_statistic
     fact_sitzverteilung
         fact_sitzverteilung -> dim_party
@@ -128,11 +128,6 @@
         #type_str full_name \
         #type_num id
       ],
-    ),
-    "dim_voting_district": table(
-      [Wahlkreis],
-      [#type_num *nr*],
-      [#type_str name],
     ),
     "dim_questionee": table(
       [Person],
