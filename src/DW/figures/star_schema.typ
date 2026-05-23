@@ -27,7 +27,7 @@
   digraph {
     overlap=scalexy
     sep="+10"
-    start=6
+    start=1
     node[width=0,height=0,margin=0,shape=none,padding=0]
     edge[dir=both arrowhead=odiamond arrowtail=odot]
     dim_party
@@ -40,6 +40,7 @@
         fact_bundestag_election_result -> dim_party
         fact_bundestag_election_result -> dim_location
     fact_bundestag_election_census
+        fact_bundestag_election_census -> dim_location
     fact_seat_distribution
         fact_seat_distribution -> dim_party
     fact_politbarometer_election_poll
