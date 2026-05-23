@@ -2,7 +2,7 @@
 #import "/components/utils.typ": i
 #import "/style.typ": *
 
-#show regex("v\d+\w?_"): none
+// #show regex("v\d+\w?_"): none
 
 #set table(
   fill: (x, y) => if y == 0 { colors.primary.light },
@@ -16,6 +16,8 @@
 
 #let type_str = i("bars-3-bottom-left")
 #let type_num = i("hashtag")
+#let type_num_range = i("adjustments-horizontal")
+#let type_num_trit = i("cube")
 #let type_float = i("divide")
 #let type_bool = i("power")
 #let type_date = i("calendar")
@@ -96,30 +98,27 @@
         #type_date date \
         #type_float p_weight \
         #type_float d_weight \
-        #type_num v5_turnout \
-        #type_num v15_rating_government \
-        #type_num v16_rating_opposition \
-        #type_num v18_democracy_satisfaction \
-        #type_num v20_political_interest \
-        #type_num v21_political_interest_intensity \
-        #type_num v22_left_right \
-        #type_num v23_left \
-        #type_num v24_right \
-        #type_num v25_economy_brd \
-        #type_num v26_economy_forecast \
-        #type_num v29_reunification \
-        #type_num v30_asylum \
-        #type_num v31_foreigners \
-        #type_num v32_abortion \
-        #type_num v39_nuclear_energy \
-        #type_num v41_crime_threat \
-        #type_num v42_eu_membership \
-        #type_num v43_responsibility_foreign_policy \
-        #type_num v44_society \
-        #type_num v48_military_threat \
-        #type_num v49_security \
-        #type_num v50_year_review \
-        #type_num v51_year_forecast \
+        #type_bool v5_is_willing_to_vote \
+        #type_num_range v15_rating_government \
+        #type_num_range v16_rating_opposition \
+        #type_num_range v18_democracy_satisfaction \
+        // TODO delete v20, not enough years
+        #type_num_trit v21_political_interest \
+        #type_num_range v22_left_right \
+        // TODO delete v23 and v24, not enough years
+        #type_num_range v25_economy_brd \
+        #type_num_range v26_economy_forecast \
+        #type_num_trit v29_reunification \
+        #type_bool v30_asylum \
+        // TODO delete v31 and v32, not enough years
+        // TODO delete v39, not enough years
+        #type_bool v41_crime_threat \
+        #type_num_trit v42_eu_membership \
+        // TODO delete v43, not enough years
+        #type_num_range v44_society \
+        // TODO delete v48 and v49, not enough years
+        #type_bool v50_year_review \
+        #type_num_trit v51_year_forecast \
       ],
     ),
     "dim_party": table(
@@ -136,8 +135,8 @@
         #type_num *id*
       ],
       [
-        #type_num v27_financial_standing \
-        #type_num v28_financial_standing_forecast \
+        #type_num_range v27_financial_standing \
+        #type_num_range v28_financial_standing_forecast \
         #type_num v52_religion \
         #type_num v54_gender \
         #type_num v55_age \
