@@ -84,9 +84,9 @@
       [],
       [
         #type_date date \
-        #type_bool v6_intended_vote \
-        #type_bool v7_last_vote \
-        #type_bool v72_preferred_party \
+        #type_bool v6_is_intended_vote \
+        #type_bool v7_was_last_vote \
+        #type_bool v72_is_preferred_party \
         #type_num v73_preference_intensity \
         #type_num v8_rating
       ],
