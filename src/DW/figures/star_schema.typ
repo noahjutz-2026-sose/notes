@@ -31,8 +31,8 @@
     node[width=0,height=0,margin=0,shape=none,padding=0]
     edge[dir=both arrowhead=odiamond arrowtail=odot]
     dim_party
-    dim_questionee
-        dim_questionee -> dim_location
+    dim_respondent
+        dim_respondent -> dim_location
 
     edge[arrowhead=none arrowtail=odot]
 
@@ -43,10 +43,10 @@
     fact_sitzverteilung
         fact_sitzverteilung -> dim_party
     fact_politbarometer_election_poll
-        fact_politbarometer_election_poll -> dim_questionee
+        fact_politbarometer_election_poll -> dim_respondent
         fact_politbarometer_election_poll -> dim_party
     fact_politbarometer_opinion_poll
-        fact_politbarometer_opinion_poll -> dim_questionee
+        fact_politbarometer_opinion_poll -> dim_respondent
   }
   ```,
   engine: "neato",
@@ -123,8 +123,8 @@
         #type_num id
       ],
     ),
-    "dim_questionee": table(
-      [*Questionee*],
+    "dim_respondent": table(
+      [*Respondent*],
       [
         #type_num *id*
       ],
