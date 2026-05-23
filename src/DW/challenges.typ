@@ -61,3 +61,46 @@ Siehe #link("https://github.com/noahjutz-2026-sose/notes/blob/03435341582ceda5cb
 Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/5afa6df1741d2c004f5998ba7f6f2d0e346a06de/DW/challenges/ch3_import.sql#L6-L98")[DW/ch3_import.sql].
 
 == Heterogeneity
+
+#table(
+  columns: 2,
+  table.header([*Type*], [*Example*]),
+  [Technical Heterogeneity],
+  [
+    - Politbarometer: DTA
+    - Bundestag: CSV
+    (After Conversion DTA #sym.arrow CSV no heterogeneity)
+  ],
+
+  [Syntactic Heterogeneity],
+  [
+    - Politbarometer: Party represented as number (e.g. 1=CDU)
+    - Bundestags: Party represented by shortname (e.g. linke=Die Linke/PDS)
+  ],
+
+  [Semantic Heterogeneity],
+  [
+    - Politbarometer: CDU/CSU treated separately
+    - Bundestagswahl: Union=CDU+CSU
+  ],
+
+  [Schematic Heterogeneity],
+  [
+    - Politbarometer: One Column per party (e.g. rating_linke)
+    - Bundestag: One Row per party (e.g. party=linke)
+  ],
+)
+
+== Schema Matching
+
+#table(
+  columns: 3,
+  table.header([*Bundestag_Election*], [*Politbarometer (Rating)*], [*Politbarometer (Intended Vote)*]),
+  [union], [v9_rating_cdu + v10_rating_csu], [1],
+  [afd], [v13_rating_afd], [322],
+  [spd], [v8_rating_spd], [4],
+  [gruene], [v12_rating_gruene], [6],
+  [linke], [v14_rating_linke], [7],
+  [fdp], [v11_rating_fdp], [5],
+  [...],
+)
