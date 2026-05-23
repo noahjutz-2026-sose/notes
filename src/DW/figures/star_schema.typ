@@ -2,6 +2,8 @@
 #import "/components/utils.typ": i
 #import "/style.typ": *
 
+#show regex("v\d+\w?_"): none
+
 #set table(
   fill: (x, y) => if y == 0 { colors.primary.light },
 )
@@ -92,9 +94,8 @@
       [],
       [
         #type_date date \
-        #type_num p_weight \
-        #type_num d_weight \
-        #type_num v4a_east_west \
+        #type_float p_weight \
+        #type_float d_weight \
         #type_num v5_turnout \
         #type_num v15_rating_government \
         #type_num v16_rating_opposition \
@@ -157,7 +158,8 @@
         #type_num voting_district_id \
         #type_str municipality \
         #type_str region \
-        #type_str state
+        #type_str state \
+        #type_bool v4a_is_west_germany
       ],
     ),
   ),
