@@ -40,8 +40,8 @@
         fact_bundestagswahl_result -> dim_party
         fact_bundestagswahl_result -> dim_location
     fact_bundestagswahl_statistic
-    fact_sitzverteilung
-        fact_sitzverteilung -> dim_party
+    fact_seat_distribution
+        fact_seat_distribution -> dim_party
     fact_politbarometer_election_poll
         fact_politbarometer_election_poll -> dim_respondent
         fact_politbarometer_election_poll -> dim_party
@@ -60,12 +60,12 @@
         #type_float anteil
       ],
     ),
-    "fact_sitzverteilung": table(
-      fact_header[*Sitzverteilung*],
+    "fact_seat_distribution": table(
+      fact_header[*Seat_Distribution*],
       [],
       [
         #type_date date \
-        #type_num sitze
+        #type_num seats
       ],
     ),
     "fact_bundestagswahl_statistic": table(
