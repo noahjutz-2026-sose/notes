@@ -129,12 +129,13 @@
         #type_num *id*
       ],
       [
-        #type_num_range v27_financial_standing \
-        #type_num_range v28_financial_standing_forecast \
+        #type_num_trit v27_financial_standing_level \
+        #type_str v27_financial_standing_name \
+        #type_num_trit v28_financial_standing_forecast_level \
+        #type_str v28_financial_standing_forecast_name \
         #type_str v52_religion \
         #type_bool v54_is_male \
         #type_num v55_age \
-        // TODO remove v56 redundant
         #type_str v57_marital_status \
         #type_num_range v60_education_level \
         #type_str v60_education_name \
