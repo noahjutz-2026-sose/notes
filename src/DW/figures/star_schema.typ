@@ -52,7 +52,7 @@
   engine: "neato",
   labels: (
     "fact_bundestagswahl_result": table(
-      fact_header[Bundestagswahl_Ergebnis],
+      fact_header[*Bundestagswahl_Ergebnis*],
       [],
       [
         #type_date date \
@@ -61,7 +61,7 @@
       ],
     ),
     "fact_sitzverteilung": table(
-      fact_header[Sitzverteilung],
+      fact_header[*Sitzverteilung*],
       [],
       [
         #type_date date \
@@ -69,7 +69,7 @@
       ],
     ),
     "fact_bundestagswahl_statistic": table(
-      fact_header[Bundestagswahl_Erhebung],
+      fact_header[*Bundestagswahl_Erhebung*],
       [],
       [
         #type_date date \
@@ -80,7 +80,7 @@
       ],
     ),
     "fact_politbarometer_election_poll": table(
-      fact_header[Politbarometer_Election_Poll],
+      fact_header[*Politbarometer_Election_Poll*],
       [],
       [
         #type_date date \
@@ -92,7 +92,7 @@
       ],
     ),
     "fact_politbarometer_opinion_poll": table(
-      fact_header[Politbarometer_Opinion_Poll],
+      fact_header[*Politbarometer_Opinion_Poll*],
       [],
       [
         #type_date date \
@@ -122,7 +122,7 @@
       ],
     ),
     "dim_party": table(
-      [Party],
+      [*Party*],
       [#type_str *shortname*],
       [
         #type_str full_name \
@@ -130,7 +130,7 @@
       ],
     ),
     "dim_questionee": table(
-      [Person],
+      [*Questionee*],
       [
         #type_num *id*
       ],
