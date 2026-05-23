@@ -36,10 +36,10 @@
 
     edge[arrowhead=none arrowtail=odot]
 
-    fact_bundestagswahl_result
-        fact_bundestagswahl_result -> dim_party
-        fact_bundestagswahl_result -> dim_location
-    fact_bundestagswahl_statistic
+    fact_bundestag_election_result
+        fact_bundestag_election_result -> dim_party
+        fact_bundestag_election_result -> dim_location
+    fact_bundestag_election_census
     fact_seat_distribution
         fact_seat_distribution -> dim_party
     fact_politbarometer_election_poll
@@ -51,13 +51,13 @@
   ```,
   engine: "neato",
   labels: (
-    "fact_bundestagswahl_result": table(
-      fact_header[*Bundestagswahl_Ergebnis*],
+    "fact_bundestag_election_result": table(
+      fact_header[*Bundestag_Election_Result*],
       [],
       [
         #type_date date \
-        #type_num stimmen \
-        #type_float anteil
+        #type_num votes \
+        #type_float percentage
       ],
     ),
     "fact_seat_distribution": table(
@@ -68,8 +68,8 @@
         #type_num seats
       ],
     ),
-    "fact_bundestagswahl_statistic": table(
-      fact_header[*Bundestagswahl_Erhebung*],
+    "fact_bundestag_election_census": table(
+      fact_header[*Bundestag_Election_Census*],
       [],
       [
         #type_date date \
