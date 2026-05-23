@@ -60,17 +60,21 @@
     // Dimensionen
     edge[dir=both arrowhead=normal arrowtail=crow]
     dim_month -> dim_year
-    dim_district -> dim_stadt -> dim_region -> dim_bundesland
+    dim_district -> dim_municipality -> dim_region -> dim_state
     dim_respondent
-        dim_respondent -> dim_bundesland
+        dim_respondent -> dim_state
         dim_respondent -> dim_party
+        dim_respondent -> dim_financial_standing
+        dim_respondent -> dim_financial_standing_forecast
+        dim_respondent -> dim_religion
+        dim_respondent -> dim_gender
         dim_respondent -> dim_age
-        dim_respondent -> dim_sex
-        dim_respondent -> dim_occupation
-        dim_respondent -> dim_financial_situation
+            dim_age -> dim_age_group // TODO show purpose (sometimes age missing)
         dim_respondent -> dim_marital_status
+        dim_respondent -> dim_education
         dim_respondent -> dim_employment_status
-        dim_respondent -> dim_is_unionized
+        dim_respondent -> dim_occupation
+        dim_respondent -> dim_workers_union
         edge[arrowhead=none arrowtail=none]
         dim_respondent -> measure_respondent_id
         dim_respondent -> measure_p_weight
@@ -102,23 +106,37 @@
         fact_politbarometer_election_poll -> measure_rating
         fact_politbarometer_election_poll -> measure_is_intended_vote
         fact_politbarometer_election_poll -> measure_is_last_vote
-        fact_politbarometer_election_poll -> measure_is_aligned_party
+        fact_politbarometer_election_poll -> measure_is_preferred_party
+        fact_politbarometer_election_poll -> measure_preference_intensity
 
     fact_politbarometer_opinion_poll
         fact_politbarometer_opinion_poll -> dim_month
         fact_politbarometer_opinion_poll -> dim_respondent
-        fact_politbarometer_opinion_poll -> measure_wie_links_rechts
-        fact_politbarometer_opinion_poll -> measure_wie_links
-        fact_politbarometer_opinion_poll -> measure_wie_rechts
-        fact_politbarometer_opinion_poll -> measure_demokratiezufriedenheit
-        fact_politbarometer_opinion_poll -> measure_politikinteresse
-        fact_politbarometer_opinion_poll -> measure_wirtschaft
-        fact_politbarometer_opinion_poll -> measure_asylrecht
-        fact_politbarometer_opinion_poll -> measure_kernkraft
-        fact_politbarometer_opinion_poll -> measure_kriminalität
-        fact_politbarometer_opinion_poll -> measure_milit_bedroht
-        fact_politbarometer_opinion_poll -> measure_jahresrückblick
-        fact_politbarometer_opinion_poll -> measure_jahresausblick
+        fact_politbarometer_opinion_poll -> measure_east_west
+        fact_politbarometer_opinion_poll -> measure_turnout
+        fact_politbarometer_opinion_poll -> measure_rating_government
+        fact_politbarometer_opinion_poll -> measure_rating_opposition
+        fact_politbarometer_opinion_poll -> measure_democracy_satisfaction
+        fact_politbarometer_opinion_poll -> measure_political_interest
+        fact_politbarometer_opinion_poll -> measure_political_interest_intensity
+        fact_politbarometer_opinion_poll -> measure_left_right
+        fact_politbarometer_opinion_poll -> measure_left
+        fact_politbarometer_opinion_poll -> measure_right
+        fact_politbarometer_opinion_poll -> measure_economy_brd
+        fact_politbarometer_opinion_poll -> measure_economy_forecast
+        fact_politbarometer_opinion_poll -> measure_reunification
+        fact_politbarometer_opinion_poll -> measure_asylum
+        fact_politbarometer_opinion_poll -> measure_foreigners
+        fact_politbarometer_opinion_poll -> measure_abortion
+        fact_politbarometer_opinion_poll -> measure_nuclear_energy
+        fact_politbarometer_opinion_poll -> measure_crime_threat
+        fact_politbarometer_opinion_poll -> measure_eu_membership
+        fact_politbarometer_opinion_poll -> measure_responsibility_foreign_policy
+        fact_politbarometer_opinion_poll -> measure_society
+        fact_politbarometer_opinion_poll -> measure_military_threat
+        fact_politbarometer_opinion_poll -> measure_security
+        fact_politbarometer_opinion_poll -> measure_year_review
+        fact_politbarometer_opinion_poll -> measure_year_forecast
 
     fact_election_census
         fact_election_census -> dim_year
