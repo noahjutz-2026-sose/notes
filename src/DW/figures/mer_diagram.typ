@@ -118,23 +118,14 @@
         fact_politbarometer_opinion_poll -> measure_rating_opposition
         fact_politbarometer_opinion_poll -> measure_democracy_satisfaction
         fact_politbarometer_opinion_poll -> measure_political_interest
-        fact_politbarometer_opinion_poll -> measure_political_interest_intensity
         fact_politbarometer_opinion_poll -> measure_left_right
-        fact_politbarometer_opinion_poll -> measure_left
-        fact_politbarometer_opinion_poll -> measure_right
         fact_politbarometer_opinion_poll -> measure_economy_brd
         fact_politbarometer_opinion_poll -> measure_economy_forecast
         fact_politbarometer_opinion_poll -> measure_reunification
         fact_politbarometer_opinion_poll -> measure_asylum
-        fact_politbarometer_opinion_poll -> measure_foreigners
-        fact_politbarometer_opinion_poll -> measure_abortion
-        fact_politbarometer_opinion_poll -> measure_nuclear_energy
         fact_politbarometer_opinion_poll -> measure_crime_threat
         fact_politbarometer_opinion_poll -> measure_eu_membership
-        fact_politbarometer_opinion_poll -> measure_responsibility_foreign_policy
         fact_politbarometer_opinion_poll -> measure_society
-        fact_politbarometer_opinion_poll -> measure_military_threat
-        fact_politbarometer_opinion_poll -> measure_security
         fact_politbarometer_opinion_poll -> measure_year_review
         fact_politbarometer_opinion_poll -> measure_year_forecast
 

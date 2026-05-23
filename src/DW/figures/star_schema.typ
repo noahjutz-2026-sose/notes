@@ -102,22 +102,16 @@
         #type_num_range v15_rating_government \
         #type_num_range v16_rating_opposition \
         #type_num_range v18_democracy_satisfaction \
-        // TODO delete v20, not enough years
         #type_num_trit v21_political_interest \
         #type_num_range v22_left_right \
-        // TODO delete v23 and v24, not enough years
         #type_num_range v25_economy_brd \
         #type_num_range v26_economy_forecast \
         #type_num_trit v29_reunification \
         #type_bool v30_asylum \
-        // TODO delete v31 and v32, not enough years
-        // TODO delete v39, not enough years
         #type_bool v41_crime_threat \
         #type_num_trit v42_eu_membership \
-        // TODO delete v43, not enough years
         #type_num_range v44_society \
-        // TODO delete v48 and v49, not enough years
-        #type_bool v50_year_review \
+        #type_bool v50_was_last_year_good \
         #type_num_trit v51_year_forecast \
       ],
     ),
