@@ -13,7 +13,7 @@ Siehe #link("https://github.com/noahjutz-2026-sose/notes/blob/03435341582ceda5cb
 
 --
 
-= Schema Integration
+= Schema Integration & Import
 
 #stack(dir: ltr)[== ][== Data Schema ]
 
@@ -104,3 +104,11 @@ Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/5afa6df1741d2c0
   [fdp], [v11_rating_fdp], [5],
   [...],
 )
+
+#stack(dir: ltr)[== ][== ][== Import]
+
+#further(title: [Docs])[
+  https://docs.exasol.com/db/latest/sql/import.htm
+]
+
+Siehe DW/challenges/ch3_import.sql.
