@@ -96,8 +96,7 @@
       [],
       [
         #type_date date \
-        #type_float p_weight \
-        #type_float d_weight \
+        #type_float weight \
         #type_bool v5_is_willing_to_vote \
         #type_num_range v15_rating_government \
         #type_num_range v16_rating_opposition \
