@@ -2,7 +2,7 @@
 #import "/components/utils.typ": i
 #import "/style.typ": *
 
-// #show regex("v\d+\w?_"): none
+#show regex("v\d+\w?_"): none
 
 #set table(
   fill: (x, y) => if y == 0 { colors.primary.light },
@@ -137,15 +137,16 @@
       [
         #type_num_range v27_financial_standing \
         #type_num_range v28_financial_standing_forecast \
-        #type_num v52_religion \
-        #type_num v54_gender \
+        #type_str v52_religion \
+        #type_bool v54_is_male \
         #type_num v55_age \
-        #type_num v56_age_group \
-        #type_num v57_marital_status \
-        #type_num v60_education \
-        #type_num v64_employment_status \
-        #type_num v65_occupation \
-        #type_num v74_workers_union \
+        // TODO remove v56 redundant
+        #type_str v57_marital_status \
+        #type_num_range v60_education_level \
+        #type_str v60_education_name \
+        #type_bool v64_is_employed \
+        #type_str v65_occupation \
+        #type_bool v74_is_unionized \
       ],
     ),
     "dim_location": table(
