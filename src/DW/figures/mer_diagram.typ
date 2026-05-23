@@ -71,7 +71,10 @@
         dim_respondent -> dim_marital_status
         dim_respondent -> dim_employment_status
         dim_respondent -> dim_is_unionized
+        edge[arrowhead=none arrowtail=none]
         dim_respondent -> measure_respondent_id
+        dim_respondent -> measure_p_weight
+        dim_respondent -> measure_d_weight
 
     edge[dir=both arrowhead=none arrowtail=none]
 
