@@ -73,10 +73,10 @@
       [],
       [
         #type_date date \
-        #type_num wahlberechtigte  \
-        #type_num waehlende \
-        #type_num gueltige \
-        #type_num ungueltige \
+        #type_num eligible_voters  \
+        #type_num voters \
+        #type_num valid \
+        #type_num invalid \
       ],
     ),
     "fact_politbarometer_election_poll": table(
