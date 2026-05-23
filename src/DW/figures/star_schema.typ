@@ -152,6 +152,7 @@
         #type_str voting_district_name \
         #type_num voting_district_id \
         #type_str municipality \
+        #type_num v77_municipality_population \
         #type_str region \
         #type_str state \
         #type_bool v4a_is_west_germany
