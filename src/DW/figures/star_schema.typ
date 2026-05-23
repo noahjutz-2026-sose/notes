@@ -75,8 +75,8 @@
         #type_date date \
         #type_num eligible_voters  \
         #type_num voters \
-        #type_num valid \
-        #type_num invalid \
+        #type_num valid_votes \
+        #type_num invalid_votes \
       ],
     ),
     "fact_politbarometer_election_poll": table(

@@ -132,8 +132,8 @@
         fact_election_census -> dim_year
         fact_election_census -> measure_eligible_voters
         fact_election_census -> measure_voters
-        fact_election_census -> measure_valid
-        fact_election_census -> measure_invalid
+        fact_election_census -> measure_valid_votes
+        fact_election_census -> measure_invalid_votes
     }
   ```,
   labels: it => {
