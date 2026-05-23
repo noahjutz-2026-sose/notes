@@ -147,6 +147,7 @@
     "dim_location": table(
       [*Location*],
       [
+        #type_num *id*
       ],
       [
         #type_str voting_district_name \
