@@ -73,7 +73,7 @@
       [],
       [
         #type_date date \
-        #type_num eligible_voters  \
+        #type_num voting_eligible_population  \
         #type_num voters \
         #type_num valid_votes \
         #type_num invalid_votes \
