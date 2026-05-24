@@ -15,7 +15,9 @@ Siehe #link("https://github.com/noahjutz-2026-sose/notes/blob/03435341582ceda5cb
 
 = Schema Integration & Import
 
-#stack(dir: ltr)[== ][== Data Schema ]
+== Schema Integration
+
+#stack(dir: ltr)[=== ][=== Data Schema ]
 
 #table(
   columns: 2,
@@ -56,11 +58,11 @@ Siehe #link("https://github.com/noahjutz-2026-sose/notes/blob/03435341582ceda5cb
   [Originalformat], [XML, charset=utf-8],
 )
 
-== Exasol
+=== Exasol
 
 Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/5afa6df1741d2c004f5998ba7f6f2d0e346a06de/DW/challenges/ch3_import.sql#L6-L98")[DW/ch3_import.sql].
 
-== Heterogeneity
+=== Heterogeneity
 
 #table(
   columns: 2,
@@ -91,7 +93,7 @@ Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/5afa6df1741d2c0
   ],
 )
 
-== Schema Matching
+=== Schema Matching
 
 #table(
   columns: 3,
@@ -105,10 +107,18 @@ Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/5afa6df1741d2c0
   [...],
 )
 
-#stack(dir: ltr)[== ][== ][== Import]
+== Import
+
+#stack(dir: ltr)[=== ][=== Import]
 
 #further(title: [Docs])[
   https://docs.exasol.com/db/latest/sql/import.htm
 ]
 
 Siehe DW/challenges/ch3_import.sql.
+
+=== Import
+
+#further(title: [Docs])[
+  https://docs.exasol.com/db/latest/sql_references/system_tables/metadata/exa_all_object_sizes.htm
+]
