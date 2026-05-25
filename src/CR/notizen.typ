@@ -1393,32 +1393,46 @@ Die Kondition $kappa_"rel"^* (A)$ der Matrix $A$ ist die Fehlerverstärkung des 
 
 #definition(title: [Matrixkondition])[
   $
-    norm(delta_b)_* <= kappa_"rel"^* norm(delta_x)
+    norm(delta_b)_* <= kappa_"rel"^*(A) norm(delta_x)
   $
 ]
 
-//Bei Fehlerhaftem $tilde(x)$ und folglich fehlerhafter Ausgabe $tilde(b)$ schreiben wir $tilde(b) = A tilde(x)$.
-
 == Absolute Matrixkondition
 
-#proof(title: [Herleitung])[
+#definition[
+  $
+    kappa_"abs" (A) = norm(A)
+  $
+]
+
+#proof[
   $
          && norm(tilde(b)-b) & = norm(A tilde(x)-A x) \
          &&                  & = norm(A (tilde(x)-x)) \
          &&                  & = norm(A) dot norm(tilde(x)-x) \
-    <==> &&    norm(Delta_b) & <= norm(A) norm(Delta_x)
+    <==> &&    norm(Delta_b) & <= norm(A) norm(Delta_x) space square.filled
   $
 ]
 
 == Relative Matrixkondition
 
-#proof(title: [Herleitung])[
+#definition[
   $
-         &&                  norm(x) & = norm(A^(-1) b) \
-         &&                          & <= norm(A^(-1)) dot norm(b) \
-    <==> &&                1/norm(b) & <= norm(A^(-1))/norm(x) \
-    <==> && norm(b-tilde(b))/norm(b) & <= norm(A) dot norm(A^(-1)) dot norm(tilde(x)-x)/norm(x) \
-    <==> &&            norm(delta_b) & <= norm(A) dot norm(A^(-1)) dot norm(delta_x)
+    kappa_"rel" (A) = norm(A) dot norm(A^(-1))
+  $
+]
+
+#proof[
+  $
+         &&   norm(x) & = norm(A^(-1) b) \
+         &&           & <= norm(A^(-1)) dot norm(b) \
+    <==> && 1/norm(b) & <= norm(A^(-1))/norm(x) \
+  $
+  Wenn wir um die absolute Matrixkondition multiplizieren, erhalten wir
+  $
+    <==> && norm(Delta_b) dot 1/norm(b) & <= norm(A) norm(Delta_x) dot norm(A^(-1))/norm(x) \
+    <==> &&       norm(Delta_b)/norm(b) & <= norm(A) dot norm(A^(-1)) dot norm(Delta_x)/norm(x) \
+    <==> &&               norm(delta_b) & <= norm(A) dot norm(A^(-1)) dot norm(delta_x) space square.filled
   $
 ]
 

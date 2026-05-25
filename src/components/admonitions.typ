@@ -58,11 +58,12 @@
 
 #let proof(
   title: "Beweis",
-  icon: i("variable"),
+  icon: i("beaker"),
   ..args,
 ) = clue(
   title: title,
   icon: icon,
+  accent-color: green,
   .._common_args,
   ..args,
 )
