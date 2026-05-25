@@ -634,10 +634,69 @@ $
 
 = Matrixkondition
 
-== I = 1
+== Matrixnorm Beweise
 
-===
+#note(title: [Relevante Definitionen])[
+  p-Vektornorm:
+  $
+    norm(v)_p = (sum_(i=1)^n abs(v_i)^p)^(1/p)
+  $
 
-$max norm(I x) = 1$
+  Induzierte Matrixnorm:
 
-===
+  $
+    norm(A)_p = max_(x in RR^n , norm(x)_p = 1) norm(A x)
+  $
+
+  Frobeniusnorm:
+
+  $
+    norm(I)_FF & = sqrt(sum a_(i j)^2)
+  $
+]
+
+=== Beweis Einheitsmatrix
+
+Zu zeigen: $norm(I)=1$.
+
+Die Einheitsmatrix ist das neutrale Element der Multiplikation. Daher verändert sich der Vektor $x$ nicht.
+
+$
+  norm(I)_* & = max_(x in RR^n, norm(x)_*=1) norm(I x) \
+            & = max norm(x) \
+            & = 1 space square
+$
+
+Gilt nicht für Frobeniusnorm. Gegenbeispiel:
+
+$
+  norm(mat(1, 0; 0, 1))_FF = sqrt(2) != 1 space square
+$
+
+=== Beweis Permutationsmatrix
+
+Zu zeigen: $norm(P)_p=1$.
+
+Bei einem Vektor entspricht eine Multiplikation mit Permutationsmatrix der Vertauschung von Komponenten. Die p-Vektornorm erfolgt über komponentenweise Addition. Addition ist Kommutativ. Daher gilt
+
+$
+  max norm(P x) = norm(x) = 1 space square.filled
+$
+
+=== Beweis Diagonalmatrix
+
+Zu zeigen: $norm(D A)_infinity = 1$ für alle invertierbaren quadratischen $A$ und eine Diagonalmatrix $D$.
+
+#note(title: [Zeilensummennorm])[
+  $
+    norm(A)_infinity = max_(i=1,...,m) sum_(j=1)^n abs(a_(i j))
+  $
+]
+
+Weil $A$ quadratisch ist und vollen Rang hat, gibt es keine 0-Zeile. Jede (absolute) Zeilensumme $sigma_i > 0$ kann mit einem $abs(d_i) > 0$ multipliziert werden, um einen beliebigen Wert zu erhalten. Man kann also ein $D$ konstruieren als
+
+$
+  d_(i i) = 1/sigma_i
+$
+
+Sodass $sigma_i dot d_(i i) = 1$ und damit $norm(D A)_infinity = 1$. $square.filled$
