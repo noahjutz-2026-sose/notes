@@ -634,7 +634,7 @@ $
 
 = Matrixkondition
 
-== Matrixnorm Beweise
+== Matrixnorm
 
 #note(title: [Relevante Definitionen])[
   p-Vektornorm:
@@ -700,3 +700,29 @@ $
 $
 
 Sodass $sigma_i dot d_(i i) = 1$ und damit $norm(D A)_infinity = 1$. $square.filled$
+
+== Matrixkondition
+
+=== Berechnen
+
+$
+  kappa_"rel"^1 (A) & = norm(A)_1 dot norm(A^(-1))_1 \
+                    & = (max mat(4, 7, 11, 4)) dot (max mat(19, 14, 14, 3)) \
+                    & = 11 dot 19 \
+                    & = 209
+$
+
+$
+  kappa_"rel"^infinity (A) & = norm(A)_infinity dot norm(A^(-1))_infinity \
+                           & = (max mat(5, 4, 4, 13)) dot (max mat(22, 15, 3, 10)) \
+                           & = 13 dot 22 \
+                           & = 286
+$
+
+=== Beweis
+
+Zu zeigen: $kappa(A) >= 1$.
+
+$
+  kappa(A) = norm(A) dot norm(A^(-1))
+$
