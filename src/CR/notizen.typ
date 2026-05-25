@@ -1409,7 +1409,7 @@ Die Kondition $kappa_"rel"^* (A)$ der Matrix $A$ ist die Fehlerverstärkung des 
   $
          && norm(tilde(b)-b) & = norm(A tilde(x)-A x) \
          &&                  & = norm(A (tilde(x)-x)) \
-         &&                  & = norm(A) dot norm(tilde(x)-x) \
+         &&                  & <= norm(A) dot norm(tilde(x)-x) \
     <==> &&    norm(Delta_b) & <= norm(A) norm(Delta_x) space square.filled
   $
 ]
@@ -1430,7 +1430,7 @@ Die Kondition $kappa_"rel"^* (A)$ der Matrix $A$ ist die Fehlerverstärkung des 
   $
   Wenn wir um die absolute Matrixkondition multiplizieren, erhalten wir
   $
-    <==> && norm(Delta_b) dot 1/norm(b) & <= norm(A) norm(Delta_x) dot norm(A^(-1))/norm(x) \
+     ==> && norm(Delta_b) dot 1/norm(b) & <= norm(A) norm(Delta_x) dot norm(A^(-1))/norm(x) \
     <==> &&       norm(Delta_b)/norm(b) & <= norm(A) dot norm(A^(-1)) dot norm(Delta_x)/norm(x) \
     <==> &&               norm(delta_b) & <= norm(A) dot norm(A^(-1)) dot norm(delta_x) space square.filled
   $
