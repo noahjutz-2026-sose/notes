@@ -1436,23 +1436,13 @@ Die Kondition $kappa_"rel"^* (A)$ der Matrix $A$ ist die Fehlerverstärkung des 
   $
 ]
 
-Definition:
-
-$
-  kappa_*(A) = norm(A)_* dot norm(A^(-1))_*
-$
-
-Daraus folgt
-
-$
-  kappa_*(A) = kappa_*(A^(-1))
-$
-
-Daraus folgt
-
-$
-  delta_x <= kappa_* (A) dot delta_b
-$
+#note(title: [Norm der Inversen])[
+  $
+        && kappa(A) & = norm(A) dot norm(A^(-1)) \
+    ==> && kappa(A) & = kappa(A^(-1)) \
+    ==> &&  delta_x & <= kappa (A) dot delta_b
+  $
+]
 
 = LR-Algorithmus
 
