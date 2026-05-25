@@ -1295,12 +1295,13 @@ $
 
 == Induzierte Norm
 
-Definition auf Vektornorm zurückführen:
-
-$
-  norm(A)_* & = max_(x in RR^n, x != 0) (norm(A x)_*)/(norm(x)_*) \
-            & = max_(x in RR^n, norm(x)_* = 1) norm(A x)
-$
+#definition[
+  Definition auf Vektornorm zurückführen:
+  $
+    norm(A)_* & = max_(x in RR^n, x != 0) (norm(A x)_*)/(norm(x)_*) \
+              & = max_(x in RR^n, norm(x)_* = 1) norm(A x)
+  $
+]
 
 Induzierte Normen sind _Submultiplikativ:_ Dreiecksungleichung gilt.
 

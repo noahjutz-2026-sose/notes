@@ -721,8 +721,27 @@ $
 
 === Beweis
 
+#note(title: [Relevante Definitionen])[
+  Relative Matrixkondition:
+
+  $
+    kappa(A) = norm(A) dot norm(A^(-1))
+  $
+
+  Matrixnorm:
+
+  $
+    norm(A) = max_(norm(x)=1) norm(A x)
+  $
+]
+
 Zu zeigen: $kappa(A) >= 1$.
 
+Induzierte Normen sind Submultiplikativ. Norm der Einheitsmatrix oben bewiesen.
+
 $
-  kappa(A) = norm(A) dot norm(A^(-1))
+       norm(A dot B) & <= norm(A) dot norm(B) \
+  norm(A^(-1) dot A) & <= norm(A) dot norm(A^(-1)) \
+             norm(I) & <= norm(A) dot norm(A^(-1)) \
+                   1 & <= kappa(A) space square.filled
 $
