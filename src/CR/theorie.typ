@@ -745,3 +745,27 @@ $
              norm(I) & <= norm(A) dot norm(A^(-1)) \
                    1 & <= kappa(A) space square.filled
 $
+
+=== Kondition Diagonalmatrix
+
+$
+  kappa_1(D) & = norm(D) dot norm(D^(-1)) \
+             & = norm(
+                 mat(
+                   d_1;
+                   , dots.down;
+                   , , d_n
+                 )
+               ) dot norm(
+                 mat(
+                   1/d_1;
+                   , dots.down;
+                   , , 1/d_n
+                 )
+               ) \
+             & = (max_i abs(d_i)) dot (min_i 1/abs(d_i)) \
+             & = (max abs(d_i))/(min abs(d_i)) \
+             & = kappa_infinity (D)
+$
+
+== LR-Zerlegung
