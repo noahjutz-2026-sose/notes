@@ -1446,7 +1446,7 @@ Die Kondition $kappa_"rel"^* (A)$ der Matrix $A$ ist die Fehlerverstärkung des 
   $
 ]
 
-= LR-Algorithmus
+= LR-Zerlegung
 
 Sei $A$ quadratische invertierbare Matrix und $b$ Vektor. Um Gleichungssystem zu lösen:
 
@@ -1455,25 +1455,23 @@ $
   <=> && A^(-1) b & = x
 $
 
-Invertieren ist aufwendig und numerisch instabil. Alternativen:
-- Gauß-Algorithmus $mat(augment: #1, A, b)$
-- "LR-Algorithmus"
-- QR-Zerlegung
+Invertieren ist aufwendig und numerisch instabil. Besser: LR-Zerlegung.
 
-== Dreiecksmatrizen lösen (Vorwärtselimination und Rücksubstitution)
+== Dreiecksmatrizen lösen
 
-+ #[
-    Zerlege $A = L R$
+Liegt ein Problem der Form $L R x = b$ mit unterer Dreiecksmatrix $L$ und oberer Dreiecksmatrix $R$ vor, so kann man in zwei Schritten $x$ lösen.
 
-    - L ist linke untere Dreiecksmatrix
-    - R ist rechte obere Dreiecksmatrix
+=== Vorwärtselimination
 
-    $A x = b <=> L R x = b => z = R x$
-  ]
-+ Löse $L z = b$ (_Vorwärtselimination_)
-+ Löse $R x = z$ (_Rücksubstitution_)
+Löse $L z = b$ für $z$.
 
-*Vorteil:* Liefert mehr Informationen, z.B. Determinante.
+TODO formel Skript angepasst
+
+=== Rücksubstitution
+
+Löse $R x = z$ für $x$.
+
+TODO formel Skript
 
 #example[
   $
