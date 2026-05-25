@@ -5,6 +5,7 @@
 #import codly: codly
 #import "/components/admonitions.typ": *
 #import "components/sets.typ": math_set
+#import "/components/utils.typ": bv
 
 #align(end)[2026-03-17 VL01]
 
@@ -1389,11 +1390,11 @@ $
   A: x |-> b
 $
 
-Die Kondition $kappa_"rel"^* (A)$ der Matrix $A$ ist die Fehlerverstärkung des Eingabefehlers $norm(delta_x)_*$ zum Ausgabefehler $norm(delta_b)_*$ unter einer Norm.
+Die Kondition $kappa_"rel"^* (A)$ der Matrix $A$ ist die Fehlerverstärkung des Eingabefehlers $delta_x = norm(bv(delta)_x)_*$ zum Ausgabefehler $delta_b = norm(bv(delta)_b)_*$ unter einer Norm.
 
 #definition(title: [Matrixkondition])[
   $
-    norm(delta_b)_* <= kappa_"rel"^*(A) norm(delta_x)
+    delta_b_* <= kappa_"rel"^*(A) delta_x
   $
 ]
 
@@ -1410,7 +1411,7 @@ Die Kondition $kappa_"rel"^* (A)$ der Matrix $A$ ist die Fehlerverstärkung des 
          && norm(tilde(b)-b) & = norm(A tilde(x)-A x) \
          &&                  & = norm(A (tilde(x)-x)) \
          &&                  & <= norm(A) dot norm(tilde(x)-x) \
-    <==> &&    norm(Delta_b) & <= norm(A) norm(Delta_x) space square.filled
+    <==> &&          Delta_b & <= norm(A) Delta_x space square.filled
   $
 ]
 
@@ -1430,9 +1431,9 @@ Die Kondition $kappa_"rel"^* (A)$ der Matrix $A$ ist die Fehlerverstärkung des 
   $
   Wenn wir um die absolute Matrixkondition multiplizieren, erhalten wir
   $
-     ==> && norm(Delta_b) dot 1/norm(b) & <= norm(A) norm(Delta_x) dot norm(A^(-1))/norm(x) \
-    <==> &&       norm(Delta_b)/norm(b) & <= norm(A) dot norm(A^(-1)) dot norm(Delta_x)/norm(x) \
-    <==> &&               norm(delta_b) & <= norm(A) dot norm(A^(-1)) dot norm(delta_x) space square.filled
+     ==> && Delta_b dot 1/norm(b) & <= norm(A) Delta_x dot norm(A^(-1))/norm(x) \
+    <==> &&       Delta_b/norm(b) & <= norm(A) dot norm(A^(-1)) dot Delta_x/norm(x) \
+    <==> &&               delta_b & <= norm(A) dot norm(A^(-1)) dot delta_x space square.filled
   $
 ]
 
