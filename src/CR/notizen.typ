@@ -1339,7 +1339,7 @@ Induzierte Normen sind _Submultiplikativ:_ Dreiecksungleichung gilt.
 
 = Matrixkondition
 
-#note[
+#info(title: [Eigenschaften von induzierten Normen])[
   Weil wir den Vektor $x$ als 1-Spaltige Matrix betrachten können, ist $norm(A x)$ submultiplikativ.
 
   $
@@ -1382,28 +1382,45 @@ Induzierte Normen sind _Submultiplikativ:_ Dreiecksungleichung gilt.
   })
 ]
 
-$
-  b = A x; tilde(b) = A tilde(x)
-$
-
-== Absoluter Fehler
+Im folgenden arbeiten wir mit dem linearen Gleichungssystem $b = A x$. Wir betrachten die $n times n$ Matrix $A$ als Funktion:
 
 $
-       && norm(tilde(b)-b) & = norm(A tilde(x)-A x) \
-       &&                  & = norm(A (tilde(x)-x)) \
-       &&                  & = norm(A) dot norm(tilde(x)-x) \
-  <==> &&          Delta_b & <= norm(A) Delta_x
+  A: RR^n -> RR^n \
+  A: x |-> b
 $
 
-== Relativer Fehler
+Die Kondition $kappa_"rel"^* (A)$ der Matrix $A$ ist die Fehlerverstärkung des Eingabefehlers $norm(delta_x)_*$ zum Ausgabefehler $norm(delta_b)_*$ unter einer Norm.
 
-$
-       &&                  norm(x) & = norm(A^(-1) b) \
-       &&                          & <= norm(A^(-1)) dot norm(b) \
-  <==> &&                1/norm(b) & <= norm(A^(-1))/norm(x) \
-  <==> && norm(b-tilde(b))/norm(b) & <= norm(A) dot norm(A^(-1)) dot norm(tilde(x)-x)/norm(x) \
-  <==> &&                  delta_b & <= norm(A) dot norm(A^(-1)) dot delta_x
-$
+#definition(title: [Matrixkondition])[
+  $
+    norm(delta_b)_* <= kappa_"rel"^* norm(delta_x)
+  $
+]
+
+//Bei Fehlerhaftem $tilde(x)$ und folglich fehlerhafter Ausgabe $tilde(b)$ schreiben wir $tilde(b) = A tilde(x)$.
+
+== Absolute Matrixkondition
+
+#proof(title: [Herleitung])[
+  $
+         && norm(tilde(b)-b) & = norm(A tilde(x)-A x) \
+         &&                  & = norm(A (tilde(x)-x)) \
+         &&                  & = norm(A) dot norm(tilde(x)-x) \
+    <==> &&    norm(Delta_b) & <= norm(A) norm(Delta_x)
+  $
+]
+
+== Relative Matrixkondition
+
+#proof(title: [Herleitung])[
+  $
+         &&                  norm(x) & = norm(A^(-1) b) \
+         &&                          & <= norm(A^(-1)) dot norm(b) \
+    <==> &&                1/norm(b) & <= norm(A^(-1))/norm(x) \
+    <==> && norm(b-tilde(b))/norm(b) & <= norm(A) dot norm(A^(-1)) dot norm(tilde(x)-x)/norm(x) \
+    <==> &&            norm(delta_b) & <= norm(A) dot norm(A^(-1)) dot norm(delta_x)
+  $
+]
 
 Definition:
 
