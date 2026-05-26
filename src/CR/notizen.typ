@@ -1461,12 +1461,12 @@ Invertieren ist aufwendig und numerisch instabil. Besser: LR-Zerlegung.
 Wenn eine Zerlegung $A=L R$ mit einer unteren Dreiecksmatrix $L$ und einer oberen Dreiecksmatrix $R$ vorliegt, löst man das Gleichungssystem so:
 
 $
-       &&                                                  A x & = b \
-  <==> &&                                                L R x & = b \
-  <==> &&            L mark(underbrace((R x), =:z), tag: #<1>) & = b \
-  <==> &&                           mark(L z & = b, tag: #<2>) \
-       &&    #annot(<1>, dx: 3cm, dy: -.5cm)[Rücksubstitution] \
-       && #annot(<2>, dx: 3cm, dy: -.1cm)[Vorwärtselimination]
+       &&                                                    A x & = b \
+  <==> &&                                                  L R x & = b \
+  <==> &&              L mark(underbrace((R x), =:z), tag: #<1>) & = b \
+  <==> &&                             mark(L z & = b, tag: #<2>) \
+       &&    #annot(<1>, dx: 3cm, pos: center)[Rücksubstitution] \
+       && #annot(<2>, dx: 3cm, pos: center)[Vorwärtselimination]
 $
 
 #table(
