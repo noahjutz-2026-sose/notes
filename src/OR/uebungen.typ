@@ -1,6 +1,7 @@
-#import "/deps.typ": cetz, cetz-plot, diagraph, gentle-clues, mannot
+#import "/deps.typ": cetz, cetz-plot, diagraph, gentle-clues, mannot, timeliney
 #import "/style.typ": colors
 #import "/components/admonitions.typ": *
+#import "components/utils.typ": *
 #import mannot: *
 #import gentle-clues: clue
 
@@ -913,3 +914,194 @@ $
 == Savings-Algorithmus für VRP
 
 Auf Papier.
+
+= Maschinenbelegung und Spieltheorie
+
+== Johnson
+
+=== Optimale Auftragsfolge
+
+Erster und letzter Auftrag:
+
+$
+  min_(a in A) a.M_1 = A_2 \
+  min_(a in A) a.M_2 = A_1
+$
+
+Gruppen:
+
+$
+  A_(M_1<=M_2) = (
+    A_2, A_4
+  ) \
+  A_(M_1>M_2) = (
+    A_3, A_5, A_1
+  )
+$
+
+Gantt:
+
+#timeliney.timeline(show-grid: true, {
+  import timeliney: *
+  let n = 30
+  headerline(
+    ..range(1, n, step: 2).map(it => (str(it), 2)),
+  )
+
+  taskgroup(title: $bold(M_2)$, {
+    task($A_1$, (from: 28, to: 30), ..s(1))
+    task($A_2$, (from: 1, to: 7), ..s(2))
+    task($A_3$, (from: 15, to: 22), ..s(3))
+    task($A_4$, (from: 7, to: 15), ..s(4))
+    task($A_5$, (from: 23, to: 27), ..s(5))
+  })
+
+  taskgroup(title: $bold(M_1)$, {
+    task($A_1$, (from: 23, to: 28), ..s(1))
+    task($A_2$, (from: 0, to: 1), ..s(2))
+    task($A_3$, (from: 4, to: 13), ..s(3))
+    task($A_4$, (from: 1, to: 4), ..s(4))
+    task($A_5$, (from: 13, to: 23), ..s(5))
+  })
+})
+
+- Zykluszeit: 30
+- Leerzeiten: $M_1=2$, $M_2=3$
+
+=== Durchlaufzeiten
+
+$
+  A_1=7 \
+  A_2=14 \
+  A_3=18 \
+  A_4=14 \
+  A_5=7
+$
+
+== Akers
+
+=== Minimale Zykluszeit
+
+#cetz.canvas({
+  import cetz-plot: *
+  import cetz.draw: *
+
+  plot.plot(
+    size: (8, 8),
+    x-label: $A_1$,
+    y-label: $A_2$,
+    x-min: 0,
+    x-max: 14,
+    y-min: 0,
+    y-max: 15,
+    x-grid: "minor",
+    y-grid: "minor",
+    x-tick-step: none,
+    x-minor-tick-step: 1,
+    x-ticks: (
+      (3, $M_1$),
+      (7, $M_2$),
+      (9, $M_3$),
+      (14, $M_4$),
+    ),
+    y-tick-step: none,
+    y-minor-tick-step: 1,
+    y-ticks: (
+      (3, $M_4$),
+      (6, $M_2$),
+      (9, $M_1$),
+      (15, $M_3$),
+    ),
+    {
+      plot.add(((0, 0),))
+
+      plot.annotate({
+        set-style(stroke: none, fill: colors.primary.transparent)
+        rect((9, 0), (14, 3))
+        rect((3, 3), (7, 6))
+        rect((0, 6), (3, 9))
+        rect((7, 9), (9, 15))
+
+        group({
+          set-style(
+            stroke: (
+              thickness: 8pt,
+              paint: colors.secondary.normal,
+            ),
+            fill: none,
+          )
+          line((0, 0), (3, 3))
+          group({
+            set-style(stroke: 4pt)
+            line((3, 3), (7, 3), (14, 10), (14, 15))
+            line((3, 3), (3, 6), (6, 9), (7, 9))
+            group({
+              set-style(stroke: 2pt)
+              line((7, 9), (9, 9), (14, 14), (14, 15))
+              line((7, 9), (7, 15), (14, 15))
+            })
+          })
+        })
+      })
+    },
+  )
+})
+
+- 23
+- *18*
+- 19
+
+=== Gantt Auftragsbezogen
+
+#timeliney.timeline(show-grid: true, {
+  import timeliney: *
+  import cetz.draw: *
+
+  headerline(..range(1, 20, step: 2).map(it => (str(it), 2)))
+
+  taskgroup(title: $bold(A_1)$, {
+    task($M_4$, ..s(4), (from: 12, to: 17))
+    task($M_3$, ..s(3), (from: 10, to: 12))
+    task($M_2$, ..s(2), (from: 6, to: 10))
+    task($M_1$, ..s(1), (from: 0, to: 3))
+  })
+
+  taskgroup(title: $bold(A_2)$, {
+    task($M_4$, ..s(4), (from: 0, to: 3))
+    task($M_3$, ..s(3), (from: 12, to: 18))
+    task($M_2$, ..s(2), (from: 3, to: 6))
+    task($M_1$, ..s(1), (from: 6, to: 9))
+  })
+})
+
+Wartezeiten:
+
+- $A_1=4$
+- $A_2=3$
+
+=== Gantt Maschinenbezogen
+
+#timeliney.timeline(show-grid: true, {
+  import timeliney: *
+  import cetz.draw: *
+
+  headerline(..range(1, 20, step: 2).map(it => (str(it), 2)))
+
+  taskgroup(title: $bold(M_1)$, {
+    task($A_1$, ..s(1), (from: 0, to: 3))
+    task($A_2$, ..s(1), (from: 6, to: 9))
+  })
+
+  taskgroup(title: $bold(M_2)$, {
+    task($A_1$, ..s(2), (from: 6, to: 10))
+    task($A_2$, ..s(2), (from: 3, to: 6))
+  })
+  taskgroup(title: $bold(M_3)$, {
+    task($A_1$, ..s(3), (from: 10, to: 12))
+    task($A_2$, ..s(3), (from: 12, to: 18))
+  })
+  taskgroup(title: $bold(M_4)$, {
+    task($A_1$, ..s(4), (from: 12, to: 17))
+    task($A_2$, ..s(4), (from: 0, to: 3))
+  })
+})
