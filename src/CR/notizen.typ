@@ -1507,6 +1507,55 @@ $
 
 == Dreiecksmatrizen erzeugen (LR-Zerlegung)
 
+#definition(title: [Gauß-Ersetzen-Matrix])[
+  Addition des $lambda$-Fachen der $s$-ten Zeile auf die $r$-te Zeile, durch Multiplikation von links:
+
+  $
+    L^(r, s)(lambda) = mat(
+      1, , , , ;
+      , 1, , , ;
+      , mark(lambda, tag: #<1>), dots.down, , ;
+      , , , , 1;
+    ) \ \
+    #annot(<1>, dx: 3cm, pos: center)[$r$]
+    #annot(<1>, dy: 1cm, pos: center)[$s$]
+  $
+]
+
+#definition(title: [Frobenius-Matrix])[
+  Beachte: $lambda = -a_(r i)/a_(i i)$, sodass $a_(r i) + lambda a_(i i) = a_(r i) - a_(r i)/a_(i i) a_(i i) = 0$.
+
+  #grid(
+    columns: 2,
+    column-gutter: 16pt,
+    align: horizon,
+    $
+      L^((1)) = mat(
+        1;
+        -a_(2 1)/a_(1 1), 1;
+        -a_(3 1)/a_(1 1), , 1;
+        dots.v, , , dots.down;
+        -a_(n 1)/a_(1 1), , , , 1
+      )
+    $,
+    $
+      L^((i))= mat(
+        1;
+        , dots.down;
+        , , dots.down;
+        , , , dots.down;
+        , , , , mark(1, tag: #<1>);
+        , , , , -a_(i+1,i)/a_(i i), dots.down;
+        , , , , -a_(i+2,i)/a_(i i), , dots.down;
+        , , , , dots.v, , , dots.down;
+        , , , , -a_(n i)/a_(i i), , , , 1
+      )
+      #annot(<1>, pos: center, dx: 1cm)[$i$]
+      #annot(<1>, pos: center, dy: -1cm)[$i$]
+    $,
+  )
+]
+
 #example[
   $
     A = mat(
@@ -1540,12 +1589,7 @@ $
 
 Sei
 $
-  L^(r,s) (lambda) = mat(
-    1, , , , ;
-    , 1, , , ;
-    , lambda, dots.down, , ;
-    , , , , 1;
-  )
+  L^(r,s) (lambda) =
 $
 
 Mit $lambda$ an stelle $(r, s)$.
