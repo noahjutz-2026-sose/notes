@@ -1554,63 +1554,90 @@ $
       #annot(<1>, pos: center, dy: -1cm)[$i$]
     $,
   )
+
 ]
 
-#example[
+#info(title: [Frobenius-Matrizen invertieren])[
+  Einfach alle $lambda$s negieren.
   $
-    A = mat(
-      2, 1, 0;
-      -2, 1, -2;
-      -4, 4, -7
-    )
-  $
-
-  Was sind $L$ und $R$?
-
-  Gauß-Algorithmus mit nur ersetzen liefert $R$.
-
-  $
-    A^1 & = mat(
-            2, 1, 0;
-            0, 2, -2;
-            0, 6, -7
-          ) \
-    A^2 & = mat(
-            2, 1, 0;
-            0, 2, -2;
-            0, 0, -1
-          ) = R
+    (L^((i)))^(-1) & = mat(
+                       dots.down;
+                       , 1;
+                       , lambda_(i+1), dots.down;
+                       , dots.v;
+                       , lambda_n
+                     )^(-1)
+                     = mat(
+                       dots.down;
+                       , 1;
+                       , -lambda_(i+1), dots.down;
+                       , dots.v;
+                       , -lambda_n
+                     )
   $
 ]
 
-== Zeilenumformungsmatrizen
+Beachte, dass $L^(r, s)$ und $L^((i))$ *nicht die gesuchte* linke untere Dreiecksmatrix $L$ sind.
 
-=== Frobeniusmatrix
+=== R erzeugen
 
-Sei
-$
-  L^(r,s) (lambda) =
-$
-
-Mit $lambda$ an stelle $(r, s)$.
-
-Dann ist
+Um die obere rechte Dreiecksmatrix zu erhalten, wenden wir jede Frobeniusmatrix an:
 
 $
-  A^1 = L^(r, s)(lambda) dot A
+  R = L^((n-1)) dot dots dot L^((1)) dot A
 $
 
-Addition der s-ten Zeile von $A$ auf die r-te Zeile von $A$.
+=== L erzeugen
 
-Um jetzt von $R$ auf $L$ zu schließen:
+Um die untere linke Dreiecksmatrix zu erhalten, verwenden wir:
 
 $
-       && R & = L^2 A^1 = L^2 L^1 A \
-       && A & = L R \
-       &&   & = (L^2 L^1)^(-1) R \
-       &&   & = (L^1)^(-1) (L^2)^(-1) R \
-  <==> && L & = (L^1)^(-1) (L^2)^(-1)
+       &&                                                       R & = L^((n-1)) dot ... dot L^((1)) dot A \
+  <==> && underbrace((L^((n-1)) dot ... dot L^((1)))^(-1), = L) R & = A \
 $
+
+Weiter:
+
+$
+  L & = (L^((n-1)) dot ... dot L^((1)))^(-1) \
+    & = (L^((1)))^(-1) dot ... dot (L^((n-1)))^(-1) \
+    & = mat(
+        1;
+        -lambda_2^((1)), 1;
+        -lambda_3^((1)), -lambda_3^((2)), 1;
+        -lambda_4^((1)), -lambda_4^((2)), -lambda_4^((3)), 1;
+        dots.v, dots.v, dots.v, dots.v, dots.down
+      )
+$
+
+
+
+// #example[
+//   $
+//     A = mat(
+//       2, 1, 0;
+//       -2, 1, -2;
+//       -4, 4, -7
+//     )
+//   $
+//
+//   Was sind $L$ und $R$?
+//
+//   Gauß-Algorithmus mit nur ersetzen liefert $R$.
+//
+//   $
+//     A^1 & = mat(
+//             2, 1, 0;
+//             0, 2, -2;
+//             0, 6, -7
+//           ) \
+//     A^2 & = mat(
+//             2, 1, 0;
+//             0, 2, -2;
+//             0, 0, -1
+//           ) = R
+//   $
+// ]
 
 #align(end)[2026-05-19 VL09]
 
