@@ -1458,20 +1458,28 @@ $
 Invertieren ist aufwendig und numerisch instabil. Besser: LR-Zerlegung.
 
 == Dreiecksmatrizen lösen
+Wenn eine Zerlegung $A=L R$ mit einer unteren Dreiecksmatrix $L$ und einer oberen Dreiecksmatrix $R$ vorliegt, löst man das Gleichungssystem so:
 
-Liegt ein Problem der Form $L R x = b$ mit unterer Dreiecksmatrix $L$ und oberer Dreiecksmatrix $R$ vor, so kann man in zwei Schritten $x$ lösen.
+$
+       &&                                                  A x & = b \
+  <==> &&                                                L R x & = b \
+  <==> &&            L mark(underbrace((R x), =:z), tag: #<1>) & = b \
+  <==> &&                           mark(L z & = b, tag: #<2>) \
+       &&    #annot(<1>, dx: 3cm, dy: -.5cm)[Rücksubstitution] \
+       && #annot(<2>, dx: 3cm, dy: -.1cm)[Vorwärtselimination]
+$
 
-=== Vorwärtselimination
-
-Löse $L z = b$ für $z$.
-
-TODO formel Skript angepasst
-
-=== Rücksubstitution
-
-Löse $R x = z$ für $x$.
-
-TODO formel Skript
+#table(
+  columns: 2 * (1fr,),
+  table.header([*Vorwärtselimination*], [*Rücksubstitution*]),
+  $ L z = b $, $ R x = z $,
+  $
+    z_k = (b_k - sum_(i=1)^(k-1) l_(k,i) z_i)/l_(k,k)
+  $,
+  $
+    x_k = ( z_k - sum_(i=k+1)^n r_(k,i) x_i) / r_(k,k)
+  $,
+)
 
 #example[
   $
@@ -1480,7 +1488,7 @@ TODO formel Skript
     b = vec(3, 7, -7)
   $
 
-  *Schritt 1:* $L z = b$
+  *Schritt 1: Vorwärtselimination* $L z = b$
 
   $
            z_1 & = 3  && ==> z_1 && = 3 \
@@ -1488,7 +1496,7 @@ TODO formel Skript
     -z_1 + z_3 & = -7 && ==> z_3 && = -4
   $
 
-  *Schritt 2:* $R x = z$
+  *Schritt 2: Rücksubstitution* $R x = z$
 
   $
        2 x_3 & = -4 && ==> x_3 && = -2 \
