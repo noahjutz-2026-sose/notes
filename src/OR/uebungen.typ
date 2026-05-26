@@ -1105,3 +1105,29 @@ Wartezeiten:
     task($A_2$, ..s(4), (from: 0, to: 3))
   })
 })
+
+== Schere Stein Papier
+
+=== Spielwert
+
+Einzelner Strategien:
+
+$
+  V_(Z,1) = -1 \
+  V_(Z,2) = -1 \
+  V_(Z,3) = -1 \
+  V_(S,1) = 1 \
+  V_(S,2) = 1 \
+  V_(S,3) = 1
+$
+
+Gesamtspielwert:
+
+$
+  V_Z & = max_i min_j m_(i j) \
+      & = -1 \
+  V_S & = min_j max_i m_(i j) \
+      & = 1
+$
+
+=== LP
