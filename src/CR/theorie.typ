@@ -832,3 +832,25 @@ $
     x = vec(6, 1, 3)
   $
 ]
+
+== Normweise relative Kondition
+
+Wir starten mit der allgemeinen Definition der Matrixkondition.
+
+// $
+//                                                                   delta_b & <= kappa(A) delta_x \
+//                                                  norm(tilde(b)-b)/norm(b) & <= kappa(A) norm(tilde(x)-x)/norm(x) \
+//                                          norm(A tilde(x) - A x)/norm(A x) & <= kappa(A) norm(tilde(x)-x)/norm(x) \
+//             norm(A tilde(x) - A x)/norm(A x) dot norm(x)/norm(tilde(x)-x) & <= kappa(A) \
+//             norm(A tilde(x) - A x)/norm(tilde(x)-x) dot norm(x)/norm(A x) & <= kappa(A) \
+//             norm(A (tilde(x) - x))/norm(tilde(x)-x) dot norm(x)/norm(A x) & <= kappa(A) \
+//   (norm(A) dot norm(tilde(x) - x))/norm(tilde(x)-x) dot norm(x)/norm(A x) & <= kappa(A) \
+//                                             norm(A) dot norm(x)/norm(A x) & <= kappa(A) space square.filled
+// $
+
+$
+                    norm(x) & = norm(A^(-1) A x) \
+                    norm(x) & <= norm(A^(-1)) dot norm(A x) \
+          norm(x)/norm(A x) & <= norm(A^(-1)) \
+  norm(A) norm(x)/norm(A x) & <= underbrace(norm(A^(-1)) dot norm(A), =kappa(A)) space square.filled
+$
