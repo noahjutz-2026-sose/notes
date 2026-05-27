@@ -1653,9 +1653,7 @@ $
 
 == Pivotisierung
 
-#example(title: [Motivation])[
-  Die Matrix $mat(0, 1; 1, 0)$ hat keine LR-Zerlegung, weil wir nicht vertauschen dürfen.
-]
+Motivation: Bei folgendem Beispiel kann $a_(2 1)$ nicht zu 0 werden: $mat(0, 1; markhl(1), 0)$
 
 #definition(title: [Permutationsmatrix])[
   Sei $pi : {1, ..., n} -> {1, ..., n}$ eine bijektive Abbildung.
@@ -1676,27 +1674,41 @@ $
   Alternative Veranschaulichung: $P_pi$ entsteht durch Zeilentauschen der Einheitsmatrix $I$.
 ]
 
-#info[
-  Für Permutationsmatrizen gilt
+#info(title: [Notation])[
+  $P_(i, j)$ vertauscht Zeilen $i$ und $j$.
+
+  $P^((i)) = P_(l,i)$ vertauscht Zeile $i$ mit einer niedrigeren (oder gleichen, dann $P=I$) Zeile $l$, dessen Eintrag $a_(l i) != 0$ ist.
+]
+
+#info(title: [Eigenschaften])[
+  Das inverse einer Permutation ist die umgekehrte Permutation.
 
   $
-    P^(-1) = P^T
+        &&  P^(-1) & = P^T \
+    ==> && P dot P & = I
   $
+
+  Eine einzelne Vertauschung ist das gleiche wie die umgekehrte Vertauschung.
+
+  $
+    P_(i,j) = P_(i,j)^(-1) = P_(j,i) = P_(j,i)^(-1)
+  $
+
+  Von links vertauscht $P dot A$ Zeilen, und von rechts vertauscht $A dot P$ Spalten.
 ]
 
 Bei der _Pivotisierung_ für die obere Dreiecksmatrix $R$ gehen wir wie folgt vor:
 
-Wenn ein $A in.rev a_(k+1, k+1) = 0$, dann:
+Wenn in Schritt $k$ ein $a_(k+1, k+1) = 0$, dann:
 + Finde ein $a_(l, k+1) != 0$ in Zeile $l$ *unter* $k+1$.
 + Vertausche Zeilen $k+1$ und $l$
 
-Dafür erstellen wir eine Permutationsmatrix.
+Wenn wir in jedem Schritt verschieben:
 
 $
-  P_(l, k+1)
+      && R & = L^((n-1)) #hide($P^((n-1)) dot$) dot ... dot L^((1)) #hide($P^((1)) dot$) dot A \
+  --> && R & = L^((n-1)) dot P^((n-1)) dot ... dot L^((1)) dot P^((1)) dot A \
 $
-
-Wenn wir in jedem Schritt ein $P$ erstellen, erhalten wir
 
 #note[
   Definiere $hat(L)^((k))$ als
