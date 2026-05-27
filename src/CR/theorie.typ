@@ -854,3 +854,15 @@ $
           norm(x)/norm(A x) & <= norm(A^(-1)) \
   norm(A) norm(x)/norm(A x) & <= underbrace(norm(A^(-1)) dot norm(A), =kappa(A)) space square.filled
 $
+
+=
+
+==
+
+==
+
+===
+
+=== Beweis L Hut
+
+Siehe Papier
