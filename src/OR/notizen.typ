@@ -429,7 +429,7 @@ $
 + Konfliktzonen
 + Pro Zeitschritt nach oben/rechts/diagonal
 
-= Spieltheorie
+= Spieltheorie: 2-Personen-Nullsummen-Matrixspiel
 
 Mehrere Akteure konkurrieren, um eine Strategie zu entwickeln.
 
@@ -438,8 +438,7 @@ Mehrere Akteure konkurrieren, um eine Strategie zu entwickeln.
 - Nullsumme: Genau ein Gewinner / Verlierer
 - Simultan: Akteure entscheiden gleichzeitig
 
-== 2-Personen-Nullsummen-Matrixspiel
-
+2-Personen-Nullsummen-Matrixspiel:
 - Spieler $z$ und $s$
 - Entscheidungen $z_i$ bzw. $s_i$
 - Zahlung von $s$ an $z$: $m_(i j)$
@@ -466,7 +465,7 @@ $
   $
 ]
 
-=== Nash-Gleichgewicht
+== Nash-Gleichgewicht
 
 - Beste Reaktion:
   - Z: max Spalte
@@ -484,3 +483,38 @@ $
 
   Existiert, wenn unterer Spielwert = oberer Spielwert
 ]
+
+#align(end)[2026-05-28 VL09]
+
+== Spielwert
+
+_Unterer Spielwert Strategie_ für $z_i$: Garantierter Mindestgewinn (Maximalverlust) der Strategie.
+
+_Oberer Spielwert Strategie_ für $s_j$: Maximaler Gewinn wenn Gegner $s_j$ wählt.
+
+
+_Unterer Spielwert (Maximin):_ Maximum unterer Spielwerte
+
+_Oberer Spielwert (Minimax):_ Minimum oberer Spielwerte
+
+- Einmalig: _Reine_ Strategie
+- Wiederholt: _Gemischte_ Strategien
+
+== Gemischte Strategie
+
+Spieler $Z$ spielt $p$ und Spieler $S$ spielt $q$
+
+$
+  z = (z_1,...,z_n) quad quad
+  p = (p_1, ..., p_n) quad quad p in [0;1] \
+  s = (s_1,...,s_n) quad quad
+  q = (q_1, ..., q_n) quad quad q in [0;1]
+$
+
+Erwartungswert des Gewinns von $z$ gegeben Strategie $s_j$ ist
+
+$
+  p_1 z_1 dot m_(1 j) + p_2 z_2 dot m_(2 j) + dots
+$
+
+== Formulierung als LP
