@@ -400,12 +400,12 @@ $
 
 *Verfahren*
 #table(
-    columns: 3,
-    table.header([], [Johnson], [Akers]),
-    $A$, $n$, $2$,
-    $M$, $2$, $n$,
-    [Zeile], $M$, $A$,
-    [Spalte], $A$, $M$
+  columns: 3,
+  table.header([], [Johnson], [Akers]),
+  $A$, $n$, $2$,
+  $M$, $2$, $n$,
+  [Zeile], $M$, $A$,
+  [Spalte], $A$, $M$,
 )
 
 *Vorgehen*
@@ -416,10 +416,10 @@ $
 + Als erstes: $min_(a in A) a.M_1$
 + Als letztes: $min_(a in A) a.M_2$
 + Gruppen bilden:
-    $
-        A' = {a in A | a.M_1 <= a.M_2} \
-        A'' = A \\ A'
-    $
+  $
+    A' = {a in A | a.M_1 <= a.M_2} \
+    A'' = A \\ A'
+  $
 + Gruppen nach Zeit sortieren
 + Gruppen konkatenieren: $A' A''$
 
@@ -445,42 +445,42 @@ Mehrere Akteure konkurrieren, um eine Strategie zu entwickeln.
 - Zahlung von $s$ an $z$: $m_(i j)$
 
 $
-    mat(
-        m_(1 1), m_(1 2), dots;
-        m_(2 1), m_(2 2), dots;
-        dots.v, dots.v, dots.down
-    )
+  mat(
+    m_(1 1), m_(1 2), dots;
+    m_(2 1), m_(2 2), dots;
+    dots.v, dots.v, dots.down
+  )
 $
 
 #example(title: [Holmes vs. Moriarty])[
-    $
-        s = "Holmes" \
-        z = "Moriarty"
-    $
+  $
+    s = "Holmes" \
+    z = "Moriarty"
+  $
 
-    $
-        s_1 = "Canterbury" \
-        z_1 = "Canterbury" \
-        s_2 = "Dover" \
-        z_2 = "Dover"
-    $
+  $
+    s_1 = "Canterbury" \
+    z_1 = "Canterbury" \
+    s_2 = "Dover" \
+    z_2 = "Dover"
+  $
 ]
 
 === Nash-Gleichgewicht
 
 - Beste Reaktion:
-    - Z: max Spalte
-    - S min Zeile
+  - Z: max Spalte
+  - S min Zeile
 - Worst Case / Mindestgewinn:
-    - Z: min Spalte
+  - Z: min Spalte
 - Best Case / Maximaler Gewinn:
-    - Z: max Spalte
+  - Z: max Spalte
 - Spielwert:
-    - _Unterer Spielwert:_ Z: $max min m$ (Maximaler Mindestgewinn)
-    - _Oberer Spielwert:_ S: $min max m$ (Minimaler Maximalverlust)
+  - _Unterer Spielwert:_ Z: $max min m$ (Maximaler Mindestgewinn)
+  - _Oberer Spielwert:_ S: $min max m$ (Minimaler Maximalverlust)
 
 #definition(title: [Nash-Gleichgewicht])[
-    $m$ für beide Spieler beste Reaktion.
+  $m$ für beide Spieler beste Reaktion.
 
-    Existiert, wenn unterer Spielwert = oberer Spielwert
+  Existiert, wenn unterer Spielwert = oberer Spielwert
 ]
