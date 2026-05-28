@@ -271,3 +271,22 @@ Benutzerprogramm $<->$ OS $<->$ MMU $<->$ RAM
   - Reference Bit / Second Chance (LRU Approximation)
   - _LFU_, _MFU:_ Least/Most Frequently Used
   - Optimaler Algorithmus: nur rückblickend möglich
+
+#align(end)[2026-05-28 VL21 (2025-01-12)]
+
+- Fixed Allocation: Feste Pagegröße
+  - Größe eines Prozessees: Größe der Binary
+- Priority Allocation: Niceness
+
+== Demand Paging und Seitenflattern
+
+- tmpfs
+- RAM-Disk
+
+== Kernel Memory
+
+- _Continuous Memory Allocator (CMA)_
+- _Buddy Allocator:_ Mindestens Doppelt so groß wie benötigt
+  - 2er Potenzen
+- _Slab Allocator:_ Nicht so schnell wie Buddy, keine interne fragmentierung, verschwendet weniger Speicher
+- _Translation Lookaside Buffer:_ Auszug der Seitentabelle
