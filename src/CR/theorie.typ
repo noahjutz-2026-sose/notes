@@ -988,6 +988,75 @@ Per Definition gilt für die Inverse einer Matrix $L dot L^(-1) = I$. Aus obigem
 
 === Beweis Konkatenation Frobeniusmatrizen
 
+Das Produkt $L^((1)) L^((2))$ ist
+
+$
+  mat(
+    1;
+    lambda_(2 1), 1;
+    lambda_(3 1), , 1;
+    dots.v, , , dots.down;
+    lambda_(n 1), , , , 1;
+  ) dot mat(
+    1;
+    , 1;
+    , lambda_(3 2), 1;
+    , dots.v, , , dots.down;
+    , lambda_(n 2), , , , 1
+  ) = mat(
+    1;
+    lambda_(2 1), 1;
+    lambda_(3 1), lambda_(3 2), 1;
+    dots.v, dots.v, , dots.down;
+    lambda_(n 1), lambda_(n 2), , , 1;
+  )
+$
+
+$lambda_(2 1), ..., lambda_(n 1)$ kommen zustande, weil
+
+$
+  mat(1; lambda_(2 1); ...; lambda_(n 1)) dot mat(1, 0, ..., 0) = mat(1; lambda_(2 1); ...; lambda_(n 1))
+$
+
+$lambda_(3 2), ..., lambda_(n 2)$ kommen zustande, weil
+
+$
+  mat(lambda_(r 1), arrow(0)^T, 1) dot mat(0; 1; arrow(lambda)_(2)) = lambda_(i 2)
+$
+
+für jedes $lambda_(i 2)$. $square$
+
+// *Allgemeiner Fall:*
+//
+// Das Produkt $L^((n)) (L^((n-1)) dot ... dot L^((1)))$ ist
+//
+// $
+//   mat(
+//     1;
+//     lambda, I
+//   ) dot mat(
+//     1;
+//     0, 1;
+//     0, lambda, 1;
+//     0, dots.v, dots.down, 1;
+//     0, lambda, ..., lambda, 1
+//   ) =
+//   mat(
+//     1, 0;
+//     lambda, caron(L)^((n-1))
+//   )
+// $
+//
+// weil
+//
+// $
+//   mat(lambda_(r n), arrow(0)^T, 1, arrow(0)^T) dot mat(arrow(0); 1; arrow(lambda)_s) = lambda_(r, s)
+// $
+//
+// Für jede Spalte $n$ und $s<n$.
+//
+// Gehe induktiv vor, indem die quadratische Teilmatrix ohne erste Spalte und Zeile betrachtet wird. $square.filled$
+
 ==
 
 === Beweis L Hut
