@@ -933,6 +933,55 @@ Matrixmultiplikation ist Zeile mal Spalte summiert. $l_(r s)$ ist in Zeile $r$, 
 
 Wobei $a^((1))_(r i) = lambda dot a_(s i) + 1 dot a_(r i) space square.filled$
 
+=== Beweis Frobeniusmatrix
+
+Das Produkt zwei erster Frobeniusmatrizen $L$ und $L'$ ist:
+
+$
+  mat(
+    1;
+    lambda_2, 1;
+    lambda_3, , 1;
+    dots.v, , , dots.down;
+    lambda_n, , , , 1
+  ) dot mat(
+    1;
+    lambda^'_2, 1;
+    lambda^'_3, , 1;
+    dots.v, , , dots.down;
+    lambda^'_n, , , , 1
+  ) = mat(
+    1;
+    lambda_2 + lambda^'_2, 1;
+    lambda_3 + lambda^'_3, , 1;
+    dots.v, , , dots.down;
+    lambda_n + lambda^'_n, , , , 1
+  )
+$
+
+Weil $lambda_i -> 1 dot lambda_i + lambda^'_i dot 1$. Das genügt für Matrizen $L^((r,s))$ mit $lambda=0$ für alle außer $lambda_r$.
+
+Eine Matrix $A$ nach oben um $I$ erweitert bleibt unter Multiplikation gleich, daher gilt das nicht nur für die erste Frobeniusmatrix.
+
+$
+  mat(
+    1;
+    , dots.down;
+    , , 1;
+    , , , A
+  ) dot mat(
+    1;
+    , dots.down;
+    , , 1;
+    , , , B
+  ) = mat(
+    1;
+    , dots.down;
+    , , 1;
+    , , , A B
+  ) space square.filled
+$
+
 ==
 
 ===
