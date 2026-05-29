@@ -933,7 +933,7 @@ Matrixmultiplikation ist Zeile mal Spalte summiert. $l_(r s)$ ist in Zeile $r$, 
 
 Wobei $a^((1))_(r i) = lambda dot a_(s i) + 1 dot a_(r i) space square.filled$
 
-=== Beweis Frobeniusmatrix
+=== Beweis Konkatenation Ersetzmatrizen
 
 Das Produkt zwei erster Frobeniusmatrizen $L$ und $L'$ ist:
 
@@ -982,9 +982,13 @@ $
   ) space square.filled
 $
 
-==
+=== Beweis Inverse Frobeniusmatrix
 
-===
+Per Definition gilt für die Inverse einer Matrix $L dot L^(-1) = I$. Aus obigem Beweis folgt, dass für die Inverse von $L$ für jedes $lambda$ das additive Inverse $-lambda$ gebildet werden muss, sodass $lambda+lambda'=0$. $square.filled$
+
+=== Beweis Konkatenation Frobeniusmatrizen
+
+==
 
 === Beweis L Hut
 
