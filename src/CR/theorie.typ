@@ -1057,7 +1057,19 @@ für jedes $lambda_(i 2)$. $square$
 //
 // Gehe induktiv vor, indem die quadratische Teilmatrix ohne erste Spalte und Zeile betrachtet wird. $square.filled$
 
-==
+== LR-Zerlegung mit Pivotisierung
+
+=== Permutationsmatrix
+
+Multiplikation mit $P_(i j)$ vertauscht
+- von links Zeilen $i$ und $j$
+- von rechts Spalten $i$ und $j$
+
+Konsolidierte Permutationsmatrix $P_pi$ vertauscht von links Zeilen. Um Spalten zu vertauschen, verwende
+
+$
+  (P_pi A^T)^T = A P_pi^T
+$
 
 === Beweis L Hut
 
