@@ -1101,7 +1101,7 @@ Im nächsten Schritt $k+1$ multiplizieren wir wieder $L^((k+1)) dot P^((k+1))$ a
 
 #box(inset: (top: 1cm))[
   $
-    R = underbrace(... dot L^((k+1)) dot mark(P^((k+1)), tag: #<P2>) dot mark(L^((k)), tag: #<L1>) dot P^((k)) dot ..., =L) dot A
+    R = underbrace(... dot L^((k+1)) dot mark(P^((k+1)), tag: #<P2>) dot mark(L^((k)), tag: #<L1>) dot P^((k)) dot ..., =L^(-1)) dot A
     #annot-cetz((<L1>, <P2>), cetz, {
       import cetz.draw: *
       set-style(mark: (end: "straight"))
@@ -1157,4 +1157,31 @@ $
 Weil die Spaltenvertauschungen stets mit Spalten $s>k$ arbeiten, können wir das auf $L$ anwenden:
 $
   P_k L^((k)) P_k^(-1) "ist eine Frobeniusmatrix" square.filled
+$
+
+=== LR-Zerlegung mit Pivotstrategie
+
+Siehe Papier.
+
+$
+  L = mat(
+    1;
+    0, 1;
+    -1/2, -1, 1;
+    -1/2, 1/2, -1/2, 1
+  ) quad quad
+  R = mat(
+    -2, 2, 0, 0;
+    0, 2, -2, 1;
+    0, 0, -4, 1;
+    0, 0, 0, -2
+  )
+$
+
+=== Vorwärtselimination und Rücksubstitution
+
+Siehe Papier.
+
+$
+  x = vec(2, -1, 0, 5)
 $
