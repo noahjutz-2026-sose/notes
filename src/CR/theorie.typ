@@ -1073,4 +1073,88 @@ $
 
 === Beweis L Hut
 
-Siehe Papier
+Ist $a_(k k)=0$, so verschieben wir ein $a_(l k)!=0$ mit $l>k$ nach oben.
+
+$
+      &&             A & = mat(
+                           , dots.v;
+                           ..., 0, ...;
+                           , dots.v;
+                           , a_(l k);
+                           , dots.v;
+                         ) \
+  ==> &&       P dot A & = mat(
+                           , dots.v;
+                           ..., a_(l k), ...;
+                           , dots.v;
+                           , 0;
+                           , dots.v;
+                         ) \
+  ==> && L dot P dot A & = mat(
+                           , dots.v;
+                           ..., a_(l k), ...;
+                           , arrow(0);
+                         )
+$
+
+Im nächsten Schritt $k+1$ multiplizieren wir wieder $L^((k+1)) dot P^((k+1))$ an:
+
+#box(inset: (top: 1cm))[
+  $
+    R = underbrace(... dot L^((k+1)) dot mark(P^((k+1)), tag: #<P2>) dot mark(L^((k)), tag: #<L1>) dot P^((k)) dot ..., =L) dot A
+    #annot-cetz((<L1>, <P2>), cetz, {
+      import cetz.draw: *
+      set-style(mark: (end: "straight"))
+      bezier("P2.north", "L1.north", (rel: (0, 1), to: ("L1", 50%, "P2")), name: "arrow")
+      content("arrow.mid", anchor: "south", padding: 2pt)[Zeilenvertauschung]
+    })
+  $
+]
+
+Man sieht, dass $L^((k))$ jetzt nicht mehr zwangsläufig eine untere Dreiecksmatrix ist. Insbesondere könnten alle Zeilen unter $k$ vertauscht sein.
+
+#box(inset: (top: 1cm, left: 1cm))[
+  $
+    mat(
+      mark(I, tag: #<tl>);
+      , mark(1, tag: #<1>);
+      , lambda^((k))_(k+1), 1;
+      , dots.v, , dots.down;
+      , lambda^((k))_(n), , , , mark(1, tag: #<br>);
+    )
+    #annot-cetz((<1>, <tl>, <br>), cetz, {
+      import cetz.draw: *
+      set-style(mark: (end: "straight"))
+      line((rel: (0, 1), to: "1"), "1", name: "sk")
+      content("sk.start", anchor: "south", padding: 2pt)[$k$]
+      line((rel: (-1, 0), to: "1"), "1", name: "rk")
+      content("rk.start", anchor: "east", padding: 2pt)[$k$]
+
+      let l = ("tl.west", "|-", "1.south")
+      let ll = (rel: (-1, 0), to: l)
+      let r = ("br.east", "|-", "1.south")
+      let rr = (rel: (1, 0), to: r)
+
+      line(rr, (rel: (0, -1)))
+      set-style(mark: none, stroke: (dash: "dashed", paint: colors.on_surface.light))
+      line(ll, rr)
+    })
+  $
+]
+
+Problematisch sind hier die Einsen auf der Diagonale. Um nach einer Zeilenvertauschung $P_(i j)$ die 1en wieder auf die Diagonale zu bringen, nutzen wir die Symmetrie der Einheitsmatrix:
+
+$
+  P I = I P ==> P I P = I
+$
+
+Aneinandergereihte Permutationen können auch rückgängig gemacht werden:
+
+$
+  P_k I P_k^(-1) = I
+$
+
+Weil die Spaltenvertauschungen stets mit Spalten $s>k$ arbeiten, können wir das auf $L$ anwenden:
+$
+  P_k L^((k)) P_k^(-1) "ist eine Frobeniusmatrix" square.filled
+$
