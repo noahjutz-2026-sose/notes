@@ -1,5 +1,6 @@
 #import "/components/admonitions.typ": *
-#import "/deps.typ": mannot
+#import "/deps.typ": cetz, mannot
+#import "/style.typ": *
 #import "components/ieee754.typ"
 #import mannot: *
 
@@ -855,9 +856,82 @@ $
   norm(A) norm(x)/norm(A x) & <= underbrace(norm(A^(-1)) dot norm(A), =kappa(A)) space square.filled
 $
 
-=
+= LR-Zerlegung
 
-==
+== Frobeniusmatrizen
+
+=== Beweis Erste Frobeniusmatrix
+
+Zu zeigen: $L^((r,s))(lambda) dot A$ addiert das $lambda$-fache der $s$-ten Zeile auf die $r$-te Zeile von $A$.
+
+Die Identität $I A = A$ verändert nichts. Fügt man eine Komponente $l_(r s) != 0$ mit $r>s$ hinzu, erhält man per Definition $L^((r,s))$.
+
+Matrixmultiplikation ist Zeile mal Spalte summiert. $l_(r s)$ ist in Zeile $r$, also wird mit $L((r,s)) A = A^((1))$ die $r$-te Zeile beeinflusst:
+
+#box(inset: 1cm)[
+  $
+      & #[
+          #show regex("\w"): text.with(colors.on_surface.lighter)
+          $ mat(
+            mark(a_(1 1), tag: #<a11>), mark(a_(1 2), tag: #<a12>), mark(a_(1 3), tag: #<a13>), mark(a_(1 4), tag: #<a14>);
+            mark(a_(2 1), tag: #<a21>), mark(a_(2 2), tag: #<a22>), mark(a_(2 3), tag: #<a23>), mark(a_(2 4), tag: #<a24>);
+            mark(a_(3 1), tag: #<a31>), mark(a_(3 2), tag: #<a32>), mark(a_(3 3), tag: #<a33>), mark(a_(3 4), tag: #<a34>);
+            mark(a_(4 1), tag: #<a41>), mark(a_(4 2), tag: #<a42>), mark(a_(4 3), tag: #<a43>), mark(a_(4 4), tag: #<a44>);
+          ) $] \
+    #box(inset: (top: 1cm))[
+      #show "0": text.with(colors.on_surface.lighter)
+      #show "1": text.with(colors.on_surface.light)
+      #show math.lambda: text.with(colors.primary.normal)
+      $ mat(
+        1, 0, 0, 0;
+        0, 1, 0, 0;
+        0, 0, 1, 0;
+        mark(bold(lambda), tag: #<lambda>), 0, 0, mark(1, tag: #<1>)
+      ) $
+    ] & #box[
+          $ mat(
+            ; ; ;
+            a^((1))_(r 1), a^((1))_(r 2), a^((1))_(r 3), a^((1))_(r 4);
+          ) $
+        ]
+        #annot-cetz((<lambda>, <a11>, <a12>, <a13>, <a14>, <1>, <a41>, <a42>, <a43>, <a44>), cetz, {
+          import cetz.draw: *
+          let l = (rel: (-1, 0), to: "lambda")
+          let lt = ("lambda", "|-", "a11")
+          let ltp = (rel: (0, 1), to: lt)
+          let t_a11 = (rel: (0, 1), to: "a11")
+          let t_a12 = (rel: (0, 1), to: "a12")
+          let t_a13 = (rel: (0, 1), to: "a13")
+          let t_a14 = (rel: (0, 1), to: "a14")
+
+          set-style(mark: (end: "straight"))
+
+          line("lambda", ltp, t_a11, "a11.north")
+          line(t_a11, t_a12, "a12.north")
+          line(t_a11, t_a13, "a13.north")
+          line(t_a11, t_a14, "a14.north")
+
+          let lt_4 = ("1", "|-", "a41")
+          let ltp_4 = (rel: (0, -1), to: lt_4)
+          let b_a41 = (rel: (0, -1), to: "a41")
+          let b_a42 = (rel: (0, -1), to: "a42")
+          let b_a43 = (rel: (0, -1), to: "a43")
+          let b_a44 = (rel: (0, -1), to: "a44")
+
+          line("1", ltp_4, b_a41, "a41")
+          line(b_a41, b_a42, "a42")
+          line(b_a41, b_a43, "a43")
+          line(b_a41, b_a44, "a44")
+
+          line((rel: (-1, 0), to: "lambda"), (rel: (-.5, 0), to: "lambda"), name: "r")
+          content("r.start", anchor: "east", padding: 2pt)[$r$]
+          line((rel: (0, -1), to: "lambda"), (rel: (0, -.5), to: "lambda"), name: "s")
+          content("s.start", anchor: "north", padding: 2pt)[$s$]
+        })
+  $
+]
+
+Wobei $a^((1))_(r i) = lambda dot a_(s i) + 1 dot a_(r i) space square.filled$
 
 ==
 
