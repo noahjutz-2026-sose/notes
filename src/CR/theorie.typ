@@ -1113,42 +1113,12 @@ $
 
 === Determinante
 
-// Gemini
-//
-// Gleichung $P \cdot A = L \cdot R$ bildet die Grundlage. Der Determinantensatz liefert die Formel:
-//
-//
-// $$\det(P) \cdot \det(A) = \det(L) \cdot \det(R)$$
-//
-// ### **Schrittweise Berechnung**
-//
-// **1. Determinante von $P$**
-// Jeder Zeilentausch multipliziert die Determinante mit -1. Die LR-Zerlegung nutzte drei Tausche ($P_{1,3}$, $P_{2,3}$, $P_{3,4}$).
-//
-//
-// $$\det(P) = (-1)^3 = -1$$
-//
-// **2. Determinante von $L$**
-// Matrix $L$ ist eine normierte untere Dreiecksmatrix. Das Produkt ihrer Hauptdiagonalelemente liefert die Determinante.
-//
-//
-// $$\det(L) = 1 \cdot 1 \cdot 1 \cdot 1 = 1$$
-//
-// **3. Determinante von $R$**
-// Matrix $R$ ist eine obere Dreiecksmatrix. Multipliziere die Elemente der Hauptdiagonale ($r_{11}, r_{22}, r_{33}, r_{44}$).
-//
-//
-// $$\det(R) = (-2) \cdot 2 \cdot (-4) \cdot (-2) = -32$$
-//
-// **4. Determinante von $A$**
-// Setze die berechneten Werte in die Formel ein. Löse nach $\det(A)$ auf.
-//
-//
-// $$-1 \cdot \det(A) = 1 \cdot (-32)$$
-//
-// $$-\det(A) = -32$$
-//
-// **Ergebnis**
-//
-//
-// $$\det(A) = 32$$
+Die Determinante einer oberen/unteren Dreiecksmatrix ist das Produkt der Hauptdiagonale.
+
+$
+  det(A) & = det(L R) \
+         & = det(L) dot det(R) \
+         & = det(R) \
+         & = -2 dot 2 dot (-4) dot (-2) \
+         & = -32
+$
