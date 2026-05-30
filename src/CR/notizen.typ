@@ -1809,6 +1809,15 @@ $
   ]
 ]
 
+Das funktioniert auch für aneinandergereihte Permutationen mit $(P_2 dot P_1) dot L dot (P_2 dot P_1)^(-1)$. (Beweis: @cr_ue7.2.2)
+
+Wir wollen jetzt also folgende Permutation durchführen, sodass $L$ wieder untere Dreiecksmatrix wird:
+
+$
+  R & = mark(L^((n-1)), tag: #<Ln-1>) mark(P^((n-1)), tag: #<Pn-1>) mark(L^((n-2)), tag: #<Ln-2>) mark(P^((n-2)), tag: #<Pn-2>) mark(L^((n-3)), tag: #<Ln-3>) dot ... dot mark(L^((1)), tag: #<L1>) mark(P^((1)), tag: #<P1>) dot mark(A, tag: #<A>) \
+  & = underbrace(L^((n-1)), hat(L)^((n-1))) underbrace(P^((n-1)) L^((n-2)) P^((n-1)), hat(L)^((n-2))) underbrace(P^((n-1)) P^((n-2)) L^((n-3)) P^((n-2)) P^((n-1)), hat(L)^((n-3))) dot ... dot P^((n-1)) P^((n-2)) dot ... dot P^((1)) dot A
+$
+
 #proof(title: [Pivotisierung funktioniert nur mit vollem Rang])[
   Annahme: Was ist, wenn untere Rechte Teilmatrix $tilde(A)$ aus $A$ keinen vollen Rang hat?
 

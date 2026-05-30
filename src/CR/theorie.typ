@@ -1071,8 +1071,7 @@ $
   (P_pi A^T)^T = A P_pi^T
 $
 
-=== Beweis L Hut
-
+=== Beweis L Hut <cr_ue7.2.2>
 
 Aneinandergereihte Permutationen können auch rückgängig gemacht werden:
 
