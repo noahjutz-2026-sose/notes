@@ -1106,7 +1106,7 @@ Wartezeiten:
   })
 })
 
-== Schere Stein Papier
+== Stein-Schere-Papier
 
 === Spielwert
 
@@ -1131,3 +1131,38 @@ $
 $
 
 === LP
+
+$
+  1="Stein" \
+  2="Schere" \
+  3="Papier"
+$
+
+$
+  max F(p_1, p_2, p_3, z) = z
+$
+
+Unter NB
+
+$
+  m_(1 1) p_1 + m_(2 1) p_2 + m_(3 1) p_3 = p_3-p_2 & >= z \
+    m_(1 2) p_1 + m_(2 2) p_2 + m_(3 2) p_3=p_3-p_1 & >= z \
+    m_(1 3) p_1 + m_(2 3) p_2 + m_(3 3) p_3=p_2-p_1 & >= z \
+                                          sum_i p_i & = 1 \
+                                                p_i & >= 0 \
+                                                  z & in RR
+$
+
+=== Solver
+
+Siehe OR/ue08/ue03.
+
+=== Optimale Gemischte Strategie
+
+Weil es ein symmetrisches, faires Spiel ist.
+
+=== Bedingung
+
+$M^T=M$
+
+== Stein-Schere-Papier-Brunnen
