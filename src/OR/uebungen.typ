@@ -1163,6 +1163,14 @@ Weil es ein symmetrisches, faires Spiel ist.
 
 === Bedingung
 
-$M^T=M$
+$M^T=-M$
 
 == Stein-Schere-Papier-Brunnen
+
+=== Lineare Optimierung
+
+Siehe OR/ue08/ue03.
+
+=== Stein
+
+Weil Brunnen alles kann was Stein kann und noch mehr.
