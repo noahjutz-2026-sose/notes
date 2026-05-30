@@ -1699,41 +1699,84 @@ Motivation: Bei folgendem Beispiel kann $a_(2 1)$ nicht zu 0 werden: $mat(0, 1; 
 
 Bei der _Pivotisierung_ für die obere Dreiecksmatrix $R$ gehen wir wie folgt vor:
 
-Wenn in Schritt $k$ ein $a_(k+1, k+1) = 0$, dann:
-+ Finde ein $a_(l, k+1) != 0$ in Zeile $l$ *unter* $k+1$.
-+ Vertausche Zeilen $k+1$ und $l$
-
-Wenn wir in jedem Schritt verschieben:
+Wenn in Schritt $k$ ein $a_(k, k) = 0$, dann:
++ Finde ein $a_(l, k) != 0$ in Zeile $l$ *unter* $k+1$.
++ Vertausche Zeilen $k$ und $l$
 
 $
-      && R & = L^((n-1)) #hide($P^((n-1)) dot$) dot ... dot L^((1)) #hide($P^((1)) dot$) dot A \
-  --> && R & = L^((n-1)) dot P^((n-1)) dot ... dot L^((1)) dot P^((1)) dot A \
+      &&             A & = mat(
+                           , dots.v;
+                           ..., 0, ...;
+                           , dots.v;
+                           , a_(l k);
+                           , dots.v;
+                         ) \
+  ==> &&       P dot A & = mat(
+                           , dots.v;
+                           ..., a_(l k), ...;
+                           , dots.v;
+                           , 0;
+                           , dots.v;
+                         ) \
+  ==> && L dot P dot A & = mat(
+                           , dots.v;
+                           ..., a_(l k), ...;
+                           , arrow(0);
+                         )
 $
 
-#note[
-  Definiere $hat(L)^((k))$ als
+Im nächsten Schritt $k+1$ multiplizieren wir wieder $L^((k+1)) dot P^((k+1))$ an:
 
-  $
-    hat(L)^((k)) = P_k dot L^((k)) dot P_k^(-1)
-  $
+#pagebreak() // workaround for mannot bug
 
+#block(inset: (top: 1cm), breakable: false)[
+  $
+    R = underbrace(... dot L^((k+1)) dot mark(P^((k+1)), tag: #<P2>) dot mark(L^((k)), tag: #<L1>) dot P^((k)) dot ..., =L^(-1)) dot A
+    #annot-cetz((<L1>, <P2>), cetz, {
+      import cetz.draw: *
+      set-style(mark: (end: "straight"))
+      bezier("P2.north", "L1.north", (rel: (0, 1), to: ("L1", 50%, "P2")), name: "arrow")
+      content("arrow.mid", anchor: "south", padding: 2pt)[Zeilenvertauschung]
+    })
+  $
 ]
 
-$
-  R = A^((n-1)) & = L^((n-1)) dot P^((n-1)) dot L^((n-2)) dot P^((n-2)) dot dots.c dot L^((1)) dot P^((1)) A \
-                & = "... Umformung ..." \
-                & = L^((n-1)) hat(L)^((n-1)) hat(L)^((n-3)) dot dots.c A \
-$
+Man sieht, dass $L^((k))$ jetzt nicht mehr zwangsläufig eine untere Dreiecksmatrix ist. Insbesondere könnten alle Zeilen unter $k$ vertauscht sein.
 
-#note[
-  Definiere $P_k$ als alle Vertauschungen zusammen
+#block(inset: (top: 1cm, left: 1cm), breakable: false)[
   $
-        &&          P_k & := P^((n-1)) P^((n-2)) dots.c P^((k+1)) \
-    ==> &&   P_k^((-1)) & = P^((k+1)) P^((k+2)) dots.c P^((n-1)) \
-    ==> && hat(L)^((k)) & = P_k L^((k)) P_k^(-1)
+    mat(
+      mark(I, tag: #<tl>);
+      , mark(1, tag: #<1>);
+      , lambda^((k))_(k+1), 1;
+      , dots.v, , dots.down;
+      , lambda^((k))_(n), , , , mark(1, tag: #<br>);
+    )
+    #annot-cetz((<1>, <tl>, <br>), cetz, {
+      import cetz.draw: *
+      set-style(mark: (end: "straight"))
+      line((rel: (0, 1), to: "1"), "1", name: "sk")
+      content("sk.start", anchor: "south", padding: 2pt)[$k$]
+      line((rel: (-1, 0), to: "1"), "1", name: "rk")
+      content("rk.start", anchor: "east", padding: 2pt)[$k$]
+
+      let l = ("tl.west", "|-", "1.south")
+      let ll = (rel: (-1, 0), to: l)
+      let r = ("br.east", "|-", "1.south")
+      let rr = (rel: (1, 0), to: r)
+
+      line(rr, (rel: (0, -1)))
+      set-style(mark: none, stroke: (dash: "dashed", paint: colors.on_surface.light))
+      line(ll, rr)
+    })
   $
-  todo tafelbild ...
 ]
+
+Problematisch sind hier die Einsen auf der Diagonale. Um nach einer Zeilenvertauschung $P_(i j)$ die 1en wieder auf die Diagonale zu bringen, nutzen wir die Symmetrie der Einheitsmatrix:
+
+$
+  P I = I P ==> P I P = I
+$
 
 #proof(title: [Pivotisierung funktioniert nur mit vollem Rang])[
   Annahme: Was ist, wenn untere Rechte Teilmatrix $tilde(A)$ aus $A$ keinen vollen Rang hat?
