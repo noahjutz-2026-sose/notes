@@ -1778,6 +1778,37 @@ $
   P I = I P ==> P I P = I
 $
 
+#example(title: [Zeilen-Spaltenvertauschung])[
+  #box(inset: (bottom: .1cm))[
+    $
+      mat(
+        1;
+        , mark(1, tag: #<a1>, color: #colors.primary.normal);
+        , , 1;
+        , , , mark(1, tag: #<b1>, color: #colors.secondary.normal);
+      ) quad arrow.squiggly.long^(P dot) quad mat(
+        1;
+        , , , mark(1, tag: #<a2>, color: #colors.primary.normal);
+        , , 1;
+        , mark(1, tag: #<b2>, color: #colors.secondary.normal)
+      ) quad arrow.squiggly.long^(dot P) quad mat(
+        1;
+        , mark(1, tag: #<b3>, color: #colors.secondary.normal);
+        , , 1;
+        , , , mark(1, tag: #<a3>, color: #colors.primary.normal);
+      )
+      #annot-cetz((<a1>, <a2>, <a3>, <b1>, <b2>, <b3>), cetz, {
+        import cetz.draw: *
+        set-style(mark: (start: "straight", end: "straight"), stroke: colors.on_surface.lighter)
+        let y1 = (rel: (0, -.5), to: "b1")
+        line("a1", ("a1", "|-", y1), y1, "b1")
+        let x2 = (rel: (.5, 0), to: "a2")
+        line("a2", x2, ("b2", "-|", x2), "b2")
+      })
+    $
+  ]
+]
+
 #proof(title: [Pivotisierung funktioniert nur mit vollem Rang])[
   Annahme: Was ist, wenn untere Rechte Teilmatrix $tilde(A)$ aus $A$ keinen vollen Rang hat?
 
