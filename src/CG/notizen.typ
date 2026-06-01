@@ -1,6 +1,7 @@
 #import "/components/admonitions.typ": *
 #import "/style.typ": *
-#import "/deps.typ": cetz, cetz-plot, codly, gentle-clues, suiji
+#import "/deps.typ": cetz, cetz-plot, codly, gentle-clues, mannot, suiji
+#import mannot: *
 
 #align(end)[2026-03-16 VL01]
 
@@ -626,7 +627,7 @@ glUniformMatrix4fv(location, amount, transpose, ptr);
 glDebugMessageCallback
 ```
 
-#align(end)[2026-05-18]
+#align(end)[2026-05-18 VL10]
 
 = Beleuchtung (Phong)
 
@@ -686,3 +687,25 @@ Bei direktionalem Licht gibt es einen quadratischen Intensitäts-Falloff, weil d
 - Flat
 - Gouraud
 - Phong
+
+#align(end)[2026-06-01 VL11]
+
+= Texture Mapping
+
+_Texturkoordinaten_ zwischen $[0; 1]$ linear auf Bildkoordinaten interpolieren
+
+$
+  v_1 = ("pos", "norm", k_"diff", k_"spec", "ns", markhl("tc"))
+$
+
+- pos, norm werden transformiert
+- ns: Shine-Exponent
+- tc: _Texture Coordinate_
+
+== Texture Sampling -- Filtering
+
+- Nearest Neighbor
+- Bilinear
+#v(0pt)
+- Magnification
+- Minification
