@@ -22,17 +22,17 @@
 
     [1], [Idee Präsentation], [13/15], [2026-04-26], [],
     [2], [Peer-Review], [5/5], [2026-05-10], [],
-    [3], [Schema Integration], [\_/25], [2026-05-24], [Workbook],
+    [3], [Schema Integration], [23/25], [2026-05-24], [Workbook],
     [4],
     [],
     [\_/25],
-    [],
+    [2026-06-21],
     [
       - Workbook
       - Power BI Dashboard
     ],
 
-    [5], [], [\_/25],
+    [5], [], [\_/25], [2026-07-05],
   )
 - Übungen
   - 7 Blätter
@@ -374,3 +374,19 @@ _Schema Matching:_ Paarweise korrespondenzen zweier Schemata
 #align(end)[2026-05-18 VL09]
 
 = Daten Importieren
+
+Siehe @dw_ch3.
+
+#align(end)[2026-06-01 VL10]
+
+= Data Cleaning
+
+- _Identify Causes:_ `SELECT ... WHERE ... IS NULL`
+- _Standardize / Normalize:_ e.g. { KB, MB, GB } $->$ GB
+- _Correct errors:_ Delete/Merge duplicates
+- _Duplicate Detection:_ `GROUP BY`, `COUNT(*)`
+
+== Duplicate Detection
+
+- _Levenshtein Distance:_ Hinzufügen, entfernen, ersetzen kostet je 1. $d in {0, ..., n}$
+- _Jaccard Similarity_
