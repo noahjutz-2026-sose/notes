@@ -2034,5 +2034,61 @@ $
     [2], $300$, $15$, $70$,
     [3], $500$, $25$, $80$,
     [4], $80$, $4$, $30$,
+    table.hline(stroke: black),
+    [5], $100$, $2$, $40$,
+    [6], $200$, $$, $50$,
   )
+
+  Lineares Modell:
+
+  $
+    E(W, D) = alpha W + beta D + E_0
+  $
+
+  - Unabhängig: $W, D$ -- sind nicht wirklich unabh.
+  - Abhängig: $E$
+  - Frei: $alpha, beta, E_0$
+
+  $
+    f_1(W, D) = W \
+    f_2(W, D) = D \
+    f_3(W, D) = 1 \
+    Theta = vec(alpha, beta, E_0) \
+    mat(
+      augment: #{ -1 },
+      200, 10, 1, 50;
+      300, 15, 1, 70;
+      500, 25, 1, 80;
+      80, 4, 1, 30
+    )
+  $
+
+  $W,D$ sind abhängig ($D=5% dot W$) $-->$ Modell verkleinern
+
+  $
+    E(W, D) = (alpha + 0.05 beta) dot W + E_0
+  $
+]
+
+#example(title: [Freier Fall mit Startgeschwindigkeit])[
+  #table(
+    columns: 2,
+    $t_i$, $h_i$,
+    $0.5$, $7.9$,
+    $1$, $6$,
+    $1.25$, $4.4$,
+    $1.5$, $1.8$,
+  )
+
+  $
+                           h(t) & = underbrace(g/2, =: tilde(g)) t^2 + v_0 t + h_0 \
+                          Theta & = mat(tilde(g), v_0, h_0)^T \
+                           f(t) & = mat(
+                                    t^2,
+                                    t,
+                                    1
+                                  )^T \
+    mat(augment: #{ -1 }, A, y) & = mat(augment: #{ -1 }, t_i^2, t_i, 1, h_i)
+  $
+
 ]
