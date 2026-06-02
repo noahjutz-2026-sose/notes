@@ -178,3 +178,15 @@ CREATE TABLE Befragung_Beurteilung (
 
 Die einzige hierarchische Dimension ist Geographisch. Jede Hierarchiestufe hat höchstens ein Attribut, nämlich die Einwohnerzahl. Das kann man einfach als Star-Schema darstellen. Snowflake-Schema würde viele Joins benötigen.
 $=>$ Star-Schema
+
+#counter(heading).update(3)
+
+= Data Cleaning
+
+== Data Integration
+
+=== Duplicates
+
+#further[
+  #link("https://docs.exasol.com/db/latest/sql/uniqueness.htm")[WITH INVALID UNIQUE]
+]
