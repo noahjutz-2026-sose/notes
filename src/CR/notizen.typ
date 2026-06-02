@@ -1,4 +1,4 @@
-#import "/deps.typ": cetz, cetz-plot, codly, fletcher, gentle-clues, mannot, meander
+#import "/deps.typ": cetz, cetz-plot, codly, fletcher, gentle-clues, lq, mannot, meander
 #import "/style.typ": *
 #import gentle-clues: *
 #import mannot: *
@@ -1851,4 +1851,188 @@ $
 
   - Cholesky-Zerlegung
   - QR-Zerlegung
+]
+
+#align(end)[2026-06-02 VL10]
+
+= Lineare Ausgleichsrechnung
+
+Ziel: Tendenz Diskreter Messpunkte durch Funktion approximieren.
+
+== Lösbarkeit von linearen Gleichungssystemen
+
+#example(title: [])[
+  $
+    U = R dot I \
+    => U_i = R dot I_i
+  $
+
+  Exakte Messwerte:
+  #table(
+    columns: 2,
+    table.header[$I$][$U$],
+    $7$, $154$,
+    $12$, $264$,
+    $18$, $396$,
+    $19$, $418$,
+  )
+
+  $
+    vec(7, 12, 18, 19) dot R = vec(154, 264, 396, 418)
+  $
+
+  $
+    mat(augment: #1, 7, 154; 12, 264; 18, 396; 19, 418) arrow.squiggly.long mat(
+      augment: #1,
+      1, 22;
+      0, 0;
+      0, 0;
+      0, 0
+    ) => R = 22
+  $
+]
+#example[
+  Ungenaue Messwerte:
+  #table(
+    columns: 2,
+    table.header[$I$][$U$],
+    $7$, $150$,
+    $12$, $260$,
+    $18$, $400$,
+    $19$, $420$,
+  )
+
+  $
+    mat(augment: #1, 7, 150; 12, 260; 18, 400; 19, 420) arrow.squiggly.long mat(
+      augment: #1,
+      1, 0;
+      0, 1;
+      0, 0;
+      0, 0
+    )
+  $
+  Unlösbar. Mit Regression approximieren.
+]
+
+#example[
+  Unendlich viele Lsg.en.
+
+  $
+    R = U I + alpha T \
+    U_i = R dot I_i + alpha dot T_i
+  $
+
+  #table(
+    columns: 3,
+    $I$, $T$, $U$,
+    $6$, $8$, $92$,
+    $9$, $12$, $138$,
+    $15$, $20$, $230$,
+  )
+
+  $
+    mat(
+      6, 8;
+      9, 12;
+      12, 20
+    ) dot vec(R, alpha) = vec(92, 138, 230)
+  $
+]
+
+#table(
+  columns: 2,
+  [$ "rank"(A) = "rank"(A | b) = n $], [Eindeutig],
+  $ "rank" A = "rank"(A | b) < n $, [Unendlich viele Lsg.],
+  $"rank" A <= "rank"(A | b)$, [Keine Lsg.],
+)
+
+== Least Squares
+
+$
+  arg min_(theta in RR^n) norm(A theta - y)_2^2
+$
+
+Wenn die norm 0 ist, dann ist das Gleichungssystem lösbar ($<=>$)
+
+== Lineare Regressionsmodelle
+
+
+Ziel: Zusammenhang zwischen Eingabewerten $x_i in RR^k$ und Ausgabewerte $y_i in RR$ beschreiben.
+
+
+Wähle $Theta = mat(theta_1, dots.c, theta_n)^T$ und optimiere $F(x_i, Theta) approx y_i$
+
+#info(title: [Lineare Abbildungen])[
+  Eine Abbildung $phi: RR^n -> RR^m$ ist linear, wenn für alle $v, v' in RR^n, lambda in RR$ gilt:
+
+  - Additivität: $phi(v+v')=phi(v)+phi(v')$
+  - Homogenität: $phi(lambda v) = lambda phi(v)$
+
+  Lineare Abbildungen können als Matrixmultiplikation mit $A in "Mat"_(m,n)(RR)$ dargestellt werden.
+
+  $
+    phi: v |-> A v
+  $
+]
+
+$
+  F(x, Theta) = f_1 (x) theta_1 + f_2 (x) theta_2 + ... + f_n (x) theta_n
+$
+
+Wir wollen $theta$s finden sodass
+
+$
+  f_1(x_1) theta_1 + ... + f_n (x_i) theta_n approx y_i
+$
+
+In Matrixschreibweise:
+
+$
+  a_(i j) = f_j (x_i) \
+  A Theta approx y
+$
+
+Lösen mit Least Squares:
+
+$
+  Theta_* = arg min_(Theta in RR^n) norm(A Theta - y)_2^2
+$
+
+#code(title: [Matlab])[
+  Bei vollem Rang $"rank" A=n$ kann das in Matlab über `A \ y` gelöst werden.
+]
+
+== Modelle
+
+#example(title: [Ausgleichsgerade])[
+  $
+    f(x) = a x + b \
+    Theta = vec(a b) \
+    f_1(x) = x \
+    f_2(x) = 1
+  $
+
+  $
+    A = mat(
+      x_1, 1;
+      dots.v, dots.v;
+      x_m, 1
+    )
+  $
+
+  $
+    A Theta approx y \
+    Theta_* = arg min_(Theta) norm(A Theta - y)_2^2
+  $
+]
+
+#example(title: [Felder])[
+  #table(
+    columns: 4,
+    [Feld], [Wasser $W$], [Dünger $D$], [Ertrag $E$],
+    [1], $200$, $10$, $50$,
+    [2], $300$, $15$, $70$,
+    [3], $500$, $25$, $80$,
+    [4], $80$, $4$, $30$,
+  )
 ]
