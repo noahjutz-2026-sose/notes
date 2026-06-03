@@ -53,10 +53,16 @@ Siehe #link("https://github.com/noahjutz-2026-sose/notes/blob/03435341582ceda5cb
 
 #table(
   columns: 2,
-  table.header([Quelle], link("https://www.bundestag.de/services/opendata/")[Stammdaten Abgeordnete]),
-  [Lizenz], ["Open Data"],
-  [Originalformat], [XML, charset=utf-8],
+  table.header(
+    [Quelle],
+    link(
+      "https://bundeswahlleiterin.de/bundestagswahlen/2025/wahlkreiseinteilung/downloads.html",
+    )[Wahlkreise und zugeordnete Gemeinden],
+  ),
+  [Lizenz], [Datenlizenz Deutschland Namensnennung 2.0],
+  [Originalformat], [CSV, charset=utf-8, delim=`;`, LF],
 )
+
 
 === Exasol
 
