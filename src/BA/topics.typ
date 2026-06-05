@@ -2,6 +2,8 @@
 
 = Anforderungen an Themen
 
+== OTH
+
 Eine gute Hypothese ist
 - Spezifisch
 - Präzise definiert
@@ -11,6 +13,15 @@ Man sollte 3 Fragen beantworten können:
 - Welchen Forschungsbeitrag leistet die Arbeit?
 - Wie gehe ich vor, um die These zu belegen/wiederlegen?
 - Was ist das Problem, das ich lösen möchte?
+
+== Writing for Computer Science
+
+- What phenomena or properties are being investigated? Why are they of interest?
+- Has the aim of the research been articulated? What are the specific hypotheses and research questions? Are these elements convincingly connected to each other?
+- To what extent is the work innovative? Is this reflected in the claims?
+- What would disprove the hypothesis? Does it have any improbable consequences?
+- What are the underlying assumptions? Are they sensible?
+- Has the work been critically questioned? Have you satisfied yourself that it is sound science?
 
 == Beispiele
 
@@ -74,7 +85,7 @@ Man sollte 3 Fragen beantworten können:
 
 == Cluster
 
-#clue[
+#clue(title: [Hypothese])[
   Eine Kubernetes-basierte Multi-Node-Architektur für CyberRunner, die GPU-Compute, Computer Vision und Motorsteuerung in getrennten Pods betreibt, erhöht den effektiven RL-Trainingsdurchsatz (Samples/Stunde) bei gleichzeitigem Betrieb von N $>=$ 3 Labyrinthen linear mit N, ohne dass die I/O-Latenz zwischen CV- und RL-Knoten die kritische Schwelle von 50 ms überschreitet.
 
   Annahme: Der Flaschenhals im aktuellen System liegt nicht im RL-Algorithmus, sondern in der sequenziellen Verarbeitung von Kameraframes und Motorsteuerung auf einem einzelnen Knoten.
@@ -82,8 +93,40 @@ Man sollte 3 Fragen beantworten können:
 
 == Modularisierung & RL-Algorithmus-Vergleich
 
-#clue[
-  Ein einheitliches Interface für RL-Algorithmen im CyberRunner-System, das eine lose Kopplung von Hardware-Abstraktionsschicht, CV-Pipeline und RL-Backends ermöglicht, zeigt, dass verschiedene RL-Implementierungen (z. B. DreamerV3, TD-MPC2, PPO) unter identischen Bedingungen systematisch verglichen werden können und dabei signifikante Unterschiede in Sample-Effizienz, Trainingszeit und End-Performance aufweisen
+#clue(title: [Hypothese])[
+  Ein einheitliches Interface für RL-Algorithmen im CyberRunner-System, das eine lose Kopplung von Hardware-Abstraktionsschicht, CV-Pipeline und RL-Backends ermöglicht, zeigt, dass verschiedene RL-Implementierungen (z. B. DreamerV3, TD-MPC2, PPO) unter identischen Bedingungen systematisch verglichen werden können und dabei signifikante Unterschiede in Sample-Effizienz, Trainingszeit und End-Performance aufweisen.
 ]
 
 == Hyperparameter Optimization
+
+#clue(title: [Hypothese])[
+  Automatisiertes Hyperparameter-Tuning mit Optuna erreicht für CyberRunner eine signifikant höhere Sample-Effizienz und kürzere Trainingszeit im Vergleich zu manuell gewählten Standard-Hyperparametern, wobei die Lernrate und der Reward-Skalierungsfaktor die stärksten Einflussparameter sind.
+
+  Annahme: Die bestehenden manuellen Hyperparameter sind nicht optimal; automatisiertes Tuning findet bessere Kombinationen, und bestimmte Parameter (Lernrate, Reward-Skalierung) dominieren den Effekt.
+]
+
+== Sim-to-Real transfer
+
+#clue(title: [Hypothese])[
+  Ein in Unity trainiertes CyberRunner-Modell, das mit Domain-Randomization (Reibungskoeffizient ±20%, Beleuchtung ±30%) trainiert wurde, erreicht auf der physischen Hardware innerhalb von weniger als 60 Minuten Nachtraining (Fine-Tuning) eine Durchlaufzeit, die maximal 15% schlechter ist als ein vollständig auf der Hardware trainiertes Modell.
+
+  Annahme: Der Sim-to-Real-Gap bei CyberRunner ist primär auf physikalische Parametervarianz zurückzuführen, nicht auf fundamentale Modelllimitierungen.
+]
+
+= Hyperparameter Optimisierung
+
+#clue(title: [Hypothese])[
+
+]
+
+== Warum ist das Phänomen interessant?
+
+== Problem, Ziel und Kohärenz
+
+== Forschungsbeitrag und Auswirkungen der Hypothese
+
+== Gegenbeweis
+
+== Annahmen
+
+== Gegenargumente in der Umsetzung
