@@ -321,7 +321,7 @@ Command-Line Flags
 == awk
 
 #example[
-    ```sh
-    awk -Fo 'BEGIN{print NF}BEGIN{print "hi"}{print $1}' file.txt
-    ````
+  ```sh
+  awk -Fo 'BEGIN{print NF}BEGIN{print "hi"}{print $1}' file.txt
+  ```
 ]
