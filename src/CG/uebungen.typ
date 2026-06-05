@@ -1154,7 +1154,7 @@ Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/b52278d1639c9f5
 
 Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/6527cefe14135acbe299a6ea0cca57353cb4b9f7/CG/ue06/meshrenderer-2023/src/main.cpp#L67")[CG/ue06].
 
-=
+= Lighting
 
 + Lokal: Nur Flächen mit direktem Pfad zum Licht werden beleuchtet. Global: Indirekte beleuchtung berücksichtigt
 + Weiche Schatten, indirect propagation, komplexe Berechnung
@@ -1164,3 +1164,8 @@ Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/6527cefe14135ac
 + Mach Band Effekt weg
 + Hohe Vertexzahl
 + Lighting: Farbwert anhand $cal(l)$ und $v$. Shading: Interpolierter Farbwert bei Low-Poly.
+
+= Texturierung
+
++ Texturatlas: Einziges Bild, in dem mehrere unabhängige Texturen gespeichert sind
++ Lineare / Bayzentrische interpolation
