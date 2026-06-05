@@ -86,4 +86,4 @@ Man sollte 3 Fragen beantworten können:
   Ein einheitliches Interface für RL-Algorithmen im CyberRunner-System, das eine lose Kopplung von Hardware-Abstraktionsschicht, CV-Pipeline und RL-Backends ermöglicht, zeigt, dass verschiedene RL-Implementierungen (z. B. DreamerV3, TD-MPC2, PPO) unter identischen Bedingungen systematisch verglichen werden können und dabei signifikante Unterschiede in Sample-Effizienz, Trainingszeit und End-Performance aufweisen
 ]
 
-== g
+== Hyperparameter Optimization
