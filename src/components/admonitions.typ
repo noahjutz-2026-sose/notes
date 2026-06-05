@@ -8,6 +8,8 @@
   border-width: 0pt,
 )
 
+#let clue = clue.with(.._common_args)
+
 #let example(
   title: "Beispiel",
   icon: i("eye"),
