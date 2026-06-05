@@ -272,7 +272,7 @@ Benutzerprogramm $<->$ OS $<->$ MMU $<->$ RAM
   - _LFU_, _MFU:_ Least/Most Frequently Used
   - Optimaler Algorithmus: nur rückblickend möglich
 
-#align(end)[2026-05-28 VL21 (2025-01-12)]
+#align(end)[2026-05-28 VL21 (2026-01-12)]
 
 - Fixed Allocation: Feste Pagegröße
   - Größe eines Prozessees: Größe der Binary
@@ -290,3 +290,38 @@ Benutzerprogramm $<->$ OS $<->$ MMU $<->$ RAM
   - 2er Potenzen
 - _Slab Allocator:_ Nicht so schnell wie Buddy, keine interne fragmentierung, verschwendet weniger Speicher
 - _Translation Lookaside Buffer:_ Auszug der Seitentabelle
+
+#align(end)[2026-06-05 VL22 (2026-01-13)]
+
+= sed & awk
+
+== sed
+
+Adressen
+- Keine Adresse: Alle Zeilen
+- Zeile `3`
+- Zeilen-Range `3,10` oder `3,` oder `,10`
+- Adressen-Range `/a/,/b/`
+- Regex pattern `/xyz/`
+- Negation `!`
+- Letzte Zeile `$`
+
+Actions
+- `q` Quit
+- `d` Delete
+- `s` Substitute
+- `a` Append line below
+- `i` Insert Insert line above
+- `p` print
+
+Command-Line Flags
+- `-n` No output
+- `-f` Execute script file
+
+== awk
+
+#example[
+    ```sh
+    awk -Fo 'BEGIN{print NF}BEGIN{print "hi"}{print $1}' file.txt
+    ````
+]
