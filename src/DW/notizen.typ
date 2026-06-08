@@ -390,3 +390,7 @@ Siehe @dw_ch3.
 
 - _Levenshtein Distance:_ Hinzufügen, entfernen, ersetzen kostet je 1. $d in {0, ..., n}$
 - _Jaccard Similarity_
+
+#align(end)[2026-06-08 VL11]
+
+Grouping sets, rollup, cube, window functions.
