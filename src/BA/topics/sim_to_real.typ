@@ -9,7 +9,7 @@
 ]
 
 == Warum ist das Phänomen interessant?
-
+, template_exercises
 - #[
     Reinforcement Learning in der Robotik ist ein aktuelles Forschungsthema, das Probleme in Transport, Logistik, usw. lösen kann.
   ]
@@ -40,28 +40,25 @@
 
 == Hinterfragung der Hypothese
 
-#[
-  #set list(spacing: 16pt)
-  - #[
-      Es wird keine Kamera simuliert. Die mangelnde Latenz der Kamera und CV pipeline wird das Modell unbrauchbar machen. Dazu kommt die Ungenauigkeit der Positionserkennung im physischen System.
+- #[
+    Es wird keine Kamera simuliert. Die mangelnde Latenz der Kamera und CV pipeline wird das Modell unbrauchbar machen. Dazu kommt die Ungenauigkeit der Positionserkennung im physischen System.
 
-      *Gegenargument.* Latenz und Varianz können simuliert werden.
-    ]
-  - #[
-      Physikalische Eigenschaften wie Reibung und reale Verhältnisse wie eine unebene Spielfläche können nicht realistisch in der Simulation abgebildet werden.
+    *Gegenargument.* Latenz und Varianz können simuliert werden.
+  ]
+- #[
+    Physikalische Eigenschaften wie Reibung und reale Verhältnisse wie eine unebene Spielfläche können nicht realistisch in der Simulation abgebildet werden.
 
-      *Gegenargument.* Diese Probleme werden in bestehenden Papers über Sim-to-Real transfer gelöst.
-    ]
-  - #[
-      Die Observation enthält in der CyberRunner-Implementierung ein Kamerabild. Wie soll Dreamer ein World Model ohne dieses trainieren?
+    *Gegenargument.* Diese Probleme werden in bestehenden Papers über Sim-to-Real transfer gelöst.
+  ]
+- #[
+    Die Observation enthält in der CyberRunner-Implementierung ein Kamerabild. Wie soll Dreamer ein World Model ohne dieses trainieren?
 
-      *Gegenargument.* Kamerabild ist nicht zwingend notwendig, um das Labyrinth zu lösen, weil Reward auf festem Zielpfad basiert.
+    *Gegenargument.* Kamerabild ist nicht zwingend notwendig, um das Labyrinth zu lösen, weil Reward auf festem Zielpfad basiert.
 
-      Dann kann das simulierte Modell aber nicht auf andere Labyrinth-Layouts angewandt werden.
+    Dann kann das simulierte Modell aber nicht auf andere Labyrinth-Layouts angewandt werden.
 
-      *Gegenargument.* Das ist außerhalb des Rahmens der Arbeit.
-    ]
-]
+    *Gegenargument.* Das ist außerhalb des Rahmens der Arbeit.
+  ]
 
 == Annahmen
 
