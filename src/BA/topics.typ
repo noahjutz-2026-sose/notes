@@ -112,21 +112,3 @@ Man sollte 3 Fragen beantworten können:
 
   Annahme: Der Sim-to-Real-Gap bei CyberRunner ist primär auf physikalische Parametervarianz zurückzuführen, nicht auf fundamentale Modelllimitierungen.
 ]
-
-= Hyperparameter Optimisierung
-
-#clue(title: [Hypothese])[
-
-]
-
-== Warum ist das Phänomen interessant?
-
-== Problem, Ziel und Kohärenz
-
-== Forschungsbeitrag und Auswirkungen der Hypothese
-
-== Gegenbeweis
-
-== Annahmen
-
-== Gegenargumente in der Umsetzung
