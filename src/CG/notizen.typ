@@ -709,3 +709,11 @@ $
 #v(0pt)
 - Magnification
 - Minification
+
+#align(end)[2026-06-08 VL12]
+
+== Mip-Mapping
+
+Box blur
+
+= Texture mapping
