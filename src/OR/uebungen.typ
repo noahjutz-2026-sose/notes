@@ -1174,3 +1174,93 @@ Siehe OR/ue08/ue03.
 === Stein
 
 Weil Brunnen alles kann was Stein kann und noch mehr.
+
+#align(end)[2026-06-09]
+
+= Genetische Verfahren
+
+== Investplanung
+
+=== Übersicht
+
+=== Chromosomen
+
+Problemmenge: $x = {x_1, ..., x_10}$
+
+Population: Potenzmenge der Projekte
+
+$ cal(P)(x) = {x' subset.eq x} $
+
+Beispiele für Individuen: ${x_1}, {x_1, x_2}$
+
+Es gibt $abs(cal(P)(x)) = 2^abs(x) = 2^10 = 1024$ Individuen.
+
+=== Fitness
+
+$
+  f : x' subset.eq x |-> - "sgn"((sum "Investition"(x_i))/(35 dot 10^6)-1) dot sum_(x_i in x') "Gewinn"(x_i)
+$
+
+Beispiele:
+
+$
+  f({x_1}) = 0.5 dot 10^6 \
+  f({x_1, x_2}) = (0.5 + 0.8) dot 10^6
+$
+
+=== Selektion
+
+*Einfache Selektion*
+
+Jedem Individuum wird eine Überlebenswahrscheinlichkeit zugewiesen.
+
+$
+  p^i = f(x^i)/(sum_j f(x^j))
+$
+
+Wiederholt ein Individuum ziehen und überleben lassen.
+
+*Rank Selection*
+
+Die Wahrscheinlichkeit ist für jedes Individuum
+
+$
+  p^i = r/(sum i)
+$
+
+wobei $r$ der Rank ist, also $n$ für das Individuum $i$ mit höchstem Zielwert $f(x^i)$, $n-1$ für das zweitbeste, etc.
+
+=== Crossover
+
+*Single Point Crossover*
+
+Beispiel für ${x_1}, {x_1, x_2}$:
+
+Codieren wir die Individuen $x^i$ als 10-Bit-Folge $x$, wobei $x_i=1 <=> x_i in x^i$.
+
+#table(
+  columns: 2,
+  [Phänotyp (Decodiert)], [Genotyp (Encodiert)],
+  ${x_1}$, `1000000000`,
+  ${x_1, x_2}$, `1100000000`,
+)
+
+Wählen wir den Kreuzungspunkt $z=5$. Dann ist das Resultat
+
+$
+  overbrace(10000, {x_1}) underbrace(00000, {x_1, x_2})
+$
+
+=== Mutation
+
+Ein Gen ist ein Bit. Wenn $p=0.3$, Dann ist für ein Individuum (10 Bit) $p=1-(1-0.3)^10$. Dann ist für 10 Individuen die Anzahl an Mutationen $E(X)=100 dot 0.3 = 30$.
+
+=== Abbruchkriterium
+
+$
+  (f(x^i) >= max_(x' in cal(P)(x)) sum_(x_i in x') x_i)
+  or
+  ?
+$
+
+== Vierfarbenproblem
