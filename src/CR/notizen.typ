@@ -2092,3 +2092,122 @@ $
   $
 
 ]
+
+#align(end)[2026-06-09 VL11]
+
+== Normalengleichung
+
+#definition(title: [Normalengleichung])[
+  $
+         && A^T A Theta_* - A^T y & = 0 \
+    <==> &&           A^T A Theta & = A^T y
+  $
+]
+
+#proof[
+  Der Bildraum $"Im"(A) = {A Theta mid(|) Theta in RR^n } subset.eq RR^m$ ist ein Unterraum des $RR^m$. Das ist ein Punkt/Gerade/Ebene/...
+
+  Wir suchen ein $y_*$ welches den kleinsten Abstand zu $y$ hat. Das ist der Fall, wenn $y_*-y$ orthogonal zum Bild ist.
+
+  Der Bildraum ist orthogonal zum Vektor, wenn jeder Vektor im Bildraum orthogonal zum Vektor ist.
+
+  $
+    chevron.l v, w chevron.r = v^T w = sum_i^m v_i w_i quad (v, w in RR^m) \
+    v tack.t w <==> chevron.l v, w chevron.r = 0 \
+    V tack.t w <==> chevron.l v, w chevron.r = 0 quad forall v in V quad "mit" V subset.eq RR^m \
+    "Im" A tack.t y_*-y <==> "Im" A tack.t A Theta_* - y
+    <==> tilde(y) tack.t (A Theta_* - y) quad forall tilde(y) in "Im" A \ \
+    ... tack.t ... <==> lr(chevron.l tilde(y), A Theta_* - y chevron.r) = 0
+  $
+
+  Skalarprodukt berechnen.
+
+  $
+    lr(chevron.l tilde(y), A Theta_* - y chevron.r) & = tilde(y)^T (A Theta_* - y) \
+                                                    & = ... \
+                                                    & = Theta^T (A^T A Theta_* - A^T y)
+  $
+
+  Wir verwendeten für die Umformung $M x = 0 forall x <==> M = 0$
+
+]
+
+#alternative(title: [Alternativer Beweis])[
+  Wir verwenden in der Umformung $norm(x)_2^2 = chevron.l x, x chevron.r$
+
+  $
+    f(Theta) & = norm(A Theta - y)_2^2 \
+             & = ... \
+             & = Theta^T A^T A Theta - 2 y^T A Theta + y^T y
+  $
+
+  Minimum von $f$ wird angenommen, wenn:
+
+  $
+    0 = gradient f = A^T A Theta - A^T y space square.filled
+  $
+]
+
+#definition[
+  Sei $A in "Mat"_(m,n), v in RR^n$. Dann gilt:
+
+  $
+    A v = 0 <==> A^T A v = 0
+  $
+
+  Insbesondere ist $A^T A$ invertierbar, wenn $"rank" A = n$.
+]
+
+#proof[
+  "$==>$"
+  $
+    A v = 0 => A^T A v = 0
+  $
+
+  "$<==$"
+  $
+    A^T A v = 0 => 0 & = v^T A^T A v \
+                     & = ... \
+                     & = (A v)^T dot A v \
+                     & = chevron.l A v, A v chevron.r \
+                     & = norm(A v)_2^2 \
+              => A v & = 0 space square.filled
+  $
+]
+
+#definition(title: [Kern einer Matrix])[
+  $
+    "ker" A & = {v in RR^n mid(|) A v = 0} \
+            & = {v in RR^n mid(|) A^t A v = 0} \
+            & = "ker" A^T A
+  $
+
+  Satz:
+
+  $
+    A^T A "invertierbar" & <==> "ker" A^T A = {0} \
+                         & <==> "ker" A = {0} \
+                         & <==> "rank" A = n
+  $
+]
+
+== Anwendung / Herangehensweise
+
+Gegeben: Daten $(x_i, y_i)$
+
++ Unabhängige Variablen $x$, anhängige Variablen $y$
++ Modell: $F(x, Theta) = f_1 (x) Theta_1 + ... + f_n (x) Theta_n$
++ Parameter $Theta$ aufstellen
++ Matrix aufstellen
+  $
+    A = mat(
+      f_1 (x_1), ..., f_n(x_1);
+      dots.v, , dots.v;
+      f_1(x_m), ..., f_n(x_m)
+    ) \
+    A^T A =: M \
+    A^T y =: tilde(y)
+  $
++ Löse $M Theta = tilde(y)$ für $Theta$. Das ist das optimale $Theta_*$.
+
+= Interpolation
