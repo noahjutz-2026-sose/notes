@@ -9,7 +9,6 @@
 ]
 
 == Warum ist das Phänomen interessant?
-, template_exercises
 - #[
     Reinforcement Learning in der Robotik ist ein aktuelles Forschungsthema, das Probleme in Transport, Logistik, usw. lösen kann.
   ]
