@@ -2215,6 +2215,9 @@ Gegeben: Daten $(x_i, y_i)$
 Sei $Omega in RR, x_i in Omega$. Wir suchen eine Interpolationsfunktion $g: Omega -> RR$
 
 #lq.diagram(
+  xaxis: (
+    ticks: range(5).zip(range(1, 6).map(i => $x_#i$)),
+  ),
   lq.plot(range(5), (1, 3, 2, 5, 4)),
 )
 
