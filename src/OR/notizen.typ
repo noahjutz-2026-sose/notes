@@ -518,3 +518,36 @@ $
 $
 
 == Formulierung als LP
+
+#align(end)[2026-06-09 VL10]
+
+= Metaheuristiken
+
+== Genetische / Evolutionäre Algorithmen (EA)
+
+=== Vorgehen
+
+*Selektionstypen*
+
+- Einfache Selektion
+- Tournament Selektion
+
+*Algorithmus*
+
++ Erste Generation Zufällig generieren
++ Fitness zuweisen
++ Solange Abbruchkriterium nicht erfüllt
+  + Selektion für Rekombination und Rekombination
+  + Selektion für Mutation und Mutation
+  + Fitness zuweisen
+  + Selektion der neuen Generation
+
+=== Repräsentation
+
+- _Genotyp:_ Codiert
+- _Phänotyp:_ Decodiert
+
+*Kodierungen*
+- _Hamming Distanz:_ Anzahl notwendiger Flips, um von Bitreihe A zu Bitreihe B zu gelangen
+- _Gray Codierung:_ Hamming-Distanz zwischen zwei benachbarten Zahlen ($n$ und $n+1$) ist immer 1.
+- _Ganzzahl-Codierung:_ $[x_1, x_2, ...]$
