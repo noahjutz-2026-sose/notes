@@ -2210,4 +2210,24 @@ Gegeben: Daten $(x_i, y_i)$
   $
 + Löse $M Theta = tilde(y)$ für $Theta$. Das ist das optimale $Theta_*$.
 
-= Interpolation
+= Interpolation und Splines
+
+Sei $Omega in RR, x_i in Omega$. Wir suchen eine Interpolationsfunktion $g: Omega -> RR$
+
+#lq.diagram(
+  lq.plot(range(5), (1, 3, 2, 5, 4)),
+)
+
+Der Raum aller Polynome vom Grad $n$ ist
+
+$
+  PP_n = {sum_(j=0)^n a_j x^j mid(|) a_j in RR}
+$
+
+Der Funktionsraum $G_n subset.eq PP_n$
+
+Die Lagrange-Interpolation
+
+#task[
+  $PP_n$ ist ein $n+1$ dim. Vektorraum mit Basis $1, x, ..., x^n$.
+]
