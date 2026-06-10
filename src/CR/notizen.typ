@@ -1857,29 +1857,64 @@ $
 
 = Lineare Ausgleichsrechnung
 
-Ziel: Tendenz Diskreter Messpunkte durch Funktion approximieren.
+Problem: Wir haben Punkte $(x, y)$. Wir möchten eine Funktion $F$, die möglichst nah an allen Punkten ist.
 
-== Lösbarkeit von linearen Gleichungssystemen
-
-#example(title: [])[
-  $
-    U = R dot I \
-    => U_i = R dot I_i
-  $
-
-  Exakte Messwerte:
-  #table(
-    columns: 2,
-    table.header[$I$][$U$],
-    $7$, $154$,
-    $12$, $264$,
-    $18$, $396$,
-    $19$, $418$,
-  )
+#definition(title: [Modell])[
+  Ein _Regressionsmodell_ ist eine Funktion $F: RR^n -> RR$ mit _Parametern_ $theta in RR^m$.
 
   $
-    vec(7, 12, 18, 19) dot R = vec(154, 264, 396, 418)
+    F(x, theta) = f_1 (x) dot theta_1 + f_2 (x) dot theta_2 + ... + f_n (x) dot theta_n = y_i
   $
+
+  Man kann das als Matrix darstellen.
+
+  $
+    underbrace(
+      mat(
+        f_1 (x_1), ..., f_n(x_1);
+        dots.v, , dots.v;
+        f_1(x_m), ..., f_n(x_m)
+      ),
+      A
+    ) dot underbrace(
+      vec(theta_1, dots.v, theta_n),
+      theta
+    ) = underbrace(
+      vec(y_1, dots.v, y_n),
+      y
+    )
+  $
+]
+
+Wir können beliebige Funktionen $f_i$ wählen, um ein Modell zu bauen.
+
+#table(
+  columns: 2,
+  [Lineares Modell], $ theta_1 x + theta_2 $,
+  [Polynomiell], $ theta_0 x_0^0 + theta_1 x_1^1 + ... + theta_n x_n^n $,
+  [Trigonometrisch], $ theta_1 sin(x) + theta_2 cos(x) $,
+  [Exponential], $ theta_1 dot e^(theta_2 x) $,
+)
+
+Wir können dann die optimalen Parameter $theta_*$ berechnen, indem wir $A theta = y$ lösen.
+
+#example(title: [Lineares Modell: Stromspannung, Stromstärke und Widerstand])[
+  Wir haben folgende Messwerte für $I$ (frei) und $U$ (abhängig).
+
+  $
+    I = x = vec(7, 12, 18, 19) quad quad U = y = vec(154, 264, 396, 418)
+  $
+
+  Es gilt der Dreisatz: $U = R dot I$.
+
+  $
+         &&     I dot R & = U \
+    <==> && A dot theta & = y
+  $
+
+  In diesem Modell haben wir nur eine Funktion ($I dot R = U$), deshalb ist $A$ ein Vektor. Wir haben nur einen Parameter ($R$), deshalb ist $theta$ ein Skalar.
+
+  Wenn wir dieses lineare Gleichungssystem für $theta = R$ auflösen, erhalten wir das optimale $theta_*$.
 
   $
     mat(augment: #1, 7, 154; 12, 264; 18, 396; 19, 418) arrow.squiggly.long mat(
@@ -1888,9 +1923,33 @@ Ziel: Tendenz Diskreter Messpunkte durch Funktion approximieren.
       0, 0;
       0, 0;
       0, 0
-    ) => R = 22
+    ) ==> R = 22
   $
 ]
+
+
+== Least Squares
+
+Für $A theta = y$ gibt es oft keine (eindeutige) Lösung. Mit dem _Least Squares_ Verfahren können wir das optimale $theta_*$ approximieren.
+
+$
+  "rank" A & = "rank" mat(A, b)  & = n & quad ==> quad "Eindeutige Lsg." \
+  "rank" A & = "rank" mat(A, b)  & < n & quad ==> quad "Unendlich viele Lsg." \
+  "rank" A & <= "rank" mat(A, b) &     & quad ==> quad "Keine Lsg."
+$
+
+Statt $A theta - y = 0$ exakt zu lösen, minimieren wir die Vektornorm ($norm(bold(upright(x))) = 0 <==> bold(upright(x)) = 0$):
+
+#definition(title: [Sum of Least Squares])[
+  $
+    theta_* = arg min_(theta in RR^n) norm(A theta - y)_2^2
+  $
+]
+
+#note[
+  $norm(x)=0 <==>$ Gleichungssystem hat mindestens eine Lösung
+]
+
 #example[
   Ungenaue Messwerte:
   #table(
@@ -1938,21 +1997,6 @@ Ziel: Tendenz Diskreter Messpunkte durch Funktion approximieren.
     ) dot vec(R, alpha) = vec(92, 138, 230)
   $
 ]
-
-#table(
-  columns: 2,
-  [$ "rank"(A) = "rank"(A | b) = n $], [Eindeutig],
-  $ "rank" A = "rank"(A | b) < n $, [Unendlich viele Lsg.],
-  $"rank" A <= "rank"(A | b)$, [Keine Lsg.],
-)
-
-== Least Squares
-
-$
-  arg min_(theta in RR^n) norm(A theta - y)_2^2
-$
-
-Wenn die norm 0 ist, dann ist das Gleichungssystem lösbar ($<=>$)
 
 == Lineare Regressionsmodelle
 
