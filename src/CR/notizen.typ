@@ -2221,13 +2221,13 @@ Sei $Omega in RR, x_i in Omega$. Wir suchen eine Interpolationsfunktion $g: Omeg
   lq.plot(range(5), (1, 3, 2, 5, 4)),
 )
 
-Der Raum aller Polynome vom Grad $n$ ist
+Der Vektorraum aller Polynome vom Grad $n$ ist
 
 $
   PP_n = {sum_(j=0)^n a_j x^j mid(|) a_j in RR}
 $
 
-Der Funktionsraum $G_n subset.eq PP_n$
+Wir definieren für den Moment $G_n = PP_n$
 
 Die Lagrange-Interpolation
 
