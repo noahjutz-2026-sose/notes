@@ -1879,14 +1879,14 @@ Problem: Wir haben Punkte $(x, y)$. Wir möchten eine Funktion $F$, die möglich
     F(x, theta) = f_1 (x) dot theta_1 + f_2 (x) dot theta_2 + ... + f_n (x) dot theta_n = y_i
   $
 
-  Man kann das als Matrix darstellen.
+  Man kann das als Matrixvektormultiplikation darstellen.
 
   $
          && mat(
-              f_1 (x_1), ..., f_n (x_1);
+              f_1 (x_1), ..., f_m (x_1);
               dots.v, , dots.v;
-              f_1 (x_m), ..., f_n (x_m)
-            ) & dot vec(theta_1, dots.v, theta_n) && = vec(y_1, dots.v, y_n) \
+              f_1 (x_n), ..., f_m (x_n)
+            ) & dot vec(theta_1, dots.v, theta_m) && = vec(y_1, dots.v, y_n) \
     <==> && A & dot theta                         && = y
   $
 ]
@@ -1984,6 +1984,31 @@ $
                  ) dot vec(alpha, beta, gamma) & = vec(z_1, ..., z_n)
 $
 
+=== Quadratisches Modell
+
+Wir wählen ein quadratisches Polynom $y = a_0 x_0^0 + a_1 x_1^1 + a_2 x_2^2$
+
+$
+  F(x, theta) & = f_1 (x) dot theta_1 && + f_2 (x) dot theta_2 && + f_3 (x) dot theta_3 \
+              & = x^2 dot a_2         && + x^1 dot a_1         && + x^0 dot a_0
+$
+
+In Matrixschreibweise:
+
+$
+       &&                          A dot theta & = y \
+  <==> && mat(
+            f_1 (x_1), f_2 (x_1), f_3 (x_1);
+            dots.v, dots.v, dots.v;
+            f_1 (x_n), f_2 (x_n), f_3 (x_n)
+          ) dot vec(theta_1, theta_2, theta_3) & = vec(y_1, dots.v, y_n) \
+  <==> &&            mat(
+                       x_1^2, x_1^1, x_1^0;
+                       dots.v, dots.v, dots.v;
+                       x_n^2, x_n^1, x_n^0
+                     ) dot vec(a_2, a_1, a_0)  & = vec(y_1, dots.v, y_n)
+$
+
 == Least Squares
 
 Für $A theta = y$ gibt es oft keine (eindeutige) Lösung.
@@ -1995,7 +2020,7 @@ $
 $
 Mit dem _Least Squares_ Verfahren können wir das optimale $theta_*$ approximieren. Statt $A theta - y = 0$ exakt zu lösen, minimieren wir die Vektornorm ($norm(bold(upright(x))) = 0 <==> bold(upright(x)) = 0$):
 
-#definition(title: [Sum of Least Squares])[
+#definition(title: [Least Squares])[
   $
     theta_* = arg min_(theta in RR^n) norm(A theta - y)_2^2
   $
@@ -2052,97 +2077,6 @@ Mit dem _Least Squares_ Verfahren können wir das optimale $theta_*$ approximier
 
 #code(title: [Matlab])[
   Bei vollem Rang $"rank" A=n$ kann das in Matlab über `A \ y` gelöst werden.
-]
-
-== Modelle
-
-#example(title: [Ausgleichsgerade])[
-  $
-    f(x) = a x + b \
-    Theta = vec(a b) \
-    f_1(x) = x \
-    f_2(x) = 1
-  $
-
-  $
-    A = mat(
-      x_1, 1;
-      dots.v, dots.v;
-      x_m, 1
-    )
-  $
-
-  $
-    A Theta approx y \
-    Theta_* = arg min_(Theta) norm(A Theta - y)_2^2
-  $
-]
-
-#example(title: [Felder])[
-  #table(
-    columns: 4,
-    [Feld], [Wasser $W$], [Dünger $D$], [Ertrag $E$],
-    [1], $200$, $10$, $50$,
-    [2], $300$, $15$, $70$,
-    [3], $500$, $25$, $80$,
-    [4], $80$, $4$, $30$,
-    table.hline(stroke: black),
-    [5], $100$, $2$, $40$,
-    [6], $200$, $$, $50$,
-  )
-
-  Lineares Modell:
-
-  $
-    E(W, D) = alpha W + beta D + E_0
-  $
-
-  - Unabhängig: $W, D$ -- sind nicht wirklich unabh.
-  - Abhängig: $E$
-  - Frei: $alpha, beta, E_0$
-
-  $
-    f_1(W, D) = W \
-    f_2(W, D) = D \
-    f_3(W, D) = 1 \
-    Theta = vec(alpha, beta, E_0) \
-    mat(
-      augment: #{ -1 },
-      200, 10, 1, 50;
-      300, 15, 1, 70;
-      500, 25, 1, 80;
-      80, 4, 1, 30
-    )
-  $
-
-  $W,D$ sind abhängig ($D=5% dot W$) $-->$ Modell verkleinern
-
-  $
-    E(W, D) = (alpha + 0.05 beta) dot W + E_0
-  $
-]
-
-#example(title: [Freier Fall mit Startgeschwindigkeit])[
-  #table(
-    columns: 2,
-    $t_i$, $h_i$,
-    $0.5$, $7.9$,
-    $1$, $6$,
-    $1.25$, $4.4$,
-    $1.5$, $1.8$,
-  )
-
-  $
-                           h(t) & = underbrace(g/2, =: tilde(g)) t^2 + v_0 t + h_0 \
-                          Theta & = mat(tilde(g), v_0, h_0)^T \
-                           f(t) & = mat(
-                                    t^2,
-                                    t,
-                                    1
-                                  )^T \
-    mat(augment: #{ -1 }, A, y) & = mat(augment: #{ -1 }, t_i^2, t_i, 1, h_i)
-  $
-
 ]
 
 #align(end)[2026-06-09 VL11]
