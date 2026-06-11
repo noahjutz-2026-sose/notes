@@ -1,6 +1,7 @@
 #let colors = (
-  primary: rgb("#cc5de8"),
-  secondary: rgb("#f06595"),
+  primary: rgb("#be4bdb"),
+  secondary: rgb("#40c057"),
+  tertiary: rgb("#fd7e14"),
   error: rgb("#ff0000"),
   success: rgb("#00ff00"),
   on_surface: black,

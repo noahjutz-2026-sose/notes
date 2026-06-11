@@ -5,7 +5,7 @@
 #import codly: codly
 #import "/components/admonitions.typ": *
 #import "components/sets.typ": math_set
-#import "/components/utils.typ": bv, bva, dp
+#import "/components/utils.typ": bv, bva, dp, hl
 
 #align(end)[2026-03-17 VL01]
 
@@ -2125,9 +2125,9 @@ Wir verwenden die euklidische Norm, um das Problem später geometrisch zu lösen
   $
 ]
 
-Um Least Squares zu lösen, müssen wir ein $bv(theta)$ finden, das den Vektor $A bv(theta) - bv(y)$ minimiert. In anderen Worten: Wir wollen den Vektor $bv(y)_* = A bv(theta) in "Im" A$, der den geringsten Abstand zum Vektor $bv(y)$ hat.
+Um Least Squares zu lösen, müssen wir ein $bv(theta)$ finden, das den Vektor $A bv(theta) - bv(y)$ minimiert. In anderen Worten: Wir wollen den Vektor $bv(y)_* = A bv(theta)_* in "Im" A$, der den geringsten Abstand zum Vektor $bv(y)$ hat.
 
-Das ist genau dann der Fall, wenn $bv(y)$ orthogonal zu $"Im" A$ steht.
+Das ist genau dann der Fall, wenn $bv(y)_* - bv(y)$ orthogonal zu $"Im" A$ steht.
 
 #example(title: [Beispiel in 2D])[
   #lq.diagram(
@@ -2170,6 +2170,7 @@ Das ist genau dann der Fall, wenn $bv(y)$ orthogonal zu $"Im" A$ steht.
       (.25,),
       label: $A bv(theta)_* = bv(y)_*$,
       mark: "o",
+      color: colors.tertiary.normal,
     ),
   )
 
@@ -2178,7 +2179,11 @@ Das ist genau dann der Fall, wenn $bv(y)$ orthogonal zu $"Im" A$ steht.
   $
 ]
 
+Der Vektor #hl(fill: colors.secondary.light)[$A bv(theta)_* - y$] ist genau dann orthogonal zu $"Im" A$, wenn gilt:
 
+$
+  dp(markhl(A bv(theta)_* - y, fill: colors.secondary.light), A bv(theta)) = 0 quad forall A bv(theta) in "Im" A
+$
 
 #definition(title: [Normalengleichung])[
   $
