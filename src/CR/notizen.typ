@@ -2009,6 +2009,44 @@ $
                      ) dot vec(a_2, a_1, a_0)  & = vec(y_1, dots.v, y_n)
 $
 
+Das kann auf alle Polynome verallgemeinert werden.
+
+=== Exponentialfunktion
+
+Wir wählen die Exponentialfunktion $y = c dot exp(a x)$. Man kann $exp(theta x)$ nicht als Produkt $f(x) dot theta$ darstellen, also ziehen wir den natürlichen Logarithmus.
+
+$
+         y & = c dot exp(a x) \
+     log y & = log c + a x \
+  tilde(y) & = tilde(c) + a x
+$
+
+Wir modellieren die umgeformte Gleichung und führen sie danach mit $exp(dot)$ wieder zurück.
+
+$
+  F(x, theta) & = f_1(x) dot theta_1 && + f_2(x) dot theta_2 \
+              & = 1 dot tilde(c)     && + x dot a
+$
+
+In Matrixschreibweise:
+
+$
+       &&            A dot theta & = y \
+  <==> && mat(
+            f_1 (x_1), f_2 (x_1);
+            dots.v, dots.v;
+            f_1 (x_n), f_2 (x_n)
+          ) dot vec(
+            theta_1,
+            theta_2
+          )                      & = vec(y_1, dots.v, y_n) \
+  <==> && mat(
+            1, x_1;
+            dots.v, dots.v;
+            1, x_n
+          ) dot vec(tilde(c), a) & = vec(y_1, dots.v, y_n)
+$
+
 == Lineare Modelle lösen
 
 === Lösbarkeit von LGS
