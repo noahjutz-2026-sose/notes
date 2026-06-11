@@ -1859,6 +1859,19 @@ $
 
 Problem: Wir haben Punkte $(x, y)$. Wir möchten eine Funktion $F$, die möglichst nah an allen Punkten ist.
 
+#note(title: [Lineare Abbildungen])[
+  Eine Abbildung $phi: RR^n -> RR^m$ ist linear, wenn für alle $v, v' in RR^n, lambda in RR$ gilt:
+
+  - Additivität: $phi(v+v')=phi(v)+phi(v')$
+  - Homogenität: $phi(lambda v) = lambda phi(v)$
+
+  Lineare Abbildungen können als Matrixmultiplikation mit $A in "Mat"_(m,n)(RR)$ dargestellt werden.
+
+  $
+    phi: v |-> A v
+  $
+]
+
 #definition(title: [Modell])[
   Ein _Regressionsmodell_ ist eine Funktion $F: RR^n -> RR$ mit _Parametern_ $theta in RR^m$.
 
@@ -1869,24 +1882,16 @@ Problem: Wir haben Punkte $(x, y)$. Wir möchten eine Funktion $F$, die möglich
   Man kann das als Matrix darstellen.
 
   $
-    underbrace(
-      mat(
-        f_1 (x_1), ..., f_n(x_1);
-        dots.v, , dots.v;
-        f_1(x_m), ..., f_n(x_m)
-      ),
-      A
-    ) dot underbrace(
-      vec(theta_1, dots.v, theta_n),
-      theta
-    ) = underbrace(
-      vec(y_1, dots.v, y_n),
-      y
-    )
+         && mat(
+              f_1 (x_1), ..., f_n(x_1);
+              dots.v, , dots.v;
+              f_1(x_m), ..., f_n(x_m)
+            ) & dot vec(theta_1, dots.v, theta_n) && = vec(y_1, dots.v, y_n) \
+    <==> && A & dot theta                         && = y
   $
 ]
 
-Wir können beliebige Funktionen $f_i$ wählen, um ein Modell zu bauen.
+Wir können beliebige Funktionen $f_i$ wählen, um ein Modell zu bauen. Die Funktionen $f_i$ müssen nicht linear sein.
 
 #table(
   columns: 2,
@@ -1923,7 +1928,7 @@ Wir können dann die optimalen Parameter $theta_*$ berechnen, indem wir $A theta
       0, 0;
       0, 0;
       0, 0
-    ) ==> R = 22
+    ) ==> R = theta_1 = 22
   $
 ]
 
@@ -1993,50 +1998,6 @@ Mit dem _Least Squares_ Verfahren können wir das optimale $theta_*$ approximier
     ) dot vec(R, alpha) = vec(92, 138, 230)
   $
 ]
-
-== Lineare Regressionsmodelle
-
-
-Ziel: Zusammenhang zwischen Eingabewerten $x_i in RR^k$ und Ausgabewerte $y_i in RR$ beschreiben.
-
-
-Wähle $Theta = mat(theta_1, dots.c, theta_n)^T$ und optimiere $F(x_i, Theta) approx y_i$
-
-#info(title: [Lineare Abbildungen])[
-  Eine Abbildung $phi: RR^n -> RR^m$ ist linear, wenn für alle $v, v' in RR^n, lambda in RR$ gilt:
-
-  - Additivität: $phi(v+v')=phi(v)+phi(v')$
-  - Homogenität: $phi(lambda v) = lambda phi(v)$
-
-  Lineare Abbildungen können als Matrixmultiplikation mit $A in "Mat"_(m,n)(RR)$ dargestellt werden.
-
-  $
-    phi: v |-> A v
-  $
-]
-
-$
-  F(x, Theta) = f_1 (x) theta_1 + f_2 (x) theta_2 + ... + f_n (x) theta_n
-$
-
-Wir wollen $theta$s finden sodass
-
-$
-  f_1(x_1) theta_1 + ... + f_n (x_i) theta_n approx y_i
-$
-
-In Matrixschreibweise:
-
-$
-  a_(i j) = f_j (x_i) \
-  A Theta approx y
-$
-
-Lösen mit Least Squares:
-
-$
-  Theta_* = arg min_(Theta in RR^n) norm(A Theta - y)_2^2
-$
 
 #code(title: [Matlab])[
   Bei vollem Rang $"rank" A=n$ kann das in Matlab über `A \ y` gelöst werden.
