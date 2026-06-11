@@ -1,11 +1,11 @@
-#import "/deps.typ": cetz, cetz-plot, codly, fletcher, gentle-clues, lq, mannot, meander
+#import "/deps.typ": cetz, cetz-plot, codly, fletcher, gentle-clues, lq, mannot, meander, tiptoe
 #import "/style.typ": *
 #import gentle-clues: *
 #import mannot: *
 #import codly: codly
 #import "/components/admonitions.typ": *
 #import "components/sets.typ": math_set
-#import "/components/utils.typ": bv, dp
+#import "/components/utils.typ": bv, bva, dp
 
 #align(end)[2026-03-17 VL01]
 
@@ -2072,7 +2072,7 @@ Wir verwenden die euklidische Norm, um das Problem später geometrisch zu lösen
 
 #definition(title: [Least Squares])[
   $
-    theta_* = arg min_(theta in RR^n) norm(A theta - y)_2^2
+    bv(theta)_* = arg min_(bv(theta) in RR^n) norm(A bv(theta) - bv(y))_2^2
   $
 ]
 
@@ -2082,49 +2082,6 @@ Wir verwenden die euklidische Norm, um das Problem später geometrisch zu lösen
   $
 ]
 
-// #example(title: [Unlösbares LGS])[
-//   Dreisatz-Beispiel von oben mit anderen $y$-Werten:
-//
-//   $
-//                      A & dot theta                 && = y \
-//     mat(7; 12; 18; 19) & dot vec(, theta_1, space) && = vec(150, 260, 400, 420)
-//   $
-//
-//   $
-//     mat(augment: #1, 7, 150; 12, 260; 18, 400; 19, 420) arrow.squiggly.long mat(
-//       augment: #1,
-//       1, 0;
-//       0, 1;
-//       0, 0;
-//       0, 0
-//     )
-//   $
-//   Unlösbar. Mit Regression approximieren.
-// ]
-
-// #example(title: [Unendlich viele Lösungen])[
-//   $
-//     R = U I + alpha T \
-//     U_i = R dot I_i + alpha dot T_i
-//   $
-//
-//   #table(
-//     columns: 3,
-//     $I$, $T$, $U$,
-//     $6$, $8$, $92$,
-//     $9$, $12$, $138$,
-//     $15$, $20$, $230$,
-//   )
-//
-//   $
-//     mat(
-//       6, 8;
-//       9, 12;
-//       12, 20
-//     ) dot vec(R, alpha) = vec(92, 138, 230)
-//   $
-// ]
-
 #code(title: [Matlab])[
   Bei vollem Rang $"rank" A=n$ kann das in Matlab über `A \ y` gelöst werden.
 ]
@@ -2133,7 +2090,23 @@ Wir verwenden die euklidische Norm, um das Problem später geometrisch zu lösen
 
 === Normalengleichung
 
-#info(title: [Skalarprodukt und Orthogonalität])[
+#info(title: [Bildraum])[
+  Der Bildraum einer $m times n$ Matrix $A$ sind alle Vektoren die durch Linksmultiplikation mit $A$ entstehen können.
+
+  $
+    "Im" A = {A v mid(|) v in RR^n }
+  $
+
+]
+#example(title: [Bildräume])[
+  $
+             "Im" mat(0) & = {bva(0)} \
+                  "Im" I & = RR^n \
+    "Im" mat(1, 0; 0, 0) & = {vec(x, 0) mid(|) x in RR }
+  $
+]
+
+#info(title: [Orthogonalität von Unterräumen])[
   Das Skalarprodukt ist definiert als
   $
     dp(bv(v), bv(w)) = bv(v)^T bv(w) = sum_(i=1)^m v_i w_i
@@ -2151,6 +2124,61 @@ Wir verwenden die euklidische Norm, um das Problem später geometrisch zu lösen
     V space tack.t space bv(w) <==> bv(v) space tack.t space bv(w) quad forall bv(v) in V
   $
 ]
+
+Um Least Squares zu lösen, müssen wir ein $bv(theta)$ finden, das den Vektor $A bv(theta) - bv(y)$ minimiert. In anderen Worten: Wir wollen den Vektor $bv(y)_* = A bv(theta) in "Im" A$, der den geringsten Abstand zum Vektor $bv(y)$ hat.
+
+Das ist genau dann der Fall, wenn $bv(y)$ orthogonal zu $"Im" A$ steht.
+
+#example(title: [Beispiel in 2D])[
+  #lq.diagram(
+    legend: (position: (100% + .5em, 0%)),
+    xlim: (-1, 1),
+    ylim: (-1, 1),
+    width: 6cm,
+    height: 6cm,
+    lq.line(
+      (1, 1),
+      (-1, -1),
+      tip: tiptoe.straight,
+      toe: tiptoe.straight,
+      label: $"Im" A$,
+    ),
+    ..range(1, 5).map(d => {
+      lq.line(
+        (d / 5, d / 5),
+        (-d / 5, -d / 5),
+        tip: tiptoe.straight,
+        toe: tiptoe.straight,
+      )
+    }),
+    lq.line(
+      (0, 0),
+      (-.25, .75),
+      tip: tiptoe.straight,
+      label: $bv(y)$,
+      stroke: colors.primary.normal,
+    ),
+    lq.line(
+      (-.25, .75),
+      (.25, .25),
+      tip: tiptoe.straight,
+      label: $bv(y)_* - bv(y)$,
+      stroke: colors.secondary.normal,
+    ),
+    lq.plot(
+      (.25,),
+      (.25,),
+      label: $A bv(theta)_* = bv(y)_*$,
+      mark: "o",
+    ),
+  )
+
+  $
+    A = mat(1, 1; 1, 1)
+  $
+]
+
+
 
 #definition(title: [Normalengleichung])[
   $
