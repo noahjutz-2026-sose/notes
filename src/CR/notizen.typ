@@ -5,7 +5,7 @@
 #import codly: codly
 #import "/components/admonitions.typ": *
 #import "components/sets.typ": math_set
-#import "/components/utils.typ": bv
+#import "/components/utils.typ": bv, dp
 
 #align(end)[2026-03-17 VL01]
 
@@ -2009,7 +2009,9 @@ $
                      ) dot vec(a_2, a_1, a_0)  & = vec(y_1, dots.v, y_n)
 $
 
-== Least Squares
+== Lineare Modelle lösen
+
+=== Least Squares
 
 Für $A theta = y$ gibt es oft keine (eindeutige) Lösung.
 
@@ -2030,50 +2032,48 @@ Mit dem _Least Squares_ Verfahren können wir das optimale $theta_*$ approximier
   $norm(x)=0 <==>$ Gleichungssystem hat mindestens eine Lösung
 ]
 
-#example(title: [Unlösbares LGS])[
-  Dreisatz-Beispiel von oben mit anderen $y$-Werten:
+// #example(title: [Unlösbares LGS])[
+//   Dreisatz-Beispiel von oben mit anderen $y$-Werten:
+//
+//   $
+//                      A & dot theta                 && = y \
+//     mat(7; 12; 18; 19) & dot vec(, theta_1, space) && = vec(150, 260, 400, 420)
+//   $
+//
+//   $
+//     mat(augment: #1, 7, 150; 12, 260; 18, 400; 19, 420) arrow.squiggly.long mat(
+//       augment: #1,
+//       1, 0;
+//       0, 1;
+//       0, 0;
+//       0, 0
+//     )
+//   $
+//   Unlösbar. Mit Regression approximieren.
+// ]
 
-  $
-                     A & dot theta                 && = y \
-    mat(7; 12; 18; 19) & dot vec(, theta_1, space) && = vec(150, 260, 400, 420)
-  $
-
-  $
-    mat(augment: #1, 7, 150; 12, 260; 18, 400; 19, 420) arrow.squiggly.long mat(
-      augment: #1,
-      1, 0;
-      0, 1;
-      0, 0;
-      0, 0
-    )
-  $
-  Unlösbar. Mit Regression approximieren.
-]
-
-#example[
-  Unendlich viele Lsg.en.
-
-  $
-    R = U I + alpha T \
-    U_i = R dot I_i + alpha dot T_i
-  $
-
-  #table(
-    columns: 3,
-    $I$, $T$, $U$,
-    $6$, $8$, $92$,
-    $9$, $12$, $138$,
-    $15$, $20$, $230$,
-  )
-
-  $
-    mat(
-      6, 8;
-      9, 12;
-      12, 20
-    ) dot vec(R, alpha) = vec(92, 138, 230)
-  $
-]
+// #example(title: [Unendlich viele Lösungen])[
+//   $
+//     R = U I + alpha T \
+//     U_i = R dot I_i + alpha dot T_i
+//   $
+//
+//   #table(
+//     columns: 3,
+//     $I$, $T$, $U$,
+//     $6$, $8$, $92$,
+//     $9$, $12$, $138$,
+//     $15$, $20$, $230$,
+//   )
+//
+//   $
+//     mat(
+//       6, 8;
+//       9, 12;
+//       12, 20
+//     ) dot vec(R, alpha) = vec(92, 138, 230)
+//   $
+// ]
 
 #code(title: [Matlab])[
   Bei vollem Rang $"rank" A=n$ kann das in Matlab über `A \ y` gelöst werden.
@@ -2081,7 +2081,26 @@ Mit dem _Least Squares_ Verfahren können wir das optimale $theta_*$ approximier
 
 #align(end)[2026-06-09 VL11]
 
-== Normalengleichung
+=== Normalengleichung
+
+#info(title: [Skalarprodukt und Orthogonalität])[
+  Das Skalarprodukt ist definiert als
+  $
+    dp(bv(v), bv(w)) = bv(v)^T bv(w) = sum_(i=1)^m v_i w_i
+  $
+
+  Es kann verwendet werden, um Orthogonalität zu prüfen.
+
+  $
+    dp(bv(v), bv(w)) = 0 <==> bv(v) space tack.t space bv(w)
+  $
+
+  Ein Unterraum $V$ ist orthogonal zu einem Vektor $w$, wenn alle Vektoren $v in V$ orthogonal zu $w$ stehen.
+
+  $
+    V space tack.t space bv(w) <==> bv(v) space tack.t space bv(w) quad forall bv(v) in V
+  $
+]
 
 #definition(title: [Normalengleichung])[
   $
