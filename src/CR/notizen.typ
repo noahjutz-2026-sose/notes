@@ -1930,15 +1930,14 @@ Wir können dann die optimalen Parameter $theta_*$ berechnen, indem wir $A theta
 
 == Least Squares
 
-Für $A theta = y$ gibt es oft keine (eindeutige) Lösung. Mit dem _Least Squares_ Verfahren können wir das optimale $theta_*$ approximieren.
+Für $A theta = y$ gibt es oft keine (eindeutige) Lösung.
 
 $
-  "rank" A & = "rank" mat(A, b)  & = n & quad ==> quad "Eindeutige Lsg." \
-  "rank" A & = "rank" mat(A, b)  & < n & quad ==> quad "Unendlich viele Lsg." \
-  "rank" A & <= "rank" mat(A, b) &     & quad ==> quad "Keine Lsg."
+  "rank" A & = "rank" mat(A, y) & = n & quad ==> quad "Eindeutige Lsg." \
+  "rank" A & = "rank" mat(A, y) & < n & quad ==> quad "Unendlich viele Lsg." \
+  "rank" A & < "rank" mat(A, y) &     & quad ==> quad "Keine Lsg."
 $
-
-Statt $A theta - y = 0$ exakt zu lösen, minimieren wir die Vektornorm ($norm(bold(upright(x))) = 0 <==> bold(upright(x)) = 0$):
+Mit dem _Least Squares_ Verfahren können wir das optimale $theta_*$ approximieren. Statt $A theta - y = 0$ exakt zu lösen, minimieren wir die Vektornorm ($norm(bold(upright(x))) = 0 <==> bold(upright(x)) = 0$):
 
 #definition(title: [Sum of Least Squares])[
   $
@@ -1950,16 +1949,13 @@ Statt $A theta - y = 0$ exakt zu lösen, minimieren wir die Vektornorm ($norm(bo
   $norm(x)=0 <==>$ Gleichungssystem hat mindestens eine Lösung
 ]
 
-#example[
-  Ungenaue Messwerte:
-  #table(
-    columns: 2,
-    table.header[$I$][$U$],
-    $7$, $150$,
-    $12$, $260$,
-    $18$, $400$,
-    $19$, $420$,
-  )
+#example(title: [Unlösbares LGS])[
+  Dreisatz-Beispiel von oben mit anderen $y$-Werten:
+
+  $
+                     A & dot theta                 && = y \
+    mat(7; 12; 18; 19) & dot vec(, theta_1, space) && = vec(150, 260, 400, 420)
+  $
 
   $
     mat(augment: #1, 7, 150; 12, 260; 18, 400; 19, 420) arrow.squiggly.long mat(
