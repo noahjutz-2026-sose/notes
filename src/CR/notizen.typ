@@ -2011,7 +2011,7 @@ $
 
 == Lineare Modelle lösen
 
-=== Least Squares
+=== Lösbarkeit von LGS
 
 Für $A theta = y$ gibt es oft keine (eindeutige) Lösung.
 
@@ -2020,7 +2020,17 @@ $
   "rank" A & = "rank" mat(A, y) & < n & quad ==> quad "Unendlich viele Lsg." \
   "rank" A & < "rank" mat(A, y) &     & quad ==> quad "Keine Lsg."
 $
-Mit dem _Least Squares_ Verfahren können wir das optimale $theta_*$ approximieren. Statt $A theta - y = 0$ exakt zu lösen, minimieren wir die Vektornorm ($norm(bold(upright(x))) = 0 <==> bold(upright(x)) = 0$):
+Mit dem _Least Squares_ Verfahren können wir das optimale $theta_*$ approximieren. Statt $A theta - y = 0$ exakt zu lösen, approximieren wir $A theta - y approx 0$. //minimieren wir die Vektornorm ($norm(bold(upright(x))) = 0 <==> bold(upright(x)) = 0$):
+
+$
+       &&               A theta & approx y \
+  <==> &&           A theta - y & approx 0 \
+  <==> &&     norm(A theta - y) & approx 0 \
+  <==> &&   norm(A theta - y)_2 & approx 0 \
+  <==> && norm(A theta - y)_2^2 & approx 0 \
+$
+
+Wir verwenden die euklidische Norm, um das Problem später geometrisch zu lösen. Wir nutzen das Quadrat, um keine Wurzeln ziehen zu müssen.
 
 #definition(title: [Least Squares])[
   $
@@ -2029,7 +2039,9 @@ Mit dem _Least Squares_ Verfahren können wir das optimale $theta_*$ approximier
 ]
 
 #note[
-  $norm(x)=0 <==>$ Gleichungssystem hat mindestens eine Lösung
+  $
+    arg min_(theta in RR^n) norm(A theta - y) = 0 <==> exists "Lsg."
+  $
 ]
 
 // #example(title: [Unlösbares LGS])[
