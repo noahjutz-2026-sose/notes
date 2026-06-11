@@ -1883,9 +1883,9 @@ Problem: Wir haben Punkte $(x, y)$. Wir möchten eine Funktion $F$, die möglich
 
   $
          && mat(
-              f_1 (x_1), ..., f_n(x_1);
+              f_1 (x_1), ..., f_n (x_1);
               dots.v, , dots.v;
-              f_1(x_m), ..., f_n(x_m)
+              f_1 (x_m), ..., f_n (x_m)
             ) & dot vec(theta_1, dots.v, theta_n) && = vec(y_1, dots.v, y_n) \
     <==> && A & dot theta                         && = y
   $
@@ -1932,6 +1932,57 @@ Wir können dann die optimalen Parameter $theta_*$ berechnen, indem wir $A theta
   $
 ]
 
+== Lineare Modelle Aufstellen
+
+=== Ausgleichsgerade
+
+Gegeben sind
+- unabhängige Datenpunkte $x in RR^n$
+- abhängige Datenpunkte $y in RR^n$.
+
+Wir wählen die Geradengleichung $m x + b$ als Modellfunktion.
+
+$
+  F(x, theta) & = & f_1 (x) & dot theta_1 & + && f_2 (x) & dot theta_2 \
+              & = &       x & dot m       & + &&       1 & dot b
+$
+
+In Matrixschreibweise:
+
+$
+  && A & dot theta && = y \
+  <==> && mat(f_1(x_1), f_2(x_1); dots.v, dots.v; f_1(x_n), f_2(x_n)) & dot vec(theta_1, theta_2) && = vec(y_1, dots.v, y_n) \
+  <==> && mat(x_1, 1; dots.v, dots.v; x_n, 1) & dot vec(m, b) && = vec(y_1, dots.v, y_n)
+$
+
+=== Ausgleichsebene
+
+Gegeben sind
+- unabhängige Datenpunkte $x, y in RR^n$
+- abhängige Datenpunkte $z in RR^n$.
+
+Wir wählen die Ebenengleichung $alpha x + beta y + gamma = z$
+
+$
+  F(x, y, theta) & = f_1 (x, y) dot theta_1 && + f_2 (x, y) dot theta_2 && + f_3(x, y) dot theta_3 \
+                 & = x dot alpha            && + y dot beta             && + 1 dot gamma
+$
+
+In Matrixschreibweise:
+
+$
+       &&                          A dot theta & = z \
+  <==> && mat(
+            f_1(x_1, y_1), f_2(x_1, y_1), f_3(x_1, y_1);
+            dots.v, dots.v, dots.v;
+            f_1(x_n, y_n), f_2(x_n, y_n), f_3(x_n, y_n);
+          ) dot vec(theta_1, theta_2, theta_3) & = vec(z_1, dots.v., z_n) \
+  <==> &&        mat(
+                   x_1, y_1, 1;
+                   dots.v, dots.v, dots.v;
+                   x_n, y_n, 1
+                 ) dot vec(alpha, beta, gamma) & = vec(z_1, ..., z_n)
+$
 
 == Least Squares
 
