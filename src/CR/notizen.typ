@@ -2075,6 +2075,42 @@ $
           ) dot vec(a, b) & = vec(y_1, dots.v, y_n)
 $
 
+=== Kreismodell
+
+Wir wählen die Kreisgleichung $(x - x_c)^2 + (y - y_c)^2 = r^2$ mit Mittelpunkt $(x_c, y_c)$. Das lässt sich nicht als $A theta$ darstellen, also formen wir um:
+
+$
+  && (x-x_c)^2+(y-y_c)^2 & = r^2 \
+  <==> && ( x^2 - 2x_c x + x_c^2 ) + (y^2 - 2y_c y + y_c^2) & = r^2 \
+  <==> && underbracket(x^2 + y^2, z) & = underbracket(2x_c, theta_1) x + underbracket(2y_c, theta_2) y + underbracket(r^2 - x_c^2 - y_c^2, theta_3)
+$
+
+Das ist also
+
+$
+  F(x, theta) & = f_1 (x) dot theta_1 && + f_2 (x) dot theta_2 && + f_3 (x) dot theta_3 \
+              & = x dot 2x_c          && + y dot 2y_c          && + 1 dot (r^2 - x_c^2 - y_c^2)
+$
+
+In Matrixschreibweise:
+
+$
+       &&                                 A dot theta & = z \
+  <==> && mat(
+            f_1 (x_1, y_1), f_2 (x_1, y_1), f_3 (x_1, y_1);
+            dots.v, dots.v, dots.v;
+            f_1 (x_n, y_n), f_2 (x_n, y_n), f_3 (x_n, y_n)
+          ) dot vec(
+            theta_1,
+            theta_2
+          )                                           & = vec(z_1, dots.v, z_n) \
+  <==> && mat(
+            x_1, y_1, 1;
+            dots.v, dots.v, dots.v;
+            x_n, y_n, 1
+          ) dot vec(tilde(x)_c, tilde(y)_c, tilde(r)) & = vec(z_1, dots.v, z_n)
+$
+
 == Lineare Modelle lösen
 
 === Lösbarkeit von LGS
