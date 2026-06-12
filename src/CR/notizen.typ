@@ -2226,48 +2226,75 @@ Das ist genau dann der Fall, wenn $bv(y)_* - bv(y)$ orthogonal zu $"Im" A$ steht
   $
 ]
 
+=== Least Squares auf LGS zurückschließen
+
+Wir können die Normalengleichung $A^T A theta_* = A^T y$ nutzen, um das Least Squares Problem $theta_* = arg min_(theta in RR^n) norm(A theta - y)_2^2$ als LGS zu formulieren.
+
 #definition[
-  Sei $A in "Mat"_(m,n), v in RR^n$. Dann gilt:
-
+  Wenn wir folgendes LGS für $theta$ lösen, haben wir das optimale $theta_*$.
   $
-    A v = 0 <==> A^T A v = 0
-  $
-
-  Insbesondere ist $A^T A$ invertierbar, wenn $"rank" A = n$.
-]
-
-#proof[
-  "$==>$"
-  $
-    A v = 0 => A^T A v = 0
-  $
-
-  "$<==$"
-  $
-    A^T A v = 0 => 0 & = v^T A^T A v \
-                     & = ... \
-                     & = (A v)^T dot A v \
-                     & = chevron.l A v, A v chevron.r \
-                     & = norm(A v)_2^2 \
-              => A v & = 0 space square.filled
+    theta_* = arg min_(theta in RR^n) norm(A theta - y)_2^2
+    <==> A^T A theta = A^T
   $
 ]
 
-#definition(title: [Kern einer Matrix])[
-  $
-    "ker" A & = {v in RR^n mid(|) A v = 0} \
-            & = {v in RR^n mid(|) A^t A v = 0} \
-            & = "ker" A^T A
-  $
+Um das herzuleiten, brauchen wir zunächst ein paar grundlegende Eigenschaften:
 
-  Satz:
+#stack(
+  info(title: [Vektor-Matrixinverse-Multiplikation])[
+    Sei $A in "Mat"_(m,n), v in RR^n$. Dann gilt:
 
-  $
-    A^T A "invertierbar" & <==> "ker" A^T A = {0} \
-                         & <==> "ker" A = {0} \
-                         & <==> "rank" A = n
-  $
-]
+    $
+      A v = 0 <==> A^T A v = 0
+    $
+
+    Insbesondere ist $A^T A$ invertierbar, wenn $"rank" A = n$.
+  ],
+  proof[
+    "$==>$"
+    $
+          &&     A v & = 0 \
+      ==> && A^T A v & = A^T 0 \
+      ==> && A^T A v & = 0 space square
+    $
+
+    "$<==$"
+    $
+           &&       A^T A v & = 0 \
+       ==> && v^T (A^T A v) & = 0 \
+      <==> && (A v)^T (A v) & = 0 \
+      <==> && norm(A v)_2^2 & = 0 \
+      <==> &&           A v & = 0 space square.filled
+    $
+  ],
+)
+
+#stack(
+  info(title: [Kern einer Matrix])[
+    Der _Kern_ einer $m times n$ Matrix ist die Menge an Vektoren $v in RR^n$, die unter Linksmultiplikation zu null werden.
+    $
+      "ker" A & = {v in RR^n mid(|) A v = 0} \
+              & = {v in RR^n mid(|) A^t A v = 0} \
+              & = "ker" A^T A
+    $
+
+    Es gilt für quadratische Matrizen
+
+    $
+      A^T A "invertierbar" & <==> "ker" A^T A = {0} \
+                           & <==> "ker" A = {0} \
+                           & <==> "rank" A = n
+    $
+  ],
+  // proof[
+  //   Die Anzahl an Zeilen $n$ ist die Anzahl abhängiger und unabhängiger Basisvektoren.
+  //   $
+  //     dim(ker(B)) + "rank"(A^T A) & = n \
+  //               0 + "rank"(A^T A) & = n \
+  //                   "rank"(A^T A) & = n
+  //   $
+  // ],
+)
 
 == Anwendung / Herangehensweise
 
