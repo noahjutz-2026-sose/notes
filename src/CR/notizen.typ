@@ -2142,6 +2142,7 @@ Das ist genau dann der Fall, wenn $bv(y)_* - bv(y)$ orthogonal zu $"Im" A$ steht
       tip: tiptoe.straight,
       toe: tiptoe.straight,
       label: $tilde(bv(y)) in "Im" A$,
+      stroke: colors.on_surface.light,
     ),
     ..range(1, 5).map(d => {
       lq.line(
@@ -2149,6 +2150,7 @@ Das ist genau dann der Fall, wenn $bv(y)_* - bv(y)$ orthogonal zu $"Im" A$ steht
         (-d / 5, -d / 5),
         tip: tiptoe.straight,
         toe: tiptoe.straight,
+        stroke: colors.on_surface.light,
       )
     }),
     lq.line(
@@ -2179,21 +2181,30 @@ Das ist genau dann der Fall, wenn $bv(y)_* - bv(y)$ orthogonal zu $"Im" A$ steht
   $
 ]
 
-Der Vektor #hl(fill: colors.secondary.light)[$A bv(theta)_* - bv(y)$] ist genau dann orthogonal zu $"Im" A$, wenn gilt:
-
 #definition(title: [Normalengleichung])[
+  Der Vektor #hl(fill: colors.secondary.light)[$A bv(theta)_* - bv(y)$] ist genau dann orthogonal zu $"Im" A$, wenn gilt:
   $
-    && dp(markhl(A bv(theta)_* - bv(y), fill: colors.secondary.light), markhl(A bv(theta)), fill: colors.tertiary.light) &= 0 quad forall A bv(theta) in "Im" A \
+    && markhl(A bv(theta)_* - bv(y), fill: colors.secondary.light) space &tack.t space "Im" A \
+    <==> && markhl(A bv(theta)_* - bv(y), fill: colors.secondary.light) space & tack.t space markhl(A bv(theta), fill: colors.tertiary.light) quad forall A bv(theta) in "Im" A \
+    <==> && dp(markhl(A bv(theta)_* - bv(y), fill: colors.secondary.light), markhl(A bv(theta)), fill: colors.tertiary.light) &= 0 \
     <==> && A^T A bv(theta)_* &= A^T bv(y)
   $
 ]
 
 #proof[
   $
-    && dp(markhl(A bv(theta)_* - bv(y), fill: colors.secondary.light), A bv(theta)) & =
+    dp(markhl(A bv(theta)_* - bv(y), fill: colors.secondary.light), markhl(A bv(theta)), fill: colors.tertiary.light) &= (A bv(theta))^T dot (A bv(theta)_* - bv(y)) \
+    &= bv(theta)^T dot A^T dot (A bv(theta)_* - bv(y)) \
+    &= bv(theta)^T dot (A^T A bv(theta)_* - A^T bv(y))
   $
 
-  Wir verwendeten für die Umformung $M x = 0 forall x <==> M = 0$
+  Wenn einer der beiden Operanden 0 ist, dann ist das gesamte Skalarprodukt 0. Wir können also $bv(theta)$ ignorieren.
+
+  $
+    && dp(markhl(A bv(theta)_* - bv(y), fill: colors.secondary.light), markhl(A bv(theta)), fill: colors.tertiary.light) &= 0 \
+    <==> && A^T A bv(theta)_* - A^T bv(y) &= 0 \
+    <==> && A^T A bv(theta)_* &= A^T bv(y) space square.filled
+  $
 
 ]
 
