@@ -2209,18 +2209,20 @@ Das ist genau dann der Fall, wenn $bv(y)_* - bv(y)$ orthogonal zu $"Im" A$ steht
 ]
 
 #alternative(title: [Alternativer Beweis])[
-  Wir verwenden in der Umformung $norm(x)_2^2 = chevron.l x, x chevron.r$
+  Wir verwenden $norm(x)_2^2 = dp(x, x)$
 
   $
-    f(Theta) & = norm(A Theta - y)_2^2 \
-             & = ... \
-             & = Theta^T A^T A Theta - 2 y^T A Theta + y^T y
+    f(theta) & = norm(A theta - y)_2^2 \
+             & = dp(A theta - y, A theta - y) \
+             & = (A theta - y)^T (A theta - y) \
+             & = (theta^T A^T - y^T) (A theta - y) \
+             & = theta^T A^T A theta - 2 y^T A theta + y^T y
   $
 
   Minimum von $f$ wird angenommen, wenn:
 
   $
-    0 = gradient f = A^T A Theta - A^T y space square.filled
+    0 = gradient f = A^T A theta - A^T y space square.filled
   $
 ]
 
