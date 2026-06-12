@@ -1169,3 +1169,9 @@ Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/6527cefe14135ac
 
 + Texturatlas: Einziges Bild, in dem mehrere unabhängige Texturen gespeichert sind
 + Lineare / Bayzentrische interpolation
+
+#align(end)[2026-06-12]
+
+=
+
++
