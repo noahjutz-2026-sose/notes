@@ -1,4 +1,4 @@
-#import "/deps.typ": hi
+#import "/deps.typ": hi, mannot
 #import "/style.typ": colors
 
 // Icon
@@ -20,3 +20,5 @@
   radius: 2pt,
   body,
 )
+
+#let markhl = mannot.markhl.with(radius: 2pt)

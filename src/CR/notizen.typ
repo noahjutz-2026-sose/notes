@@ -5,7 +5,7 @@
 #import codly: codly
 #import "/components/admonitions.typ": *
 #import "components/sets.typ": math_set
-#import "/components/utils.typ": bv, bva, dp, hl
+#import "/components/utils.typ": bv, bva, dp, hl, markhl
 
 #align(end)[2026-03-17 VL01]
 
@@ -2141,7 +2141,7 @@ Das ist genau dann der Fall, wenn $bv(y)_* - bv(y)$ orthogonal zu $"Im" A$ steht
       (-1, -1),
       tip: tiptoe.straight,
       toe: tiptoe.straight,
-      label: $"Im" A$,
+      label: $tilde(bv(y)) in "Im" A$,
     ),
     ..range(1, 5).map(d => {
       lq.line(
@@ -2156,21 +2156,21 @@ Das ist genau dann der Fall, wenn $bv(y)_* - bv(y)$ orthogonal zu $"Im" A$ steht
       (-.25, .75),
       tip: tiptoe.straight,
       label: $bv(y)$,
-      stroke: colors.primary.normal,
+      stroke: colors.primary.normal + 2pt,
     ),
     lq.line(
       (-.25, .75),
       (.25, .25),
       tip: tiptoe.straight,
       label: $bv(y)_* - bv(y)$,
-      stroke: colors.secondary.normal,
+      stroke: colors.secondary.normal + 2pt,
     ),
-    lq.plot(
-      (.25,),
-      (.25,),
-      label: $A bv(theta)_* = bv(y)_*$,
-      mark: "o",
-      color: colors.tertiary.normal,
+    lq.line(
+      (0, 0),
+      (.25, .25),
+      tip: tiptoe.straight,
+      label: $bv(y)_* = A bv(theta)_*$,
+      stroke: colors.tertiary.normal + 2pt,
     ),
   )
 
@@ -2179,41 +2179,18 @@ Das ist genau dann der Fall, wenn $bv(y)_* - bv(y)$ orthogonal zu $"Im" A$ steht
   $
 ]
 
-Der Vektor #hl(fill: colors.secondary.light)[$A bv(theta)_* - y$] ist genau dann orthogonal zu $"Im" A$, wenn gilt:
-
-$
-  dp(markhl(A bv(theta)_* - y, fill: colors.secondary.light), A bv(theta)) = 0 quad forall A bv(theta) in "Im" A
-$
+Der Vektor #hl(fill: colors.secondary.light)[$A bv(theta)_* - bv(y)$] ist genau dann orthogonal zu $"Im" A$, wenn gilt:
 
 #definition(title: [Normalengleichung])[
   $
-         && A^T A Theta_* - A^T y & = 0 \
-    <==> &&           A^T A Theta & = A^T y
+    && dp(markhl(A bv(theta)_* - bv(y), fill: colors.secondary.light), markhl(A bv(theta)), fill: colors.tertiary.light) &= 0 quad forall A bv(theta) in "Im" A \
+    <==> && A^T A bv(theta)_* &= A^T bv(y)
   $
 ]
 
 #proof[
-  Der Bildraum $"Im"(A) = {A Theta mid(|) Theta in RR^n } subset.eq RR^m$ ist ein Unterraum des $RR^m$. Das ist ein Punkt/Gerade/Ebene/...
-
-  Wir suchen ein $y_*$ welches den kleinsten Abstand zu $y$ hat. Das ist der Fall, wenn $y_*-y$ orthogonal zum Bild ist.
-
-  Der Bildraum ist orthogonal zum Vektor, wenn jeder Vektor im Bildraum orthogonal zum Vektor ist.
-
   $
-    chevron.l v, w chevron.r = v^T w = sum_i^m v_i w_i quad (v, w in RR^m) \
-    v tack.t w <==> chevron.l v, w chevron.r = 0 \
-    V tack.t w <==> chevron.l v, w chevron.r = 0 quad forall v in V quad "mit" V subset.eq RR^m \
-    "Im" A tack.t y_*-y <==> "Im" A tack.t A Theta_* - y
-    <==> tilde(y) tack.t (A Theta_* - y) quad forall tilde(y) in "Im" A \ \
-    ... tack.t ... <==> lr(chevron.l tilde(y), A Theta_* - y chevron.r) = 0
-  $
-
-  Skalarprodukt berechnen.
-
-  $
-    lr(chevron.l tilde(y), A Theta_* - y chevron.r) & = tilde(y)^T (A Theta_* - y) \
-                                                    & = ... \
-                                                    & = Theta^T (A^T A Theta_* - A^T y)
+    && dp(markhl(A bv(theta)_* - bv(y), fill: colors.secondary.light), A bv(theta)) & =
   $
 
   Wir verwendeten für die Umformung $M x = 0 forall x <==> M = 0$
