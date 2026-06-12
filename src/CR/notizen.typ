@@ -2047,6 +2047,34 @@ $
           ) dot vec(tilde(c), a) & = vec(y_1, dots.v, y_n)
 $
 
+=== Trigonometrisches Modell
+
+Wir wählen $y = a cos(omega x) + b sin(omega x)$ mit konstantem $omega$.
+
+$
+  F(x, theta) & = f_1 (x) dot theta_1 && + f_2 (x) dot theta_2 && + f_3 (x) dot theta_3 \
+              & = 1 dot c             && + cos(omega x) dot a  && + sin(omega x) dot b
+$
+
+In Matrixschreibweise:
+
+$
+       &&     A dot theta & = y \
+  <==> && mat(
+            f_1 (x_1), f_2 (x_1), f_3 (x_1);
+            dots.v, dots.v, dots.v;
+            f_1 (x_n), f_2 (x_n), f_3 (x_n)
+          ) dot vec(
+            theta_1,
+            theta_2
+          )               & = vec(y_1, dots.v, y_n) \
+  <==> && mat(
+            1, cos(omega x_1), sin(omega x_1);
+            dots.v, dots.v, dots.v;
+            1, cos(omega x_n), sin(omega x_n)
+          ) dot vec(a, b) & = vec(y_1, dots.v, y_n)
+$
+
 == Lineare Modelle lösen
 
 === Lösbarkeit von LGS
