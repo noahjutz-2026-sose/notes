@@ -1212,3 +1212,60 @@ $
 $
 
 Kehrwert bilden.
+
+== Polynomräume
+
+#note(title: [Vektorraum])[
+  Ein Vektorraum $V$ erfüllt für alle $v, w, u in V$ folgende Eigenschaften:
+
+  - Addition
+    - Abgeschlossenheit (Additiv) $v + w in V$
+    - Assoziativ
+    - Kommutativ
+    - Neutrales Element
+    - Inverses Element
+  - Multiplikation
+    - Abgeschlossenheit (Homogen) $lambda v in V$
+    - Distributivgesetz I
+    - Distributivgesetz II
+    - Assoziativität der Skalare
+    - neutrales Element
+]
+
+#further[
+  #link("https://www.youtube.com/watch?v=TgKwz5Ikpc8")[Vector Space]
+]
+
+=== Beweis
+
+$
+  PP_n = {a_0 x^0, a_0 x^0 + a_1 x^1, ...}
+$
+
+- Addition
+  - Additivität: $f, g in PP_n ==> f+g in PP_n$
+  - Assoziativität: $(f + g) + h = f + (g + h)$
+  - Kommutativität: $f + g = g + f$
+  - Neutrales Element: $0 in PP_n$
+  - Inverses Element: $f in PP_n ==> exists -f : f + (-f) = 0$
+- Multiplikation:
+  - Homogenität: $f in PP_n ==> lambda f in PP_n$
+  - Assoziativität der Skalare: $lambda (mu f) = (lambda mu) f$
+  - Distributiv I: $f dot (lambda + mu) = lambda f + mu f$
+  - Distributiv II: $lambda + (f dot g) = (lambda f) + (lambda g)$
+  - Neutrales Element: $1 dot f = f, 1 in RR$
+
+  === Beweis Basis
+
+  Jedes Polynom $a_0 x^0 + a_1 x^1 + ... + x_n x^n$ kann durch den Basisvektor dargestellt werden:
+
+  $
+    vec(1, x, x^2, dots.v) dot vec(a_0, a_1, dots.v, a_n)
+  $
+
+=== Isomorphismus (Bijektive lineare Abbildung)
+
+$
+  f : &&                          PP_n & -> RR^n \
+      && a_0 + a_1 x^1 + ... + a_n x^n & |-> vec(a_0, a_1, dots.v, a_n)
+$
