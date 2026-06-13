@@ -1122,3 +1122,74 @@ $
          & = -2 dot 2 dot (-4) dot (-2) \
          & = -32
 $
+
+#align(end)[2026-06-13]
+
+= Lineare Regression
+
+== Ausgleichsgerade
+
+Modell aufstellen:
+
+$
+              A theta & = y \
+  mat(x, 1) vec(m, b) & = y \
+      mat(
+        -1, 1;
+        0, 1;
+        1, 1;
+        2, 1
+      ) dot vec(m, b) & = vec(2, 1, 2, 3)
+$
+
+Parameter optimieren:
+
+$
+      A^T A theta & = A^T y \
+  mat(
+    -1, 0, 1, 2;
+    1, 1, 1, 1
+  ) dot mat(
+    -1, 1;
+    0, 1;
+    1, 1;
+    2, 1
+  ) dot vec(m, b) & = mat(
+                      -1, 0, 1, 2;
+                      1, 1, 1, 1
+                    ) dot vec(2, 1, 2, 3) \
+  mat(
+    6, 2;
+    2, 4
+  ) dot vec(m, b) & = vec(6, 8)
+$
+
+LGS lösen:
+
+$
+  mat(
+    augment: #{ -1 },
+    6, 2, 6;
+    2, 4, 8
+  ) --> mat(
+    augment: #{ -1 },
+    6, 2, 6;
+    0, 3 1/3, 6
+  ) --> mat(
+    augment: #{ -1 },
+    6, 0, -4;
+    0, 3 1/3, 6
+  ) --> mat(
+    augment: #{ -1 },
+    1, 0, -2/3;
+    0, 1, 1 4/5
+  )
+$
+
+Lösung:
+
+$
+      && vec(m, b) & = vec(-2/3, 1 4/5) \
+  ==> &&      f(x) & = m x + b \
+      &&           & = -2/3 x + 1 4/5
+$
