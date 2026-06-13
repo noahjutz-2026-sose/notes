@@ -1193,3 +1193,22 @@ $
   ==> &&      f(x) & = m x + b \
       &&           & = -2/3 x + 1 4/5
 $
+
+== Nichtlineare Problemstellungen
+
+=== Konstante Parameter
+
+$
+  f(x) = A sin(omega x + phi_0) + b
+$
+
+- Variabel: $A, b$
+- Konstant: $omega, phi_0$
+
+=== Modell transformieren
+
+$
+  f(x) = 1/(a x + b)
+$
+
+Kehrwert bilden.
