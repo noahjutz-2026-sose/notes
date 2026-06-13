@@ -1264,3 +1264,39 @@ $
 $
 
 == Vierfarbenproblem
+
+=== Kodierung
+
+Es gibt vier Farben $C = {r, g, b, y}$. Ein Individuum ist ein $b in C$. Es gibt 16 Individuen im Chromosom $B = (b_1, ..., b_16)$.
+
+=== Fitnessfunktion
+
+$
+  f(B) = sum_((b_i, b_j) in B^2) b_i, b_j "benachbart" and b_i = b_j
+$
+
+=== Individuen
+
+$
+  B_1 = [r, r, g, y, r, y, y, b, y, g, r, r, y, b, b, b] \
+  B_2 = [y, g, r, b, r, b, g, y, r, y, g, r, r, r, g, g] \
+  B_3 = [r, y, r, g, r, b, r, r, g, b, y, b, y, b, g, b] \
+  B_4 = [b, y, b, b, g, b, g, r, b, r, b, b, y, b, y, r]
+$
+
+=== Selektion
+
+Einfache Selektion:
+
+$
+  p^i(B) = (f(B))/(sum_(B') f(B'))
+$
+
+=== Crossover
+
+Single point crossover:
+
+$
+  (B_1, B_2) stretch(|->)^(z=7) [r, r, g, y, r, y, y, y, r, y, g, r, r, r, g, g] \
+  (B_3, B_4) stretch(|->)^(z=1) [r, y, b, b, g, b, g, r, b, r, b, b, y, b, y, r]
+$
