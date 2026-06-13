@@ -1269,3 +1269,26 @@ $
   f : &&                          PP_n & -> RR^n \
       && a_0 + a_1 x^1 + ... + a_n x^n & |-> vec(a_0, a_1, dots.v, a_n)
 $
+
+== Lineares Modell
+
+$
+  F(x, theta) = d + a x + b x + c x
+$
+
+Mit Parametern
+
+$
+  a & hat(=)"Apfel" \
+  b & hat(=) "Birne" \
+  c & hat(=) "Kiwi" \
+  d & hat(=) "Europapalette" + "Box"
+$
+
+Und Funktionen
+$
+            f_1 & : x |-> 1 \
+  f_2, f_3, f_4 & : x |-> x
+$
+
+Masse vom Obst nur bekannt, wenn Masse der leeren Plastikboxen bekannt ist.
