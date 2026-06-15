@@ -717,3 +717,9 @@ $
 Box blur
 
 = Texture mapping
+
+#align(end)[2026-06-15 VL13]
+
+== Normal Maps
+
+Tangent Space
