@@ -394,3 +394,9 @@ Siehe @dw_ch3.
 #align(end)[2026-06-08 VL11]
 
 Grouping sets, rollup, cube, window functions.
+
+#align(end)[2026-06-15 VL12]
+
+```sql
+OVER (PARTITION BY ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT_ROW)
+```
