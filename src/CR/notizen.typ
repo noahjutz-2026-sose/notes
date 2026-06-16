@@ -13,6 +13,9 @@
 
 - Hausaufgaben: Freiwillige Abgabe Dienstag 11 Uhr ELO
 - Übungen: Matlab
+- Hilfsmittel Prüfung:
+  - Handgeschriebenes Blatt A4 Doppelseitig
+  - Gedrucktes Skript, markieren erlaubt
 
 = Fehler und Kondition
 
@@ -2388,7 +2391,7 @@ Wir definieren für den Moment $G_n = PP_n$
 
 #align(end)[2026-06-16 VL12]
 
-== Lagrange-Interpolation
+== Lagrange-Form
 
 Notation:
 
@@ -2396,7 +2399,6 @@ $
   P(f mid(|) x_0,...,x_n) (x) in PP_n
 $
 
-=== Vandermonde-Matrix
 
 Daten $x_i, y_i$.
 
@@ -2467,8 +2469,6 @@ $
 
 Berechnen von $a_i$ durch lösen des LGS mit der Vandermonde-Matrix ist aufwändig und fehleranfällig (Kondition von $A$).
 
-=== Lagrange-Form
-
 Ein Polynom $a_0 x_0^0 + a_1 x_1^1 + ... in PP_n$ hat die Basis $mat(1, x, x^2, ...)$. Jedes Polynom kann auch mit einer anderen Basis, den Lagrangefundamentalpolynomen, dargestellt werden.
 
 $
@@ -2514,5 +2514,84 @@ $
     P(F mid(|) x_0, x_1, x_2) (x) & = 1 dot L_(0, 2) (x) + 1 dot L_(1, 2) (x) + 0 dot L_(2, 2) (x) \
     & = -1 dot ((x-x_0)(x-x_2))/((x_0-x_1)(x_0-x_2)) + 1 dot ((x-x_0)(x-x_2))/((x_1-x_0)(x_1-x_2)) + 0 dot ... \
     & = -1 dot ((x-0)(x-1))/((-1-0)(-1-1)) + 1 dot ((x+1)(x-1))/((0+1)(0-1)) + 0 dot ...
+  $
+]
+
+== Newton-Form
+
+Form:
+
+$
+  P(f mid(|) x_0,...x_n) (x) = [x_0]f dot omega_(0, n) (x) + ... + [x_0,...,x_n]f dot omega_(n, n) (x)
+$
+
+Die Newtonbasis muss nicht für neue Stützpunkte $x_i$ neu berechnet werden.
+
+#definition(title: [Newtonbasispolynome])[
+  $
+    omega_(j, n) (x) product_(i<=k<j) x-x_k
+  $
+]
+
+#example[
+  $
+    omega_(0, 2) (x) & = 1 \
+    omega_(1, 2) (x) & = (x-x_0) \
+    omega_(2, 2) (x) & = (x-x_0) (x-x_1)
+  $
+]
+
+#info[
+  $
+    deg omega_(j, n) = j
+  $
+]
+
+=== Koeffizienten
+
+Die Koeffizienten $[x_0,...,x_i]f$ sind _dividierte Differenzen_.
+
+#definition(title: [Dividierte Differenzen])[
+  Für $0 <= i <= j <= n$:
+
+  $
+    [x_i,...,x_j]f = (
+    [x_(i+1,...,x_j)]f - [x_i,...,x_(j-1)]f
+    ) / (x_j - x_i)
+  $
+
+  Base Case:
+
+  $
+    [x_j] f = f(x_j) = y_j
+  $
+]
+
+Daraus folgt
+$
+  [x_i,x_(i+1)]f = ([x_(i+1)]f-[x_1]f)/(x_(i+1) - x_i)
+$
+
+#example[
+  #table(
+    columns: 5,
+    $i$, $0$, $1$, $2$, $3$,
+    $x_i$, $-1$, $1$, $2$, $3$,
+    $y_i$, $3$, $-1$, $-3$, $5$,
+  )
+
+  #table(
+    columns: 4,
+    $x_1$, $f(x_i) = [x_i]f$, $[x_1,x_(i+1)]f$, $[x_1,x_(i+1),x_(i+2)]f$,
+    $-1$, $3$, $1$, [],
+    $-1$, $2$, $3$, $(-1-3)/(1+1)$,
+    $3$, $5$, $(-3+1)/(2-1)$, $$,
+  )
+  todo fix table
+]
+
+#info[
+  $
+    [x_1,...,x_n]f = 0 <==> deg f "wurde nicht erhöht"
   $
 ]
