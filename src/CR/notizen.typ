@@ -2367,9 +2367,9 @@ Gegeben: Daten $(x_i, y_i)$
   $
 + Löse $M Theta = tilde(y)$ für $Theta$. Das ist das optimale $Theta_*$.
 
-= Interpolation und Splines
+= Interpolation
 
-Sei $Omega in RR, x_i in Omega$. Wir suchen eine Interpolationsfunktion $g: Omega -> RR$
+Sei $Omega subset RR, x_i in Omega$. Wir suchen eine Interpolationsfunktion $g: Omega -> RR$
 
 #lq.diagram(
   xaxis: (
@@ -2386,8 +2386,133 @@ $
 
 Wir definieren für den Moment $G_n = PP_n$
 
-Die Lagrange-Interpolation
+#align(end)[2026-06-16 VL12]
 
-#task[
-  $PP_n$ ist ein $n+1$ dim. Vektorraum mit Basis $1, x, ..., x^n$.
+== Lagrange-Interpolation
+
+Notation:
+
+$
+  P(f mid(|) x_0,...,x_n) (x) in PP_n
+$
+
+=== Vandermonde-Matrix
+
+Daten $x_i, y_i$.
+
+$
+  underbrace(
+    mat(
+      1, x_0, x_0^2, ..., x_0^n;
+      dots.v, dots.v, dots.v, dots.v, dots.v;
+      1, x_n, x_n^2, ..., x_n^n;
+    ),
+    "Vandermonde-Matrix"
+  ) dot vec(a_0, dots.v, a_n) = vec(y_0, dots.v, y_n)
+$
+
+#stack(
+  info[
+    $
+      A "lösbar" <==> det A != 0 <==> x_i != x_j forall i != j
+    $
+  ],
+  proof[
+    $
+      det A & = mat(
+                delim: "|", 1, x_0, x_0^2, ..., x_0^(n-2), x_0^(n-1), x_0^n;
+                1, x_1, x_1^2, ..., x_1^(n-2), x_1^(n-1), x_1^n;
+                dots.v;
+                1, x_n, x_n^2, ..., x_n^(n-2), x_n^(n-1), x_n^n;
+              ) \
+            & =^((1)) mat(
+                delim: "|",
+                1, x_0 - x_0, x_0^2 - x_0 x_0^1, ..., x_0^(n-2) - x_0 x_0^(n-3), x_0^(n-1) - x_0 x_1^(n-2), x_0^n - x_0 x_0^(n-1);
+                1, x_1 - x_0, x_1^2 - x_0 x_1^1, ..., x_1^(n-2) - x_0 x_1^(n-3), x_1^(n-1) - x_0 x_1^(n-2), x_1^n - x_0 x_1^(n-1);
+                dots.v;
+                1, x_n - x_0, x_n^2 - x_0 x_n^1, ..., x_n^(n-2) - x_0 x_n^(n-3), x_n^(n-1) - x_0 x_n^(n-2), x_n^n - x_0 x_n^(n-1);
+              ) \
+            & =^((2)) mat(
+                delim: "|",
+                x_1 - x_0, x_1^2 - x_0 x_1^1, ..., x_1^(n-2) - x_0 x_1^(n-3), x_1^(n-1) - x_0 x_1^(n-2), x_1^n - x_0 x_1^(n-1);
+                dots.v;
+                x_n - x_0, x_n^2 - x_0 x_n^1, ..., x_n^(n-2) - x_0 x_n^(n-3), x_n^(n-1) - x_0 x_n^(n-2), x_n^n - x_0 x_n^(n-1);
+              ) \
+            & = mat(
+                delim: "|",
+                (x_1-x_0);
+                , (x_2-x_0);
+                , , dots.down;
+                , , , (x_n - x_0)
+              ) dot mat(
+                delim: "|",
+                1, x_1, ..., x_1^(n-1);
+                dots.v;
+                1, x_n, ..., x_n^(n-1)
+              ) \
+            & = ... \
+            & = product_(0 <= j < k <= n) (x_k - x_j)
+    $
+
+    (1) Det verändert sich nicht bei Spalten-ersetzen \
+    (2) $det(mat(1, 0; 1, x)) = det(x)$
+
+    Das Produkt ist genau dann 0, wenn ein Glied 0 ist.
+
+    $
+      det A = 0 <==> x_j != x_j "für ein" j != k space square.filled
+    $
+  ],
+)
+
+Berechnen von $a_i$ durch lösen des LGS mit der Vandermonde-Matrix ist aufwändig und fehleranfällig (Kondition von $A$).
+
+=== Lagrange-Form
+
+Ein Polynom $a_0 x_0^0 + a_1 x_1^1 + ... in PP_n$ hat die Basis $mat(1, x, x^2, ...)$. Jedes Polynom kann auch mit einer anderen Basis, den Lagrangefundamentalpolynomen, dargestellt werden.
+
+$
+  P(f mid(|) x_0,...,x_n) = sum_(j=0)^n f(x_j) L_(j, n) (x)
+$
+
+#definition(title: [Lagrangefundamentalpolynome])[
+  $
+    L_(j, n) (x) = product_(0 <= j <= n \ k != j) (x-x_k)/(x_j-x_k) quad quad 0 <= k <= n
+  $
+
+  Ist der $j$-te Basiseintrag
+]
+
+#info[
+  $
+    L_(j, n) (x_k) = cases(
+      0 "falls" k != j,
+      1 "sonst"
+    )
+  $
+]
+
+#proof[Aufgabe]
+
+#info[
+  $
+    sum_(j=0)^n L_(j, n) (x) = 1
+  $
+]
+
+#proof[Skript]
+
+#example[
+  #table(
+    columns: 4,
+    $i$, $0$, $1$, $2$,
+    $x_i$, $-1$, $0$, $1$,
+    $f(x_i)=y_i$, $-1$, $1$, $0$,
+  )
+
+  $
+    P(F mid(|) x_0, x_1, x_2) (x) & = 1 dot L_(0, 2) (x) + 1 dot L_(1, 2) (x) + 0 dot L_(2, 2) (x) \
+    & = -1 dot ((x-x_0)(x-x_2))/((x_0-x_1)(x_0-x_2)) + 1 dot ((x-x_0)(x-x_2))/((x_1-x_0)(x_1-x_2)) + 0 dot ... \
+    & = -1 dot ((x-0)(x-1))/((-1-0)(-1-1)) + 1 dot ((x+1)(x-1))/((0+1)(0-1)) + 0 dot ...
+  $
 ]
