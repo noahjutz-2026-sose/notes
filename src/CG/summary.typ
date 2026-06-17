@@ -39,6 +39,7 @@
 = Rendering Pipeline
 
 #top_bottom_box(title: [Local Space])[
+  Das Koordinatensystems eines 3D-Meshes, das durch den Künstler festgelegt ist.
 ]
 
 #up_down_box(title: [Model Matrix $M$])[
@@ -97,7 +98,9 @@
 ]
 
 
-#top_bottom_box(title: [World Space])[]
+#top_bottom_box(title: [World Space])[
+  Ein Koordinatensystem, das sich alle Meshes teilen müssen.
+]
 
 #up_down_box(title: [View-Matrix $V$])[
   Gegeben einer Kamera mit den Vektoren in $RR^3$
@@ -156,4 +159,58 @@
   ]
 ]
 
-#top_bottom_box(title: [Eye Space])[]
+#top_bottom_box(title: [Eye Space])[
+  Der Ursprung des Koordinatensystems liegt auf der Kamera.
+]
+
+#up_down_box(title: [Projektionsmatrix $P$])[
+  $
+    P = mat(
+      2/(x_max - x_min), 0, 0, -(x_max+x_min)/(x_max-x_min);
+      0, 2/(y_max-y_min), 0, -(y_max+y_min)/(y_max-y_min);
+      0, 0, 2/(n-f), -(f+n)/(f-n);
+      0, 0, 0, 1
+    )
+  $
+
+  #hl[
+    $
+      p_"eye" |-> P dot p_"eye"
+    $
+  ]
+]
+
+#top_bottom_box(title: [Clip Space])[
+]
+
+#up_down_box(title: [Dehomogenisieren])[
+  $
+    p_"clip" = vec(x, y, z, w)
+  $
+
+  #hl[
+    $
+      p_"clip" |-> p_"clip" / w
+    $
+  ]
+]
+
+#top_bottom_box(title: [Normalized Device Coordinates (NDC)])[
+  Ein Normalisierter Raum mit $x, y, z in [-1, 1]$.
+]
+
+#up_down_box(title: [Window Matrix $W$])[
+
+]
+
+#top_bottom_box(title: [Viewport Coordinates])[
+
+]
+
+#up_down_box(title: [Rasterisieren])[
+
+]
+
+#top_bottom_box(title: [Pixel])[
+
+]
