@@ -1,5 +1,5 @@
 #import "/template.typ": template, template_exercises
-#show: template
+#show: template.with(doc_title: [CG #sym.dot SS'26])
 #set heading(numbering: "1.1")
 
 #title[Computergrafik]
@@ -8,7 +8,8 @@
 
 #pagebreak()
 
-#include "notizen.typ"
+// #include "notizen.typ"
+#include "summary.typ"
 
 #pagebreak()
 
