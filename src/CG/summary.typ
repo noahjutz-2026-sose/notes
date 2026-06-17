@@ -200,7 +200,20 @@
 ]
 
 #up_down_box(title: [Window Matrix $W$])[
+  $
+    W = mat(
+      w/2, 0, 0, x_"vp"+w/2;
+      0, h/2, 0, y_"vp"+h/2;
+      0, 0, (f-n)/2, (f+n)/2;
+      0, 0, 0, 1
+    )
+  $
 
+  #hl[
+    $
+      p_"ndc" |-> W dot p_"ndc"
+    $
+  ]
 ]
 
 #top_bottom_box(title: [Viewport Coordinates])[
