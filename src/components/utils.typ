@@ -14,7 +14,7 @@
 #let dp = (..c) => $lr(chevron.l #{ c.pos().join($,$) } chevron.r)$
 
 // Highlight anything
-#let hl = (body, fill: colors.primary.light) => box(
+#let hl = (body, fill: colors.primary.lighter) => box(
   fill: fill,
   outset: 2pt,
   radius: 2pt,
