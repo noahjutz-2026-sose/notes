@@ -1172,6 +1172,18 @@ Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/6527cefe14135ac
 
 #align(end)[2026-06-12]
 
-=
+= Perspektivisch korrekte Texturierung
 
-+
+#align(end)[2026-06-17]
+
+= Maskierungstextur / Alphamap in OpenGL
+
++ Nearest Neighbor: Nächsten Textel übernehmen, scharfe Kanten. Bilinear: Nacheinander über x- und y interpolieren zwischen 4 Texel
++ Texture-Magnification: Ein Texel fällt auf mehrere Pixel.
++ Texture-Minification: Mehrere Texel fallen auf einen Pixel.
++ Vorgefilterte Texturen auf versch. Größen. Beim Rendern auf das kleinere Bild wechseln, solange der Pixel auf mehrere Texel fällt.
++ Trilineare Interpolation: Als drittes zwischen verschiedenen Texturgrößen interpolieren
++ 0.5
++ Bilineare Interpolation außerhalb Grenze
++ Wiederverwendbarkeit der Normal Maps bei versch. Topologien
++ Vertex Shader wird seltener aufgerufen als Fragment Shader
