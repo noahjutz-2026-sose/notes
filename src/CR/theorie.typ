@@ -1297,9 +1297,9 @@ Masse vom Obst nur bekannt, wenn Masse der leeren Plastikboxen bekannt ist.
 
 = Interpolation
 
-== Lagrange Beweise
+== Lagrange-Interpolation
 
-=== Lagrange Fundamentalpolynome
+=== Kronecker Delta
 
 1. Fall: $i = j$
 $
@@ -1313,4 +1313,25 @@ $
   ==> && L_(j, n) (x_i) & = product_(k=0,...,n \ k != j) (x_i - x_k) / (x_j - x_k) quad mark(color: #gray, "beobachte" i in (0, ..., n) ==> exists k = i) \
   && &= ... dot (x_k - x_k)/(x_j - x_k) dot ... \
   && &= 0 space square space square.filled
+$
+
+=== Eindeutige Lösung
+
+$
+  P(x_i) & = sum_(j=0)^n y_j delta_(i j) = y_i
+$
+
+$P(x)$ geht durch alle Stützpunkte, weil $delta_(i j)$ genau dann 1 ist, wenn $i=j$, ansonsten 0. $square$
+
+$deg P <= n$, weil das Produkt des Lagrange-Fundamentalpolynoms höchstens $n$ Glieder hat. $square$
+
+Eindeutigkeit: Annahme: $P != Q$.
+
+$
+      &&   D(x) & = P(x) - Q(x) \
+  ==> && D(x_i) & = 0 quad forall "Stützpunkte" x_i \
+$
+$
+  ==> &&                  D "hat" n "Nullstellen" \
+  ==> && D(x) =0 arrow.zigzag space square.filled
 $
