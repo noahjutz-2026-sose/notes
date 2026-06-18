@@ -1292,3 +1292,25 @@ $
 $
 
 Masse vom Obst nur bekannt, wenn Masse der leeren Plastikboxen bekannt ist.
+
+#align(end)[2026-06-18]
+
+= Interpolation
+
+== Lagrange Beweise
+
+=== Lagrange Fundamentalpolynome
+
+1. Fall: $i = j$
+$
+  ==> && L_(j,n) (x_j) & = product_(k=0,...,n \ k!=j) (x_j-x_k)/(x_j-x_k) \
+      &&               & = 1 space square
+$
+
+2. Fall: $i != j$
+
+$
+  ==> && L_(j, n) (x_i) & = product_(k=0,...,n \ k != j) (x_i - x_k) / (x_j - x_k) quad mark(color: #gray, "beobachte" i in (0, ..., n) ==> exists k = i) \
+  && &= ... dot (x_k - x_k)/(x_j - x_k) dot ... \
+  && &= 0 space square space square.filled
+$
