@@ -1,4 +1,4 @@
-FROM docker.io/123marvin123/typst:0.14.2
+FROM docker.io/123marvin123/typst:0.15.0
 
 WORKDIR /app
 
