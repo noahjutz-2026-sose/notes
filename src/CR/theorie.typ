@@ -1364,7 +1364,7 @@ $
   omega_(1,n) = x-x_0
 $
 
-Eine Funktion vom Grad 1 $f(x) = a_0 + a_1 x$ hat einen konstanten Summanden $a_0$, der durch $omega_0,n$ dargestellt werden kann (oben gezeigt). Der lineare Teil $a_1 x$ kann wie folgt dargestellt werden:
+Eine Funktion vom Grad 1 $f(x) = a_0 + a_1 x$ hat einen konstanten Summanden $a_0$, der durch $omega_(0,n)$ dargestellt werden kann (oben gezeigt). Der lineare Teil $a_1 x$ kann wie folgt dargestellt werden:
 
 $
   f(x) & = a_0 + a_1 x \
@@ -1381,8 +1381,30 @@ $
          ]
 $
 
+Induktionsvoraussetzung:
+
+$
+  sum_(j=0)^(m-1) a_j x^j = sum_(j=0)^(m-1) lambda_j omega_(j, n)
+$
+
 Induktionsschritt $m-1 --> m$:
 
 $
-  omega_(m, n) = underbrace((x-x_0) dot (x-x_1) dot ... dot (x-x_(m-2)), "Grad" m-1) dot (x-x_(m-1))
+  omega_(m, n) & = (x-x_0) dot (x-x_1) dot ... dot (x-x_(m-1)) \
+               & =^#footnote[$q(x)$ ist höchstens vom Grad $m-1$.] x^m + q(x)
+$
+
+Sei $f(x)$ ein Polynom vom Grad $m$. Wir können zeigen, dass es ein Polynom $h(x)$ gibt, das eine Linearkombination aus Newton-Polynomen ist.
+
+$
+  h(x) & = f(x) - a_m dot omega_(m, n) \
+       & = (sum_(j=0)^(m) a_j x^j) - a_m dot (x^m + q(x)) \
+       & = underbrace((sum_(j=0)^(m-1) a_j x^j), "(IV)") + underbrace(a_m x^m - a_m x^m, =0) + a_m q(x) \
+       & = (sum_(j=0) lambda_j omega_(j,n)) + a_m q(x)
+$
+
+Zurückschließen auf $f$:
+
+$
+  f(x) & = h(x) + a_m dot omega_(m, n) space square.filled
 $
