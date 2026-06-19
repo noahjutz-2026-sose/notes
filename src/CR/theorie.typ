@@ -890,6 +890,7 @@ Matrixmultiplikation ist Zeile mal Spalte summiert. $l_(r s)$ ist in Zeile $r$, 
       ) $
     ] & #box[
           $ mat(
+
             ; ; ;
             a^((1))_(r 1), a^((1))_(r 2), a^((1))_(r 3), a^((1))_(r 4);
           ) $
@@ -1334,4 +1335,63 @@ $
 $
   ==> &&                  D "hat" n "Nullstellen" \
   ==> && D(x) =0 arrow.zigzag space square.filled
+$
+
+== Newton-Basis
+
+// $
+//   omega_(j, n) & = product_(0<=i<j) (x-x_i) quad quad 0<=j<=n \
+//              e & = vec(
+//                    omega_(0, n) & = 1,
+//                    omega_(1, n) & = x-x_0,
+//                    omega_(2, n) & =
+//                  )
+// $
+
+Die Newton-Polynome $omega_(j,n)$ bilden genau dann eine Basis des $PP_n$, wenn jedes Polynom als Linearkombination $sum_j lambda_j omega_(j, n)$ dargestellt werden kann.
+
+*Beweis.* Induktion über Grad $m$: $m=0$:
+
+$
+  omega_(0, n) = 1
+$
+
+Eine Funktion mit Grad 0 ist eine Konstante. Jede Konstante kann als Linearkombination $lambda dot 1$ dargestellt werden. $square$
+
+Induktionsanfang $m=1$:
+
+$
+  omega_(1,n) = x-x_0
+$
+
+Eine Funktion vom Grad 1 $f(x) = a_0 + a_1 x$ hat einen konstanten Summanden $a_0$, der durch $omega_0,n$ dargestellt werden kann (oben gezeigt). Der lineare Teil $a_1 x$ kann wie folgt dargestellt werden:
+
+$
+  f(x) & = a_0 + a_1 x \
+       & = sum_(j=0)^2 lambda_j omega_(j, n) \
+       & = lambda_0 dot 1 + lambda_1 dot (x - x_0) \
+       & = lambda_0 + lambda_1 x - lambda_1 x_0 \
+       & = underbrace(mark(lambda_1, tag: #<1>), =a_1) x + mark((lambda_0 - lambda_1 x_0), tag: #<0>) \
+       & #annot(<0>, pos: right, dx: 24pt)[
+           #rect[
+             $ lambda_0 - lambda_1 x_0 & = a_0 \
+                  lambda_0 - a_1 x_0 & = a_0 \
+                            lambda_0 & = a_0 + a_1 x_0 $
+           ]
+         ]
+$
+
+Induktionsschritt $m-1 --> m$:
+
+Sei $f^((i))$ die Funktion vom Grad $i$.
+
+$
+  f^((m)) (x) & = f^((m-1)) (x) + a_m x^m
+$
+
+Wir müssen zeigen, dass $a_n x^n$ als Linearkombination von $omega_(j, n)$ darstellbar ist.
+
+$
+  a_(m) x^(m) & = lambda omega_(m,n) \
+              & = lambda dot (x-x_0) dot (x-x_1) dot ... dot (x-x_(m-1)) \
 $
