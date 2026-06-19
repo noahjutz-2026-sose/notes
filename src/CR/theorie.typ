@@ -1408,3 +1408,21 @@ Zurückschließen auf $f$:
 $
   f(x) & = h(x) + a_m dot omega_(m, n) space square.filled
 $
+
+== Polynominterpolation
+
+Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/adf62718c29c2d6b842d26b16b9c3706420bff5b/CR/theorie_09/ue03.m")[CR/theorie_09/ue03.m].
+
+== Grad des Interpolationspolynoms
+
+*Zu zeigen.* $deg P_n <= deg P_(n+1)$
+
+*Beweis.* Das gegenteil würde bedeuten, dass eine Fkt. mit weniger Freiheitsgraden komplexer zu modellieren ist.
+
+*Zu zeigen.* $deg P_(n+1) <= deg P_(n) + 1$
+
+*Beweis.* Wir haben in obiger Induktion gezeigt, dass eine Funktion $f$ durch ein weiteres Newtonpolynom um höchstens einen Grad höher wird.
+
+*Zu zeigen.* $deg P_n = deg P_(n+1) ==> P_n (x_(n+1)) = y_(n+1)$
+
+*Beweis.* Wenn $x_(n+1)$ nicht bereits auf dem Polynom liegt, dann muss der Grad um 1 steigen, weil das Polynom für die Stützpunkte $x_0,...,x_n$ eindeutig ist.
