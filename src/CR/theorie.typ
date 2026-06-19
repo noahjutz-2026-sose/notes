@@ -1383,15 +1383,6 @@ $
 
 Induktionsschritt $m-1 --> m$:
 
-Sei $f^((i))$ die Funktion vom Grad $i$.
-
 $
-  f^((m)) (x) & = f^((m-1)) (x) + a_m x^m
-$
-
-Wir müssen zeigen, dass $a_n x^n$ als Linearkombination von $omega_(j, n)$ darstellbar ist.
-
-$
-  a_(m) x^(m) & = lambda omega_(m,n) \
-              & = lambda dot (x-x_0) dot (x-x_1) dot ... dot (x-x_(m-1)) \
+  omega_(m, n) = underbrace((x-x_0) dot (x-x_1) dot ... dot (x-x_(m-2)), "Grad" m-1) dot (x-x_(m-1))
 $
