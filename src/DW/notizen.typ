@@ -400,3 +400,5 @@ Grouping sets, rollup, cube, window functions.
 ```sql
 OVER (PARTITION BY ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT_ROW)
 ```
+
+#align(end)[2026-06-22 VL13]
