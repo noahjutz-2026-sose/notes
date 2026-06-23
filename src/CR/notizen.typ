@@ -1708,6 +1708,7 @@ Wenn in Schritt $k$ ein $a_(k, k) = 0$, dann:
 
 $
       &&             A & = mat(
+
                            , dots.v;
                            ..., 0, ...;
                            , dots.v;
@@ -1715,6 +1716,7 @@ $
                            , dots.v;
                          ) \
   ==> &&       P dot A & = mat(
+
                            , dots.v;
                            ..., a_(l k), ...;
                            , dots.v;
@@ -1722,6 +1724,7 @@ $
                            , dots.v;
                          ) \
   ==> && L dot P dot A & = mat(
+
                            , dots.v;
                            ..., a_(l k), ...;
                            , arrow(0);
@@ -2595,3 +2598,52 @@ $
     [x_1,...,x_n]f = 0 <==> deg f "wurde nicht erhöht"
   $
 ]
+
+#align(end)[2026-06-23 VL13]
+
+== Kubische Splines
+
+Zwischen jedem Knoten (im Bereich $[x_1, x_(i+1)]$) suchen wir ein Polynom vom Grad 1, 2 oder 3.
+
+#table(
+  columns: 4,
+  [], [n-mal \ differenzierbar], [Grad], [Dimension Spline-Raum $PP$],
+  [], $k-2$, $k-1$, $k$,
+  [Treppenfunktion], $-1$, $0$, $1$,
+  [Polygonzüge], $0$, $1$, $2$,
+  [Kubische Splines], $2$, $3$, $4$,
+)
+
+$
+  s_i (x) & = s|_([x_i, x_(i+1)]) : [x_i, x_(i+1)] -> RR \
+          & = c_0 + c_1 x + c_2 x^2 + c_3 x^3
+$
+
+Für jeden inneren Knoten $x_i$ soll gelten, dass die linke Funktion $s_(i-1)$ in $[x_(i-1), x_1]$ und die rechte Funktion $s_i$ in $[x_i, x_(i+1)]$ durch den Punkt geht.
+
+Stetigkeit: Beide ersten und zweiten Ableitungen in $x_i$ müssen gleich sein.
+
+Randbedingungen:
+- natürliche ($s=0$)
+- Periodische (anfang=ende)
+- Vollständige
+
+#example[Skript]
+
+#note[
+  Jedes Polynom höchstens vom Grad 3 ist ein kubisches Spline, erfüllt aber keine Randbedingungen.
+]
+
+== Interpolation beliebiger 2D-Punkte
+
+Wir interpolieren über Zeit $t$:
+- $x: (t_0, x_0), ..., (t_n, x_n)$
+- $y: (t_0, y_0), ..., (t_n, y_n)$
+
+Wir definieren das Intervall zwischen zwei Zeiten $(t_i, t_(i+1))$ als die euklidische Distanz der Punkte $(x, y)$.
+
+$
+  t_(i+1)-t_i = norm((x_(i+1), y_(i+1)) - (x_i, y_i))_2^2
+$
+
+== Bezier-Kurven
