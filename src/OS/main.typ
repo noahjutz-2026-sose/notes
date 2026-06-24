@@ -1,6 +1,6 @@
-#import "/template.typ": template, template_exercises
+#import "/template.typ": template_document, template_document_part
 
-#show: template.with(doc_title: [SS'26 #sym.dot OS])
+#show: template_document.with(doc_title: [SS'26 #sym.dot OS])
 
 #title[Betriebssysteme]
 
@@ -8,10 +8,9 @@
 
 #pagebreak()
 
-#include "notizen.typ"
+= Notizen
 
-#pagebreak()
-
-#show: template_exercises.with(prefix: "P")
-
-#include "altklausuren.typ"
+#{
+  show: template_document_part
+  include "notizen.typ"
+}
