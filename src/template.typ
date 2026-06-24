@@ -77,43 +77,6 @@
   body
 }
 
-// Deprecated
-#let template(body, doc_title: none) = {
-  show: template_base
-  let text_size = 11pt
-  show title: set text(size: 32pt, weight: "black")
-  set text(
-    size: text_size,
-  )
-  set heading(numbering: (n0, ..x) => numbering("1.1", n0 - 1, ..x))
-  set page(
-    numbering: "1",
-    header: context {
-      set text(fill: colors.on_surface.light)
-      stack(
-        dir: ltr,
-        spacing: 1fr,
-        doc_title,
-        emph(hydra.hydra(1)),
-      )
-    },
-  )
-
-  show raw: set text(
-    size: text_size - 2pt,
-  )
-
-  body
-}
-
-#let template_exercises(body, prefix: "Ü", offset: 0) = {
-  show: template_base
-  counter(heading).update(0)
-  set heading(numbering: (n0, ..x) => numbering(prefix + "1.1", n0 + offset, ..x))
-
-  body
-}
-
 #let template_presentation(body) = {
   import touying: *
   show: template_base
