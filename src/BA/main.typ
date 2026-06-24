@@ -1,6 +1,6 @@
-#import "/template.typ": template, template_exercises
+#import "/template.typ": template_document, template_document_part
 
-#show: template.with(doc_title: [SS'26 #sym.dot BA])
+#show: template_document.with(doc_title: [SS'26 #sym.dot BA])
 
 #title[Bachelorarbeit]
 
@@ -8,8 +8,16 @@
 
 #pagebreak()
 
-#include "topics.typ"
+= Grobe Themen
 
-#show: template_exercises.with(prefix: "T")
+#{
+  show: template_document_part
+  include "topics.typ"
+}
 
-#include "topics/sim_to_real.typ"
+= Ausformulierungen
+
+#{
+  show: template_document_part
+  include "topics/sim_to_real.typ"
+}
