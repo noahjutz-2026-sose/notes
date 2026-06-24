@@ -1,6 +1,5 @@
-#import "/template.typ": template, template_exercises
-#show: template.with(doc_title: [CG #sym.dot SS'26])
-#set heading(numbering: "1.1")
+#import "/template.typ": template_document, template_document_part
+#show: template_document.with(doc_title: [CG #sym.dot SS'26])
 
 #title[Computergrafik]
 
@@ -8,11 +7,27 @@
 
 #pagebreak()
 
-// #include "notizen.typ"
-#include "summary.typ"
+= Notizen
+
+#{
+  show: template_document_part
+  include "notizen.typ"
+}
 
 #pagebreak()
 
-#show: template_exercises
+= Zusammenfassung
 
-#include "uebungen.typ"
+#{
+  show: template_document_part
+  include "summary.typ"
+}
+
+#pagebreak()
+
+= Übungen
+
+#{
+  show: template_document_part
+  include "uebungen.typ"
+}
