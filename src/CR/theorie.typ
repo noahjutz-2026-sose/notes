@@ -1426,3 +1426,11 @@ Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/adf62718c29c2d6
 *Zu zeigen.* $deg P_n = deg P_(n+1) ==> P_n (x_(n+1)) = y_(n+1)$
 
 *Beweis.* Wenn $x_(n+1)$ nicht bereits auf dem Polynom liegt, dann muss der Grad um 1 steigen, weil das Polynom für die Stützpunkte $x_0,...,x_n$ eindeutig ist.
+
+#align(end)[2026-06-24]
+
+= Splines
+
+== Kubische Splines bestimmen
+
+== Splines zu symmetrischen Werten
