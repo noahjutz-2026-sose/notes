@@ -3,7 +3,7 @@
 
 #title[Computergrafik]
 
-#outline(depth: 2)
+#outline()
 
 #pagebreak()
 

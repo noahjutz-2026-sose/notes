@@ -4,7 +4,7 @@
 
 #title[Numerische Mathematik]
 
-#outline(depth: 2)
+#outline()
 
 #pagebreak()
 
