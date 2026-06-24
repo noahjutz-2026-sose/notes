@@ -8,6 +8,7 @@ TARGET_DIRS=(
     "DW"
     "OR"
     "OS"
+    "BA"
 )
 
 for dir in "${TARGET_DIRS[@]}"; do
