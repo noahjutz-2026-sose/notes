@@ -61,6 +61,7 @@
     show: strong
     it
   }
+  set outline(depth: 3)
   body
 }
 

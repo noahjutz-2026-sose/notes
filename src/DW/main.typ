@@ -1,23 +1,34 @@
-#import "/template.typ": template, template_exercises
+#import "/template.typ": template_document, template_document_part
 
-#show: template
+#show: template_document.with(doc_title: [DW #sym.dot SS'26])
 
 #title[Data Warehousing]
 
-#outline(depth: 2)
+#outline()
 
 #pagebreak()
 
-#include "notizen.typ"
+= Notizen
+
+#{
+  show: template_document_part
+  include "notizen.typ"
+}
 
 #pagebreak()
 
-#show: template_exercises
+= Übungen
 
-#include "uebungen.typ"
+#{
+  show: template_document_part
+  include "uebungen.typ"
+}
 
 #pagebreak()
 
-#show: template_exercises.with(offset: -1, prefix: "Ch")
+= Challenges
 
-#include "challenges.typ"
+#{
+  show: template_document_part
+  include "challenges.typ"
+}
