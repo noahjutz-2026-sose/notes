@@ -1431,6 +1431,10 @@ Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/adf62718c29c2d6
 
 = Splines
 
-== Kubische Splines bestimmen
+#stack(dir: ltr)[== ][== Splines berechnen]
 
-== Splines zu symmetrischen Werten
+Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/2a01a53de1f26099a539667981e4a4def45faf4c/CR/theorie_10/ue01.m")[theorie_10/ue01].
+
+== Integration über Polynominterpolation
+
+Siehe #link("https://github.com/noahjutz-2026-sose/practice/blob/19f15843f3bccc59a6f3cfce1016216366c464c8/CR/theorie_10/ue03.m")[theorie_10/ue03].
