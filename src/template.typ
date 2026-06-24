@@ -48,6 +48,35 @@
   body
 }
 
+#let template_document(body, doc_title: none) = {
+  show: template_base
+  let text_size = 11pt
+  show title: set text(size: 32pt, weight: "black")
+  set text(
+    size: text_size,
+  )
+  set heading(numbering: none)
+
+  show outline.entry.where(level: 1): it => {
+    show: strong
+    it
+  }
+  body
+}
+
+#let template_document_part(body) = {
+  counter(heading).update(0)
+  set heading(
+    offset: 1,
+    numbering: (..x) => {
+      let x = x.pos()
+      numbering("1.1", ..x.slice(1))
+    },
+  )
+  body
+}
+
+// Deprecated
 #let template(body, doc_title: none) = {
   show: template_base
   let text_size = 11pt

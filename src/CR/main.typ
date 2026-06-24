@@ -1,5 +1,6 @@
-#import "/template.typ": template, template_exercises
-#show: template.with(doc_title: [SS'26 #sym.dot CR/NMA])
+#import "/template.typ": template_document, template_document_part
+
+#show: template_document.with(doc_title: [SS'26 #sym.dot CR/NMA])
 
 #title[Numerische Mathematik]
 
@@ -7,10 +8,25 @@
 
 #pagebreak()
 
-#include "notizen.typ"
+= Notizen
+
+#{
+  show: template_document_part
+  include "notizen.typ"
+}
 
 #pagebreak()
 
-#show: template_exercises
+= Übungen
 
-#include "theorie.typ"
+#{
+  show: template_document_part
+  include "theorie.typ"
+}
+
+= Cheatsheet
+
+#{
+  show: template_document_part
+  include "cheatsheet.typ"
+}
