@@ -551,3 +551,7 @@ $
 - _Hamming Distanz:_ Anzahl notwendiger Flips, um von Bitreihe A zu Bitreihe B zu gelangen
 - _Gray Codierung:_ Hamming-Distanz zwischen zwei benachbarten Zahlen ($n$ und $n+1$) ist immer 1.
 - _Ganzzahl-Codierung:_ $[x_1, x_2, ...]$
+
+#align(end)[2026-06-25 VL11]
+
+= OR in Mobilität
