@@ -14,3 +14,10 @@
   show: template_document_part
   include "notizen.typ"
 }
+
+= Klausurvorbereitung
+
+#{
+  show: template_document_part
+  include "pruefung.typ"
+}
