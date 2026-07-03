@@ -110,6 +110,8 @@ Mapping physical RAM to virtual memory.
 - _Priority Inversion._ H wartet auf L, um R zu erlangen. M braucht nicht R und ersetzt L. $=>$ H wartet auf L, L wartet auf M.
 - #link("https://www.youtube.com/watch?v=VDzdb27Gxvo")[_Bakery Algorithm_]. Entscheidung welcher Prozess zuerst R erlangt. Ticketnr ziehen, falls diese gleich ist wird auf basis von PID entschieden.
 - #link("https://www.youtube.com/watch?v=ukM_zzrIeXs")[_Semaphor_]. Atomic Int mit increment und decrement-wait.
+- _Spinlock_. Busy waiting lock.
+- _Starvation_. Ein Prozess wird durch den Scheduler vernachlässigt und wartet auf unbegrenzte Zeit.
 
 
 = Weitere Begriffe
