@@ -24,6 +24,8 @@
   include "theorie.typ"
 }
 
+#pagebreak()
+
 = Cheatsheet
 
 #{

@@ -3,13 +3,22 @@
 // - logarithmus/exp regeln
 // - lin. Ausgleichsproblem und rank
 
-= Kondition
+= Fehler und Kondition
 
 Wie viel darf der Fehler $delta_x$ eines Messwerts bezüglich der Norm $kappa(x)$ sein, damit die Ausgabe eine relative Genauigkeit von $delta_y$ hat?
 
 $
   delta_x = kappa^(-1) delta_y
 $
+
+== IEEE 754
+
+#table(columns: 3,
+    [], $m=0$, $m!=0$,
+    $c=0$, $plus.minus 0$, $plus.minus (bold(0)+m) dot 2^(-126)$,
+    $c=255$, $plus.minus infinity$, [NaN],
+    $0<c<255$, $plus.minus 1 dot 2^e$, $plus.minus (1+m) dot 2^e$
+)
 
 = Mehrdimensionale Ableitung
 
