@@ -59,11 +59,12 @@ Round to even:
     let floor = $floor(dot)$
 
     table(columns: 3,
-        ieee("x00"), ieee("x00"), floor,
-        ieee("x01"), ieee("x00"), floor,
-        ieee("x11"), ieee("100"), ceil,
-        ieee("110"), ieee("100"), ceil,
-        ieee("010"), ieee("000"), floor,
+        fill: (x, y) => if y == 3 {colors.secondary.lighter} else {},
+        [], ieee("1xx"), ieee("0xx"),
+        ieee("x00"), floor, floor,
+        ieee("x01"), floor, floor,
+        ..(ieee("x10"), ceil, floor),
+        ieee("x11"), ceil, ceil,
     )
 }
 
