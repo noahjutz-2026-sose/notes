@@ -1,5 +1,6 @@
 #import "/deps.typ": cetz
 #import "/components/admonitions.typ": *
+#import "/style.typ": *
 // - logarithmus/exp regeln
 
 #let qa(..content) = stack(
@@ -20,12 +21,57 @@
 
 == IEEE 754
 
+#let ieee_last_digits(mth) = {
+    let entries = mth.codepoints()
+    entries = entries.map(c => if c.match(regex("\d")) != none {c} else {sym.dot})
+    return $
+        mono(
+            #entries.slice(0, -2).join()
+            text(#colors.primary.normal, #entries.remove(-2))
+            text(#colors.on_surface.light, #entries.remove(-1))
+        )
+    $
+    return repr(mth)
+}
+
+Reservierte Zahlen:
+
 #table(
   columns: 3,
   [], $m=0$, $m!=0$,
   $c=0$, $plus.minus 0$, $plus.minus (bold(0)+m) dot 2^(-126)$,
   $c=255$, $plus.minus infinity$, [NaN],
   $0<c<255$, $plus.minus 1 dot 2^e$, $plus.minus (1+m) dot 2^e$,
+)
+
+$
+    m = dots.c quad quad
+    d_(m-1) quad quad
+    text(#colors.primary.normal, d_m) quad quad
+    text(#colors.on_surface.light, d_(m+1))
+$
+
+Round to even:
+
+#{
+    let ieee = ieee_last_digits
+    let ceil = $ceil(dot)$
+    let floor = $floor(dot)$
+
+    table(columns: 3,
+        ieee("x00"), ieee("x00"), floor,
+        ieee("x01"), ieee("x00"), floor,
+        ieee("x11"), ieee("100"), ceil,
+        ieee("110"), ieee("100"), ceil,
+        ieee("010"), ieee("000"), floor,
+    )
+}
+
+#table(
+  columns: 3,
+  [], $d_m=1$, $d_m=0$,
+  $d_(m+1)=1$, $arrow.t 10$, $arrow.b 0$,
+  $d_(m+1)=0$, $arrow.t 10$, $arrow.b 0$,
 )
 
 = Mehrdimensionale Ableitung
@@ -58,8 +104,16 @@
 #qa[
   Wie viele Messungen werden mindestens benötigt, damit alle Parameter des Modells eindeutig bestimmt werden können?
 ][
-    Anzahl Parameter $abs(theta)$ (Messungen müssen linear unabhängig sein).
+  Anzahl Parameter $abs(theta)$ (Messungen müssen linear unabhängig sein).
 ]
+
+#table(
+  columns: 2,
+  table.header(table.cell(colspan: 2)[Logarithmusregeln]),
+  $ log(x y) $, $ log(x) + log(y) $,
+  $ log(1/x) $, $ -log(x) $,
+  $ log(x^r) $, $ r log(x) $,
+)
 
 = Interpolation
 
