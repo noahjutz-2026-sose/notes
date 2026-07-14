@@ -1,8 +1,6 @@
 #import "/deps.typ": cetz
 #import "/components/admonitions.typ": *
-// - ableitungsregeln
 // - logarithmus/exp regeln
-// - lin. Ausgleichsproblem und rank
 
 #let qa(..content) = stack(
   task(title: none, content.pos().at(0)),
