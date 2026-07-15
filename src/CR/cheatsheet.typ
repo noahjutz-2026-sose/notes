@@ -31,7 +31,7 @@
     $ (f + g)' $, $ f' + g' $,
     $ (f g)' $, $ f' g + f g' $,
     $ (f / g)' $, $ (f' g - f g')/g^2 $,
-    $ (f compose g)' $, $ g'(f) f $,
+    $ (f compose g)' $, $ g'(f) f' $,
   ),
 
   table(
@@ -110,7 +110,7 @@
     [Allg.],
     [],
     $c + N$,
-    $(1+m_x) ast.op.o (1+m_y)$,
+    $(1+m_x) ast.op.o (1+m_y) dot 2^(-N)$,
     [],
 
     $x dot 2^n$,
@@ -129,19 +129,19 @@
     $s_x xor s_y$,
     $c_x + c_y - 127 + N$,
     [],
-    $ =cases(0 "falls" m<-10.dots.c, 1 "falls" m<-1.dots.c) $,
+    $ =cases(1 "falls" m<-10.dots.c, 0 "falls" m<-1.dots.c) $,
 
     $x slash y$,
     $s_x xor s_y$,
     $c_x - c_y + 127 - N$,
     [],
-    $ =cases(0 "falls" m<-10.dots.c, 1 "falls" m<-1.dots.c) $,
+    $ =cases(0 "falls" m<-1.dots.c, 1 "falls" m<-0.dots.c) $,
 
     $x + y$,
     $s_max$,
     $c_max + N$,
-    $(1+m_max) plus.minus (1+m_min) dot 2^(-abs(c_x-c_y))$,
-    $ =cases(-x "falls" m<-0.dots.c, 0 "falls" m<-10.dots.c, 1 "falls" m<-1.dots.c) $,
+    $((1+m_max) plus.minus (1+m_min) dot 2^(-abs(c_x-c_y))) dot 2^(-N)$,
+    $ =cases(-x "falls" m<-0.dots.c, 1 "falls" m<-10.dots.c, 0 "falls" m<-1.dots.c) $,
 )
 
 
