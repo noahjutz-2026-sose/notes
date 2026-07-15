@@ -84,7 +84,7 @@
 
     table(
       columns: 3,
-      fill: (x, y) => if y == 3 { colors.secondary.lighter } else {},
+      fill: (x, y) => if y == 4 { colors.secondary.lighter } else {},
       table.header(table.cell(colspan: 3)[Round to even]),
       $
         d_(m-1)
@@ -100,6 +100,50 @@
     )
   },
 )
+
+
+#table(
+    columns: 5,
+    table.header(table.cell(colspan: 5)[Rechenregeln]),
+    [Operation], $s$, $c$, $m$, $N$,
+
+    [Allg.],
+    [],
+    $c + N$,
+    $(1+m_x) ast.op.o (1+m_y)$,
+    [],
+
+    $x dot 2^n$,
+    $=$,
+    $c + n$,
+    $=$,
+    sym.slash,
+
+    $x slash 2^n$,
+    $=$,
+    $c-n$,
+    $=$,
+    sym.slash,
+
+    $x dot y$,
+    $s_x xor s_y$,
+    $c_x + c_y - 127 + N$,
+    [],
+    $ =cases(0 "falls" m<-10.dots.c, 1 "falls" m<-1.dots.c) $,
+
+    $x slash y$,
+    $s_x xor s_y$,
+    $c_x - c_y + 127 - N$,
+    [],
+    $ =cases(0 "falls" m<-10.dots.c, 1 "falls" m<-1.dots.c) $,
+
+    $x + y$,
+    $s_max$,
+    $c_max + N$,
+    $(1+m_max) plus.minus (1+m_min) dot 2^(-abs(c_x-c_y))$,
+    $ =cases(-x "falls" m<-0.dots.c, 0 "falls" m<-10.dots.c, 1 "falls" m<-1.dots.c) $,
+)
+
 
 = Regression
 
