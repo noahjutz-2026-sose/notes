@@ -1,7 +1,6 @@
 #import "/deps.typ": cetz
 #import "/components/admonitions.typ": *
 #import "/style.typ": *
-// - logarithmus/exp regeln
 
 #let qa(..content) = stack(
   task(title: none, content.pos().at(0)),
@@ -34,24 +33,14 @@
     return repr(mth)
 }
 
-Reservierte Zahlen:
-
 #table(
   columns: 3,
+  table.header(table.cell(colspan: 3)[Reservierte Zahlen]),
   [], $m=0$, $m!=0$,
   $c=0$, $plus.minus 0$, $plus.minus (bold(0)+m) dot 2^(-126)$,
   $c=255$, $plus.minus infinity$, [NaN],
   $0<c<255$, $plus.minus 1 dot 2^e$, $plus.minus (1+m) dot 2^e$,
 )
-
-$
-    m = dots.c quad quad
-    d_(m-1) quad quad
-    text(#colors.primary.normal, d_m) quad quad
-    text(#colors.on_surface.light, d_(m+1))
-$
-
-Round to even:
 
 #{
     let ieee = ieee_last_digits
@@ -60,20 +49,18 @@ Round to even:
 
     table(columns: 3,
         fill: (x, y) => if y == 3 {colors.secondary.lighter} else {},
-        [], ieee("1xx"), ieee("0xx"),
+        table.header(table.cell(colspan: 3)[Round to even]),
+        $
+            d_(m-1)
+            text(#colors.primary.normal, d_m)
+            text(#colors.on_surface.light, d_(m+1))
+        $, ieee("1xx"), ieee("0xx"),
         ieee("x00"), floor, floor,
         ieee("x01"), floor, floor,
         ..(ieee("x10"), ceil, floor),
         ieee("x11"), ceil, ceil,
     )
 }
-
-#table(
-  columns: 3,
-  [], $d_m=1$, $d_m=0$,
-  $d_(m+1)=1$, $arrow.t 10$, $arrow.b 0$,
-  $d_(m+1)=0$, $arrow.t 10$, $arrow.b 0$,
-)
 
 = Mehrdimensionale Ableitung
 
