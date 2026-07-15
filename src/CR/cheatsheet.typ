@@ -179,21 +179,21 @@
     table.header(table.cell(colspan: 8)[Lagrange-Fundamentalpolynome]),
     $L_(0,0)$, $ 1 $,
     $L_(0,1)$, $ (x-x_1)/(x_0-x_1) $, $L_(0,2)$, $ (x-x_1)/(x_0-x_1) dot (x-x_2)/(x_0-x_2) $,
-    $L_(0,3)$, $$,
+    $L_(0,3)$, $ (x - x_1)/(x_0 - x_1) dot (x - x_2)/(x_0 - x_2) dot (x - x_3)/(x_0 - x_3) $,
 
     table.cell(colspan: 2, stroke: none)[],
     $L_(1,1)$, $ (x-x_0)/(x_1-x_0) $, $L_(1,2)$, $ (x-x_0)/(x_1-x_0) dot (x-x_2)/(x_1-x_2) $,
-    $L_(1,3)$, $$,
+    $L_(1,3)$, $ (x - x_0)/(x_1 - x_0) dot (x - x_2)/(x_1 - x_2) dot (x - x_3)/(x_1 - x_3) $,
 
     table.cell(colspan: 2, stroke: none)[],
     table.cell(colspan: 2, stroke: none)[],
     $L_(2, 2)$, $ (x-x_0)/(x_2-x_0) dot (x-x_1)/(x_2-x_1) $,
-    $L_(2,3)$, $$,
+    $L_(2,3)$, $ (x - x_0)/(x_2 - x_0) dot (x - x_1)/(x_2 - x_1) dot (x - x_3)/(x_2 - x_3) $,
 
     table.cell(colspan: 2, stroke: none)[],
     table.cell(colspan: 2, stroke: none)[],
     table.cell(colspan: 2, stroke: none)[],
-    $L_(3,3)$, $$,
+    $L_(3,3)$, $ (x - x_0)/(x_3 - x_0) dot (x - x_1)/(x_3 - x_1) dot (x - x_2)/(x_3 - x_2) $,
   ),
 )
 
