@@ -81,7 +81,7 @@
     set page(margin: 1cm)
     set heading(
         numbering: (..nums) => {
-        if nums.len() == 2 {nums.pos().last()} else {none}
+            if nums.len() == 2 {nums.pos().last()} else {none}
     })
     body
 }

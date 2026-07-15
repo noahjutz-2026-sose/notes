@@ -24,7 +24,7 @@
   include "theorie.typ"
 }
 
-#hide[= Cheatsheet]
+= Cheatsheet
 
 #{
   show: template_document_part

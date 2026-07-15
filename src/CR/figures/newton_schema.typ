@@ -127,9 +127,13 @@
     iter_i(node, edge, c, 0, 3)
 }
 
-#table(
-    diffdiagram(iter1, iter0),
-    diffdiagram(iter2, iter1, iter0),
-    diffdiagram(iter3, iter2, iter1, iter0),
-    diffdiagram(iter4, iter3, iter2, iter1, iter0)
+// #table(
+//     diffdiagram(iter1, iter0),
+//     diffdiagram(iter2, iter1, iter0),
+//     diffdiagram(iter3, iter2, iter1, iter0),
+//     diffdiagram(iter4, iter3, iter2, iter1, iter0)
+// )
+
+#fletcher.diagram(
+    ..(iter4, iter3, iter2, iter1, iter0).map(it => diag()(it)), ..common_args
 )

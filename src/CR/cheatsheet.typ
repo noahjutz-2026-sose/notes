@@ -2,70 +2,27 @@
 #import "/components/admonitions.typ": *
 #import "/style.typ": *
 
-#let qa(..content) = stack(
+#let qa(..content) = grid(
+    columns: 2,
   task(title: none, content.pos().at(0)),
   proof(title: none, content.pos().at(1)),
 )
 
-
-= Fehler und Kondition
-
-#qa[
-  Wie viel darf der Fehler $delta_x$ eines Messwerts bezüglich der Norm $kappa(x)$ sein, damit die Ausgabe eine relative Genauigkeit von $delta_y$ hat?
-][
-  $
-    delta_x = kappa^(-1) delta_y
-  $
-]
-
-== IEEE 754
-
 #let ieee_last_digits(mth) = {
-    let entries = mth.codepoints()
-    entries = entries.map(c => if c.match(regex("\d")) != none {c} else {sym.dot})
-    return $
-        mono(
-            #entries.slice(0, -2).join()
-            text(#colors.primary.normal, #entries.remove(-2))
-            text(#colors.on_surface.light, #entries.remove(-1))
-        )
-    $
-    return repr(mth)
-}
-
-#table(
-  columns: 3,
-  table.header(table.cell(colspan: 3)[Reservierte Zahlen]),
-  [], $m=0$, $m!=0$,
-  $c=0$, $plus.minus 0$, $plus.minus (bold(0)+m) dot 2^(-126)$,
-  $c=255$, $plus.minus infinity$, [NaN],
-  $0<c<255$, $plus.minus 1 dot 2^e$, $plus.minus (1+m) dot 2^e$,
-)
-
-#{
-    let ieee = ieee_last_digits
-    let ceil = $ceil(dot)$
-    let floor = $floor(dot)$
-
-    table(columns: 3,
-        fill: (x, y) => if y == 3 {colors.secondary.lighter} else {},
-        table.header(table.cell(colspan: 3)[Round to even]),
-        $
-            d_(m-1)
-            text(#colors.primary.normal, d_m)
-            text(#colors.on_surface.light, d_(m+1))
-        $, ieee("1xx"), ieee("0xx"),
-        ieee("x00"), floor, floor,
-        ieee("x01"), floor, floor,
-        ..(ieee("x10"), ceil, floor),
-        ieee("x11"), ceil, ceil,
+  let entries = mth.codepoints()
+  entries = entries.map(c => if c.match(regex("\d")) != none { c } else { sym.dot })
+  return $
+    mono(
+      #entries.slice(0, -2).join()
+      text(#colors.primary.normal, #entries.remove(-2))
+      text(#colors.on_surface.light, #entries.remove(-1))
     )
+  $
+  return repr(mth)
 }
-
-= Mehrdimensionale Ableitung
 
 #grid(
-  columns: 2,
+  columns: 3,
   column-gutter: 12pt,
   table(
     columns: 2,
@@ -85,6 +42,62 @@
     $ a^x $, $ a^x ln a $,
     $ ln x $, $ 1/x $,
   ),
+  table(
+    columns: 2,
+    table.header(table.cell(colspan: 2)[Logarithmusregeln]),
+    $ log(x y) $, $ log(x) + log(y) $,
+    $ log(1/x) $, $ -log(x) $,
+    $ log(x^r) $, $ r log(x) $,
+  ),
+)
+
+
+= Fehler und Kondition
+
+#qa[
+  Wie viel darf der Fehler $delta_x$ eines Messwerts bezüglich der Norm $kappa(x)$ sein, damit die Ausgabe eine relative Genauigkeit von $delta_y$ hat?
+][
+  $
+    delta_x = kappa^(-1) delta_y
+  $
+]
+
+== IEEE 754
+
+#grid(
+  columns: 2,
+  column-gutter: 12pt,
+  table(
+    columns: 3,
+    table.header(table.cell(colspan: 3)[Reservierte Zahlen]),
+    [], $m=0$, $m!=0$,
+    $c=0$, $plus.minus 0$, $plus.minus (bold(0)+m) dot 2^(-126)$,
+    $c=255$, $plus.minus infinity$, [NaN],
+    $0<c<255$, $plus.minus 1 dot 2^e$, $plus.minus (1+m) dot 2^e$,
+  ),
+
+  {
+    let ieee = ieee_last_digits
+    let ceil = $ceil(dot)$
+    let floor = $floor(dot)$
+
+    table(
+      columns: 3,
+      fill: (x, y) => if y == 3 { colors.secondary.lighter } else {},
+      table.header(table.cell(colspan: 3)[Round to even]),
+      $
+        d_(m-1)
+        text(#colors.primary.normal, d_m)
+        text(#colors.on_surface.light, d_(m+1))
+      $,
+      ieee("1xx"),
+      ieee("0xx"),
+      ieee("x00"), floor, floor,
+      ieee("x01"), floor, floor,
+      ..(ieee("x10"), ceil, floor),
+      ieee("x11"), ceil, ceil,
+    )
+  },
 )
 
 = Regression
@@ -94,14 +107,6 @@
 ][
   Anzahl Parameter $abs(theta)$ (Messungen müssen linear unabhängig sein).
 ]
-
-#table(
-  columns: 2,
-  table.header(table.cell(colspan: 2)[Logarithmusregeln]),
-  $ log(x y) $, $ log(x) + log(y) $,
-  $ log(1/x) $, $ -log(x) $,
-  $ log(x^r) $, $ r log(x) $,
-)
 
 = Interpolation
 
