@@ -162,8 +162,8 @@
 == Basispolynome
 
 #grid(
-  columns: 2,
-  column-gutter: 12pt,
+  columns: 1,
+  gutter: 12pt,
   table(
     columns: 2,
     table.header(table.cell(colspan: 2)[Newton-Basis-Polynome]),
@@ -174,18 +174,26 @@
     $3$, $(x-x_0)(x-x_1)(x-x_2)$,
   ),
   table(
-    columns: 6,
-    column-gutter: (0pt, 12pt, 0pt, 12pt, 0pt),
-    table.header(table.cell(colspan: 6)[Lagrange-Fundamentalpolynome]),
+    columns: 8,
+    column-gutter: (0pt, 12pt, 0pt, 12pt, 0pt, 12pt, 0pt),
+    table.header(table.cell(colspan: 8)[Lagrange-Fundamentalpolynome]),
     $L_(0,0)$, $ 1 $,
     $L_(0,1)$, $ (x-x_1)/(x_0-x_1) $, $L_(0,2)$, $ (x-x_1)/(x_0-x_1) dot (x-x_2)/(x_0-x_2) $,
+    $L_(0,3)$, $$,
 
     table.cell(colspan: 2, stroke: none)[],
     $L_(1,1)$, $ (x-x_0)/(x_1-x_0) $, $L_(1,2)$, $ (x-x_0)/(x_1-x_0) dot (x-x_2)/(x_1-x_2) $,
+    $L_(1,3)$, $$,
 
     table.cell(colspan: 2, stroke: none)[],
     table.cell(colspan: 2, stroke: none)[],
-    $L_(2, 2)$, $ (x-x_0)/(x_2-x_0) dot (x-x_1)/(x_2-x_1) $
+    $L_(2, 2)$, $ (x-x_0)/(x_2-x_0) dot (x-x_1)/(x_2-x_1) $,
+    $L_(2,3)$, $$,
+
+    table.cell(colspan: 2, stroke: none)[],
+    table.cell(colspan: 2, stroke: none)[],
+    table.cell(colspan: 2, stroke: none)[],
+    $L_(3,3)$, $$,
   ),
 )
 
