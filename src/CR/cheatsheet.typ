@@ -2,10 +2,11 @@
 #import "/components/admonitions.typ": *
 #import "/style.typ": *
 
+#show table.cell.where(y: 0): strong
+
 #let qa(..content) = grid(
-    columns: 2,
-  task(title: none, content.pos().at(0)),
-  proof(title: none, content.pos().at(1)),
+  columns: 2,
+  task(title: none, content.pos().at(0)), proof(title: none, content.pos().at(1)),
 )
 
 #let ieee_last_digits(mth) = {
@@ -114,15 +115,34 @@
 
 #include "figures/newton_schema.typ"
 
-== Newton-Basis-Polynome
+== Basispolynome
 
-#table(
+#grid(
   columns: 2,
-  $j$, $omega_(j,n)$,
-  $0$, $1$,
-  $1$, $x-x_0$,
-  $2$, $(x-x_0)(x-x_1)$,
-  $3$, $(x-x_0)(x-x_1)(x-x_2)$,
+  column-gutter: 12pt,
+  table(
+    columns: 2,
+    table.header(table.cell(colspan: 2)[Newton-Basis-Polynome]),
+    $j$, $omega_(j,n)$,
+    $0$, $1$,
+    $1$, $x-x_0$,
+    $2$, $(x-x_0)(x-x_1)$,
+    $3$, $(x-x_0)(x-x_1)(x-x_2)$,
+  ),
+  table(
+    columns: 6,
+    column-gutter: (0pt, 12pt, 0pt, 12pt, 0pt),
+    table.header(table.cell(colspan: 6)[Lagrange-Fundamentalpolynome]),
+    $L_(0,0)$, $ 1 $,
+    $L_(0,1)$, $ (x-x_1)/(x_0-x_1) $, $L_(0,2)$, $ (x-x_1)/(x_0-x_1) dot (x-x_2)/(x_0-x_2) $,
+
+    table.cell(colspan: 2, stroke: none)[],
+    $L_(1,1)$, $ (x-x_0)/(x_1-x_0) $, $L_(1,2)$, $ (x-x_0)/(x_1-x_0) dot (x-x_2)/(x_1-x_2) $,
+
+    table.cell(colspan: 2, stroke: none)[],
+    table.cell(colspan: 2, stroke: none)[],
+    $L_(2, 2)$, $ (x-x_0)/(x_2-x_0) dot (x-x_1)/(x_2-x_1) $
+  ),
 )
 
 == Kubische Splines
