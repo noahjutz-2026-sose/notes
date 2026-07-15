@@ -1,4 +1,4 @@
-#import "/template.typ": template_document, template_document_part
+#import "/template.typ": template_document, template_document_part, template_cheatsheet
 
 #show: template_document.with(doc_title: [SS'26 #sym.dot CR/NMA])
 
@@ -24,11 +24,10 @@
   include "theorie.typ"
 }
 
-#pagebreak()
-
-= Cheatsheet
+#hide[= Cheatsheet]
 
 #{
   show: template_document_part
+  show: template_cheatsheet
   include "cheatsheet.typ"
 }

@@ -77,6 +77,15 @@
   body
 }
 
+#let template_cheatsheet(body) = {
+    set page(margin: 1cm)
+    set heading(
+        numbering: (..nums) => {
+        if nums.len() == 2 {nums.pos().last()} else {none}
+    })
+    body
+}
+
 #let template_presentation(body) = {
   import touying: *
   show: template_base
