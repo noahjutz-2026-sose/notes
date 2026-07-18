@@ -2,6 +2,7 @@
 #import "/deps.typ": cetz, codly, mannot
 #import "/style.typ": *
 #import mannot: *
+#import "/components/utils.typ": bva, dp
 
 #align(end)[2026-03-20 TT01]
 
@@ -54,16 +55,26 @@ $
 
 = Vertexe und Dreiecke
 
-- _Signed Distance Raster Verfahren:_ Prüft, ob ein Punkt in einem konvexen Polygon ist. Für alle Kanten $arrow(v)$ im Uhrzeigersinn Winkel $phi$ zwischen Rechtsnormale und Punkt prüfen.
-  $
-    abs(phi) > pi/2 => "Punkt nicht im Polygon"
-  $
-- _Vertex:_ Punkt im 3D-Raum. $(arrow(v), arrow(N), arrow(t))$
-- _Konkaves Polygon:_ #cetz.canvas({
-    import cetz.draw: *
-    line((0, 0), (1, 1), (2, 0), (1, 0.5), close: true)
-  })
-- Bei konvexen Polygonen schränkt jede Kante den Bereich weiter ein, in dem der Punkt sein darf, weil: Zwei Kanten haben immer einen Innenwinkel $<180degree$, und deshalb wird der Normalenvektor einer Kante immer "in die Mitte zeigen". Bei konkaven Polygonen können zwei Kanten einen Innenwinkel $>180 degree$ haben, und deshalb können die Normalenvektoren bei jeder Kante beliebig sein.
+== Kurz & Knapp
+
+=== Signed-Distance Raster Verfahren
+
+Für jede Kante eines konvexen Polygons gegen den Uhrzeigersinn prüfen, ob der Punkt links davon liegt. das ist der Fall, wenn $dp(bva(a p), bva(n)) >= 0$. (Alternativ: Im Uhrzeigersinn mit Rechtsnormale).
+
+=== Vertex
+
+Punkt im 3D-Raum. $(arrow(v), arrow(N), arrow(t))$
+
+=== Konkaves Polygon
+
+#cetz.canvas({
+  import cetz.draw: *
+  line((0, 0), (1, 1), (2, 0), (1, 0.5), close: true)
+})
+
+=== SD-Verfahren bei Konkaven Polygonen
+
+Bei konvexen Polygonen schränkt jede Kante den Bereich weiter ein, weil Innenwinkel stets $<180degree$. Normalenvektor einer Kante zeigt immer nach innen. Bei konkaven Polygonen können zwei Kanten einen Innenwinkel $>180 degree$ haben.
 
 == Dreiecksnetz
 
