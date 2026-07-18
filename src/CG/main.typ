@@ -28,6 +28,15 @@
 = Übungen
 
 #{
-  show: template_document_part
+  show: template_document_part.with(heading_starts: ("2": 0))
   include "uebungen.typ"
+}
+
+#pagebreak()
+
+= Cheatsheet
+
+#{
+  show: template_document_part
+  include "cheatsheet.typ"
 }

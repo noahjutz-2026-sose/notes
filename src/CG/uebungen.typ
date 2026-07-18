@@ -15,18 +15,40 @@
   - Es gilt: $M^(-1) = M^T$
 ]
 
-+ #[
-    - Retina: Teil des Auges, das Licht aufnimmt und als Signale ans Gehirn schickt.
-    - Fovea: Stelle in der Retina mit vielen Zapfen
-  ]
-+ Tristimulus: RGB
-+ RGB ist additiv, CMY ist subtraktiv
-+ 8 Bit $=>$ 0-255. Größere Ranges existieren auch
-+ #[
-    - Faul: $(1/3, 1/4, 1/5, 0)$
+== Kurz & Knapp
 
-    - Effizient: $(2/15, 1/15, 0, 1/5)$
-  ]
+=== Retina & Fovea
+
+- _Retina:_ Teil des Auges, das Licht aufnimmt und als Signale ans Gehirn schickt.
+- _Fovea:_ Stelle in der Retina mit vielen Zapfen
+
+=== Tristimulus Farbtheorie
+
+#link("https://graphics.stanford.edu/courses/cs178/applets/locus.html")
+
+=== RGB & CMY
+
+$
+    (R, G, B) = (1-C, 1-M, 1-Y)
+$
+
+=== RGB Wertebereich
+
+8 Bit $=>$ 0-255. Größere Ranges existieren auch
+
+=== CMY zu CMYK
+
+Faul
+
+$
+    (1/3, 1/4, 1/5, 0)
+$
+
+Effizient
+
+$
+    (2/15, 1/20, 0, 1/5)
+$
 
 #align(end)[2026-03-27 TT02]
 

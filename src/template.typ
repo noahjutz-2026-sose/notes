@@ -65,13 +65,21 @@
   body
 }
 
-#let template_document_part(body) = {
+#let template_document_part(
+    body,
+    heading_starts: (:)
+) = {
   counter(heading).update(0)
   set heading(
     offset: 1,
     numbering: (..x) => {
       let x = x.pos()
-      numbering("1.1", ..x.slice(1))
+      numbering(
+          "1.1",
+          ..x.enumerate().map(((i, x)) => {
+              x - 1 + heading_starts.at(str(i), default: 1)
+          }).slice(1)
+      )
     },
   )
   body
