@@ -9,13 +9,15 @@
 - Prüfung
   #table(
     columns: 4,
-    [], [Challenge], [Punkte], [Deadline],
+    table.header([], [Challenge], [Punkte], [Deadline]),
     [0], [Escape Room], [5/5], [2026-03-31],
     [1], [Idee Präsentation], [13/15], [2026-04-26],
     [2], [Peer-Review], [5/5], [2026-05-10],
     [3], [Schema Integration], [23/25], [2026-05-24],
-    [4], [Data Cleaning], [\_/25], [2026-06-21],
+    [4], [Data Cleaning], [23/25], [2026-06-21],
     [5], [Power BI], [25/25], [2026-07-05],
+    table.hline(stroke: black),
+    [], [], [94/100], [1.3]
   )
 - Übungen
   - 7 Blätter
