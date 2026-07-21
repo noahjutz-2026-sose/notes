@@ -1,6 +1,6 @@
 #import "/components/admonitions.typ": *
 #import "/style.typ": *
-#import "/deps.typ": cetz, cetz-plot, codly, gentle-clues, mannot, suiji
+#import "/deps.typ": cetz, cetz-plot, cheq, codly, gentle-clues, mannot, suiji
 #import mannot: *
 
 #align(end)[2026-03-16 VL01]
@@ -723,3 +723,17 @@ Box blur
 == Normal Maps
 
 Tangent Space
+
+= Prüfungsvorbereitung
+
+== Lernplan
+
+#show: cheq.checklist
+
+- [x] Farben
+- [x] SD-Raster
+- [x] Bayzentrische Koordinaten
+- [ ] Eulerrotation
+- [ ] Quaternion Rotation
+- [ ] Slerp
+- [ ]

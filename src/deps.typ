@@ -15,3 +15,5 @@
 #import "@preview/timeliney:0.4.0"
 #import "@preview/lilaq:0.6.0" as lq
 #import "@preview/tiptoe:0.4.0"
+
+#import "@preview/cheq:0.4.0"
