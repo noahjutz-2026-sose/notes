@@ -4,7 +4,7 @@
 #import mannot: *
 #import codly: codly
 #import "/components/admonitions.typ": *
-#import "components/sets.typ": math_set
+#import "/components/sets.typ": math_set
 #import "/components/utils.typ": bv, bva, dp, hl, markhl
 
 #align(end)[2026-03-17 VL01]
