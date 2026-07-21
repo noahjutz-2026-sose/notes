@@ -736,4 +736,11 @@ Tangent Space
 - [ ] Eulerrotation
 - [ ] Quaternion Rotation
 - [ ] Slerp
-- [ ]
+- [ ] World $->$ Eye
+- [ ] Eye $->$ Clip / NDC
+- [ ] Z-Kurve
+- [ ] Clipping
+- [ ] Phong (directional, point) $times$ (diffuse, specular, ambient)
+- [ ] Gouraud, Phong Shading
+- [ ] Perspective correct texture
+- [ ] Normal maps and tangent space
