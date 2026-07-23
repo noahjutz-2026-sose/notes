@@ -734,10 +734,11 @@ Tangent Space
 - [x] SD-Raster
 - [x] Bayzentrische Koordinaten
 - [ ] Eulerrotation
-- [ ] Quaternion Rotation
-- [ ] Slerp
-- [ ] World $->$ Eye
-- [ ] Eye $->$ Clip / NDC
+- [/] Quaternion Rotation
+- [/] Slerp
+- [x] World $->$ Eye
+- [x] Eye $->$ Clip
+- [x] Clip $->$ NDC
 - [ ] Z-Kurve
 - [ ] Clipping
 - [ ] Phong (directional, point) $times$ (diffuse, specular, ambient)
